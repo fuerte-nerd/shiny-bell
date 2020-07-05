@@ -1,0 +1,81 @@
+import React from "react";
+import { connect } from "react-redux";
+import { setDialogs } from "../state/actions";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+  Button,
+} from "@material-ui/core";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
+
+const ThemeCode = ({ dispatch, dialogs, font, primary, secondary }) => {
+  const { themeCode } = dialogs;
+
+  const handleClose = () => {
+    dispatch(setDialogs({ ...dialogs, themeCode: false }));
+  };
+
+  const themeCodeString = `//theme.js
+import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
+
+export default responsiveFontSizes(createMuiTheme({
+  palette: {
+    primary: {
+      main: "${primary}",
+    },
+    secondary: {
+      main: "${secondary}",
+    },
+  },
+  typography: { fontFamily: "${font.themeName}" },
+})) `;
+
+  const helmetCodeString = `//react-helmet (to fetch Google Font(s))
+<Helmet>
+  <link
+    href={\`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap\`}
+    rel="stylesheet"
+  />
+</Helmet>
+`;
+
+  return (
+    <Dialog maxWidth="sm" fullWidth open={themeCode} onClose={handleClose}>
+      <DialogTitle>Theme Code</DialogTitle>
+      <DialogContent dividers>
+        <DialogContentText>
+          Here is the code you'll need to use the current theme in your project!
+          <SyntaxHighlighter
+            language="javascript"
+            style={tomorrow}
+            wrapLines
+            lineProps={{ style: { whiteSpace: "pre-wrap" } }}
+          >
+            {themeCodeString}
+          </SyntaxHighlighter>
+          <SyntaxHighlighter
+            language="javascript"
+            style={tomorrow}
+            wrapLines
+            lineProps={{ style: { whiteSpace: "pre-wrap" } }}
+          >
+            {helmetCodeString}
+          </SyntaxHighlighter>
+        </DialogContentText>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+const mapStateToProps = (state) => ({
+  dialogs: state.dialogs,
+  font: state.font,
+  primary: state.primary,
+  secondary: state.secondary,
+});
+
+export default connect(mapStateToProps)(ThemeCode);
