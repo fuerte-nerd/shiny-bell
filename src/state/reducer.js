@@ -8,6 +8,7 @@ import {
   SET_LOCKS,
   SET_MODE,
   SET_FONTLOADING,
+  SET_SECONDARYMODE,
 } from "./types";
 
 const initialState = {
@@ -32,6 +33,11 @@ const initialState = {
 export default (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
+    case SET_SECONDARYMODE:
+      return {
+        ...state,
+        secondaryMode: action.payload,
+      };
     case SET_FONTLOADING:
       return {
         ...state,
