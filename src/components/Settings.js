@@ -147,9 +147,11 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode, spacing }) => {
             min={0}
             max={50}
             value={spacing}
+            valueLabelDisplay="auto"
             onChange={(e, v) => {
               dispatch(setSpacing(v));
             }}
+            style={{ fontFamily: "Roboto" }}
           />
         </DialogContentText>
       </DialogContent>
