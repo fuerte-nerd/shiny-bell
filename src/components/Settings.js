@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { setLocked, setDialogs, setSecondaryMode } from "../state/actions";
 import {
+  Box,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -14,6 +15,7 @@ import {
   Radio,
   RadioGroup,
   FormGroup,
+  Divider,
   makeStyles,
 } from "@material-ui/core";
 import AppTypography from "./AppTypography";
@@ -83,53 +85,54 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
               classes={{ label: classes.label }}
             />
           </FormGroup>
-          <Box mt={3}>
-            <AppTypography variant="h5">Secondary color mode</AppTypography>
-            <FormControl component="fieldset">
-              <RadioGroup
-                row
-                id="change-secondary-mode"
-                value={secondaryMode}
-                onChange={(e) => dispatch(setSecondaryMode(e.target.value))}
-              >
-                <FormControlLabel
-                  classes={{ label: classes.label }}
-                  id="complement"
-                  value="complement"
-                  label="Complement"
-                  control={<Radio />}
-                />
-                <FormControlLabel
-                  classes={{ label: classes.label }}
-                  id="desaturate"
-                  value="desaturate"
-                  label="Desaturate"
-                  control={<Radio />}
-                />
-                <FormControlLabel
-                  classes={{ label: classes.label }}
-                  id="saturate"
-                  value="saturate"
-                  label="Saturate"
-                  control={<Radio />}
-                />
-                <FormControlLabel
-                  classes={{ label: classes.label }}
-                  id="darken"
-                  value="darken"
-                  label="Darken"
-                  control={<Radio />}
-                />
-                <FormControlLabel
-                  classes={{ label: classes.label }}
-                  id="lighten"
-                  value="lighten"
-                  label="Lighten"
-                  control={<Radio />}
-                />
-              </RadioGroup>
-            </FormControl>
+          <Box my={3}>
+            <Divider />
           </Box>
+          <AppTypography variant="h5">Secondary color mode</AppTypography>
+          <FormControl component="fieldset">
+            <RadioGroup
+              row
+              id="change-secondary-mode"
+              value={secondaryMode}
+              onChange={(e) => dispatch(setSecondaryMode(e.target.value))}
+            >
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="complement"
+                value="complement"
+                label="Complement"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="desaturate"
+                value="desaturate"
+                label="Desaturate"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="saturate"
+                value="saturate"
+                label="Saturate"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="darken"
+                value="darken"
+                label="Darken"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="lighten"
+                value="lighten"
+                label="Lighten"
+                control={<Radio />}
+              />
+            </RadioGroup>
+          </FormControl>
         </DialogContentText>
       </DialogContent>
       <DialogActions>

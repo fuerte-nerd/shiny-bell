@@ -84,7 +84,7 @@ function App(props) {
   }, [fonts]);
 
   useEffect(() => {
-    if (fonts) {
+    if (fonts && typeof font.themeName !== "undefined") {
       const newFont = new FontFaceObserver(font.themeName);
       newFont.load().then(
         () => {
@@ -111,7 +111,7 @@ function App(props) {
             },
           },
           typography: { fontFamily: font.themeName },
-          spacing: 38,
+          spacing: 8,
         })
       )}
     >
@@ -121,10 +121,12 @@ function App(props) {
           href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
           rel="stylesheet"
         />
-        <link
-          href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
-          rel="stylesheet"
-        />
+        {fonts && (
+          <link
+            href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
+            rel="stylesheet"
+          />
+        )}
       </Helmet>
       <FontLoadDialog />
       <Box
