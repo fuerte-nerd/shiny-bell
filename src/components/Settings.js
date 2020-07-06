@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Settings = ({ dispatch, dialogs, locks }) => {
+const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
   const classes = useStyles();
   const handleChange = (e) => {
     const { id } = e.currentTarget;
@@ -83,11 +83,21 @@ const Settings = ({ dispatch, dialogs, locks }) => {
           </FormGroup>
           <AppTypography variant="h5">Secondary color mode</AppTypography>
           <FormControl component="fieldset">
-            <RadioGroup id="secondary-color-mode" onChange={handleChange}>
+            <RadioGroup
+              id="secondary-color-mode"
+              value={secondaryMode}
+              onChange={handleChange}
+            >
               <FormControlLabel
                 classes={{ label: classes.label }}
                 value="complement"
                 label="Complement"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                value="desaturate"
+                label="Desaturate"
                 control={<Radio />}
               />
             </RadioGroup>
@@ -104,6 +114,7 @@ const Settings = ({ dispatch, dialogs, locks }) => {
 const mapStateToProps = (state) => ({
   dialogs: state.dialogs,
   locks: state.locked,
+  secondaryMode: state.secondaryMode,
 });
 
 export default connect(mapStateToProps)(Settings);
