@@ -73,6 +73,7 @@ function App(props) {
   useEffect(() => {
     if (fonts) {
       const newFont = new FontFaceObserver(font.themeName);
+      console.log(newFont);
       newFont.load().then(
         () => {
           dispatch(setFontLoading(false));
