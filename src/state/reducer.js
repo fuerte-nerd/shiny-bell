@@ -37,6 +37,11 @@ const initialState = {
 export default (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
+    case SET_SPACING:
+      return {
+        ...state,
+        spacing: action.payload,
+      };
     case SET_STATICFONT:
       return {
         ...state,

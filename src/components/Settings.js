@@ -147,8 +147,8 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode, spacing }) => {
             min={0}
             max={50}
             value={spacing}
-            onChange={(e) => {
-              dispatch(setSpacing(e.target.value));
+            onChange={(e, v) => {
+              dispatch(setSpacing(v));
             }}
           />
         </DialogContentText>

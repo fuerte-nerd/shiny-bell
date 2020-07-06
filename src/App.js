@@ -112,7 +112,7 @@ function App(props) {
             },
           },
           typography: { fontFamily: font.themeName },
-          spacing: { spacing },
+          spacing: spacing,
         })
       )}
     >
