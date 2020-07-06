@@ -12,10 +12,18 @@ import {
   Switch,
   Typography,
   FormGroup,
+  makeStyles,
 } from "@material-ui/core";
 import AppTypography from "./AppTypography";
 
+const useStyles = makeStyles({
+  label: {
+    fontFamily: "Roboto",
+  },
+});
+
 const Settings = ({ dispatch, dialogs, locks }) => {
+  const classes = useStyles();
   const handleChange = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
@@ -54,6 +62,7 @@ const Settings = ({ dispatch, dialogs, locks }) => {
                 />
               }
               label="Font(s)"
+              classes={{ label: classes.label }}
               style={{ fontFamily: "Roboto" }}
             />
             <FormControlLabel
