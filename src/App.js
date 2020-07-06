@@ -37,7 +37,7 @@ function App(props) {
     mode,
     font,
     fonts,
-    fontLoading,
+    secondaryMode,
     primary,
     secondary,
     bgColor,
@@ -62,7 +62,7 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    dispatch(setSecondary(getSecondaryColor(primary)));
+    dispatch(setSecondary(getSecondaryColor(primary, secondaryMode)));
   }, [primary]);
 
   useEffect(() => {
@@ -137,6 +137,7 @@ const mapStateToProps = (state) => ({
   bgColor: state.bgColor,
   mode: state.mode,
   fontLoading: state.fontLoading,
+  secondaryMode: state.secondaryMode,
 });
 
 export default connect(mapStateToProps)(App);

@@ -15,6 +15,7 @@ const initialState = {
   fontLoading: true,
   font: "",
   primary: "rgb(0,0,0)",
+  secondaryMode: "complement",
   secondary: "rgb(255,255,255)",
   bgColor: false,
   mode: "light",
