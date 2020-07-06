@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setMode, setPrimary, setFont } from "../state/actions";
+import { setMode, setPrimary, setFont, setDialogs } from "../state/actions";
 import {
   AppBar,
   Toolbar,
@@ -8,14 +8,22 @@ import {
   IconButton,
   SvgIcon,
 } from "@material-ui/core";
-import { SettingsBrightness, Palette, TextFields } from "@material-ui/icons";
+import {
+  SettingsBrightness,
+  Palette,
+  TextFields,
+  Settings,
+  Code,
+} from "@material-ui/icons";
 import randomColor from "../functions/randomColor";
 import randomFont from "../functions/randomFont";
 
-const Menu = ({ dispatch, mode }) => {
+const Menu = ({ dispatch, mode, dialogs }) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
+      case "settings":
+        return dispatch(setDialogs({ ...dialogs, settings: true }));
       case "mode":
         return mode === "dark"
           ? dispatch(setMode("light"))
@@ -24,6 +32,8 @@ const Menu = ({ dispatch, mode }) => {
         return dispatch(setPrimary(randomColor()));
       case "font":
         return dispatch(setFont(randomFont()));
+      case "code":
+        return dispatch(setDialogs({ ...dialogs, themeCode: true }));
       default:
         return;
     }
@@ -41,6 +51,17 @@ const Menu = ({ dispatch, mode }) => {
         </IconButton>
         <IconButton id="palette" onClick={handleClick} color="inherit">
           <Palette />
+        </IconButton>
+        <IconButton id="code" onClick={handleClick} color="inherit">
+          <Code />
+        </IconButton>
+        <IconButton
+          id="settings"
+          onClick={handleClick}
+          color="inherit"
+          edge="end"
+        >
+          <Settings />
         </IconButton>
       </Toolbar>
     </AppBar>
