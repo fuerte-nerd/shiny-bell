@@ -13,10 +13,7 @@ import {
 const initialState = {
   fonts: null,
   fontLoading: true,
-  font: {
-    themeName: "Roboto",
-    linkName: "Roboto",
-  },
+  font: "",
   primary: "rgb(0,0,0)",
   secondary: "rgb(255,255,255)",
   bgColor: false,

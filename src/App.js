@@ -71,15 +71,17 @@ function App(props) {
   }, [fonts]);
 
   useEffect(() => {
-    const newFont = new FontFaceObserver(font.themeName);
-    newFont.load().then(
-      () => {
-        dispatch(setFontLoading(false));
-      },
-      () => {
-        setFont(randomFont());
-      }
-    );
+    if (fonts) {
+      const newFont = new FontFaceObserver(font.themeName);
+      newFont.load().then(
+        () => {
+          dispatch(setFontLoading(false));
+        },
+        () => {
+          setFont(randomFont());
+        }
+      );
+    }
   }, [font]);
 
   return (
