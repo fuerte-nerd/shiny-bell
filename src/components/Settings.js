@@ -34,7 +34,13 @@ const Settings = ({ dispatch, dialogs, locks }) => {
         <DialogContentText>
           <Typography variant="h5">Lock</Typography>
           <FormControlLabel
-            control={<Switch id="lock-fonts" onChange={handleChange} />}
+            control={
+              <Switch
+                id="lock-fonts"
+                onChange={handleChange}
+                value={locks.fonts}
+              />
+            }
             label="Font(s)"
           />
         </DialogContentText>

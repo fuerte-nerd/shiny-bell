@@ -18,7 +18,7 @@ import {
 import randomColor from "../functions/randomColor";
 import randomFont from "../functions/randomFont";
 
-const Menu = ({ dispatch, mode, dialogs }) => {
+const Menu = ({ dispatch, mode, dialogs, locked }) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
@@ -31,7 +31,7 @@ const Menu = ({ dispatch, mode, dialogs }) => {
       case "palette":
         return dispatch(setPrimary(randomColor()));
       case "font":
-        return dispatch(setFontLoading(true));
+        return !locked.fonts && dispatch(setFontLoading(true));
       case "code":
         return dispatch(setDialogs({ ...dialogs, themeCode: true }));
       default:
@@ -70,6 +70,7 @@ const Menu = ({ dispatch, mode, dialogs }) => {
 
 const mapStateToProps = (state) => ({
   mode: state.mode,
+  locked: state.locked,
 });
 
 export default connect(mapStateToProps)(Menu);
