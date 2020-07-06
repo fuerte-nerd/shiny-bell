@@ -45,15 +45,6 @@ function App(props) {
   } = props;
 
   useEffect(() => {
-    const staticFont = new FontFaceObserver("Roboto");
-    staticFont.load().then(
-      () => {
-        dispatch(setStaticFont(true));
-      },
-      () => {
-        console.log("Static font did not load");
-      }
-    );
     props.dispatch(setPrimary(randomColor()));
     axios
       .get(
@@ -76,6 +67,17 @@ function App(props) {
   }, [primary, secondaryMode]);
 
   useEffect(() => {
+    if (!staticFontLoaded) {
+      const staticFont = new FontFaceObserver("Roboto");
+      staticFont.load().then(
+        () => {
+          dispatch(setStaticFont(true));
+        },
+        () => {
+          console.log("Static font did not load");
+        }
+      );
+    }
     fonts && props.dispatch(setFont(randomFont()));
     //
   }, [fonts]);
@@ -117,12 +119,10 @@ function App(props) {
           href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
           rel="stylesheet"
         />
-        {fonts && (
-          <link
-            href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
-            rel="stylesheet"
-          />
-        )}
+        <link
+          href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
+          rel="stylesheet"
+        />
       </Helmet>
       <FontLoadDialog />
       <Box
