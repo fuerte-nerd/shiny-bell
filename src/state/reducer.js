@@ -1,5 +1,5 @@
 import {
-  SET_STATICFONT
+  SET_STATICFONT,
   SET_FONT,
   SET_FONTS,
   SET_BGCOLOR,
@@ -36,10 +36,10 @@ export default (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
     case SET_STATICFONT:
-      return{
+      return {
         ...state,
-        staticFontLoaded: action.payload
-      }
+        staticFontLoaded: action.payload,
+      };
     case SET_SECONDARYMODE:
       return {
         ...state,

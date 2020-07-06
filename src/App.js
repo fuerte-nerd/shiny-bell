@@ -25,6 +25,7 @@ import {
   setFont,
   setPrimary,
   setSecondary,
+  setStaticFont,
 } from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
@@ -44,6 +45,15 @@ function App(props) {
   } = props;
 
   useEffect(() => {
+    const staticFont = new FontFaceObserver("Roboto");
+    staticFont.load().then(
+      () => {
+        dispatch(setStaticFont(true));
+      },
+      () => {
+        console.log("Static font did not load");
+      }
+    );
     props.dispatch(setPrimary(randomColor()));
     axios
       .get(
@@ -73,7 +83,6 @@ function App(props) {
   useEffect(() => {
     if (fonts) {
       const newFont = new FontFaceObserver(font.themeName);
-      console.log(newFont);
       newFont.load().then(
         () => {
           dispatch(setFontLoading(false));

@@ -5,7 +5,7 @@ import { Dialog, Box, Typography, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
 import randomFont from "../functions/randomFont";
 
-const FontLoadDialog = ({ dispatch, fonts, fontLoading }) => {
+const FontLoadDialog = ({ dispatch, fonts, fontLoading, staticFontLoaded }) => {
   return (
     <Dialog
       fullScreen
@@ -19,9 +19,10 @@ const FontLoadDialog = ({ dispatch, fonts, fontLoading }) => {
         display="flex"
         justifyContent="center"
         alignItems="center"
+        flexDirection="row"
       >
         <CircularProgress size={50} color="primary" />
-        <AppTypography>Loading new font...</AppTypography>
+        {staticFontLoaded && <AppTypography>Loading new font...</AppTypography>}
       </Box>
     </Dialog>
   );
@@ -30,6 +31,7 @@ const FontLoadDialog = ({ dispatch, fonts, fontLoading }) => {
 const mapStateToProps = (state) => ({
   fontLoading: state.fontLoading,
   fonts: state.fonts,
+  staticFontLoaded: state.staticFontLoaded,
 });
 
 export default connect(mapStateToProps)(FontLoadDialog);
