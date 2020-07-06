@@ -62,11 +62,11 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode, spacing }) => {
       onClose={handleClose}
     >
       <DialogTitle disableTypography>
-        <AppTypography variant="h3">Settings</AppTypography>
+        <AppTypography variant="h4">Settings</AppTypography>
       </DialogTitle>
       <DialogContent dividers>
         <DialogContentText>
-          <AppTypography variant="h5">Lock</AppTypography>
+          <AppTypography variant="h6">Lock</AppTypography>
           <FormGroup row>
             <FormControlLabel
               control={
@@ -94,7 +94,7 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode, spacing }) => {
           <Box my={3}>
             <Divider />
           </Box>
-          <AppTypography variant="h5">Secondary color mode</AppTypography>
+          <AppTypography variant="h6">Secondary color mode</AppTypography>
           <FormControl component="fieldset">
             <RadioGroup
               row
@@ -142,7 +142,7 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode, spacing }) => {
           <Box my={3}>
             <Divider />
           </Box>
-          <AppTypography variant="h5">Spacing</AppTypography>
+          <AppTypography variant="h6">Spacing</AppTypography>
           <Slider
             min={0}
             max={50}
