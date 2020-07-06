@@ -70,8 +70,6 @@ function App(props) {
   }, [fonts]);
 
   useEffect(() => {
-    console.log("triggered");
-    dispatch(setFontLoading(true));
     const newFont = new FontFaceObserver(font.themeName);
     newFont.load().then(
       () => {
@@ -107,7 +105,11 @@ function App(props) {
           rel="stylesheet"
         />
       </Helmet>
-      <Dialog fullScreen open={fontLoading}></Dialog>
+      <Dialog
+        fullScreen
+        open={fontLoading}
+        onEntered={() => dispatch(setFont(randomFont()))}
+      ></Dialog>
       <Box
         minHeight="100vh"
         maxWidth="100vw"

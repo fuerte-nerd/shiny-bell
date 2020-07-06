@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setMode, setPrimary, setFont, setDialogs } from "../state/actions";
 import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  SvgIcon,
-} from "@material-ui/core";
+  setMode,
+  setPrimary,
+  setFont,
+  setDialogs,
+  setFontLoading,
+} from "../state/actions";
+import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
 import {
   SettingsBrightness,
   Palette,
@@ -31,7 +31,7 @@ const Menu = ({ dispatch, mode, dialogs }) => {
       case "palette":
         return dispatch(setPrimary(randomColor()));
       case "font":
-        return dispatch(setFont(randomFont()));
+        return dispatch(setFontLoading(true));
       case "code":
         return dispatch(setDialogs({ ...dialogs, themeCode: true }));
       default:
