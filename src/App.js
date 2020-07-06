@@ -67,19 +67,19 @@ function App(props) {
 
   useEffect(() => {
     fonts && props.dispatch(setFont(randomFont()));
+    //
   }, [fonts]);
 
   return (
     <WebfontLoader
       config={{ google: { families: [font.themeName] } }}
       onStatus={(status) => {
+        console.log(status);
         switch (status) {
           case "loading":
             return dispatch(setFontLoading(true));
           case "active":
             return dispatch(setFontLoading(false));
-          case "inactive":
-            return dispatch(setFont(randomFont()));
           default:
             return;
         }
