@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setLocked, setDialogs } from "../state/actions";
+import { setLocked, setDialogs, setSecondaryMode } from "../state/actions";
 import {
   Dialog,
   DialogTitle,
@@ -11,7 +11,6 @@ import {
   FormControlLabel,
   Switch,
   FormControl,
-  FormLabel,
   Radio,
   RadioGroup,
   FormGroup,
@@ -28,6 +27,7 @@ const useStyles = makeStyles({
 const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
   const classes = useStyles();
   const handleChange = (e) => {
+    console.log(e);
     const { id } = e.currentTarget;
     switch (id) {
       case "lock-fonts":
@@ -35,7 +35,8 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
       case "lock-palette":
         return dispatch(setLocked({ ...locks, palette: !locks.palette }));
       case "change-secondary-mode":
-
+        console.log("reached");
+        return dispatch(setSecondaryMode(e.currentTarget.value));
       default:
         return;
     }
@@ -84,7 +85,7 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
           <AppTypography variant="h5">Secondary color mode</AppTypography>
           <FormControl component="fieldset">
             <RadioGroup
-              id="secondary-color-mode"
+              id="change-secondary-mode"
               value={secondaryMode}
               onChange={handleChange}
             >
