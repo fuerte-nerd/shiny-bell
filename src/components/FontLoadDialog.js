@@ -10,7 +10,7 @@ const FontLoadDialog = ({ dispatch, fonts, fontLoading }) => {
       fullScreen
       open={fontLoading}
       onEntered={() => fonts && dispatch(setFont(randomFont()))}
-      transitionDuration={{ appear: 0 }}
+      transitionDuration={{ enter: 0, exit: 20 }}
     >
       <Box
         height="100%"
