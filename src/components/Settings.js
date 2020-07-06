@@ -27,16 +27,16 @@ const useStyles = makeStyles({
 const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
   const classes = useStyles();
   const handleChange = (e) => {
-    console.log(e);
+    console.log(e.target.id);
     const { id } = e.currentTarget;
     switch (id) {
       case "lock-fonts":
         return dispatch(setLocked({ ...locks, fonts: !locks.fonts }));
       case "lock-palette":
         return dispatch(setLocked({ ...locks, palette: !locks.palette }));
-      case "change-secondary-mode":
-        console.log("reached");
-        return dispatch(setSecondaryMode(e.currentTarget.value));
+      case "complement":
+      case "desaturate":
+        return dispatch(setSecondaryMode(id));
       default:
         return;
     }
@@ -91,12 +91,14 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
             >
               <FormControlLabel
                 classes={{ label: classes.label }}
+                id="complement"
                 value="complement"
                 label="Complement"
                 control={<Radio />}
               />
               <FormControlLabel
                 classes={{ label: classes.label }}
+                id="desaturate"
                 value="desaturate"
                 label="Desaturate"
                 control={<Radio />}
