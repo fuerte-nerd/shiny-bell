@@ -40,30 +40,29 @@ const Settings = ({ dispatch, dialogs, locks }) => {
     return dispatch(setDialogs({ ...dialogs, settings: false }));
   };
   return (
-    <Dialog fullScreen open={dialogs.settings} onClose={handleClose}>
+    <Dialog
+      fullWidth
+      maxWidth="sm"
+      open={dialogs.settings}
+      onClose={handleClose}
+    >
       <DialogTitle disableTypography>
         <AppTypography variant="h3">Settings</AppTypography>
       </DialogTitle>
-      <DialogContent>
+      <DialogContent dividers>
         <DialogContentText>
           <AppTypography variant="h5">Lock</AppTypography>
-          <FormGroup
-            row
-            style={{ justifyContent: "space-between", fontFamily: "Roboto" }}
-          >
+          <FormGroup row style={{ justifyContent: "space-between" }}>
             <FormControlLabel
               control={
                 <Switch
                   id="lock-fonts"
                   onChange={handleChange}
                   checked={locks.fonts}
-                  inputProps={{ style: { fontFamily: "Roboto" } }}
-                  style={{ fontFamily: "Roboto" }}
                 />
               }
               label="Font(s)"
               classes={{ label: classes.label }}
-              style={{ fontFamily: "Roboto" }}
             />
             <FormControlLabel
               control={
@@ -74,6 +73,7 @@ const Settings = ({ dispatch, dialogs, locks }) => {
                 />
               }
               label="Palette"
+              classes={{ label: classes.label }}
             />
           </FormGroup>
         </DialogContentText>
