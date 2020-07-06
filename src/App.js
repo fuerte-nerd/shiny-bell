@@ -55,71 +55,50 @@ function App(props) {
     //
   }, [fonts]);
 
-  const [fontLoading, setFontLoading] = useState(true);
+  useEffect(() => {
+    console.log("triggered");
+  }, [font]);
 
   return (
-    <WebfontLoader
-      config={{
-        google: {
-          api: "https://fonts.googleapis.com/css2",
-          families: [font.themeName],
-        },
-      }}
-      onStatus={(status) => {
-        console.log(status);
-        switch (status) {
-          case "loading":
-            return setFontLoading(true);
-          case "active":
-            return setFontLoading(false);
-          case "inactive":
-            return setFont(randomFont());
-          default:
-            return;
-        }
-      }}
-    >
-      <ThemeProvider
-        theme={responsiveFontSizes(
-          createMuiTheme({
-            palette: {
-              type: mode,
-              primary: {
-                main: primary,
-              },
-              secondary: {
-                main: secondary,
-              },
+    <ThemeProvider
+      theme={responsiveFontSizes(
+        createMuiTheme({
+          palette: {
+            type: mode,
+            primary: {
+              main: primary,
             },
-            typography: { fontFamily: font.themeName },
-          })
-        )}
+            secondary: {
+              main: secondary,
+            },
+          },
+          typography: { fontFamily: font.themeName },
+        })
+      )}
+    >
+      <CssBaseline />
+      <Helmet>
+        <link
+          href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
+          rel="stylesheet"
+        />
+      </Helmet>
+      <Box
+        minHeight="100vh"
+        maxWidth="100vw"
+        bgcolor={bgColor ? "primary.light" : "none"}
+        style={{ transition: "all .25s" }}
       >
-        <CssBaseline />
-        <Helmet>
-          <link
-            href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
-            rel="stylesheet"
-          />
-        </Helmet>
-        <Dialog fullScreen open={fontLoading}></Dialog>
-        <Box
-          minHeight="100vh"
-          maxWidth="100vw"
-          bgcolor={bgColor ? "primary.light" : "none"}
-          style={{ transition: "all .25s" }}
-        >
-          <Settings />
-          <ThemeCode />
-          <Menu />
-          <Toolbar />
-          <Container>
-            <TypographySection />
-            <Buttons />
-          </Container>
-        </Box>
-      </ThemeProvider>
-    </WebfontLoader>
+        <Settings />
+        <ThemeCode />
+        <Menu />
+        <Toolbar />
+        <Container>
+          <TypographySection />
+          <Buttons />
+        </Container>
+      </Box>
+    </ThemeProvider>
   );
 }
 
