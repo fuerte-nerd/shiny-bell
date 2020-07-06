@@ -11,6 +11,9 @@ import {
   Box,
   responsiveFontSizes,
 } from "@material-ui/core";
+
+import WebfontLoader from "@dr-kobros/react-webfont-loader";
+
 import Menu from "./components/Menu";
 import ThemeCode from "./components/ThemeCode";
 import Settings from "./components/Settings";
@@ -51,45 +54,52 @@ function App(props) {
   }, [fonts]);
 
   return (
-    <ThemeProvider
-      theme={responsiveFontSizes(
-        createMuiTheme({
-          palette: {
-            type: mode,
-            primary: {
-              main: primary,
-            },
-            secondary: {
-              main: secondary,
-            },
-          },
-          typography: { fontFamily: font.themeName },
-        })
-      )}
+    <WebfontLoader
+      config={{ google: { families: [font.themeName] } }}
+      onStatus={(status) => {
+        console.log(status);
+      }}
     >
-      <CssBaseline />
-      <Helmet>
-        <link
-          href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
-          rel="stylesheet"
-        />
-      </Helmet>
-      <Box
-        minHeight="100vh"
-        maxWidth="100vw"
-        bgcolor={bgColor ? "primary.light" : "none"}
-        style={{ transition: "all .25s" }}
+      <ThemeProvider
+        theme={responsiveFontSizes(
+          createMuiTheme({
+            palette: {
+              type: mode,
+              primary: {
+                main: primary,
+              },
+              secondary: {
+                main: secondary,
+              },
+            },
+            typography: { fontFamily: font.themeName },
+          })
+        )}
       >
-        <Settings />
-        <ThemeCode />
-        <Menu />
-        <Toolbar />
-        <Container>
-          <TypographySection />
-          <Buttons />
-        </Container>
-      </Box>
-    </ThemeProvider>
+        <CssBaseline />
+        <Helmet>
+          <link
+            href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
+            rel="stylesheet"
+          />
+        </Helmet>
+        <Box
+          minHeight="100vh"
+          maxWidth="100vw"
+          bgcolor={bgColor ? "primary.light" : "none"}
+          style={{ transition: "all .25s" }}
+        >
+          <Settings />
+          <ThemeCode />
+          <Menu />
+          <Toolbar />
+          <Container>
+            <TypographySection />
+            <Buttons />
+          </Container>
+        </Box>
+      </ThemeProvider>
+    </WebfontLoader>
   );
 }
 
