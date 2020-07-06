@@ -111,6 +111,20 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
                 label="Saturate"
                 control={<Radio />}
               />
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="darken"
+                value="darken"
+                label="Darken"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="lighten"
+                value="lighten"
+                label="Lighten"
+                control={<Radio />}
+              />
             </RadioGroup>
           </FormControl>
         </DialogContentText>

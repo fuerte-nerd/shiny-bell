@@ -8,6 +8,10 @@ export default (color, mode = "complement") => {
       return tinycolor(color).desaturate(50).toHexString();
     case "saturate":
       return tinycolor(color).saturate(50).toHexString();
+    case "darken":
+      return tinycolor(color).darken().toHexString();
+    case "lighten":
+      return tinycolor(color).lighten().toHexString();
     default:
       return;
   }
