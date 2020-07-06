@@ -18,14 +18,29 @@ import ThemeCode from "./components/ThemeCode";
 import Settings from "./components/Settings";
 import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
-import { setFonts, setFont, setPrimary, setSecondary } from "./state/actions";
+import {
+  setFontLoading,
+  setFonts,
+  setFont,
+  setPrimary,
+  setSecondary,
+} from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
 
 function App(props) {
-  const { dispatch, mode, font, fonts, primary, secondary, bgColor } = props;
+  const {
+    dispatch,
+    mode,
+    font,
+    fonts,
+    fontLoading,
+    primary,
+    secondary,
+    bgColor,
+  } = props;
 
   useEffect(() => {
     props.dispatch(setPrimary(randomColor()));
@@ -56,8 +71,16 @@ function App(props) {
 
   useEffect(() => {
     console.log("triggered");
-    const test = new FontFaceObserver(font.themeName);
-    console.log(test);
+    dispatch(setFontLoading(true));
+    const newFont = new FontFaceObserver(font.themeName);
+    newFont.load().then(
+      () => {
+        dispatch(setFontLoading(false));
+      },
+      () => {
+        setFont(randomFont());
+      }
+    );
   }, [font]);
 
   return (
@@ -84,6 +107,7 @@ function App(props) {
           rel="stylesheet"
         />
       </Helmet>
+      <Dialog fullScreen open={fontLoading}></Dialog>
       <Box
         minHeight="100vh"
         maxWidth="100vw"
