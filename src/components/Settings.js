@@ -86,6 +86,7 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
           <AppTypography variant="h5">Secondary color mode</AppTypography>
           <FormControl component="fieldset">
             <RadioGroup
+              row
               id="change-secondary-mode"
               value={secondaryMode}
               onChange={(e) => dispatch(setSecondaryMode(e.target.value))}

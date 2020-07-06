@@ -12,7 +12,7 @@ import {
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const ThemeCode = ({ dispatch, dialogs, font, primary, secondary }) => {
+const ThemeCode = ({ dispatch, dialogs, font, mode, primary, secondary }) => {
   const { themeCode } = dialogs;
 
   const handleClose = () => {
@@ -24,6 +24,7 @@ import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
 
 export default responsiveFontSizes(createMuiTheme({
   palette: {
+    type: "${mode}",
     primary: {
       main: "${primary}",
     },
@@ -76,6 +77,7 @@ const mapStateToProps = (state) => ({
   font: state.font,
   primary: state.primary,
   secondary: state.secondary,
+  mode: state.mode,
 });
 
 export default connect(mapStateToProps)(ThemeCode);
