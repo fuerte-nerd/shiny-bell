@@ -108,7 +108,7 @@ function App(props) {
       <Dialog
         fullScreen
         open={fontLoading}
-        onEntered={() => dispatch(setFont(randomFont()))}
+        onEntered={() => fonts && dispatch(setFont(randomFont()))}
       ></Dialog>
       <Box
         minHeight="100vh"
