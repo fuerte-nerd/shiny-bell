@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { setFont } from "../state/actions";
 import { Dialog, Box, Typography, CircularProgress } from "@material-ui/core";
+import AppTypography from "./AppTypography";
 import randomFont from "../functions/randomFont";
 
 const FontLoadDialog = ({ dispatch, fonts, fontLoading }) => {
@@ -20,6 +21,7 @@ const FontLoadDialog = ({ dispatch, fonts, fontLoading }) => {
         alignItems="center"
       >
         <CircularProgress size={50} color="primary" />
+        <AppTypography>Loading new font...</AppTypography>
       </Box>
     </Dialog>
   );
