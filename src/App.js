@@ -78,7 +78,7 @@ function App(props) {
           dispatch(setFontLoading(false));
         },
         () => {
-          setFont(randomFont());
+          dispatch(setFont(randomFont()));
         }
       );
     }
