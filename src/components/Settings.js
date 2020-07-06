@@ -11,6 +11,7 @@ import {
   FormControlLabel,
   Switch,
   Typography,
+  FormGroup,
 } from "@material-ui/core";
 
 const Settings = ({ dispatch, dialogs, locks }) => {
@@ -33,16 +34,18 @@ const Settings = ({ dispatch, dialogs, locks }) => {
       <DialogContent>
         <DialogContentText>
           <Typography variant="h5">Lock</Typography>
-          <FormControlLabel
-            control={
-              <Switch
-                id="lock-fonts"
-                onChange={handleChange}
-                checked={locks.fonts}
-              />
-            }
-            label="Font(s)"
-          />
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch
+                  id="lock-fonts"
+                  onChange={handleChange}
+                  checked={locks.fonts}
+                />
+              }
+              label="Font(s)"
+            />
+          </FormGroup>
         </DialogContentText>
       </DialogContent>
       <DialogActions>

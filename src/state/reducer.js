@@ -24,6 +24,7 @@ const initialState = {
   },
   locked: {
     fonts: false,
+    palette: false,
   },
 };
 

@@ -29,7 +29,7 @@ const Menu = ({ dispatch, mode, dialogs, locked }) => {
           ? dispatch(setMode("light"))
           : dispatch(setMode("dark"));
       case "palette":
-        return dispatch(setPrimary(randomColor()));
+        return !locked.palette && dispatch(setPrimary(randomColor()));
       case "font":
         return !locked.fonts && dispatch(setFontLoading(true));
       case "code":
@@ -46,10 +46,20 @@ const Menu = ({ dispatch, mode, dialogs, locked }) => {
         <IconButton id="mode" onClick={handleClick} color="inherit">
           <SettingsBrightness />
         </IconButton>
-        <IconButton id="font" onClick={handleClick} color="inherit">
+        <IconButton
+          disabled={locked.fonts}
+          id="font"
+          onClick={handleClick}
+          color="inherit"
+        >
           <TextFields />
         </IconButton>
-        <IconButton id="palette" onClick={handleClick} color="inherit">
+        <IconButton
+          disabled={locked.palette}
+          id="palette"
+          onClick={handleClick}
+          color="inherit"
+        >
           <Palette />
         </IconButton>
         <IconButton id="code" onClick={handleClick} color="inherit">
