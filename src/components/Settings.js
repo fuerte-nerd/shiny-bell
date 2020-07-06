@@ -20,6 +20,8 @@ const Settings = ({ dispatch, dialogs, locks }) => {
     switch (id) {
       case "lock-fonts":
         return dispatch(setLocked({ ...locks, fonts: !locks.fonts }));
+      case "lock-palette":
+        return dispatch(setLocked({ ...locks, palette: !locks.palette }));
       default:
         return;
     }
@@ -34,7 +36,7 @@ const Settings = ({ dispatch, dialogs, locks }) => {
       <DialogContent>
         <DialogContentText>
           <Typography variant="h5">Lock</Typography>
-          <FormGroup>
+          <FormGroup row>
             <FormControlLabel
               control={
                 <Switch
@@ -44,6 +46,16 @@ const Settings = ({ dispatch, dialogs, locks }) => {
                 />
               }
               label="Font(s)"
+            />
+            <FormControlLabel
+              control={
+                <Switch
+                  id="lock-palette"
+                  onChange={handleChange}
+                  checked={locks.palette}
+                />
+              }
+              label="Palette"
             />
           </FormGroup>
         </DialogContentText>
