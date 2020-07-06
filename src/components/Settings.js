@@ -36,6 +36,7 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
         return dispatch(setLocked({ ...locks, palette: !locks.palette }));
       case "complement":
       case "desaturate":
+        console.log("reached");
         return dispatch(setSecondaryMode(id));
       default:
         return;
@@ -87,7 +88,7 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
             <RadioGroup
               id="change-secondary-mode"
               value={secondaryMode}
-              onChange={handleChange}
+              onChange={(e) => dispatch(setSecondaryMode(e.target.value))}
             >
               <FormControlLabel
                 classes={{ label: classes.label }}

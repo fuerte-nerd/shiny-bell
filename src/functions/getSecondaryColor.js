@@ -5,7 +5,7 @@ export default (color, mode = "complement") => {
     case "complement":
       return tinycolor(color).complement().toHexString();
     case "desaturate":
-      return tinycolor(color).desaturate().toHexString();
+      return tinycolor(color).desaturate(50).toHexString();
     default:
       return;
   }
