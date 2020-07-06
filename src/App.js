@@ -13,8 +13,6 @@ import {
   Dialog,
 } from "@material-ui/core";
 
-import WebfontLoader from "@dr-kobros/react-webfont-loader";
-
 import Menu from "./components/Menu";
 import ThemeCode from "./components/ThemeCode";
 import Settings from "./components/Settings";
@@ -24,6 +22,7 @@ import { setFonts, setFont, setPrimary, setSecondary } from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
+import FontFaceObserver from "fontfaceobserver";
 
 function App(props) {
   const { dispatch, mode, font, fonts, primary, secondary, bgColor } = props;
@@ -57,6 +56,8 @@ function App(props) {
 
   useEffect(() => {
     console.log("triggered");
+    const test = new FontFaceObserver(font.themeName);
+    console.log(test);
   }, [font]);
 
   return (
