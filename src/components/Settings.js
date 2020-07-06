@@ -46,9 +46,11 @@ const Settings = ({ dispatch, dialogs, locks }) => {
                   id="lock-fonts"
                   onChange={handleChange}
                   checked={locks.fonts}
+                  style={{ fontFamily: "Roboto" }}
                 />
               }
               label="Font(s)"
+              style={{ fontFamily: "Roboto" }}
             />
             <FormControlLabel
               control={
