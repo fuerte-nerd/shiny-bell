@@ -1,4 +1,5 @@
 import {
+  SET_STATICFONT
   SET_FONT,
   SET_FONTS,
   SET_BGCOLOR,
@@ -12,6 +13,7 @@ import {
 } from "./types";
 
 const initialState = {
+  staticFontLoaded: false,
   fonts: null,
   fontLoading: true,
   font: "",
@@ -33,6 +35,11 @@ const initialState = {
 export default (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
+    case SET_STATICFONT:
+      return{
+        ...state,
+        staticFontLoaded: action.payload
+      }
     case SET_SECONDARYMODE:
       return {
         ...state,

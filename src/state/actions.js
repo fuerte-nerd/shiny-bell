@@ -10,10 +10,16 @@ import {
   SET_MODE,
   SET_FONTLOADING,
   SET_SECONDARYMODE,
+  SET_STATICFONT,
 } from "./types";
 
 export const setFontLoading = (data) => ({
   type: SET_FONTLOADING,
+  payload: data,
+});
+
+export const setStaticFont = (data) => ({
+  type: SET_STATICFONT,
   payload: data,
 });
 
