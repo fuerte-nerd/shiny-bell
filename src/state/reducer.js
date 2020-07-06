@@ -7,10 +7,12 @@ import {
   SET_SECONDARY,
   SET_LOCKS,
   SET_MODE,
+  SET_FONTLOADING,
 } from "./types";
 
 const initialState = {
   fonts: null,
+  fontLoading: true,
   font: {
     themeName: "Roboto",
     linkName: "Roboto",
@@ -31,6 +33,11 @@ const initialState = {
 export default (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
+    case SET_FONTLOADING:
+      return {
+        ...state,
+        fontLoading: action.payload,
+      };
     case SET_MODE:
       return {
         ...state,

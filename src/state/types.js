@@ -1,4 +1,5 @@
 export const SET_DIALOGS = "SET_DIALOGS";
+export const SET_FONTLOADING = "SET_FONTLOADING";
 export const SET_FONT = "SET_FONT";
 export const SET_FONTS = "SET_FONTS";
 export const SET_PRIMARY = "SET_PRIMARY";

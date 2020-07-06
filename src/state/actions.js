@@ -8,7 +8,13 @@ import {
   SET_SECONDARY,
   SET_LOCKS,
   SET_MODE,
+  SET_FONTLOADING,
 } from "./types";
+
+export const setFontLoading = (data) => ({
+  type: SET_FONTLOADING,
+  payload: data,
+});
 
 export const setMode = (data) => ({
   type: SET_MODE,

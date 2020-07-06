@@ -19,7 +19,13 @@ import ThemeCode from "./components/ThemeCode";
 import Settings from "./components/Settings";
 import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
-import { setFonts, setFont, setPrimary, setSecondary } from "./state/actions";
+import {
+  setFonts,
+  setFont,
+  setPrimary,
+  setSecondary,
+  setFontLoading,
+} from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
@@ -57,7 +63,16 @@ function App(props) {
     <WebfontLoader
       config={{ google: { families: [font.themeName] } }}
       onStatus={(status) => {
-        console.log(status);
+        switch (status) {
+          case "loading":
+            return dispatch(setFontLoading(true));
+          case "active":
+            return dispatch(setFontLoading(false));
+          case "inactive":
+            return dispatch(setFont(randomFont()));
+          default:
+            return;
+        }
       }}
     >
       <ThemeProvider
