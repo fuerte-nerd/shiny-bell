@@ -39,13 +39,17 @@ const Settings = ({ dispatch, dialogs, locks }) => {
       <DialogContent>
         <DialogContentText>
           <AppTypography variant="h5">Lock</AppTypography>
-          <FormGroup row style={{ justifyContent: "space-between" }}>
+          <FormGroup
+            row
+            style={{ justifyContent: "space-between", fontFamily: "Roboto" }}
+          >
             <FormControlLabel
               control={
                 <Switch
                   id="lock-fonts"
                   onChange={handleChange}
                   checked={locks.fonts}
+                  inputProps={{ style: { fontFamily: "Roboto" } }}
                   style={{ fontFamily: "Roboto" }}
                 />
               }
