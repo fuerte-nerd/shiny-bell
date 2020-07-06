@@ -10,6 +10,7 @@ import {
   createMuiTheme,
   Box,
   responsiveFontSizes,
+  Dialog,
 } from "@material-ui/core";
 
 import WebfontLoader from "@dr-kobros/react-webfont-loader";
@@ -31,7 +32,16 @@ import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 
 function App(props) {
-  const { dispatch, mode, font, fonts, primary, secondary, bgColor } = props;
+  const {
+    dispatch,
+    fontLoading,
+    mode,
+    font,
+    fonts,
+    primary,
+    secondary,
+    bgColor,
+  } = props;
 
   useEffect(() => {
     props.dispatch(setPrimary(randomColor()));
@@ -98,6 +108,9 @@ function App(props) {
             rel="stylesheet"
           />
         </Helmet>
+        <Dialog fullScreen open={fontLoading}>
+          {" "}
+        </Dialog>
         <Box
           minHeight="100vh"
           maxWidth="100vw"
@@ -121,11 +134,11 @@ function App(props) {
 const mapStateToProps = (state) => ({
   font: state.font,
   fonts: state.fonts,
-  palette: state.palette,
   primary: state.primary,
   secondary: state.secondary,
   bgColor: state.bgColor,
   mode: state.mode,
+  fontLoading: state.fontLoading,
 });
 
 export default connect(mapStateToProps)(App);
