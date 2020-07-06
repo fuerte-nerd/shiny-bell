@@ -11,10 +11,16 @@ import {
   SET_FONTLOADING,
   SET_SECONDARYMODE,
   SET_STATICFONT,
+  SET_SPACING,
 } from "./types";
 
 export const setFontLoading = (data) => ({
   type: SET_FONTLOADING,
+  payload: data,
+});
+
+export const setSpacing = (data) => ({
+  type: SET_SPACING,
   payload: data,
 });
 

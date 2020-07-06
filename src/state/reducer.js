@@ -1,5 +1,6 @@
 import {
   SET_STATICFONT,
+  SET_SPACING,
   SET_FONT,
   SET_FONTS,
   SET_BGCOLOR,
@@ -22,6 +23,7 @@ const initialState = {
   secondary: "rgb(255,255,255)",
   bgColor: false,
   mode: "light",
+  spacing: 8,
   dialogs: {
     settings: false,
     themeCode: false,
