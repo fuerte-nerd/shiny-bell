@@ -22,6 +22,7 @@ import {
   FormGroup,
   Divider,
   makeStyles,
+  Slider,
 } from "@material-ui/core";
 import AppTypography from "./AppTypography";
 
@@ -31,7 +32,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
+const Settings = ({ dispatch, dialogs, locks, secondaryMode, spacing }) => {
   const classes = useStyles();
   const handleChange = (e) => {
     console.log(e.target.id);
@@ -138,6 +139,18 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
               />
             </RadioGroup>
           </FormControl>
+          <Box my={3}>
+            <Divider />
+          </Box>
+          <AppTypography variant="h5">Spacing</AppTypography>
+          <Slider
+            min={0}
+            max={50}
+            value={spacing}
+            onChange={(e) => {
+              dispatch(setSpacing(e.target.value));
+            }}
+          />
         </DialogContentText>
       </DialogContent>
       <DialogActions>
@@ -153,6 +166,7 @@ const mapStateToProps = (state) => ({
   dialogs: state.dialogs,
   locks: state.locked,
   secondaryMode: state.secondaryMode,
+  spacing: state.spacing,
 });
 
 export default connect(mapStateToProps)(Settings);

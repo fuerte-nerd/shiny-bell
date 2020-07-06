@@ -12,7 +12,15 @@ import {
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const ThemeCode = ({ dispatch, dialogs, font, mode, primary, secondary }) => {
+const ThemeCode = ({
+  dispatch,
+  dialogs,
+  font,
+  mode,
+  primary,
+  secondary,
+  spacing,
+}) => {
   const { themeCode } = dialogs;
 
   const handleClose = () => {
@@ -33,6 +41,7 @@ export default responsiveFontSizes(createMuiTheme({
     },
   },
   typography: { fontFamily: "${font.themeName}" },
+  spacing: ${spacing}
 })) `;
 
   const helmetCodeString = `//react-helmet (to fetch Google Font(s))
@@ -78,6 +87,7 @@ const mapStateToProps = (state) => ({
   primary: state.primary,
   secondary: state.secondary,
   mode: state.mode,
+  spacing: state.spacing,
 });
 
 export default connect(mapStateToProps)(ThemeCode);

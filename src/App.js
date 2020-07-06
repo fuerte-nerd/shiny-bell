@@ -43,6 +43,7 @@ function App(props) {
     secondary,
     bgColor,
     staticFontLoaded,
+    spacing,
   } = props;
 
   useEffect(() => {
@@ -111,7 +112,7 @@ function App(props) {
             },
           },
           typography: { fontFamily: font.themeName },
-          spacing: 8,
+          spacing: { spacing },
         })
       )}
     >
@@ -158,6 +159,7 @@ const mapStateToProps = (state) => ({
   fontLoading: state.fontLoading,
   secondaryMode: state.secondaryMode,
   staticFontLoaded: state.staticFontLoaded,
+  spacing: state.spacing,
 });
 
 export default connect(mapStateToProps)(App);
