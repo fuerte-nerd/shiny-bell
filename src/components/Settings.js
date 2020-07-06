@@ -10,7 +10,10 @@ import {
   Button,
   FormControlLabel,
   Switch,
-  Typography,
+  FormControl,
+  FormLabel,
+  Radio,
+  RadioGroup,
   FormGroup,
   makeStyles,
 } from "@material-ui/core";
@@ -31,6 +34,8 @@ const Settings = ({ dispatch, dialogs, locks }) => {
         return dispatch(setLocked({ ...locks, fonts: !locks.fonts }));
       case "lock-palette":
         return dispatch(setLocked({ ...locks, palette: !locks.palette }));
+      case "change-secondary-mode":
+
       default:
         return;
     }
@@ -76,6 +81,17 @@ const Settings = ({ dispatch, dialogs, locks }) => {
               classes={{ label: classes.label }}
             />
           </FormGroup>
+          <AppTypography variant="h5">Secondary color mode</AppTypography>
+          <FormControl component="fieldset">
+            <RadioGroup id="secondary-color-mode" onChange={handleChange}>
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                value="complement"
+                label="Complement"
+                control={<Radio />}
+              />
+            </RadioGroup>
+          </FormControl>
         </DialogContentText>
       </DialogContent>
       <DialogActions>
