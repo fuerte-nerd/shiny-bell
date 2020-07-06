@@ -42,6 +42,7 @@ function App(props) {
     primary,
     secondary,
     bgColor,
+    staticFontLoaded,
   } = props;
 
   useEffect(() => {
@@ -153,6 +154,7 @@ const mapStateToProps = (state) => ({
   mode: state.mode,
   fontLoading: state.fontLoading,
   secondaryMode: state.secondaryMode,
+  staticFontLoaded: state.staticFontLoaded,
 });
 
 export default connect(mapStateToProps)(App);
