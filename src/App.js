@@ -20,28 +20,13 @@ import ThemeCode from "./components/ThemeCode";
 import Settings from "./components/Settings";
 import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
-import {
-  setFonts,
-  setFont,
-  setPrimary,
-  setSecondary,
-  setFontLoading,
-} from "./state/actions";
+import { setFonts, setFont, setPrimary, setSecondary } from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 
 function App(props) {
-  const {
-    dispatch,
-    fontLoading,
-    mode,
-    font,
-    fonts,
-    primary,
-    secondary,
-    bgColor,
-  } = props;
+  const { dispatch, mode, font, fonts, primary, secondary, bgColor } = props;
 
   useEffect(() => {
     props.dispatch(setPrimary(randomColor()));
@@ -70,6 +55,8 @@ function App(props) {
     //
   }, [fonts]);
 
+  const [fontLoading, setFontLoading] = useState(true);
+
   return (
     <WebfontLoader
       config={{ google: { families: [font.themeName] } }}
@@ -77,9 +64,11 @@ function App(props) {
         console.log(status);
         switch (status) {
           case "loading":
-            return dispatch(setFontLoading(true));
+            return setFontLoading(true);
           case "active":
-            return dispatch(setFontLoading(false));
+            return setFontLoading(false);
+          case "inactive":
+            return setFont(randomFont());
           default:
             return;
         }
@@ -108,6 +97,7 @@ function App(props) {
             rel="stylesheet"
           />
         </Helmet>
+        <Dialog fullScreen open={fontLoading}></Dialog>
         <Box
           minHeight="100vh"
           maxWidth="100vw"
