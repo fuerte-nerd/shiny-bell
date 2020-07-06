@@ -1,6 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setLocked, setDialogs, setSecondaryMode } from "../state/actions";
+import {
+  setLocked,
+  setDialogs,
+  setSecondaryMode,
+  setSpacing,
+} from "../state/actions";
 import {
   Box,
   Dialog,
@@ -61,7 +66,7 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
       <DialogContent dividers>
         <DialogContentText>
           <AppTypography variant="h5">Lock</AppTypography>
-          <FormGroup row style={{ justifyContent: "space-between" }}>
+          <FormGroup row>
             <FormControlLabel
               control={
                 <Switch
@@ -136,7 +141,9 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button>Close</Button>
+        <Button style={{ fontFamily: "Roboto" }} onClick={handleClose}>
+          Close
+        </Button>
       </DialogActions>
     </Dialog>
   );
