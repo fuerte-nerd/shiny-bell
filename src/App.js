@@ -108,9 +108,6 @@ function App(props) {
             rel="stylesheet"
           />
         </Helmet>
-        <Dialog fullScreen open={fontLoading}>
-          {" "}
-        </Dialog>
         <Box
           minHeight="100vh"
           maxWidth="100vw"
