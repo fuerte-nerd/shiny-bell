@@ -38,7 +38,7 @@ const Settings = ({ dispatch, dialogs, locks }) => {
               <Switch
                 id="lock-fonts"
                 onChange={handleChange}
-                value={locks.fonts}
+                checked={locks.fonts}
               />
             }
             label="Font(s)"
