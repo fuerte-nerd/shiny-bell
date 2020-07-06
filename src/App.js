@@ -105,7 +105,7 @@ function App(props) {
       <CssBaseline />
       <Helmet>
         <link
-          href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${font.linkName}&family=Roboto&display=swap`}
           rel="stylesheet"
         />
       </Helmet>

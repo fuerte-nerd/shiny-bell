@@ -36,7 +36,7 @@ const Settings = ({ dispatch, dialogs, locks }) => {
       <DialogContent>
         <DialogContentText>
           <Typography variant="h5">Lock</Typography>
-          <FormGroup row>
+          <FormGroup row style={{ justifyContent: "space-between" }}>
             <FormControlLabel
               control={
                 <Switch
