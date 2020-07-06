@@ -19,10 +19,14 @@ const FontLoadDialog = ({ dispatch, fonts, fontLoading, staticFontLoaded }) => {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        flexDirection="row"
+        flexDirection="column"
       >
         <CircularProgress size={50} color="primary" />
-        {staticFontLoaded && <AppTypography>Loading new font...</AppTypography>}
+        {staticFontLoaded && (
+          <Box mt={3}>
+            <AppTypography>Loading new font...</AppTypography>
+          </Box>
+        )}
       </Box>
     </Dialog>
   );
