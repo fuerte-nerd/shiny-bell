@@ -12,13 +12,13 @@ const FontLoadDialog = ({ dispatch, fonts, fontLoading }) => {
       onEntered={() => fonts && dispatch(setFont(randomFont()))}
     >
       <Box
-        height={1}
-        width={1}
+        height="100%"
+        width="100%"
         display="flex"
         justifyContent="center"
         alignItems="center"
       >
-        <CircularProgress size="large" color="primary" />
+        <CircularProgress size={50} color="primary" />
       </Box>
     </Dialog>
   );
