@@ -14,6 +14,7 @@ import {
 } from "@material-ui/core";
 
 import Menu from "./components/Menu";
+import FontLoadDialog from "./components/FontLoadDialog";
 import ThemeCode from "./components/ThemeCode";
 import Settings from "./components/Settings";
 import TypographySection from "./components/Typography";
@@ -105,11 +106,7 @@ function App(props) {
           rel="stylesheet"
         />
       </Helmet>
-      <Dialog
-        fullScreen
-        open={fontLoading}
-        onEntered={() => fonts && dispatch(setFont(randomFont()))}
-      ></Dialog>
+      <FontLoadDialog />
       <Box
         minHeight="100vh"
         maxWidth="100vw"
