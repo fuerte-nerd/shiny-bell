@@ -13,6 +13,7 @@ import {
   Typography,
   FormGroup,
 } from "@material-ui/core";
+import AppTypography from "./AppTypography";
 
 const Settings = ({ dispatch, dialogs, locks }) => {
   const handleChange = (e) => {
@@ -32,10 +33,12 @@ const Settings = ({ dispatch, dialogs, locks }) => {
   };
   return (
     <Dialog fullScreen open={dialogs.settings} onClose={handleClose}>
-      <DialogTitle>Settings</DialogTitle>
+      <DialogTitle disableTypography>
+        <AppTypography variant="h3">Settings</AppTypography>
+      </DialogTitle>
       <DialogContent>
         <DialogContentText>
-          <Typography variant="h5">Lock</Typography>
+          <AppTypography variant="h5">Lock</AppTypography>
           <FormGroup row style={{ justifyContent: "space-between" }}>
             <FormControlLabel
               control={
