@@ -59,7 +59,12 @@ function App(props) {
 
   return (
     <WebfontLoader
-      config={{ google: { families: [font.themeName] } }}
+      config={{
+        google: {
+          api: "https://fonts.googleapis.com/css2",
+          families: [font.themeName],
+        },
+      }}
       onStatus={(status) => {
         console.log(status);
         switch (status) {
