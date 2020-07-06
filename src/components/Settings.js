@@ -104,6 +104,13 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode }) => {
                 label="Desaturate"
                 control={<Radio />}
               />
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="saturate"
+                value="saturate"
+                label="Saturate"
+                control={<Radio />}
+              />
             </RadioGroup>
           </FormControl>
         </DialogContentText>

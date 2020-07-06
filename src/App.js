@@ -73,7 +73,7 @@ function App(props) {
 
   useEffect(() => {
     dispatch(setSecondary(getSecondaryColor(primary, secondaryMode)));
-  }, [primary]);
+  }, [primary, secondaryMode]);
 
   useEffect(() => {
     fonts && props.dispatch(setFont(randomFont()));
