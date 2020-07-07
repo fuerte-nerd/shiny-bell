@@ -20,11 +20,39 @@ const ThemeCode = ({
   primary,
   secondary,
   spacing,
+  twoFonts,
+  headerFont,
 }) => {
   const { themeCode } = dialogs;
 
   const handleClose = () => {
     dispatch(setDialogs({ ...dialogs, themeCode: false }));
+  };
+
+  const typographyCodeString = () => {
+    return twoFonts
+      ? `typography: {
+  fontFamily: "${font.themeName}",
+  h1: {
+    fontFamily: "${headerFont.themeName}"
+  },
+  h2: {
+    fontFamily: "${headerFont.themeName}"
+  },
+  h3: {
+    fontFamily: "${headerFont.themeName}"
+  },
+  h4: {
+    fontFamily: "${headerFont.themeName}"
+  },
+  h5: {
+    fontFamily: "${headerFont.themeName}"
+  },
+  h6: {
+    fontFamily: "${headerFont.themeName}"
+  },
+},`
+      : `typography: { fontFamily: "${font.themeName}" },`;
   };
 
   const themeCodeString = `//theme.js
@@ -40,7 +68,7 @@ export default responsiveFontSizes(createMuiTheme({
       main: "${secondary}",
     },
   },
-  typography: { fontFamily: "${font.themeName}" },
+  ${typographyCodeString()}
   spacing: ${spacing}
 })) `;
 
@@ -88,6 +116,8 @@ const mapStateToProps = (state) => ({
   secondary: state.secondary,
   mode: state.mode,
   spacing: state.spacing,
+  twoFonts: state.twoFonts,
+  headerFont: state.headerFont,
 });
 
 export default connect(mapStateToProps)(ThemeCode);

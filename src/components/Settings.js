@@ -5,6 +5,7 @@ import {
   setDialogs,
   setSecondaryMode,
   setSpacing,
+  set2Fonts,
 } from "../state/actions";
 import {
   Box,
@@ -32,7 +33,14 @@ const useStyles = makeStyles({
   },
 });
 
-const Settings = ({ dispatch, dialogs, locks, secondaryMode, spacing }) => {
+const Settings = ({
+  dispatch,
+  dialogs,
+  locks,
+  secondaryMode,
+  twoFonts,
+  spacing,
+}) => {
   const classes = useStyles();
   const handleChange = (e) => {
     console.log(e.target.id);
@@ -44,8 +52,9 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode, spacing }) => {
         return dispatch(setLocked({ ...locks, palette: !locks.palette }));
       case "complement":
       case "desaturate":
-        console.log("reached");
         return dispatch(setSecondaryMode(id));
+      case "use-two-fonts":
+        return dispatch(set2Fonts(!twoFonts));
       default:
         return;
     }
@@ -65,95 +74,108 @@ const Settings = ({ dispatch, dialogs, locks, secondaryMode, spacing }) => {
         <AppTypography variant="h4">Settings</AppTypography>
       </DialogTitle>
       <DialogContent dividers>
-        <DialogContentText>
-          <AppTypography variant="h6">Lock</AppTypography>
-          <FormGroup row>
-            <FormControlLabel
-              control={
-                <Switch
-                  id="lock-fonts"
-                  onChange={handleChange}
-                  checked={locks.fonts}
-                />
-              }
-              label="Font(s)"
-              classes={{ label: classes.label }}
-            />
-            <FormControlLabel
-              control={
-                <Switch
-                  id="lock-palette"
-                  onChange={handleChange}
-                  checked={locks.palette}
-                />
-              }
-              label="Palette"
-              classes={{ label: classes.label }}
-            />
-          </FormGroup>
-          <Box my={3}>
-            <Divider />
-          </Box>
-          <AppTypography variant="h6">Secondary color mode</AppTypography>
-          <FormControl component="fieldset">
-            <RadioGroup
-              row
-              id="change-secondary-mode"
-              value={secondaryMode}
-              onChange={(e) => dispatch(setSecondaryMode(e.target.value))}
-            >
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="complement"
-                value="complement"
-                label="Complement"
-                control={<Radio />}
+        <AppTypography variant="h6">Lock</AppTypography>
+        <FormGroup row>
+          <FormControlLabel
+            control={
+              <Switch
+                id="lock-fonts"
+                onChange={handleChange}
+                checked={locks.fonts}
               />
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="desaturate"
-                value="desaturate"
-                label="Desaturate"
-                control={<Radio />}
-              />
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="saturate"
-                value="saturate"
-                label="Saturate"
-                control={<Radio />}
-              />
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="darken"
-                value="darken"
-                label="Darken"
-                control={<Radio />}
-              />
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="lighten"
-                value="lighten"
-                label="Lighten"
-                control={<Radio />}
-              />
-            </RadioGroup>
-          </FormControl>
-          <Box my={3}>
-            <Divider />
-          </Box>
-          <AppTypography variant="h6">Spacing</AppTypography>
-          <Slider
-            min={0}
-            max={50}
-            value={spacing}
-            valueLabelDisplay="auto"
-            onChange={(e, v) => {
-              dispatch(setSpacing(v));
-            }}
-            style={{ fontFamily: "Roboto" }}
+            }
+            label="Font(s)"
+            classes={{ label: classes.label }}
           />
-        </DialogContentText>
+          <FormControlLabel
+            control={
+              <Switch
+                id="lock-palette"
+                onChange={handleChange}
+                checked={locks.palette}
+              />
+            }
+            label="Palette"
+            classes={{ label: classes.label }}
+          />
+        </FormGroup>
+        <Box my="15px">
+          <Divider />
+        </Box>
+        <AppTypography variant="h6">Secondary color mode</AppTypography>
+        <FormControl component="fieldset">
+          <RadioGroup
+            row
+            id="change-secondary-mode"
+            value={secondaryMode}
+            onChange={(e) => dispatch(setSecondaryMode(e.target.value))}
+          >
+            <FormControlLabel
+              classes={{ label: classes.label }}
+              id="complement"
+              value="complement"
+              label="Complement"
+              control={<Radio />}
+            />
+            <FormControlLabel
+              classes={{ label: classes.label }}
+              id="desaturate"
+              value="desaturate"
+              label="Desaturate"
+              control={<Radio />}
+            />
+            <FormControlLabel
+              classes={{ label: classes.label }}
+              id="saturate"
+              value="saturate"
+              label="Saturate"
+              control={<Radio />}
+            />
+            <FormControlLabel
+              classes={{ label: classes.label }}
+              id="darken"
+              value="darken"
+              label="Darken"
+              control={<Radio />}
+            />
+            <FormControlLabel
+              classes={{ label: classes.label }}
+              id="lighten"
+              value="lighten"
+              label="Lighten"
+              control={<Radio />}
+            />
+          </RadioGroup>
+        </FormControl>
+        <Box my="15px">
+          <Divider />
+        </Box>
+        <AppTypography variant="h6">Spacing</AppTypography>
+        <Slider
+          min={0}
+          max={50}
+          value={spacing}
+          valueLabelDisplay="auto"
+          onChange={(e, v) => {
+            dispatch(setSpacing(v));
+          }}
+          classes={{ valueLabel: classes.label }}
+        />
+        <Box my="15px">
+          <Divider />
+        </Box>
+        <AppTypography variant="h6">Fonts</AppTypography>
+        <FormControlLabel
+          control={
+            <Switch
+              id="use-two-fonts"
+              onChange={handleChange}
+              checked={twoFonts}
+            />
+          }
+          label="Font(s)"
+          classes={{ label: classes.label }}
+        />
       </DialogContent>
       <DialogActions>
         <Button style={{ fontFamily: "Roboto" }} onClick={handleClose}>
@@ -169,6 +191,7 @@ const mapStateToProps = (state) => ({
   locks: state.locked,
   secondaryMode: state.secondaryMode,
   spacing: state.spacing,
+  twoFonts: state.twoFonts,
 });
 
 export default connect(mapStateToProps)(Settings);

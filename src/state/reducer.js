@@ -11,6 +11,8 @@ import {
   SET_MODE,
   SET_FONTLOADING,
   SET_SECONDARYMODE,
+  SET_2FONTS,
+  SET_HEADERFONT,
 } from "./types";
 
 const initialState = {
@@ -18,6 +20,8 @@ const initialState = {
   fonts: null,
   fontLoading: true,
   font: "",
+  headerFont: "",
+  twoFonts: false,
   primary: "rgb(0,0,0)",
   secondaryMode: "complement",
   secondary: "rgb(255,255,255)",
@@ -35,67 +39,77 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log(action);
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case SET_SPACING:
       return {
         ...state,
-        spacing: action.payload,
+        spacing: payload,
+      };
+    case SET_2FONTS:
+      return {
+        ...state,
+        twoFonts: payload,
       };
     case SET_STATICFONT:
       return {
         ...state,
-        staticFontLoaded: action.payload,
+        staticFontLoaded: payload,
       };
     case SET_SECONDARYMODE:
       return {
         ...state,
-        secondaryMode: action.payload,
+        secondaryMode: payload,
       };
     case SET_FONTLOADING:
       return {
         ...state,
-        fontLoading: action.payload,
+        fontLoading: payload,
       };
     case SET_MODE:
       return {
         ...state,
-        mode: action.payload,
+        mode: payload,
       };
     case SET_LOCKS:
       return {
         ...state,
-        locked: action.payload,
+        locked: payload,
       };
     case SET_DIALOGS:
       return {
         ...state,
-        dialogs: action.payload,
+        dialogs: payload,
       };
     case SET_BGCOLOR:
       return {
         ...state,
-        bgColor: action.payload,
+        bgColor: payload,
       };
     case SET_PRIMARY:
       return {
         ...state,
-        primary: action.payload,
+        primary: payload,
       };
     case SET_SECONDARY:
       return {
         ...state,
-        secondary: action.payload,
+        secondary: payload,
       };
     case SET_FONTS:
       return {
         ...state,
-        fonts: action.payload,
+        fonts: payload,
       };
     case SET_FONT:
       return {
         ...state,
-        font: action.payload,
+        font: payload,
+      };
+    case SET_HEADERFONT:
+      return {
+        ...state,
+        headerFont: payload,
       };
     default:
       return state;

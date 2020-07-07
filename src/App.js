@@ -26,6 +26,7 @@ import {
   setPrimary,
   setSecondary,
   setStaticFont,
+  setHeaderFont,
 } from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
@@ -37,6 +38,8 @@ function App(props) {
     dispatch,
     mode,
     font,
+    headerFont,
+    twoFonts,
     fonts,
     secondaryMode,
     primary,
@@ -47,7 +50,7 @@ function App(props) {
   } = props;
 
   useEffect(() => {
-    props.dispatch(setPrimary(randomColor()));
+    dispatch(setPrimary(randomColor()));
     axios
       .get(
         `https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_APIKEY}`
@@ -60,7 +63,7 @@ function App(props) {
             category: i.category,
           };
         });
-        props.dispatch(setFonts(fonts));
+        dispatch(setFonts(fonts));
       });
   }, []);
 
@@ -80,7 +83,8 @@ function App(props) {
         }
       );
     }
-    fonts && props.dispatch(setFont(randomFont()));
+    fonts && dispatch(setFont(randomFont()));
+    fonts && dispatch(setHeaderFont(randomFont()));
     //
   }, [fonts]);
 
@@ -98,6 +102,20 @@ function App(props) {
     }
   }, [font]);
 
+  useEffect(() => {
+    if (fonts && typeof headerFont.themeName !== "undefined") {
+      const newFont = new FontFaceObserver(headerFont.themeName);
+      newFont.load().then(
+        () => {
+          dispatch(setFontLoading(false));
+        },
+        () => {
+          dispatch(setHeaderFont(randomFont()));
+        }
+      );
+    }
+  }, [headerFont]);
+
   return (
     <ThemeProvider
       theme={responsiveFontSizes(
@@ -111,7 +129,47 @@ function App(props) {
               main: secondary,
             },
           },
-          typography: { fontFamily: font.themeName },
+          typography: {
+            h1: {
+              fontFamily: twoFonts ? headerFont.themeName : font.themeName,
+            },
+            h2: {
+              fontFamily: twoFonts ? headerFont.themeName : font.themeName,
+            },
+            h3: {
+              fontFamily: twoFonts ? headerFont.themeName : font.themeName,
+            },
+            h4: {
+              fontFamily: twoFonts ? headerFont.themeName : font.themeName,
+            },
+            h5: {
+              fontFamily: twoFonts ? headerFont.themeName : font.themeName,
+            },
+            h6: {
+              fontFamily: twoFonts ? headerFont.themeName : font.themeName,
+            },
+            subtitle1: {
+              fontFamily: font.themeName,
+            },
+            subtitle2: {
+              fontFamily: font.themeName,
+            },
+            body1: {
+              fontFamily: font.themeName,
+            },
+            body2: {
+              fontFamily: font.themeName,
+            },
+            button: {
+              fontFamily: font.themeName,
+            },
+            overline: {
+              fontFamily: font.themeName,
+            },
+            caption: {
+              fontFamily: font.themeName,
+            },
+          },
           spacing: spacing,
         })
       )}
@@ -122,7 +180,12 @@ function App(props) {
           href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
           rel="stylesheet"
         />
-        {fonts && (
+        {fonts && twoFonts ? (
+          <link
+            href={`https://fonts.googleapis.com/css2?family=${font.linkName}&family=${headerFont.linkName}&display=swap`}
+            rel="stylesheet"
+          />
+        ) : (
           <link
             href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
             rel="stylesheet"
@@ -160,6 +223,8 @@ const mapStateToProps = (state) => ({
   secondaryMode: state.secondaryMode,
   staticFontLoaded: state.staticFontLoaded,
   spacing: state.spacing,
+  headerFont: state.headerFont,
+  twoFonts: state.twoFonts,
 });
 
 export default connect(mapStateToProps)(App);

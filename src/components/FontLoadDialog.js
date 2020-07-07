@@ -1,16 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setFont } from "../state/actions";
+import { setFont, setHeaderFont } from "../state/actions";
 import { Dialog, Box, Typography, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
 import randomFont from "../functions/randomFont";
 
-const FontLoadDialog = ({ dispatch, fonts, fontLoading, staticFontLoaded }) => {
+const FontLoadDialog = ({
+  dispatch,
+  fonts,
+  twoFonts,
+  fontLoading,
+  staticFontLoaded,
+}) => {
+  const handleEntered = () => {
+    fonts && dispatch(setFont(randomFont()));
+    if (twoFonts) {
+      fonts && dispatch(setHeaderFont(randomFont()));
+    }
+  };
+
   return (
     <Dialog
       fullScreen
       open={fontLoading}
-      onEntered={() => fonts && dispatch(setFont(randomFont()))}
+      onEntered={handleEntered}
       transitionDuration={{ enter: 0, exit: 20 }}
     >
       <Box
@@ -36,6 +49,7 @@ const mapStateToProps = (state) => ({
   fontLoading: state.fontLoading,
   fonts: state.fonts,
   staticFontLoaded: state.staticFontLoaded,
+  twoFonts: state.twoFonts,
 });
 
 export default connect(mapStateToProps)(FontLoadDialog);

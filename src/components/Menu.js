@@ -41,7 +41,7 @@ const Menu = ({ dispatch, mode, dialogs, locked }) => {
   return (
     <AppBar>
       <Toolbar>
-        <Typography>Site name</Typography>
+        <Typography variant="h6">Site name</Typography>
         <div style={{ flexGrow: 1 }} />
         <IconButton id="mode" onClick={handleClick} color="inherit">
           <SettingsBrightness />

@@ -12,10 +12,17 @@ import {
   SET_SECONDARYMODE,
   SET_STATICFONT,
   SET_SPACING,
+  SET_2FONTS,
+  SET_HEADERFONT,
 } from "./types";
 
 export const setFontLoading = (data) => ({
   type: SET_FONTLOADING,
+  payload: data,
+});
+
+export const set2Fonts = (data) => ({
+  type: SET_2FONTS,
   payload: data,
 });
 
@@ -56,6 +63,11 @@ export const setFonts = (data) => ({
 
 export const setFont = (data) => ({
   type: SET_FONT,
+  payload: data,
+});
+
+export const setHeaderFont = (data) => ({
+  type: SET_HEADERFONT,
   payload: data,
 });
 
