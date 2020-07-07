@@ -48,8 +48,10 @@ const Settings = ({
     console.log(e.target.id);
     const { id } = e.currentTarget;
     switch (id) {
-      case "lock-fonts":
-        return dispatch(setLocked({ ...locks, fonts: !locks.fonts }));
+      case "lock-font":
+        return dispatch(setLocked({ ...locks, bodyFont: !locks.bodyFont }));
+      case "lock-header-font":
+        return dispatch(setLocked({ ...locks, headerFont: !locks.headerFont }));
       case "lock-palette":
         return dispatch(setLocked({ ...locks, palette: !locks.palette }));
       case "complement":
@@ -192,7 +194,7 @@ const Settings = ({
               checked={twoFonts}
             />
           }
-          label="Font(s)"
+          label="Two Fonts?"
           classes={{ label: classes.label }}
         />
       </DialogContent>
