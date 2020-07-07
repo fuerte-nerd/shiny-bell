@@ -47,6 +47,7 @@ function App(props) {
     staticFontLoaded,
     spacing,
     buttonTextTransform,
+    rounding,
   } = props;
 
   useEffect(() => {
@@ -180,7 +181,7 @@ function App(props) {
             },
           },
           spacing: spacing,
-          shape: { borderRadius: 0 },
+          shape: { borderRadius: rounding },
         })
       )}
     >
@@ -236,6 +237,7 @@ const mapStateToProps = (state) => ({
   headerFont: state.headerFont,
   twoFonts: state.twoFonts,
   buttonTextTransform: state.buttonTextTransform,
+  rounding: state.rounding,
 });
 
 export default connect(mapStateToProps)(App);
