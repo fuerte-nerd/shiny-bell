@@ -47,6 +47,7 @@ function App(props) {
     bgColor,
     staticFontLoaded,
     spacing,
+    buttonTextTransform,
   } = props;
 
   useEffect(() => {
@@ -122,7 +123,7 @@ function App(props) {
         createMuiTheme({
           overrides: {
             MuiButton: {
-              root: { textTransform: "lowercase" },
+              root: { textTransform: { buttonTextTransform } },
             },
           },
           palette: {
@@ -230,6 +231,7 @@ const mapStateToProps = (state) => ({
   spacing: state.spacing,
   headerFont: state.headerFont,
   twoFonts: state.twoFonts,
+  buttonTextTransform: state.buttonTextTransform,
 });
 
 export default connect(mapStateToProps)(App);

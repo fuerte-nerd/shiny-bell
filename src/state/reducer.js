@@ -13,6 +13,7 @@ import {
   SET_SECONDARYMODE,
   SET_2FONTS,
   SET_HEADERFONT,
+  SET_BUTTONTEXTTRANSFORM,
 } from "./types";
 
 const initialState = {
