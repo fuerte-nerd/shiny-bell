@@ -1,8 +1,26 @@
 import React from "react";
+import { connect } from "react-redux";
 import Setting from "../Setting";
-import { FormGroup, FormControlLabel, Switch } from "@material-ui/core";
+import {
+  FormGroup,
+  FormControlLabel,
+  Switch,
+  makeStyles,
+} from "@material-ui/core";
 
-const Locks = () => {
+const useStyles = makeStyles({
+  label: {
+    fontFamily: "Roboto",
+  },
+});
+
+const Locks = ({ locked, twoFonts, font, headerFont }) => {
+  const classes = useStyles();
+
+  const handleChange = (e) => {
+    const { id } = e.currentTarget;
+  };
+
   return (
     <Setting title="Lock elements">
       <FormGroup row>
@@ -11,7 +29,7 @@ const Locks = () => {
             <Switch
               id="lock-font"
               onChange={handleChange}
-              checked={locks.bodyFont}
+              checked={locked.bodyFont}
             />
           }
           label={
@@ -27,7 +45,7 @@ const Locks = () => {
               <Switch
                 id="lock-header-font"
                 onChange={handleChange}
-                checked={locks.headerFont}
+                checked={locked.headerFont}
               />
             }
             label={`Header font (${headerFont.themeName})`}
@@ -39,7 +57,7 @@ const Locks = () => {
             <Switch
               id="lock-palette"
               onChange={handleChange}
-              checked={locks.palette}
+              checked={locked.palette}
             />
           }
           label="Palette"
@@ -50,4 +68,11 @@ const Locks = () => {
   );
 };
 
-export default Locks;
+const mapStateToProps = (state) => ({
+  locked: state.locked,
+  font: state.font,
+  headerFont: state.headerFont,
+  twoFonts: state.twoFonts,
+});
+
+export default connect(mapStateToProps)(Locks);
