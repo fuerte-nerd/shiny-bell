@@ -31,7 +31,10 @@ const Menu = ({ dispatch, mode, dialogs, locked }) => {
       case "palette":
         return !locked.palette && dispatch(setPrimary(randomColor()));
       case "font":
-        return !locked.fonts && dispatch(setFontLoading(true));
+        if (!locked.bodyFont || !locked.headerFont) {
+          return dispatch(setFontLoading(true));
+        }
+        return;
       case "code":
         return dispatch(setDialogs({ ...dialogs, themeCode: true }));
       default:

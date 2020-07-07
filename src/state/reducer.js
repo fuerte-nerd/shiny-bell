@@ -33,7 +33,8 @@ const initialState = {
     themeCode: false,
   },
   locked: {
-    fonts: false,
+    bodyFont: false,
+    headerFont: false,
     palette: false,
   },
 };
