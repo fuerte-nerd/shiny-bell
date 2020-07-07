@@ -180,6 +180,7 @@ function App(props) {
             },
           },
           spacing: spacing,
+          shape: { borderRadius: 0 },
         })
       )}
     >

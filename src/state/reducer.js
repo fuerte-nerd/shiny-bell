@@ -1,5 +1,6 @@
 import {
   SET_STATICFONT,
+  SET_ROUNDING,
   SET_SPACING,
   SET_FONT,
   SET_FONTS,
@@ -29,6 +30,7 @@ const initialState = {
   bgColor: false,
   mode: "light",
   spacing: 8,
+  rounding: 4,
   buttonTextTransform: "uppercase",
   dialogs: {
     settings: false,
@@ -44,6 +46,11 @@ const initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case SET_ROUNDING:
+      return {
+        ...state,
+        rounding: payload,
+      };
     case SET_BUTTONTEXTTRANSFORM:
       return {
         ...state,

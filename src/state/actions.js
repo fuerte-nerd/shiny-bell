@@ -15,6 +15,7 @@ import {
   SET_2FONTS,
   SET_HEADERFONT,
   SET_BUTTONTEXTTRANSFORM,
+  SET_ROUNDING,
 } from "./types";
 
 export const setFontLoading = (data) => ({
@@ -29,6 +30,11 @@ export const set2Fonts = (data) => ({
 
 export const setSpacing = (data) => ({
   type: SET_SPACING,
+  payload: data,
+});
+
+export const setRounding = (data) => ({
+  type: SET_ROUNDING,
   payload: data,
 });
 
