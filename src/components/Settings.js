@@ -31,6 +31,7 @@ import AppTypography from "./AppTypography";
 import Locks from "./settings/Locks";
 import SecondaryColorMode from "./settings/SecondaryColorMode";
 import Spacing from "./settings/Spacing";
+import Fonts from "./settings/Fonts";
 
 const useStyles = makeStyles({
   label: {
@@ -76,19 +77,9 @@ const Settings = ({
         <Locks />
         <SecondaryColorMode />
         <Spacing />
+        <Fonts />
         <Box my="20px">
           <AppTypography variant="h6">Fonts</AppTypography>
-          <FormControlLabel
-            control={
-              <Switch
-                id="use-two-fonts"
-                onChange={handleChange}
-                checked={twoFonts}
-              />
-            }
-            label="Two Fonts?"
-            classes={{ label: classes.label }}
-          />
         </Box>
         <Divider />
         <Box my="20px">

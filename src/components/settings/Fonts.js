@@ -1,9 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
+import { set2Fonts } from "../../state/actions";
 import Setting from "../Setting";
 import { FormControlLabel, Switch, makeStyles } from "@material-ui/core";
 
-const Fonts = () => {
+const useStyles = makeStyles({
+  label: {
+    fontFamily: "Roboto",
+  },
+});
+
+const Fonts = ({ dispatch, twoFonts }) => {
+  const classes = useStyles();
+
   return (
     <Setting title="Fonts">
       <FormControlLabel
