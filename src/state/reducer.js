@@ -28,6 +28,7 @@ const initialState = {
   bgColor: false,
   mode: "light",
   spacing: 8,
+  buttonTextTransform: "uppercase",
   dialogs: {
     settings: false,
     themeCode: false,
@@ -42,6 +43,11 @@ const initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case SET_BUTTONTEXTTRANSFORM:
+      return {
+        ...state,
+        buttonTextTransform: payload,
+      };
     case SET_SPACING:
       return {
         ...state,

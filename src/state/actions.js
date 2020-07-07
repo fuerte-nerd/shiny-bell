@@ -14,6 +14,7 @@ import {
   SET_SPACING,
   SET_2FONTS,
   SET_HEADERFONT,
+  SET_BUTTONTEXTTRANSFORM,
 } from "./types";
 
 export const setFontLoading = (data) => ({
@@ -68,6 +69,11 @@ export const setFont = (data) => ({
 
 export const setHeaderFont = (data) => ({
   type: SET_HEADERFONT,
+  payload: data,
+});
+
+export const setButtonTextTransform = (data) => ({
+  type: SET_BUTTONTEXTTRANSFORM,
   payload: data,
 });
 
