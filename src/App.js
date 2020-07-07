@@ -123,7 +123,7 @@ function App(props) {
         createMuiTheme({
           overrides: {
             MuiButton: {
-              root: { textTransform: { buttonTextTransform } },
+              root: { textTransform: buttonTextTransform },
             },
           },
           palette: {
