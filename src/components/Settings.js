@@ -40,6 +40,8 @@ const Settings = ({
   secondaryMode,
   twoFonts,
   spacing,
+  font,
+  headerFont,
 }) => {
   const classes = useStyles();
   const handleChange = (e) => {
@@ -79,14 +81,31 @@ const Settings = ({
           <FormControlLabel
             control={
               <Switch
-                id="lock-fonts"
+                id="lock-font"
                 onChange={handleChange}
-                checked={locks.fonts}
+                checked={locks.bodyFont}
               />
             }
-            label="Font(s)"
+            label={
+              twoFonts
+                ? `Body Font (${font.themeName})`
+                : `Font (${font.themeName})`
+            }
             classes={{ label: classes.label }}
           />
+          {twoFonts && (
+            <FormControlLabel
+              control={
+                <Switch
+                  id="lock-header-font"
+                  onChange={handleChange}
+                  checked={locks.headerFont}
+                />
+              }
+              label={`Header font (${headerFont.themeName})`}
+              classes={{ label: classes.label }}
+            />
+          )}
           <FormControlLabel
             control={
               <Switch
@@ -192,6 +211,8 @@ const mapStateToProps = (state) => ({
   secondaryMode: state.secondaryMode,
   spacing: state.spacing,
   twoFonts: state.twoFonts,
+  font: state.font,
+  headerFont: state.headerFont,
 });
 
 export default connect(mapStateToProps)(Settings);
