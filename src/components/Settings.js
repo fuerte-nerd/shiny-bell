@@ -30,6 +30,7 @@ import {
 import AppTypography from "./AppTypography";
 import Locks from "./settings/Locks";
 import SecondaryColorMode from "./settings/SecondaryColorMode";
+import Spacing from "./settings/Spacing";
 
 const useStyles = makeStyles({
   label: {
@@ -40,8 +41,6 @@ const useStyles = makeStyles({
 const Settings = ({
   dispatch,
   dialogs,
-  locks,
-  secondaryMode,
   twoFonts,
   spacing,
   font,
@@ -76,20 +75,7 @@ const Settings = ({
       <DialogContent dividers>
         <Locks />
         <SecondaryColorMode />
-        <Box my="20px">
-          <AppTypography variant="h6">Spacing</AppTypography>
-          <Slider
-            min={0}
-            max={50}
-            value={spacing}
-            valueLabelDisplay="auto"
-            onChange={(e, v) => {
-              dispatch(setSpacing(v));
-            }}
-            classes={{ valueLabel: classes.label }}
-          />
-        </Box>
-        <Divider />
+        <Spacing />
         <Box my="20px">
           <AppTypography variant="h6">Fonts</AppTypography>
           <FormControlLabel
