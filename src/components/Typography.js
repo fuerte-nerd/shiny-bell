@@ -1,15 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
-import { Container, Box, Typography, Button, Divider } from "@material-ui/core";
+import { Container, Box, Typography, Divider } from "@material-ui/core";
 
-const TypographySection = ({ font }) => {
+const TypographySection = () => {
   return (
-    <Box mt={3}>
+    <Box>
       <Container>
-        <Box>
-          <Typography variant="overline">{font.themeName}</Typography>
-        </Box>
-        <Box>
+        <Box my={1}>
           <Typography variant="h1">Header 1</Typography>
           <Typography variant="h2">Header 2</Typography>
           <Typography variant="h3">Header 3</Typography>
@@ -17,10 +13,8 @@ const TypographySection = ({ font }) => {
           <Typography variant="h5">Header 5</Typography>
           <Typography variant="h6">Header 6</Typography>
         </Box>
-        <Box py={2}>
-          <Divider />
-        </Box>
-        <Box>
+        <Divider />
+        <Box my={1}>
           <Typography variant="subtitle1" paragraph>
             Subtitle1. Consectetur blanditiis rerum blanditiis dolore velit. Hic
             neque provident architecto nisi dicta. Cum nam veritatis accusamus
@@ -57,8 +51,4 @@ const TypographySection = ({ font }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  font: state.font,
-});
-
-export default connect(mapStateToProps)(TypographySection);
+export default TypographySection;

@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import {
   setMode,
   setPrimary,
-  setFont,
   setDialogs,
   setFontLoading,
 } from "../state/actions";
@@ -16,7 +15,6 @@ import {
   Code,
 } from "@material-ui/icons";
 import randomColor from "../functions/randomColor";
-import randomFont from "../functions/randomFont";
 
 const Menu = ({ dispatch, mode, dialogs, locked, twoFonts }) => {
   const handleClick = (e) => {
