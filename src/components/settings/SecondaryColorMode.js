@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
+import { setSecondaryMode } from "../../state/actions";
 import Setting from "../Setting";
 import {
   FormControl,
   RadioGroup,
   Radio,
   FormControlLabel,
-  useStyles,
+  makeStyles,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({

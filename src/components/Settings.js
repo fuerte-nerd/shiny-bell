@@ -26,8 +26,11 @@ import {
   makeStyles,
   Slider,
 } from "@material-ui/core";
+
 import AppTypography from "./AppTypography";
 import Locks from "./settings/Locks";
+import SecondaryColorMode from "./settings/SecondaryColorMode";
+
 const useStyles = makeStyles({
   label: {
     fontFamily: "Roboto",
@@ -50,11 +53,6 @@ const Settings = ({
     console.log(e.target.id);
     const { id } = e.currentTarget;
     switch (id) {
-      case "lock-header-font":
-        return dispatch(setLocked({ ...locks, headerFont: !locks.headerFont }));
-      case "complement":
-      case "desaturate":
-        return dispatch(setSecondaryMode(id));
       case "use-two-fonts":
         return dispatch(set2Fonts(!twoFonts));
       default:
@@ -77,58 +75,7 @@ const Settings = ({
       </DialogTitle>
       <DialogContent dividers>
         <Locks />
-        <Box my="20px">
-          <AppTypography variant="h6">Lock</AppTypography>
-        </Box>
-        <Divider />
-        <Box my="20px">
-          <AppTypography variant="h6">Secondary color mode</AppTypography>
-          <FormControl component="fieldset">
-            <RadioGroup
-              row
-              id="change-secondary-mode"
-              value={secondaryMode}
-              onChange={(e) => dispatch(setSecondaryMode(e.target.value))}
-            >
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="complement"
-                value="complement"
-                label="Complement"
-                control={<Radio />}
-              />
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="desaturate"
-                value="desaturate"
-                label="Desaturate"
-                control={<Radio />}
-              />
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="saturate"
-                value="saturate"
-                label="Saturate"
-                control={<Radio />}
-              />
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="darken"
-                value="darken"
-                label="Darken"
-                control={<Radio />}
-              />
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="lighten"
-                value="lighten"
-                label="Lighten"
-                control={<Radio />}
-              />
-            </RadioGroup>
-          </FormControl>
-        </Box>
-        <Divider />
+        <SecondaryColorMode />
         <Box my="20px">
           <AppTypography variant="h6">Spacing</AppTypography>
           <Slider
