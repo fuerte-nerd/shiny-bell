@@ -6,7 +6,7 @@ const Setting = ({ title, children, isLast }) => {
   return (
     <>
       <Box my="20px">
-        <AppTypography>{title}</AppTypography>
+        <AppTypography variant="h6">{title}</AppTypography>
         {children}
       </Box>
       {!isLast && <Divider />}

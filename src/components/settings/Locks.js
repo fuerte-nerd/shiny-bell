@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { setLocked } from "../../state/actions";
 import Setting from "../Setting";
 import {
   FormGroup,
@@ -14,11 +15,19 @@ const useStyles = makeStyles({
   },
 });
 
-const Locks = ({ locked, twoFonts, font, headerFont }) => {
+const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
   const classes = useStyles();
 
   const handleChange = (e) => {
     const { id } = e.currentTarget;
+    switch (id) {
+      case "lock-font":
+        return dispatch(setLocked({ ...locked, bodyFont: !locked.bodyFont }));
+      case "lock-palette":
+        return dispatch(setLocked({ ...locked, palette: !locked.palette }));
+      default:
+        return;
+    }
   };
 
   return (

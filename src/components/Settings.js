@@ -27,7 +27,7 @@ import {
   Slider,
 } from "@material-ui/core";
 import AppTypography from "./AppTypography";
-
+import Locks from "./settings/Locks";
 const useStyles = makeStyles({
   label: {
     fontFamily: "Roboto",
@@ -50,12 +50,8 @@ const Settings = ({
     console.log(e.target.id);
     const { id } = e.currentTarget;
     switch (id) {
-      case "lock-font":
-        return dispatch(setLocked({ ...locks, bodyFont: !locks.bodyFont }));
       case "lock-header-font":
         return dispatch(setLocked({ ...locks, headerFont: !locks.headerFont }));
-      case "lock-palette":
-        return dispatch(setLocked({ ...locks, palette: !locks.palette }));
       case "complement":
       case "desaturate":
         return dispatch(setSecondaryMode(id));
@@ -80,49 +76,9 @@ const Settings = ({
         <AppTypography variant="h4">Settings</AppTypography>
       </DialogTitle>
       <DialogContent dividers>
+        <Locks />
         <Box my="20px">
           <AppTypography variant="h6">Lock</AppTypography>
-          <FormGroup row>
-            <FormControlLabel
-              control={
-                <Switch
-                  id="lock-font"
-                  onChange={handleChange}
-                  checked={locks.bodyFont}
-                />
-              }
-              label={
-                twoFonts
-                  ? `Body Font (${font.themeName})`
-                  : `Font (${font.themeName})`
-              }
-              classes={{ label: classes.label }}
-            />
-            {twoFonts && (
-              <FormControlLabel
-                control={
-                  <Switch
-                    id="lock-header-font"
-                    onChange={handleChange}
-                    checked={locks.headerFont}
-                  />
-                }
-                label={`Header font (${headerFont.themeName})`}
-                classes={{ label: classes.label }}
-              />
-            )}
-            <FormControlLabel
-              control={
-                <Switch
-                  id="lock-palette"
-                  onChange={handleChange}
-                  checked={locks.palette}
-                />
-              }
-              label="Palette"
-              classes={{ label: classes.label }}
-            />
-          </FormGroup>
         </Box>
         <Divider />
         <Box my="20px">
