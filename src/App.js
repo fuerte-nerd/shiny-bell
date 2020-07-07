@@ -179,6 +179,7 @@ function App(props) {
             caption: {
               fontFamily: font.themeName,
             },
+            fontSize: 25,
           },
           spacing: spacing,
           shape: { borderRadius: rounding },

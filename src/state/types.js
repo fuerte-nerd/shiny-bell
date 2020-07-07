@@ -1,5 +1,6 @@
 export const SET_DIALOGS = "SET_DIALOGS";
 export const SET_ROUNDING = "SET_ROUNDING";
+export const SET_FONTSIZE = "SET_FONTSIZE";
 export const SET_BUTTONTEXTTRANSFORM = "SET_BUTTONTEXTTRANSFORM";
 export const SET_2FONTS = "SET_2FONTS";
 export const SET_SPACING = "SET_SPACING";

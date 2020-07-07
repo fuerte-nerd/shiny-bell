@@ -15,6 +15,7 @@ import {
   SET_2FONTS,
   SET_HEADERFONT,
   SET_BUTTONTEXTTRANSFORM,
+  SET_FONTSIZE,
 } from "./types";
 
 const initialState = {
@@ -23,6 +24,7 @@ const initialState = {
   fontLoading: true,
   font: "",
   headerFont: "",
+  fontSize: 14,
   twoFonts: false,
   primary: "rgb(0,0,0)",
   secondaryMode: "complement",
@@ -46,6 +48,11 @@ const initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case SET_FONTSIZE:
+      return {
+        ...state,
+        fontSize: payload,
+      };
     case SET_ROUNDING:
       return {
         ...state,
