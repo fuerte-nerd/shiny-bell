@@ -120,6 +120,11 @@ function App(props) {
     <ThemeProvider
       theme={responsiveFontSizes(
         createMuiTheme({
+          overrides: {
+            MuiButton: {
+              root: { textTransform: "lowercase" },
+            },
+          },
           palette: {
             type: mode,
             primary: {
