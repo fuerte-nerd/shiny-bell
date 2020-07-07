@@ -6,6 +6,7 @@ import {
   setSecondaryMode,
   setSpacing,
   set2Fonts,
+  setButtonTextTransform,
 } from "../state/actions";
 import {
   Box,
@@ -198,6 +199,40 @@ const Settings = ({
             label="Two Fonts?"
             classes={{ label: classes.label }}
           />
+        </Box>
+        <Divider />
+        <Box my="20px">
+          <AppTypography variant="h6">Buttons</AppTypography>
+          <FormControl component="fieldset">
+            <RadioGroup
+              row
+              id="change-button-text-transform"
+              value={buttonTextTransform}
+              onChange={(e) => dispatch(setButtonTextTransform(e.target.value))}
+            >
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="uppercase"
+                value="uppercase"
+                label="UPPERCASE"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="capitalize"
+                value="capitalize"
+                label="Capitalize"
+                control={<Radio />}
+              />
+              <FormControlLabel
+                classes={{ label: classes.label }}
+                id="lowercase"
+                value="lowercase"
+                label="lowercase"
+                control={<Radio />}
+              />
+            </RadioGroup>
+          </FormControl>
         </Box>
       </DialogContent>
       <DialogActions>
