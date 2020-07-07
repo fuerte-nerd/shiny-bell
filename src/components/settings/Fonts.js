@@ -57,6 +57,8 @@ const Fonts = ({ dispatch, twoFonts, fontSize, bodyFont, headerFont }) => {
             onClick={() => {
               const font = bodyFont;
               const hFont = headerFont;
+              console.log(font);
+              console.log(hFont);
               dispatch(setFont(hFont));
               dispatch(setHeaderFont(font));
             }}
@@ -74,7 +76,7 @@ const mapStateToProps = (state) => ({
   twoFonts: state.twoFonts,
   fontSize: state.fontSize,
   headerFont: state.headerFont,
-  bodyFont: state.bodyFont,
+  bodyFont: state.font,
 });
 
 export default connect(mapStateToProps)(Fonts);
