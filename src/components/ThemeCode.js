@@ -22,6 +22,7 @@ const ThemeCode = ({
   spacing,
   twoFonts,
   headerFont,
+  buttonTextTransform,
 }) => {
   const { themeCode } = dialogs;
 
@@ -32,7 +33,6 @@ const ThemeCode = ({
   const typographyCodeString = () => {
     return twoFonts
       ? `typography: {
-  fontFamily: "${font.themeName}",
   h1: {
     fontFamily: "${headerFont.themeName}"
   },
@@ -50,6 +50,27 @@ const ThemeCode = ({
   },
   h6: {
     fontFamily: "${headerFont.themeName}"
+  },
+  subtitle1: {
+    fontFamily: "${font.themeName}"
+  },
+  subtitle2: {
+    fontFamily: "${font.themeName}"
+  },
+  body1: {
+    fontFamily: "${font.themeName}"
+  },
+  body2: {
+    fontFamily: "${font.themeName}"
+  },
+  button: {
+    fontFamily: "${font.themeName}"
+  },
+  overline: {
+    fontFamily: "${font.themeName}"
+  },
+  caption: {
+    fontFamily: "${font.themeName}"
   },
 },`
       : `typography: { fontFamily: "${font.themeName}" },`;
@@ -69,7 +90,12 @@ export default responsiveFontSizes(createMuiTheme({
     },
   },
   ${typographyCodeString()}
-  spacing: ${spacing}
+  spacing: ${spacing},
+  overrides: {
+    MuiButton: {
+      root: { textTransform: "${buttonTextTransform}"}
+    }
+  }
 })) `;
 
   const helmetCodeString = `//react-helmet (to fetch Google Font(s))
@@ -118,6 +144,7 @@ const mapStateToProps = (state) => ({
   spacing: state.spacing,
   twoFonts: state.twoFonts,
   headerFont: state.headerFont,
+  buttonTextTransform: state.buttonTextTransform,
 });
 
 export default connect(mapStateToProps)(ThemeCode);
