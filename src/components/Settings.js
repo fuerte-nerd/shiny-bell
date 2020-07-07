@@ -78,7 +78,7 @@ const Settings = ({
         <AppTypography variant="h4">Settings</AppTypography>
       </DialogTitle>
       <DialogContent dividers>
-        <Box my="15px">
+        <Box my="20px">
           <AppTypography variant="h6">Lock</AppTypography>
           <FormGroup row>
             <FormControlLabel
@@ -123,7 +123,7 @@ const Settings = ({
           </FormGroup>
         </Box>
         <Divider />
-        <Box my="15px">
+        <Box my="20px">
           <AppTypography variant="h6">Secondary color mode</AppTypography>
           <FormControl component="fieldset">
             <RadioGroup
@@ -171,7 +171,7 @@ const Settings = ({
           </FormControl>
         </Box>
         <Divider />
-        <Box my="15px">
+        <Box my="20px">
           <AppTypography variant="h6">Spacing</AppTypography>
           <Slider
             min={0}
@@ -185,7 +185,7 @@ const Settings = ({
           />
         </Box>
         <Divider />
-        <Box my="15px">
+        <Box my="20px">
           <AppTypography variant="h6">Fonts</AppTypography>
           <FormControlLabel
             control={
