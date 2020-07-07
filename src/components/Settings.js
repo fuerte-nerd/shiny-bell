@@ -1,13 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  setLocked,
-  setDialogs,
-  setSecondaryMode,
-  setSpacing,
-  set2Fonts,
-  setButtonTextTransform,
-} from "../state/actions";
+import { setDialogs } from "../state/actions";
 import {
   Box,
   Dialog,
@@ -32,6 +25,7 @@ import Locks from "./settings/Locks";
 import SecondaryColorMode from "./settings/SecondaryColorMode";
 import Spacing from "./settings/Spacing";
 import Fonts from "./settings/Fonts";
+import Buttons from "./settings/Buttons";
 
 const useStyles = makeStyles({
   label: {
@@ -43,22 +37,11 @@ const Settings = ({
   dispatch,
   dialogs,
   twoFonts,
-  spacing,
   font,
   headerFont,
   buttonTextTransform,
 }) => {
   const classes = useStyles();
-  const handleChange = (e) => {
-    console.log(e.target.id);
-    const { id } = e.currentTarget;
-    switch (id) {
-      case "use-two-fonts":
-        return dispatch(set2Fonts(!twoFonts));
-      default:
-        return;
-    }
-  };
 
   const handleClose = () => {
     return dispatch(setDialogs({ ...dialogs, settings: false }));
@@ -78,46 +61,13 @@ const Settings = ({
         <SecondaryColorMode />
         <Spacing />
         <Fonts />
-        <Box my="20px">
-          <AppTypography variant="h6">Fonts</AppTypography>
-        </Box>
-        <Divider />
-        <Box my="20px">
-          <AppTypography variant="h6">Buttons</AppTypography>
-          <FormControl component="fieldset">
-            <RadioGroup
-              row
-              id="change-button-text-transform"
-              value={buttonTextTransform}
-              onChange={(e) => dispatch(setButtonTextTransform(e.target.value))}
-            >
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="uppercase"
-                value="uppercase"
-                label="UPPERCASE"
-                control={<Radio />}
-              />
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="capitalize"
-                value="capitalize"
-                label="Capitalize"
-                control={<Radio />}
-              />
-              <FormControlLabel
-                classes={{ label: classes.label }}
-                id="lowercase"
-                value="lowercase"
-                label="lowercase"
-                control={<Radio />}
-              />
-            </RadioGroup>
-          </FormControl>
-        </Box>
+        <Buttons />
       </DialogContent>
       <DialogActions>
-        <Button style={{ fontFamily: "Roboto" }} onClick={handleClose}>
+        <Button
+          style={{ fontFamily: "Roboto", textTransform: "uppercase" }}
+          onClick={handleClose}
+        >
           Close
         </Button>
       </DialogActions>
