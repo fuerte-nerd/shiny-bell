@@ -1,9 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { set2Fonts, setFontSize } from "../../state/actions";
+import {
+  set2Fonts,
+  setFontSize,
+  setHeaderFont,
+  setFont,
+} from "../../state/actions";
 import Setting from "../Setting";
 import {
   Box,
+  Button,
   FormControlLabel,
   Switch,
   Slider,
@@ -17,7 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Fonts = ({ dispatch, twoFonts, fontSize }) => {
+const Fonts = ({ dispatch, twoFonts, fontSize, bodyFont, headerFont }) => {
   const classes = useStyles();
 
   return (
@@ -44,6 +50,18 @@ const Fonts = ({ dispatch, twoFonts, fontSize }) => {
           }}
           classes={{ valueLabel: classes.label }}
         />
+        {twoFonts && (
+          <Button
+            onClick={() => {
+              const font = bodyFont;
+              const headerFont = headerFont;
+              dispatch(setFont(headerFont));
+              dispatch(setHeaderFont(font));
+            }}
+          >
+            Swap fonts
+          </Button>
+        )}
       </Box>
     </Setting>
   );
