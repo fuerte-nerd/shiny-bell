@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setFont, setHeaderFont } from "../state/actions";
-import { Dialog, Box, Typography, CircularProgress } from "@material-ui/core";
+import { Dialog, Box, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
 import randomFont from "../functions/randomFont";
 

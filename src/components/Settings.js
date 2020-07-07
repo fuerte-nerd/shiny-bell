@@ -2,22 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { setDialogs } from "../state/actions";
 import {
-  Box,
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogContentText,
   DialogActions,
   Button,
-  FormControlLabel,
-  Switch,
-  FormControl,
-  Radio,
-  RadioGroup,
-  FormGroup,
-  Divider,
-  makeStyles,
-  Slider,
 } from "@material-ui/core";
 
 import AppTypography from "./AppTypography";
@@ -27,22 +16,7 @@ import Spacing from "./settings/Spacing";
 import Fonts from "./settings/Fonts";
 import Buttons from "./settings/Buttons";
 
-const useStyles = makeStyles({
-  label: {
-    fontFamily: "Roboto",
-  },
-});
-
-const Settings = ({
-  dispatch,
-  dialogs,
-  twoFonts,
-  font,
-  headerFont,
-  buttonTextTransform,
-}) => {
-  const classes = useStyles();
-
+const Settings = ({ dispatch, dialogs }) => {
   const handleClose = () => {
     return dispatch(setDialogs({ ...dialogs, settings: false }));
   };
@@ -77,13 +51,6 @@ const Settings = ({
 
 const mapStateToProps = (state) => ({
   dialogs: state.dialogs,
-  locks: state.locked,
-  secondaryMode: state.secondaryMode,
-  spacing: state.spacing,
-  twoFonts: state.twoFonts,
-  font: state.font,
-  headerFont: state.headerFont,
-  buttonTextTransform: state.buttonTextTransform,
 });
 
 export default connect(mapStateToProps)(Settings);

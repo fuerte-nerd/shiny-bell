@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import axios from "axios";
@@ -10,7 +10,6 @@ import {
   createMuiTheme,
   Box,
   responsiveFontSizes,
-  Dialog,
 } from "@material-ui/core";
 
 import Menu from "./components/Menu";
@@ -66,10 +65,12 @@ function App(props) {
         });
         dispatch(setFonts(fonts));
       });
+    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     dispatch(setSecondary(getSecondaryColor(primary, secondaryMode)));
+    //eslint-disable-next-line
   }, [primary, secondaryMode]);
 
   useEffect(() => {
@@ -86,7 +87,7 @@ function App(props) {
     }
     fonts && dispatch(setFont(randomFont()));
     fonts && dispatch(setHeaderFont(randomFont()));
-    //
+    //eslint-disable-next-line
   }, [fonts]);
 
   useEffect(() => {
@@ -101,6 +102,7 @@ function App(props) {
         }
       );
     }
+    //eslint-disable-next-line
   }, [font]);
 
   useEffect(() => {
@@ -115,6 +117,7 @@ function App(props) {
         }
       );
     }
+    //eslint-disable-next-line
   }, [headerFont]);
 
   return (
