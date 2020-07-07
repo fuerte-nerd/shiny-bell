@@ -15,6 +15,7 @@ import SecondaryColorMode from "./settings/SecondaryColorMode";
 import Spacing from "./settings/Spacing";
 import Fonts from "./settings/Fonts";
 import Buttons from "./settings/Buttons";
+import Rounding from "./settings/Rounding";
 
 const Settings = ({ dispatch, dialogs }) => {
   const handleClose = () => {
@@ -36,6 +37,7 @@ const Settings = ({ dispatch, dialogs }) => {
         <Spacing />
         <Fonts />
         <Buttons />
+        <Rounding />
       </DialogContent>
       <DialogActions>
         <Button
