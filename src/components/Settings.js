@@ -43,6 +43,7 @@ const Settings = ({
   spacing,
   font,
   headerFont,
+  buttonTextTransform,
 }) => {
   const classes = useStyles();
   const handleChange = (e) => {
@@ -252,6 +253,7 @@ const mapStateToProps = (state) => ({
   twoFonts: state.twoFonts,
   font: state.font,
   headerFont: state.headerFont,
+  buttonTextTransform: state.buttonTextTransform,
 });
 
 export default connect(mapStateToProps)(Settings);
