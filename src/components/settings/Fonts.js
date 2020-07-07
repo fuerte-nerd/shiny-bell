@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { set2Fonts, setFontSize } from "../../state/actions";
 import Setting from "../Setting";
 import {
+  Box,
   FormControlLabel,
   Switch,
   Slider,
   makeStyles,
 } from "@material-ui/core";
+import AppTypography from "../AppTypography";
 
 const useStyles = makeStyles({
   label: {
@@ -30,16 +32,19 @@ const Fonts = ({ dispatch, twoFonts, fontSize }) => {
         label="Two Fonts?"
         classes={{ label: classes.label }}
       />
-      <Slider
-        min={8}
-        max={30}
-        value={fontSize}
-        valueLabelDisplay="auto"
-        onChange={(e, v) => {
-          dispatch(setFontSize(v));
-        }}
-        classes={{ valueLabel: classes.label }}
-      />
+      <Box my="10px">
+        <AppTypography>Font size base</AppTypography>
+        <Slider
+          min={8}
+          max={30}
+          value={fontSize}
+          valueLabelDisplay="auto"
+          onChange={(e, v) => {
+            dispatch(setFontSize(v));
+          }}
+          classes={{ valueLabel: classes.label }}
+        />
+      </Box>
     </Setting>
   );
 };
@@ -47,6 +52,8 @@ const Fonts = ({ dispatch, twoFonts, fontSize }) => {
 const mapStateToProps = (state) => ({
   twoFonts: state.twoFonts,
   fontSize: state.fontSize,
+  headerFont: state.headerFont,
+  bodyFont: state.bodyFont,
 });
 
 export default connect(mapStateToProps)(Fonts);
