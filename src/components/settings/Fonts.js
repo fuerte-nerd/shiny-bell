@@ -52,12 +52,15 @@ const Fonts = ({ dispatch, twoFonts, fontSize, bodyFont, headerFont }) => {
         />
         {twoFonts && (
           <Button
+            variant="contained"
+            fullWidth
             onClick={() => {
               const font = bodyFont;
-              const headerFont = headerFont;
-              dispatch(setFont(headerFont));
+              const hFont = headerFont;
+              dispatch(setFont(hFont));
               dispatch(setHeaderFont(font));
             }}
+            style={{ fontFamily: "Roboto" }}
           >
             Swap fonts
           </Button>
