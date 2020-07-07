@@ -18,7 +18,7 @@ import {
 import randomColor from "../functions/randomColor";
 import randomFont from "../functions/randomFont";
 
-const Menu = ({ dispatch, mode, dialogs, locked }) => {
+const Menu = ({ dispatch, mode, dialogs, locked, twoFonts }) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
@@ -50,7 +50,9 @@ const Menu = ({ dispatch, mode, dialogs, locked }) => {
           <SettingsBrightness />
         </IconButton>
         <IconButton
-          disabled={locked.fonts}
+          disabled={
+            twoFonts ? locked.bodyFont && locked.headerFont : locked.bodyFont
+          }
           id="font"
           onClick={handleClick}
           color="inherit"
@@ -84,6 +86,7 @@ const Menu = ({ dispatch, mode, dialogs, locked }) => {
 const mapStateToProps = (state) => ({
   mode: state.mode,
   locked: state.locked,
+  twoFonts: state.twoFonts,
 });
 
 export default connect(mapStateToProps)(Menu);
