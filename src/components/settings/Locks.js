@@ -23,6 +23,11 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
     switch (id) {
       case "lock-font":
         return dispatch(setLocked({ ...locked, bodyFont: !locked.bodyFont }));
+      case "lock-header-font":
+        return dispatch(
+          setLocked({ ...locked, headerFont: !locked.headerFont })
+        );
+
       case "lock-palette":
         return dispatch(setLocked({ ...locked, palette: !locked.palette }));
       default:
@@ -31,7 +36,7 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
   };
 
   return (
-    <Setting title="Lock elements">
+    <Setting title="Lock Elements">
       <FormGroup row>
         <FormControlLabel
           control={
