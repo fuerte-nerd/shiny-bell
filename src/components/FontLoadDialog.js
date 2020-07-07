@@ -35,10 +35,20 @@ const FontLoadDialog = ({
         alignItems="center"
         flexDirection="column"
       >
-        <CircularProgress size={50} color="primary" />
+        <CircularProgress size={80} color="primary" />
         {staticFontLoaded && (
-          <Box mt={3}>
-            <AppTypography>Loading new font...</AppTypography>
+          <Box mt="15px">
+            <AppTypography>
+              Fetching new{` `}
+              {twoFonts
+                ? locked.bodyFont
+                  ? "header font"
+                  : !locked.headerFont
+                  ? "fonts"
+                  : "body font"
+                : "font"}
+              ...
+            </AppTypography>
           </Box>
         )}
       </Box>
