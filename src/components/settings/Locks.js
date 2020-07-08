@@ -44,7 +44,9 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
           primary={twoFonts ? `Body font` : `Font`}
           secondary={font.themeName}
           id="lock-font"
-          onClick={() => dispatch(setLocked({ ...locked, font: !locked.font }))}
+          onClick={() =>
+            dispatch(setLocked({ ...locked, bodyFont: !locked.bodyFont }))
+          }
         />
       </ListItem>
       {twoFonts && (
