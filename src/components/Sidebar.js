@@ -18,7 +18,7 @@ const Sidebar = ({ dispatch, settings }) => {
 
   return (
     <Drawer anchor="right" open={settings} onClose={handleClose}>
-      <List style={{ width: 250, fontFamily: "Roboto" }}>
+      <List dense style={{ width: 250, fontFamily: "Roboto" }}>
         <Locks />
       </List>
     </Drawer>

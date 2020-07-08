@@ -4,6 +4,7 @@ import { setLocked } from "../../state/actions";
 import Setting from "../Setting";
 import {
   ListItem,
+  FormControlLabel,
   Switch,
   makeStyles,
 } from "@material-ui/core";
@@ -41,6 +42,7 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
           control={
             <Switch
               id="lock-font"
+              size="small"
               onChange={handleChange}
               checked={locked.bodyFont}
             />
@@ -52,26 +54,29 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
           }
           classes={{ label: classes.label }}
         />
-
-        </ListItem>
-        {twoFonts && (
-          <ListItem>
+      </ListItem>
+      {twoFonts && (
+        <ListItem>
           <FormControlLabel
             control={
               <Switch
                 id="lock-header-font"
+                size="small"
                 onChange={handleChange}
                 checked={locked.headerFont}
               />
             }
             label={`Header font (${headerFont.themeName})`}
             classes={{ label: classes.label }}
-              /></ListItem>
-        )}
+          />
+        </ListItem>
+      )}
+      <ListItem>
         <FormControlLabel
           control={
             <Switch
               id="lock-palette"
+              size="small"
               onChange={handleChange}
               checked={locked.palette}
             />
@@ -79,7 +84,7 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
           label="Palette"
           classes={{ label: classes.label }}
         />
-      </FormGroup>
+      </ListItem>
     </Setting>
   );
 };
