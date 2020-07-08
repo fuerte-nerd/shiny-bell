@@ -17,7 +17,7 @@ import {
 } from "@material-ui/icons";
 import randomColor from "../functions/randomColor";
 
-const Menu = ({ dispatch, mode, dialogs, locked, twoFonts }) => {
+const Menu = ({ dispatch, mode, locked, twoFonts }) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {

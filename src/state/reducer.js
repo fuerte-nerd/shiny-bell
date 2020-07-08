@@ -6,6 +6,7 @@ import {
   SET_FONTS,
   SET_BGCOLOR,
   SET_THEMECODE,
+  SET_SETTINGS,
   SET_PRIMARY,
   SET_SECONDARY,
   SET_LOCKS,
@@ -96,6 +97,8 @@ export default (state = initialState, action) => {
         ...state,
         locked: payload,
       };
+    case SET_SETTINGS:
+      return { ...state, settings: payload };
     case SET_THEMECODE:
       return {
         ...state,
