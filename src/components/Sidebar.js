@@ -10,7 +10,7 @@ const Sidebar = ({ dispatch, settings }) => {
 
   return (
     <Drawer anchor="right" open={settings} onClose={handleClose}>
-      <List>
+      <List style={{ width: 250 }}>
         <ListItem>
           <ListItemText primary="test" />
         </ListItem>
