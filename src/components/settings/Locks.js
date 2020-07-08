@@ -6,7 +6,9 @@ import {
   ListItem,
   FormControlLabel,
   Switch,
+  Button,
   makeStyles,
+  useTheme,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -17,7 +19,7 @@ const useStyles = makeStyles({
 
 const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
   const classes = useStyles();
-
+  const theme = useTheme();
   const handleChange = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
@@ -38,6 +40,9 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
   return (
     <Setting title="Lock Elements">
       <ListItem>
+        <Button color="success" fullWidth>
+          {twoFonts ? "Body font" : "Font"} <small>{font.themeName}</small>
+        </Button>
         <FormControlLabel
           control={
             <Switch
