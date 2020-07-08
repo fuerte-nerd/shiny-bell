@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setDialogs } from "../state/actions";
+import { setThemeCode } from "../state/actions";
 import {
   Dialog,
   DialogTitle,
@@ -14,7 +14,7 @@ import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const ThemeCode = ({
   dispatch,
-  dialogs,
+  themeCode,
   font,
   mode,
   primary,
@@ -24,10 +24,8 @@ const ThemeCode = ({
   headerFont,
   buttonTextTransform,
 }) => {
-  const { themeCode } = dialogs;
-
   const handleClose = () => {
-    dispatch(setDialogs({ ...dialogs, themeCode: false }));
+    dispatch(setThemeCode(false));
   };
 
   const typographyCodeString = () => {
@@ -136,7 +134,7 @@ export default responsiveFontSizes(createMuiTheme({
 };
 
 const mapStateToProps = (state) => ({
-  dialogs: state.dialogs,
+  themeCode: state.themeCode,
   font: state.font,
   primary: state.primary,
   secondary: state.secondary,

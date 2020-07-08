@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import {
   setMode,
   setPrimary,
-  setDialogs,
+  setSettings,
+  setThemeCode,
   setFontLoading,
 } from "../state/actions";
 import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
@@ -21,7 +22,7 @@ const Menu = ({ dispatch, mode, dialogs, locked, twoFonts }) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "settings":
-        return dispatch(setDialogs({ ...dialogs, settings: true }));
+        return dispatch(setSettings(true));
       case "mode":
         return mode === "dark"
           ? dispatch(setMode("light"))
@@ -34,7 +35,7 @@ const Menu = ({ dispatch, mode, dialogs, locked, twoFonts }) => {
         }
         return;
       case "code":
-        return dispatch(setDialogs({ ...dialogs, themeCode: true }));
+        return dispatch(setThemeCode(true));
       default:
         return;
     }

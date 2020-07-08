@@ -5,7 +5,7 @@ import {
   SET_FONT,
   SET_FONTS,
   SET_BGCOLOR,
-  SET_DIALOGS,
+  SET_THEMECODE,
   SET_PRIMARY,
   SET_SECONDARY,
   SET_LOCKS,
@@ -34,10 +34,8 @@ const initialState = {
   spacing: 8,
   rounding: 4,
   buttonTextTransform: "uppercase",
-  dialogs: {
-    settings: false,
-    themeCode: false,
-  },
+  settings: false,
+  themeCode: false,
   locked: {
     bodyFont: false,
     headerFont: false,
@@ -98,10 +96,10 @@ export default (state = initialState, action) => {
         ...state,
         locked: payload,
       };
-    case SET_DIALOGS:
+    case SET_THEMECODE:
       return {
         ...state,
-        dialogs: payload,
+        themeCode: payload,
       };
     case SET_BGCOLOR:
       return {

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setDialogs } from "../state/actions";
+import { setSettings } from "../state/actions";
 import {
   Dialog,
   DialogTitle,
@@ -17,17 +17,12 @@ import Fonts from "./settings/Fonts";
 import Buttons from "./settings/Buttons";
 import Rounding from "./settings/Rounding";
 
-const Settings = ({ dispatch, dialogs }) => {
+const Settings = ({ dispatch, settings }) => {
   const handleClose = () => {
-    return dispatch(setDialogs({ ...dialogs, settings: false }));
+    return dispatch(setSettings(false));
   };
   return (
-    <Dialog
-      fullWidth
-      maxWidth="sm"
-      open={dialogs.settings}
-      onClose={handleClose}
-    >
+    <Dialog fullWidth maxWidth="sm" open={settings} onClose={handleClose}>
       <DialogTitle disableTypography>
         <AppTypography variant="h4">Settings</AppTypography>
       </DialogTitle>
@@ -52,7 +47,7 @@ const Settings = ({ dispatch, dialogs }) => {
 };
 
 const mapStateToProps = (state) => ({
-  dialogs: state.dialogs,
+  settings: state.settings,
 });
 
 export default connect(mapStateToProps)(Settings);

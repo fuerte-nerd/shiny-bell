@@ -3,7 +3,8 @@ import {
   SET_FONT,
   SET_PALETTE,
   SET_BGCOLOR,
-  SET_DIALOGS,
+  SET_THEMECODE,
+  SET_SETTINGS,
   SET_PRIMARY,
   SET_SECONDARY,
   SET_LOCKS,
@@ -64,8 +65,13 @@ export const setLocked = (data) => ({
   payload: data,
 });
 
-export const setDialogs = (data) => ({
-  type: SET_DIALOGS,
+export const setThemeCode = (data) => ({
+  type: SET_THEMECODE,
+  payload: data,
+});
+
+export const setSettings = (data) => ({
+  type: SET_SETTINGS,
   payload: data,
 });
 

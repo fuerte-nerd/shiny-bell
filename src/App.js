@@ -18,6 +18,8 @@ import ThemeCode from "./components/ThemeCode";
 import Settings from "./components/Settings";
 import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
+import Sidebar from "./components/Sidebar";
+
 import {
   setFontLoading,
   setFonts,
@@ -205,6 +207,7 @@ function App(props) {
           />
         )}
       </Helmet>
+      <Sidebar />
       <FontLoadDialog />
       <Box
         minHeight="100vh"
