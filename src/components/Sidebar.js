@@ -4,8 +4,12 @@ import { setSettings } from "../state/actions";
 import { Drawer, List, ListItem, ListItemText } from "@material-ui/core";
 
 const Sidebar = ({ dispatch, settings }) => {
+  const handleClose = () => {
+    dispatch(setSettings(false));
+  };
+
   return (
-    <Drawer anchor="right" open={settings}>
+    <Drawer anchor="right" open={settings} onClose={handleClose}>
       <List>
         <ListItem>
           <ListItemText primary="test" />

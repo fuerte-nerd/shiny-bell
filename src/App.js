@@ -215,7 +215,7 @@ function App(props) {
         bgcolor={bgColor ? "primary.light" : "none"}
         style={{ transition: "all .25s" }}
       >
-        <Settings />
+        {/*  <Settings /> */}
         <ThemeCode />
         <Menu />
         <Toolbar />
