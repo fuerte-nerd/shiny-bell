@@ -9,6 +9,8 @@ import {
   ListItemText,
 } from "@material-ui/core";
 
+import Locks from "./settings/Locks";
+
 const Sidebar = ({ dispatch, settings }) => {
   const handleClose = () => {
     dispatch(setSettings(false));
@@ -16,11 +18,8 @@ const Sidebar = ({ dispatch, settings }) => {
 
   return (
     <Drawer anchor="right" open={settings} onClose={handleClose}>
-      <List style={{ width: 250 }}>
-        <ListSubheader>Lock elements</ListSubheader>
-        <ListItem>
-          <ListItemText primary="test" />
-        </ListItem>
+      <List style={{ width: 250, fontFamily: "Roboto" }}>
+        <Locks />
       </List>
     </Drawer>
   );

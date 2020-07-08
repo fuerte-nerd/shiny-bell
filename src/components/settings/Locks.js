@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { setLocked } from "../../state/actions";
 import Setting from "../Setting";
 import {
-  FormGroup,
-  FormControlLabel,
+  ListItem,
   Switch,
   makeStyles,
 } from "@material-ui/core";
@@ -37,7 +36,7 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
 
   return (
     <Setting title="Lock Elements">
-      <FormGroup row>
+      <ListItem>
         <FormControlLabel
           control={
             <Switch
@@ -53,7 +52,10 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
           }
           classes={{ label: classes.label }}
         />
+
+        </ListItem>
         {twoFonts && (
+          <ListItem>
           <FormControlLabel
             control={
               <Switch
@@ -64,7 +66,7 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
             }
             label={`Header font (${headerFont.themeName})`}
             classes={{ label: classes.label }}
-          />
+              /></ListItem>
         )}
         <FormControlLabel
           control={
