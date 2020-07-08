@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setLocked } from "../../state/actions";
+import { setLocked, setFontLoading } from "../../state/actions";
 import Setting from "../Setting";
 import {
   ListItem,
   FormControlLabel,
   Switch,
-  Button,
+  ListItemText,
   makeStyles,
   useTheme,
 } from "@material-ui/core";
@@ -39,25 +39,12 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
 
   return (
     <Setting title="Lock Elements">
-      <ListItem>
-        <Button color="success" fullWidth>
-          {twoFonts ? "Body font" : "Font"} <small>{font.themeName}</small>
-        </Button>
-        <FormControlLabel
-          control={
-            <Switch
-              id="lock-font"
-              size="small"
-              onChange={handleChange}
-              checked={locked.bodyFont}
-            />
-          }
-          label={
-            twoFonts
-              ? `Body Font (${font.themeName})`
-              : `Font (${font.themeName})`
-          }
-          classes={{ label: classes.label }}
+      <ListItem button>
+        <ListItemText
+          primary={twoFonts ? `Body font` : `Font`}
+          secondary={font.themeName}
+          id="lock-font"
+          onClick={() => dispatch(setLocked({ ...locked, font: !locked.font }))}
         />
       </ListItem>
       {twoFonts && (
