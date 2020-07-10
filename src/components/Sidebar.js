@@ -12,6 +12,7 @@ import {
 import Locks from "./settings/Locks";
 import Fonts from "./settings/Fonts";
 import Appearance from "./settings/Appearance";
+import Buttons from "./settings/Buttons";
 
 const Sidebar = ({ dispatch, settings }) => {
   const handleClose = () => {
@@ -24,6 +25,7 @@ const Sidebar = ({ dispatch, settings }) => {
         <Locks />
         <Fonts />
         <Appearance />
+        <Buttons />
       </List>
     </Drawer>
   );

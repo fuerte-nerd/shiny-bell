@@ -23,26 +23,29 @@ const useStyles = makeStyles({
 });
 
 const Buttons = ({ dispatch, buttonTextTransform }) => {
-  const options = [
-    {
-      label: "CAPITALIZE",
-      setting: "uppercase",
-    },
-    {
-      label: "Sentence case",
-      setting: "sentence",
-    },
-    { label: "lowercase", setting: "lowercase" },
-  ];
+  const options = ["uppercase", "capitalize", "lowercase"];
+
   return (
     <Setting title="Buttons">
       <ListItem>
         <ListItemText
           primary="Text transform"
-          secondary={buttonTextTransform}
+          secondary={`${
+            buttonTextTransform.charAt(0).toUpperCase() +
+            buttonTextTransform.substr(1)
+          }`}
         />
         <ListItemSecondaryAction>
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              const currentIndex = options.indexOf(buttonTextTransform);
+              if (currentIndex !== 0) {
+                dispatch(setButtonTextTransform(options[currentIndex - 1]));
+              } else {
+                dispatch(setButtonTextTransform(options[2]));
+              }
+            }}
+          >
             <ChevronLeft />
           </IconButton>
           <IconButton>
