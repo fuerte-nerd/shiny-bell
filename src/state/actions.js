@@ -19,7 +19,13 @@ import {
   SET_ROUNDING,
   SET_FONTSIZE,
   SET_COLORPICKER,
+  SET_FONTPICKER,
 } from "./types";
+
+export const setFontPicker = (data) => ({
+  type: SET_FONTPICKER,
+  payload: data,
+});
 
 export const setColorPicker = (data) => ({
   type: SET_COLORPICKER,

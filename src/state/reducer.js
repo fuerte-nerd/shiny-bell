@@ -39,6 +39,7 @@ const initialState = {
   settings: false,
   themeCode: false,
   colorPicker: false,
+  fontPicker: false,
   locked: {
     bodyFont: false,
     headerFont: false,

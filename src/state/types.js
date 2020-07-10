@@ -1,5 +1,6 @@
 export const SET_THEMECODE = "SET_THEMECODE";
 export const SET_COLORPICKER = "SET_COLORPICKER";
+export const SET_FONTPICKER = "SET_FONTPICKER";
 export const SET_SETTINGS = "SET_SETTINGS";
 export const SET_ROUNDING = "SET_ROUNDING";
 export const SET_FONTSIZE = "SET_FONTSIZE";
