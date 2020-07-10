@@ -141,7 +141,11 @@ function App(props) {
             MuiButton: {
               root: { textTransform: buttonTextTransform },
             },
-            MuiDialogTitle: {
+            MuiFormControlLabel: {
+              label: { fontFamily: "Roboto" },
+            },
+            MuiNativeSelect: {
+              select: { fontFamily: "Roboto" },
               root: { fontFamily: "Roboto" },
             },
           },

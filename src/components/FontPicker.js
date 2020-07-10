@@ -6,6 +6,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  Typography,
   Select,
   FormGroup,
   FormControlLabel,
@@ -41,7 +42,9 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
       style={{ fontFamily: "Roboto" }}
     >
       <DialogTitle disableTypography>
-        <Typography style={{ fontFamily: "Roboto" }}>Font selector</Typography>
+        <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
+          Font selector
+        </Typography>
       </DialogTitle>
       <DialogContent style={{ fontFamily: "Roboto" }}>
         <FormGroup row>
