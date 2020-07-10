@@ -39,7 +39,7 @@ const Fonts = ({ dispatch, twoFonts, fontSize, bodyFont, headerFont }) => {
       >
         <ListItemText
           primary={twoFonts ? "Select body font" : "Select font"}
-          secondary={bodyFont}
+          secondary={bodyFont.themeName}
         />
       </ListItem>
       <ListItem

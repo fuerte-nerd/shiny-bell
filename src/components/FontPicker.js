@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { setFontPicker } from "../state/actions";
+import { setFontPicker, setFont, setHeaderFont } from "../state/actions";
 import {
   Dialog,
   DialogTitle,
@@ -52,7 +52,7 @@ const FontPicker = ({
   }, [fontPicker.open]);
   return (
     <Dialog
-      open={true}
+      open={fontPicker.open}
       onClose={() => dispatch(setFontPicker({ open: false, section: "" }))}
     >
       <DialogTitle disableTypography>
