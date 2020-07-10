@@ -6,21 +6,10 @@ import {
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
-  FormControl,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  makeStyles,
   IconButton,
 } from "@material-ui/core";
 
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
-
-const useStyles = makeStyles({
-  label: {
-    fontFamily: "Roboto",
-  },
-});
 
 const Buttons = ({ dispatch, buttonTextTransform }) => {
   const options = ["uppercase", "capitalize", "lowercase"];
@@ -37,18 +26,30 @@ const Buttons = ({ dispatch, buttonTextTransform }) => {
         />
         <ListItemSecondaryAction>
           <IconButton
+            size="small"
             onClick={() => {
               const currentIndex = options.indexOf(buttonTextTransform);
               if (currentIndex !== 0) {
                 dispatch(setButtonTextTransform(options[currentIndex - 1]));
               } else {
-                dispatch(setButtonTextTransform(options[2]));
+                dispatch(setButtonTextTransform(options[options.length - 1]));
               }
             }}
           >
             <ChevronLeft />
           </IconButton>
-          <IconButton>
+          <IconButton
+            size="small"
+            edge="end"
+            onClick={() => {
+              const currentIndex = options.indexOf(buttonTextTransform);
+              if (currentIndex !== options.length - 1) {
+                dispatch(setButtonTextTransform(options[currentIndex + 1]));
+              } else {
+                dispatch(setButtonTextTransform(options[0]));
+              }
+            }}
+          >
             <ChevronRight />
           </IconButton>
         </ListItemSecondaryAction>
