@@ -21,6 +21,7 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
     <Dialog
       open={fontPicker}
       onClose={() => dispatch(setFontPicker({ open: false, section: "" }))}
+      style={{ fontFamily: "Roboto" }}
     >
       <DialogTitle>Select font...</DialogTitle>
       <DialogContent>
@@ -34,6 +35,46 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
               />
             }
             label="Serif"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                id="sans-serif"
+                onChange={handleChange}
+                checked={fontPicker.categories.includes("sans-serif")}
+              />
+            }
+            label="Sans Serif"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                id="display"
+                onChange={handleChange}
+                checked={fontPicker.categories.includes("display")}
+              />
+            }
+            label="Display"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                id="handwriting"
+                onChange={handleChange}
+                checked={fontPicker.categories.includes("handwriting")}
+              />
+            }
+            label="Handwriting"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                id="monospace"
+                onChange={handleChange}
+                checked={fontPicker.categories.includes("monospace")}
+              />
+            }
+            label="Monospace"
           />
         </FormGroup>
         <Select
