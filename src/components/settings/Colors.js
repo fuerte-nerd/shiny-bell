@@ -11,6 +11,7 @@ import {
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 
 const Colors = ({ dispatch, secondaryMode }) => {
+  const options = ["complement", "desaturate", "saturate", "darken", "lighten"];
   return (
     <Setting title="Colors">
       <ListItem>
@@ -21,10 +22,27 @@ const Colors = ({ dispatch, secondaryMode }) => {
           }
         />
         <ListItemSecondaryAction>
-          <IconButton size="small">
+          <IconButton
+            size="small"
+            onClick={() => {
+              const currentIndex = options.indexOf(secondaryMode);
+              currentIndex !== 0
+                ? dispatch(setSecondaryMode(options[currentIndex - 1]))
+                : dispatch(setSecondaryMode(options[options.length - 1]));
+            }}
+          >
             <ChevronLeft />
           </IconButton>
-          <IconButton size="small" edge="end">
+          <IconButton
+            size="small"
+            edge="end"
+            onClick={() => {
+              const currentIndex = options.indexOf(secondaryMode);
+              currentIndex !== options.length - 1
+                ? dispatch(setSecondaryMode(options[currentIndex + 1]))
+                : dispatch(setSecondaryMode(options[0]));
+            }}
+          >
             <ChevronRight />
           </IconButton>
         </ListItemSecondaryAction>
