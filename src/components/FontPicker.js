@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react";
+import { connect } from "react-redux";
 import { setFontPicker } from "../state/actions";
 import {
   Dialog,
