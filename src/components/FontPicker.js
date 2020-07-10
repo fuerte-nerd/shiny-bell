@@ -23,9 +23,10 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
           native
           value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
         >
-          {fonts.map((font) => (
-            <option value={font.id}>{font.themeName}</option>
-          ))}
+          {fonts &&
+            fonts.map((font) => (
+              <option value={font.id}>{font.themeName}</option>
+            ))}
         </Select>
       </DialogContent>
       <DialogActions>
