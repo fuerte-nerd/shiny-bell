@@ -33,6 +33,7 @@ import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
+import { SketchPicker } from "react-color";
 
 function App(props) {
   const {
@@ -211,6 +212,7 @@ function App(props) {
           />
         )}
       </Helmet>
+      {colorPicker && <SketchPicker />}
       <Sidebar />
       <FontLoadDialog />
       <Box

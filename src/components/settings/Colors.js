@@ -10,54 +10,48 @@ import {
 } from "@material-ui/core";
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 
-import { SketchPicker } from "react-color";
-
 const Colors = ({ dispatch, primary, secondaryMode }) => {
   const options = ["complement", "desaturate", "saturate", "darken", "lighten"];
-  const [showColorPicker, setShowColorPicker] = useState(false);
 
   return (
-    <>
-      {showColorPicker && <SketchPicker style={{ position: "fixed" }} />}
-      <Setting title="Colors">
-        <ListItem button onClick={setShowColorPicker(true)}>
-          <ListItemText primary="Adjust color" secondary={primary} />
-        </ListItem>
-        <ListItem>
-          <ListItemText
-            primary="Secondary color mode"
-            secondary={
-              secondaryMode.charAt(0).toUpperCase() + secondaryMode.substr(1)
-            }
-          />
-          <ListItemSecondaryAction>
-            <IconButton
-              size="small"
-              onClick={() => {
-                const currentIndex = options.indexOf(secondaryMode);
-                currentIndex !== 0
-                  ? dispatch(setSecondaryMode(options[currentIndex - 1]))
-                  : dispatch(setSecondaryMode(options[options.length - 1]));
-              }}
-            >
-              <ChevronLeft />
-            </IconButton>
-            <IconButton
-              size="small"
-              edge="end"
-              onClick={() => {
-                const currentIndex = options.indexOf(secondaryMode);
-                currentIndex !== options.length - 1
-                  ? dispatch(setSecondaryMode(options[currentIndex + 1]))
-                  : dispatch(setSecondaryMode(options[0]));
-              }}
-            >
-              <ChevronRight />
-            </IconButton>
-          </ListItemSecondaryAction>
-        </ListItem>
-      </Setting>
-    </>
+    <Setting title="Colors">
+      <ListItem button onClick={setShowColorPicker(true)}>
+        <ListItemText primary="Adjust color" secondary={primary} />
+      </ListItem>
+      <ListItem>
+        <ListItemText
+          primary="Secondary color mode"
+          secondary={
+            secondaryMode.charAt(0).toUpperCase() + secondaryMode.substr(1)
+          }
+        />
+        <ListItemSecondaryAction>
+          <IconButton
+            size="small"
+            onClick={() => {
+              const currentIndex = options.indexOf(secondaryMode);
+              currentIndex !== 0
+                ? dispatch(setSecondaryMode(options[currentIndex - 1]))
+                : dispatch(setSecondaryMode(options[options.length - 1]));
+            }}
+          >
+            <ChevronLeft />
+          </IconButton>
+          <IconButton
+            size="small"
+            edge="end"
+            onClick={() => {
+              const currentIndex = options.indexOf(secondaryMode);
+              currentIndex !== options.length - 1
+                ? dispatch(setSecondaryMode(options[currentIndex + 1]))
+                : dispatch(setSecondaryMode(options[0]));
+            }}
+          >
+            <ChevronRight />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+    </Setting>
   );
 };
 

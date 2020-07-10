@@ -18,7 +18,13 @@ import {
   SET_BUTTONTEXTTRANSFORM,
   SET_ROUNDING,
   SET_FONTSIZE,
+  SET_COLORPICKER,
 } from "./types";
+
+export const setColorPicker = (data) => ({
+  type: SET_COLORPICKER,
+  payload: data,
+});
 
 export const setFontLoading = (data) => ({
   type: SET_FONTLOADING,

@@ -17,6 +17,7 @@ import {
   SET_HEADERFONT,
   SET_BUTTONTEXTTRANSFORM,
   SET_FONTSIZE,
+  SET_COLORPICKER,
 } from "./types";
 
 const initialState = {
@@ -37,6 +38,7 @@ const initialState = {
   buttonTextTransform: "uppercase",
   settings: false,
   themeCode: false,
+  colorPicker: false,
   locked: {
     bodyFont: false,
     headerFont: false,
@@ -47,6 +49,11 @@ const initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case SET_COLORPICKER:
+      return {
+        ...state,
+        colorPicker: payload,
+      };
     case SET_FONTSIZE:
       return {
         ...state,
