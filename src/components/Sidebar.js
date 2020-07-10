@@ -21,7 +21,12 @@ const Sidebar = ({ dispatch, settings }) => {
   };
 
   return (
-    <Drawer anchor="right" open={settings} onClose={handleClose}>
+    <Drawer
+      anchor="right"
+      open={settings}
+      onClose={handleClose}
+      BackdropProps={{ style: { backgroundColor: "transparent" } }}
+    >
       <List dense disablePadding style={{ width: 250, fontFamily: "Roboto" }}>
         <Locks />
         <Fonts />
