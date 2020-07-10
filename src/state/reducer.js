@@ -43,6 +43,7 @@ const initialState = {
   fontPicker: {
     open: false,
     section: "",
+    categories: ["serif", "sans-serif", "display", "monospace", "handwriting"],
   },
   locked: {
     bodyFont: false,

@@ -7,7 +7,7 @@ import {
   DialogContent,
   DialogActions,
   Select,
-  FormControl,
+  Checkbox,
   Button,
 } from "@material-ui/core";
 
