@@ -11,6 +11,7 @@ import {
 
 import Locks from "./settings/Locks";
 import Fonts from "./settings/Fonts";
+import Colors from "./settings/Colors";
 import Appearance from "./settings/Appearance";
 import Buttons from "./settings/Buttons";
 
@@ -20,10 +21,12 @@ const Sidebar = ({ dispatch, settings }) => {
   };
 
   return (
-    <Drawer anchor="right" open={settings} onClose={handleClose}>
+    {/* <Drawer anchor="right" open={settings} onClose={handleClose}> */}
+    <Drawer anchor="right" open={true} onClose={handleClose}>
       <List dense disablePadding style={{ width: 250, fontFamily: "Roboto" }}>
         <Locks />
         <Fonts />
+        <Colors />
         <Appearance />
         <Buttons />
       </List>
