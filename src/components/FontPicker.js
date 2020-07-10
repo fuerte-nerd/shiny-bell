@@ -36,7 +36,7 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
   };
   return (
     <Dialog
-      open={fontPicker}
+      open={true}
       onClose={() => dispatch(setFontPicker({ open: false, section: "" }))}
       style={{ fontFamily: "Roboto" }}
     >
@@ -99,9 +99,12 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
           value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
         >
           {fonts &&
-            fonts.map((font) => (
-              <option value={font.id}>{font.themeName}</option>
-            ))}
+            fonts.filter((font) => {
+              console.log(font);
+              return fontPicker.categories.includes(font.category) ? (
+                <option value={font.id}>{font.themeName}</option>
+              ) : null;
+            })}
         </Select>
       </DialogContent>
       <DialogActions>
