@@ -71,7 +71,7 @@ const FontPicker = ({
               <Checkbox
                 id="serif"
                 onChange={handleChange}
-                checked={fontPicker.categories.includes("serif")}
+                checked={fontPicker && fontPicker.categories.includes("serif")}
               />
             }
             label="Serif"
