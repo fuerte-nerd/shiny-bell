@@ -17,7 +17,14 @@ import {
 } from "@material-ui/core";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
 
-const Fonts = ({ dispatch, twoFonts, fontSize, bodyFont, headerFont }) => {
+const Fonts = ({
+  dispatch,
+  twoFonts,
+  fontSize,
+  bodyFont,
+  headerFont,
+  fontPicker,
+}) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
@@ -34,7 +41,9 @@ const Fonts = ({ dispatch, twoFonts, fontSize, bodyFont, headerFont }) => {
       <ListItem
         button
         onClick={() =>
-          dispatch(setFontPicker({ open: true, section: "bodyFont" }))
+          dispatch(
+            setFontPicker({ ...fontPicker, open: true, section: "bodyFont" })
+          )
         }
       >
         <ListItemText
@@ -102,6 +111,7 @@ const mapStateToProps = (state) => ({
   fontSize: state.fontSize,
   headerFont: state.headerFont,
   bodyFont: state.font,
+  fontPicker: state.fontPicker,
 });
 
 export default connect(mapStateToProps)(Fonts);

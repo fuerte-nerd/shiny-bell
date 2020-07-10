@@ -107,6 +107,7 @@ function App(props) {
           dispatch(setFontLoading(false));
         },
         () => {
+          console.log("reached");
           dispatch(setFont(randomFont()));
         }
       );
@@ -145,10 +146,6 @@ function App(props) {
               label: { fontFamily: "Roboto" },
             },
             MuiSelect: { root: { fontFamily: "Roboto" } },
-            MuiNativeSelect: {
-              select: { fontFamily: "Roboto" },
-              root: { fontFamily: "Roboto" },
-            },
           },
           palette: {
             type: mode,
