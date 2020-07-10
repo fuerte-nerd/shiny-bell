@@ -7,11 +7,16 @@ import {
   DialogContent,
   DialogActions,
   Select,
+  FormGroup,
+  FormControlLabel,
   Checkbox,
   Button,
 } from "@material-ui/core";
 
 const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
+  const handleChange = (e) => {
+    console.log(e);
+  };
   return (
     <Dialog
       open={fontPicker}
@@ -19,6 +24,18 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
     >
       <DialogTitle>Select font...</DialogTitle>
       <DialogContent>
+        <FormGroup row>
+          <FormControlLabel
+            control={
+              <Checkbox
+                id="serif"
+                onChange={handleChange}
+                checked={fontPicker.categories.includes("serif")}
+              />
+            }
+            label="Serif"
+          />
+        </FormGroup>
         <Select
           native
           value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
