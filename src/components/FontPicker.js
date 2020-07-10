@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setFontPicker } from "../state/actions";
 import {
@@ -14,7 +14,14 @@ import {
   Button,
 } from "@material-ui/core";
 
-const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
+const FontPicker = ({
+  dispatch,
+  fontPicker,
+  fonts,
+  font,
+  headerFont,
+  twoFonts,
+}) => {
   const handleChange = (e) => {
     const { id, checked } = e.currentTarget;
     if (checked) {
@@ -35,18 +42,29 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
       );
     }
   };
+
+  const [cancelFont, setCancelFont] = useState();
+
+  useEffect(() => {
+    if (fontPicker.open) {
+      setCancelFont(fontPicker.section === "bodyFont" ? font : headerFont);
+    }
+  }, [fontPicker.open]);
   return (
     <Dialog
       open={true}
       onClose={() => dispatch(setFontPicker({ open: false, section: "" }))}
-      style={{ fontFamily: "Roboto" }}
     >
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
-          Font selector
+          {twoFonts
+            ? fontPicker.section === "bodyFont"
+              ? "Select body font"
+              : "Select header font"
+            : "Select font"}
         </Typography>
       </DialogTitle>
-      <DialogContent style={{ fontFamily: "Roboto" }}>
+      <DialogContent>
         <FormGroup row>
           <FormControlLabel
             control={
@@ -125,6 +143,7 @@ const mapStateToProps = (state) => ({
   font: state.font,
   headerFont: state.headerFont,
   fontPicker: state.fontPicker,
+  twoFonts: state.twoFonts,
 });
 
 export default connect(mapStateToProps)(FontPicker);
