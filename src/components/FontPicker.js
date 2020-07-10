@@ -10,6 +10,7 @@ import {
   FormGroup,
   FormControlLabel,
   Checkbox,
+  MenuItem,
   Button,
 } from "@material-ui/core";
 
@@ -95,13 +96,13 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
           />
         </FormGroup>
         <Select
-          native
+          fullWidth
           value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
         >
           {fonts &&
             fonts.map((font) => {
               return fontPicker.categories.includes(font.category) ? (
-                <option value={font.id}>{font.themeName}</option>
+                <MenuItem value={font.id}>{font.themeName}</MenuItem>
               ) : null;
             })}
         </Select>
