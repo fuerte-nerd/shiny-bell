@@ -144,6 +144,7 @@ function App(props) {
             MuiFormControlLabel: {
               label: { fontFamily: "Roboto" },
             },
+            MuiSelect: { root: { fontFamily: "Roboto" } },
             MuiNativeSelect: {
               select: { fontFamily: "Roboto" },
               root: { fontFamily: "Roboto" },
