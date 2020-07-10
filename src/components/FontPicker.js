@@ -138,7 +138,18 @@ const FontPicker = ({
         </Select>
       </DialogContent>
       <DialogActions>
-        <Button style={{ fontFamily: "Roboto" }}>Cancel</Button>
+        <Button
+          style={{ fontFamily: "Roboto" }}
+          onClick={() => {
+            twoFonts
+              ? fontPicker.section === "bodyFont"
+                ? dispatch(setFont(cancelFont))
+                : dispatch(setHeaderFont(cancelFont))
+              : dispatch(setFont(cancelFont));
+          }}
+        >
+          Cancel
+        </Button>
         <Button style={{ fontFamily: "Roboto" }}>Update</Button>
       </DialogActions>
     </Dialog>

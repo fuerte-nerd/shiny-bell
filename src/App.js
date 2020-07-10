@@ -107,7 +107,6 @@ function App(props) {
           dispatch(setFontLoading(false));
         },
         () => {
-          console.log("reached");
           dispatch(setFont(randomFont()));
         }
       );
