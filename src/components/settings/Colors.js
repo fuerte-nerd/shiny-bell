@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { setSecondaryMode } from "../../state/actions";
+import { setSecondaryMode, setColorPicker } from "../../state/actions";
 import Setting from "../Setting";
 import {
   ListItem,
@@ -15,7 +15,7 @@ const Colors = ({ dispatch, primary, secondaryMode }) => {
 
   return (
     <Setting title="Colors">
-      <ListItem button onClick={setShowColorPicker(true)}>
+      <ListItem button onClick={() => dispatch(setColorPicker(true))}>
         <ListItemText primary="Adjust color" secondary={primary} />
       </ListItem>
       <ListItem>

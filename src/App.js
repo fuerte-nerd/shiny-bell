@@ -15,7 +15,6 @@ import {
 import Menu from "./components/Menu";
 import FontLoadDialog from "./components/FontLoadDialog";
 import ThemeCode from "./components/ThemeCode";
-import Settings from "./components/Settings";
 import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
@@ -52,6 +51,7 @@ function App(props) {
     buttonTextTransform,
     rounding,
     fontSize,
+    colorPicker,
   } = props;
 
   useEffect(() => {
@@ -250,6 +250,7 @@ const mapStateToProps = (state) => ({
   buttonTextTransform: state.buttonTextTransform,
   rounding: state.rounding,
   fontSize: state.fontSize,
+  colorPicker: state.colorPicker,
 });
 
 export default connect(mapStateToProps)(App);
