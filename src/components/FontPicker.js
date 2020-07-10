@@ -99,8 +99,7 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
           value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
         >
           {fonts &&
-            fonts.filter((font) => {
-              console.log(font);
+            fonts.map((font) => {
               return fontPicker.categories.includes(font.category) ? (
                 <option value={font.id}>{font.themeName}</option>
               ) : null;
