@@ -146,11 +146,43 @@ const FontPicker = ({
                 ? dispatch(setFont(cancelFont))
                 : dispatch(setHeaderFont(cancelFont))
               : dispatch(setFont(cancelFont));
+            dispatch(
+              setFontPicker({
+                ...fontPicker,
+                categories: [
+                  "serif",
+                  "sans-serif",
+                  "display",
+                  "handwriting",
+                  "monospace",
+                ],
+                open: false,
+              })
+            );
           }}
         >
           Cancel
         </Button>
-        <Button style={{ fontFamily: "Roboto" }}>Update</Button>
+        <Button
+          style={{ fontFamily: "Roboto" }}
+          onClick={() => {
+            dispatch(
+              setFontPicker({
+                ...fontPicker,
+                categories: [
+                  "serif",
+                  "sans-serif",
+                  "display",
+                  "handwriting",
+                  "monospace",
+                ],
+                open: false,
+              })
+            );
+          }}
+        >
+          Update
+        </Button>
       </DialogActions>
     </Dialog>
   );
