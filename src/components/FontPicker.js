@@ -11,14 +11,23 @@ import {
   Button,
 } from "@material-ui/core";
 
-const FontPicker = ({ dispatch, fontPicker }) => {
+const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
   return (
     <Dialog
       open={fontPicker}
       onClose={() => dispatch(setFontPicker({ open: false, section: "" }))}
     >
       <DialogTitle>Select font...</DialogTitle>
-      <DialogContent></DialogContent>
+      <DialogContent>
+        <Select
+          native
+          value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
+        >
+          {fonts.map((font) => (
+            <option value={font.id}>{font.themeName}</option>
+          ))}
+        </Select>
+      </DialogContent>
       <DialogActions>
         <Button>Close</Button>
       </DialogActions>
@@ -27,6 +36,7 @@ const FontPicker = ({ dispatch, fontPicker }) => {
 };
 
 const mapStateToProps = (state) => ({
+  fonts: state.fonts,
   font: state.font,
   headerFont: state.headerFont,
   fontPicker: state.fontPicker,

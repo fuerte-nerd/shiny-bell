@@ -64,8 +64,9 @@ function App(props) {
         `https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_APIKEY}`
       )
       .then((response) => {
-        const fonts = response.data.items.map((i) => {
+        const fonts = response.data.items.map((i, ind) => {
           return {
+            id: ind,
             linkName: i.family.replace(" ", "+"),
             themeName: i.family,
             category: i.category,
