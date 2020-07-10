@@ -15,7 +15,24 @@ import {
 
 const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
   const handleChange = (e) => {
-    console.log(e);
+    const { id, checked } = e.currentTarget;
+    if (checked) {
+      dispatch(
+        setFontPicker({
+          ...fontPicker,
+          categories: [...fontPicker.categories, id],
+        })
+      );
+    } else {
+      dispatch(
+        setFontPicker({
+          ...fontPicker,
+          categories: fontPicker.categories.filter((i) => {
+            return i !== id ? id : null;
+          }),
+        })
+      );
+    }
   };
   return (
     <Dialog
