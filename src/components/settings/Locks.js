@@ -2,24 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { setLocked, setFontLoading } from "../../state/actions";
 import Setting from "../Setting";
-import {
-  ListItem,
-  FormControlLabel,
-  Switch,
-  ListItemText,
-  makeStyles,
-  useTheme,
-} from "@material-ui/core";
+import { ListItem, ListItemText, Icon } from "@material-ui/core";
+import { Lock, LockOpen } from "@material-ui/icons";
 
-const useStyles = makeStyles({
-  label: {
-    fontFamily: "Roboto",
-  },
-});
-
-const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
-  const classes = useStyles();
-  const theme = useTheme();
+const Locks = ({ dispatch, locked, twoFonts, font, headerFont, primary }) => {
   const handleChange = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
@@ -39,45 +25,25 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, palette }) => {
 
   return (
     <Setting title="Lock Elements">
-      <ListItem button>
+      <ListItem id="lock-font" onClick={handleChange} button>
         <ListItemText
           primary={twoFonts ? `Body font` : `Font`}
           secondary={font.themeName}
-          id="lock-font"
-          onClick={() =>
-            dispatch(setLocked({ ...locked, bodyFont: !locked.bodyFont }))
-          }
         />
+        <Icon edge="end">{locked.bodyFont ? <Lock /> : <LockOpen />}</Icon>
       </ListItem>
       {twoFonts && (
-        <ListItem>
-          <FormControlLabel
-            control={
-              <Switch
-                id="lock-header-font"
-                size="small"
-                onChange={handleChange}
-                checked={locked.headerFont}
-              />
-            }
-            label={`Header font (${headerFont.themeName})`}
-            classes={{ label: classes.label }}
+        <ListItem id="lock-header-font" onClick={handleChange} button>
+          <ListItemText
+            primary="Header font"
+            secondary={headerFont.themeName}
           />
+          <Icon edge="end">{locked.headerFont ? <Lock /> : <LockOpen />}</Icon>
         </ListItem>
       )}
-      <ListItem>
-        <FormControlLabel
-          control={
-            <Switch
-              id="lock-palette"
-              size="small"
-              onChange={handleChange}
-              checked={locked.palette}
-            />
-          }
-          label="Palette"
-          classes={{ label: classes.label }}
-        />
+      <ListItem id="lock-palette" onClick={handleChange} button>
+        <ListItemText primary="Palette" secondary={primary} />
+        <Icon edge="end">{locked.palette ? <Lock /> : <LockOpen />}</Icon>
       </ListItem>
     </Setting>
   );
@@ -88,6 +54,7 @@ const mapStateToProps = (state) => ({
   font: state.font,
   headerFont: state.headerFont,
   twoFonts: state.twoFonts,
+  primary: state.primary,
 });
 
 export default connect(mapStateToProps)(Locks);

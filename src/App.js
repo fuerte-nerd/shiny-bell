@@ -129,6 +129,10 @@ function App(props) {
       theme={responsiveFontSizes(
         createMuiTheme({
           overrides: {
+            MuiListItemText: {
+              primary: { fontFamily: "Roboto" },
+              secondary: { fontFamily: "Roboto" },
+            },
             MuiButton: {
               root: { textTransform: buttonTextTransform },
             },

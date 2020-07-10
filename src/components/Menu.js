@@ -41,7 +41,7 @@ const Menu = ({ dispatch, mode, locked, twoFonts }) => {
     }
   };
   return (
-    <AppBar>
+    <AppBar style={{ transition: "all .25s" }}>
       <Toolbar>
         <Typography variant="h6">Site name</Typography>
         <div style={{ flexGrow: 1 }} />

@@ -8,66 +8,79 @@ import {
 } from "../../state/actions";
 import Setting from "../Setting";
 import {
-  Box,
-  Button,
-  FormControlLabel,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
   Switch,
-  Slider,
-  makeStyles,
+  IconButton,
 } from "@material-ui/core";
-import AppTypography from "../AppTypography";
-
-const useStyles = makeStyles({
-  label: {
-    fontFamily: "Roboto",
-  },
-});
+import { AddCircle, RemoveCircle } from "@material-ui/icons";
 
 const Fonts = ({ dispatch, twoFonts, fontSize, bodyFont, headerFont }) => {
-  const classes = useStyles();
+  const handleClick = (e) => {
+    const { id } = e.currentTarget;
+    switch (id) {
+      case "two-font-mode":
+      case "two-font-mode-switch":
+        return dispatch(set2Fonts(!twoFonts));
+      default:
+        return;
+    }
+  };
 
   return (
     <Setting title="Fonts">
-      <FormControlLabel
-        control={
+      <ListItem
+        id="two-font-mode"
+        onClick={() => dispatch(set2Fonts(!twoFonts))}
+        button
+      >
+        <ListItemText primary="Two font mode" />
+        <ListItemSecondaryAction>
           <Switch
-            onChange={() => dispatch(set2Fonts(!twoFonts))}
+            edge="end"
+            id="two-font-mode-switch"
             checked={twoFonts}
+            onChange={handleClick}
           />
-        }
-        label="Two Fonts?"
-        classes={{ label: classes.label }}
-      />
-      <Box my="10px">
-        <AppTypography>Font size base</AppTypography>
-        <Slider
-          min={8}
-          max={30}
-          value={fontSize}
-          valueLabelDisplay="auto"
-          onChange={(e, v) => {
-            dispatch(setFontSize(v));
+        </ListItemSecondaryAction>
+      </ListItem>
+      {twoFonts && (
+        <ListItem
+          id="swap-fonts"
+          onClick={() => {
+            const font = bodyFont;
+            const hFont = headerFont;
+            dispatch(setFont(hFont));
+            dispatch(setHeaderFont(font));
           }}
-          classes={{ valueLabel: classes.label }}
-        />
-        {twoFonts && (
-          <Button
-            variant="contained"
-            fullWidth
+          button
+        >
+          <ListItemText primary="Swap fonts" />
+        </ListItem>
+      )}
+      <ListItem>
+        <ListItemText primary="Font size" secondary={fontSize} />
+        <ListItemSecondaryAction>
+          <IconButton
+            size="small"
             onClick={() => {
-              const font = bodyFont;
-              const hFont = headerFont;
-              console.log(font);
-              console.log(hFont);
-              dispatch(setFont(hFont));
-              dispatch(setHeaderFont(font));
+              dispatch(setFontSize(fontSize - 1));
             }}
-            style={{ fontFamily: "Roboto" }}
           >
-            Swap fonts
-          </Button>
-        )}
-      </Box>
+            <RemoveCircle />
+          </IconButton>
+          <IconButton
+            size="small"
+            edge="end"
+            onClick={() => {
+              dispatch(setFontSize(fontSize + 1));
+            }}
+          >
+            <AddCircle />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
     </Setting>
   );
 };

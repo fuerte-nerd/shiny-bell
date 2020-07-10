@@ -12,7 +12,6 @@ import {
 import AppTypography from "./AppTypography";
 import Locks from "./settings/Locks";
 import SecondaryColorMode from "./settings/SecondaryColorMode";
-import Spacing from "./settings/Spacing";
 import Fonts from "./settings/Fonts";
 import Buttons from "./settings/Buttons";
 import Rounding from "./settings/Rounding";
@@ -29,7 +28,6 @@ const Settings = ({ dispatch, settings }) => {
       <DialogContent dividers>
         <Locks />
         <SecondaryColorMode />
-        <Spacing />
         <Fonts />
         <Buttons />
         <Rounding />

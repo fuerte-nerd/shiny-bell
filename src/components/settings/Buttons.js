@@ -3,12 +3,18 @@ import { connect } from "react-redux";
 import { setButtonTextTransform } from "../../state/actions";
 import Setting from "../Setting";
 import {
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
   FormControl,
   RadioGroup,
   FormControlLabel,
   Radio,
   makeStyles,
+  IconButton,
 } from "@material-ui/core";
+
+import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 
 const useStyles = makeStyles({
   label: {
@@ -17,39 +23,33 @@ const useStyles = makeStyles({
 });
 
 const Buttons = ({ dispatch, buttonTextTransform }) => {
-  const classes = useStyles();
+  const options = [
+    {
+      label: "CAPITALIZE",
+      setting: "uppercase",
+    },
+    {
+      label: "Sentence case",
+      setting: "sentence",
+    },
+    { label: "lowercase", setting: "lowercase" },
+  ];
   return (
     <Setting title="Buttons">
-      <FormControl component="fieldset">
-        <RadioGroup
-          row
-          id="change-button-text-transform"
-          value={buttonTextTransform}
-          onChange={(e) => dispatch(setButtonTextTransform(e.target.value))}
-        >
-          <FormControlLabel
-            classes={{ label: classes.label }}
-            id="uppercase"
-            value="uppercase"
-            label="UPPERCASE"
-            control={<Radio />}
-          />
-          <FormControlLabel
-            classes={{ label: classes.label }}
-            id="capitalize"
-            value="capitalize"
-            label="Capitalize"
-            control={<Radio />}
-          />
-          <FormControlLabel
-            classes={{ label: classes.label }}
-            id="lowercase"
-            value="lowercase"
-            label="lowercase"
-            control={<Radio />}
-          />
-        </RadioGroup>
-      </FormControl>
+      <ListItem>
+        <ListItemText
+          primary="Text transform"
+          secondary={buttonTextTransform}
+        />
+        <ListItemSecondaryAction>
+          <IconButton>
+            <ChevronLeft />
+          </IconButton>
+          <IconButton>
+            <ChevronRight />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
     </Setting>
   );
 };

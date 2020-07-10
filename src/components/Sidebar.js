@@ -10,6 +10,8 @@ import {
 } from "@material-ui/core";
 
 import Locks from "./settings/Locks";
+import Fonts from "./settings/Fonts";
+import Appearance from "./settings/Appearance";
 
 const Sidebar = ({ dispatch, settings }) => {
   const handleClose = () => {
@@ -18,8 +20,10 @@ const Sidebar = ({ dispatch, settings }) => {
 
   return (
     <Drawer anchor="right" open={settings} onClose={handleClose}>
-      <List dense style={{ width: 250, fontFamily: "Roboto" }}>
+      <List dense disablePadding style={{ width: 250, fontFamily: "Roboto" }}>
         <Locks />
+        <Fonts />
+        <Appearance />
       </List>
     </Drawer>
   );

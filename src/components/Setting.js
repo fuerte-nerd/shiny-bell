@@ -1,16 +1,12 @@
 import React from "react";
-import {
-  ListSubheader,
-  ListItem,
-  ListItemText,
-  Divider,
-} from "@material-ui/core";
-import AppTypography from "./AppTypography";
+import { ListSubheader, Divider } from "@material-ui/core";
 
 const Setting = ({ title, children, isLast }) => {
   return (
     <>
+      <Divider />
       <ListSubheader>{title}</ListSubheader>
+      <Divider />
       {children}
     </>
   );
