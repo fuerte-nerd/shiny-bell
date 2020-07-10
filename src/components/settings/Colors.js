@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { setSecondaryMode } from "../../state/actions";
 import Setting from "../Setting";
@@ -10,10 +10,17 @@ import {
 } from "@material-ui/core";
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 
-const Colors = ({ dispatch, secondaryMode }) => {
+import { SketchPicker } from "react-color";
+
+const Colors = ({ dispatch, primary, secondaryMode }) => {
   const options = ["complement", "desaturate", "saturate", "darken", "lighten"];
+  const [showColorPicker, setShowColorPicker] = useState(false);
+
   return (
     <Setting title="Colors">
+      <ListItem button>
+        <ListItemText primary="Adjust color" secondary={primary} />
+      </ListItem>
       <ListItem>
         <ListItemText
           primary="Secondary color mode"
@@ -53,6 +60,7 @@ const Colors = ({ dispatch, secondaryMode }) => {
 
 const mapStateToProps = (state) => ({
   secondaryMode: state.secondaryMode,
+  primary: state.primary,
 });
 
 export default connect(mapStateToProps)(Colors);
