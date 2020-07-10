@@ -47,7 +47,9 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
+  console.log(action);
   const { type, payload } = action;
+
   switch (type) {
     case SET_COLORPICKER:
       return {
