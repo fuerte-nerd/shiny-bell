@@ -17,44 +17,47 @@ const Colors = ({ dispatch, primary, secondaryMode }) => {
   const [showColorPicker, setShowColorPicker] = useState(false);
 
   return (
-    <Setting title="Colors">
-      <ListItem button>
-        <ListItemText primary="Adjust color" secondary={primary} />
-      </ListItem>
-      <ListItem>
-        <ListItemText
-          primary="Secondary color mode"
-          secondary={
-            secondaryMode.charAt(0).toUpperCase() + secondaryMode.substr(1)
-          }
-        />
-        <ListItemSecondaryAction>
-          <IconButton
-            size="small"
-            onClick={() => {
-              const currentIndex = options.indexOf(secondaryMode);
-              currentIndex !== 0
-                ? dispatch(setSecondaryMode(options[currentIndex - 1]))
-                : dispatch(setSecondaryMode(options[options.length - 1]));
-            }}
-          >
-            <ChevronLeft />
-          </IconButton>
-          <IconButton
-            size="small"
-            edge="end"
-            onClick={() => {
-              const currentIndex = options.indexOf(secondaryMode);
-              currentIndex !== options.length - 1
-                ? dispatch(setSecondaryMode(options[currentIndex + 1]))
-                : dispatch(setSecondaryMode(options[0]));
-            }}
-          >
-            <ChevronRight />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
-    </Setting>
+    <>
+      {showColorPicker && <SketchPicker style={{ position: "fixed" }} />}
+      <Setting title="Colors">
+        <ListItem button onClick={setShowColorPicker(true)}>
+          <ListItemText primary="Adjust color" secondary={primary} />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary="Secondary color mode"
+            secondary={
+              secondaryMode.charAt(0).toUpperCase() + secondaryMode.substr(1)
+            }
+          />
+          <ListItemSecondaryAction>
+            <IconButton
+              size="small"
+              onClick={() => {
+                const currentIndex = options.indexOf(secondaryMode);
+                currentIndex !== 0
+                  ? dispatch(setSecondaryMode(options[currentIndex - 1]))
+                  : dispatch(setSecondaryMode(options[options.length - 1]));
+              }}
+            >
+              <ChevronLeft />
+            </IconButton>
+            <IconButton
+              size="small"
+              edge="end"
+              onClick={() => {
+                const currentIndex = options.indexOf(secondaryMode);
+                currentIndex !== options.length - 1
+                  ? dispatch(setSecondaryMode(options[currentIndex + 1]))
+                  : dispatch(setSecondaryMode(options[0]));
+              }}
+            >
+              <ChevronRight />
+            </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+      </Setting>
+    </>
   );
 };
 
