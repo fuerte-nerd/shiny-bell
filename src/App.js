@@ -141,6 +141,9 @@ function App(props) {
             MuiButton: {
               root: { textTransform: buttonTextTransform },
             },
+            MuiDialogTitle: {
+              root: { fontFamily: "Roboto" },
+            },
           },
           palette: {
             type: mode,
