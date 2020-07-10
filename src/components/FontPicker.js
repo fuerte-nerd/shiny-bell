@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react";
+import { setFontPicker } from "../state/actions";
 import {
   Dialog,
   DialogTitle,
@@ -12,7 +13,10 @@ import {
 
 const FontPicker = ({ dispatch, fontPicker }) => {
   return (
-    <Dialog open={fontPicker}>
+    <Dialog
+      open={fontPicker}
+      onClose={dispatch(setFontPicker({ open: false, section: "" }))}
+    >
       <DialogTitle>Select font...</DialogTitle>
       <DialogContent></DialogContent>
       <DialogActions>

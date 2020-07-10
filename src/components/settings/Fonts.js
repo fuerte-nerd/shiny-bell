@@ -5,6 +5,7 @@ import {
   setFontSize,
   setHeaderFont,
   setFont,
+  setFontPicker,
 } from "../../state/actions";
 import Setting from "../Setting";
 import {
@@ -30,6 +31,17 @@ const Fonts = ({ dispatch, twoFonts, fontSize, bodyFont, headerFont }) => {
 
   return (
     <Setting title="Fonts">
+      <ListItem
+        button
+        onClick={() =>
+          dispatch(setFontPicker({ open: true, section: "bodyFont" }))
+        }
+      >
+        <ListItemText
+          primary={twoFonts ? "Select body font" : "Select font"}
+          secondary={bodyFont}
+        />
+      </ListItem>
       <ListItem
         id="two-font-mode"
         onClick={() => dispatch(set2Fonts(!twoFonts))}

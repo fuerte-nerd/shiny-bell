@@ -40,7 +40,10 @@ const initialState = {
   settings: false,
   themeCode: false,
   colorPicker: false,
-  fontPicker: false,
+  fontPicker: {
+    open: false,
+    section: "",
+  },
   locked: {
     bodyFont: false,
     headerFont: false,
