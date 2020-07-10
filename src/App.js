@@ -28,6 +28,7 @@ import {
   setSecondary,
   setStaticFont,
   setHeaderFont,
+  setColorPicker,
 } from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
@@ -112,7 +113,7 @@ function App(props) {
   }, [font]);
 
   useEffect(() => {
-    if (fonts && typeof headerFont.themeName !== "undefined") {
+    if (fonts && typeof headerFont.themeName !== "undefined" && twoFonts) {
       const newFont = new FontFaceObserver(headerFont.themeName);
       newFont.load().then(
         () => {
@@ -213,8 +214,14 @@ function App(props) {
           />
         )}
       </Helmet>
-      <Dialog open={colorPicker}>
-        <SketchPicker />
+      <Dialog
+        open={colorPicker}
+        onClose={() => dispatch(setColorPicker(false))}
+      >
+        <SketchPicker
+          color={primary}
+          onChange={(c) => dispatch(setPrimary(c.hex))}
+        />
       </Dialog>
       <Sidebar />
       <FontLoadDialog />
