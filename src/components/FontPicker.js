@@ -15,7 +15,7 @@ const FontPicker = ({ dispatch, fontPicker }) => {
   return (
     <Dialog
       open={fontPicker}
-      onClose={dispatch(setFontPicker({ open: false, section: "" }))}
+      onClose={() => dispatch(setFontPicker({ open: false, section: "" }))}
     >
       <DialogTitle>Select font...</DialogTitle>
       <DialogContent></DialogContent>
