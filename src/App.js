@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import axios from "axios";
 import {
   Container,
+  Dialog,
   Toolbar,
   ThemeProvider,
   CssBaseline,
@@ -212,7 +213,9 @@ function App(props) {
           />
         )}
       </Helmet>
-      {colorPicker && <SketchPicker />}
+      <Dialog open={colorPicker}>
+        <SketchPicker />
+      </Dialog>
       <Sidebar />
       <FontLoadDialog />
       <Box
