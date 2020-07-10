@@ -35,6 +35,7 @@ import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
 import { SketchPicker } from "react-color";
+import FontPicker from "./components/FontPicker";
 
 function App(props) {
   const {
@@ -214,6 +215,7 @@ function App(props) {
           />
         )}
       </Helmet>
+      <FontPicker />
       <Dialog
         open={colorPicker}
         onClose={() => dispatch(setColorPicker(false))}

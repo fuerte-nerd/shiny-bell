@@ -10,7 +10,7 @@ import {
   Button,
 } from "@material-ui/core";
 
-const FontPicker = ({ dispatch }) => {
+const FontPicker = ({ dispatch, fontPicker }) => {
   return (
     <Dialog open={fontPicker}>
       <DialogTitle>Select font...</DialogTitle>
