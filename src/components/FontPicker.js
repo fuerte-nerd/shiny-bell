@@ -40,7 +40,9 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
       onClose={() => dispatch(setFontPicker({ open: false, section: "" }))}
       style={{ fontFamily: "Roboto" }}
     >
-      <DialogTitle>Select font...</DialogTitle>
+      <DialogTitle disableTypography>
+        <Typography style={{ fontFamily: "Roboto" }}>Font selector</Typography>
+      </DialogTitle>
       <DialogContent style={{ fontFamily: "Roboto" }}>
         <FormGroup row>
           <FormControlLabel
