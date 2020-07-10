@@ -217,6 +217,8 @@ function App(props) {
       <Dialog
         open={colorPicker}
         onClose={() => dispatch(setColorPicker(false))}
+        PaperProps={{ style: { backgroundColor: "transparent" } }}
+        BackdropProps={{ style: { backgroundColor: "transparent" } }}
       >
         <SketchPicker
           color={primary}

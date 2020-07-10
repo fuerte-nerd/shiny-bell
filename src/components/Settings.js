@@ -21,7 +21,13 @@ const Settings = ({ dispatch, settings }) => {
     return dispatch(setSettings(false));
   };
   return (
-    <Dialog fullWidth maxWidth="sm" open={settings} onClose={handleClose}>
+    <Dialog
+      fullWidth
+      maxWidth="sm"
+      open={settings}
+      onClose={handleClose}
+      BackdropProps={{ style: { backgroundColor: "transparent" } }}
+    >
       <DialogTitle disableTypography>
         <AppTypography variant="h4">Settings</AppTypography>
       </DialogTitle>
