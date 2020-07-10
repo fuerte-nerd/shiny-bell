@@ -16,7 +16,9 @@ const Colors = ({ dispatch, secondaryMode }) => {
       <ListItem>
         <ListItemText
           primary="Secondary color mode"
-          secondary={secondaryMode}
+          secondary={
+            secondaryMode.charAt(0).toUpperCase() + secondaryMode.substr(1)
+          }
         />
         <ListItemSecondaryAction>
           <IconButton size="small">
