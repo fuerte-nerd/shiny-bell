@@ -10,7 +10,6 @@ import {
   FormGroup,
   FormControlLabel,
   Checkbox,
-  MenuItem,
   Button,
 } from "@material-ui/core";
 
@@ -42,7 +41,7 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
       style={{ fontFamily: "Roboto" }}
     >
       <DialogTitle>Select font...</DialogTitle>
-      <DialogContent>
+      <DialogContent style={{ fontFamily: "Roboto" }}>
         <FormGroup row>
           <FormControlLabel
             control={
@@ -97,18 +96,20 @@ const FontPicker = ({ dispatch, fontPicker, fonts, font, headerFont }) => {
         </FormGroup>
         <Select
           fullWidth
+          native
           value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
         >
           {fonts &&
             fonts.map((font) => {
               return fontPicker.categories.includes(font.category) ? (
-                <MenuItem value={font.id}>{font.themeName}</MenuItem>
+                <option value={font.id}>{font.themeName}</option>
               ) : null;
             })}
         </Select>
       </DialogContent>
       <DialogActions>
-        <Button>Close</Button>
+        <Button style={{ fontFamily: "Roboto" }}>Cancel</Button>
+        <Button style={{ fontFamily: "Roboto" }}>Update</Button>
       </DialogActions>
     </Dialog>
   );
