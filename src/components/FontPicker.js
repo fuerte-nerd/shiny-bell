@@ -121,6 +121,13 @@ const FontPicker = ({
           fullWidth
           native
           value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
+          onChange={(e) => {
+            if (fontPicker.section === "bodyFont") {
+              dispatch(setFont(fonts[e.currentTarget.value]));
+            } else {
+              dispatch(setHeaderFont(fonts[e.currentTarget.value]));
+            }
+          }}
         >
           {fonts &&
             fonts.map((font) => {
