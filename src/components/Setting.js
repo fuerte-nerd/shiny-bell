@@ -1,11 +1,11 @@
 import React from "react";
 import { ListSubheader, Divider } from "@material-ui/core";
 
-const Setting = ({ title, children, isLast }) => {
+const Setting = ({ title, children }) => {
   return (
     <>
       <Divider />
-      <ListSubheader>{title}</ListSubheader>
+      <ListSubheader disableSticky>{title}</ListSubheader>
       <Divider />
       {children}
     </>
