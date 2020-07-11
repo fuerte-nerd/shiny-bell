@@ -46,6 +46,7 @@ const initialState = {
     open: false,
     section: "",
     categories: ["serif", "sans-serif", "display", "monospace", "handwriting"],
+    selection: null,
   },
   locked: {
     bodyFont: false,
