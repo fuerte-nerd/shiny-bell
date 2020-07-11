@@ -6,6 +6,7 @@ import {
   setSettings,
   setThemeCode,
   setFontLoading,
+  setRandomFontSelect,
 } from "../state/actions";
 import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
 import {
@@ -31,6 +32,7 @@ const Menu = ({ dispatch, mode, locked, twoFonts }) => {
         return !locked.palette && dispatch(setPrimary(randomColor()));
       case "font":
         if (!locked.bodyFont || !locked.headerFont) {
+          dispatch(setRandomFontSelect(true));
           return dispatch(setFontLoading(true));
         }
         return;
