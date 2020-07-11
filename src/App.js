@@ -56,6 +56,7 @@ function App(props) {
     fontSize,
     colorPicker,
     fontPicker,
+    randomFontSelect,
   } = props;
 
   useEffect(() => {
@@ -108,7 +109,9 @@ function App(props) {
           dispatch(setFontLoading(false));
         },
         () => {
-          dispatch(setFont(randomFont()));
+          if (randomFontSelect) {
+            dispatch(setFont(randomFont()));
+          }
         }
       );
     }
@@ -272,6 +275,7 @@ const mapStateToProps = (state) => ({
   fontSize: state.fontSize,
   colorPicker: state.colorPicker,
   fontPicker: state.fontPicker,
+  randomFontSelect: state.randomFontSelect,
 });
 
 export default connect(mapStateToProps)(App);
