@@ -38,6 +38,25 @@ const Fonts = ({
 
   return (
     <Setting title="Fonts">
+      {twoFonts && (
+        <ListItem
+          button
+          onClick={() =>
+            dispatch(
+              setFontPicker({
+                ...fontPicker,
+                open: true,
+                section: "headerFont",
+              })
+            )
+          }
+        >
+          <ListItemText
+            primary="Select header font"
+            secondary={headerFont.themeName}
+          />
+        </ListItem>
+      )}
       <ListItem
         button
         onClick={() =>
