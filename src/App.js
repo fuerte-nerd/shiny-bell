@@ -55,6 +55,7 @@ function App(props) {
     rounding,
     fontSize,
     colorPicker,
+    fontPicker,
   } = props;
 
   useEffect(() => {
@@ -270,6 +271,7 @@ const mapStateToProps = (state) => ({
   rounding: state.rounding,
   fontSize: state.fontSize,
   colorPicker: state.colorPicker,
+  fontPicker: state.fontPicker,
 });
 
 export default connect(mapStateToProps)(App);
