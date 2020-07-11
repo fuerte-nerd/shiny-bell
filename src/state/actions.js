@@ -20,7 +20,13 @@ import {
   SET_FONTSIZE,
   SET_COLORPICKER,
   SET_FONTPICKER,
+  SET_RANDOMFONTSELECT,
 } from "./types";
+
+export const setRandomFontSelect = (data) => ({
+  type: SET_RANDOMFONTSELECT,
+  payload: data,
+});
 
 export const setFontPicker = (data) => ({
   type: SET_FONTPICKER,
