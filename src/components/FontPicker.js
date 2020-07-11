@@ -43,6 +43,22 @@ const FontPicker = ({
     }
   };
 
+  const handleClose = () => {
+    dispatch(
+      setFontPicker({
+        ...fontPicker,
+        categories: [
+          "serif",
+          "sans-serif",
+          "display",
+          "handwriting",
+          "monospace",
+        ],
+        open: false,
+      })
+    );
+  };
+
   const [cancelFont, setCancelFont] = useState();
 
   useEffect(() => {
@@ -51,10 +67,7 @@ const FontPicker = ({
     }
   }, [fontPicker.open]);
   return (
-    <Dialog
-      open={fontPicker.open}
-      onClose={() => dispatch(setFontPicker({ open: false, section: "" }))}
-    >
+    <Dialog open={fontPicker.open} onClose={handleClose}>
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
           {twoFonts
@@ -146,41 +159,12 @@ const FontPicker = ({
                 ? dispatch(setFont(cancelFont))
                 : dispatch(setHeaderFont(cancelFont))
               : dispatch(setFont(cancelFont));
-            dispatch(
-              setFontPicker({
-                ...fontPicker,
-                categories: [
-                  "serif",
-                  "sans-serif",
-                  "display",
-                  "handwriting",
-                  "monospace",
-                ],
-                open: false,
-              })
-            );
+            handleClose();
           }}
         >
           Cancel
         </Button>
-        <Button
-          style={{ fontFamily: "Roboto" }}
-          onClick={() => {
-            dispatch(
-              setFontPicker({
-                ...fontPicker,
-                categories: [
-                  "serif",
-                  "sans-serif",
-                  "display",
-                  "handwriting",
-                  "monospace",
-                ],
-                open: false,
-              })
-            );
-          }}
-        >
+        <Button style={{ fontFamily: "Roboto" }} onClick={handleClose}>
           Update
         </Button>
       </DialogActions>
