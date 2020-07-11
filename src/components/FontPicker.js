@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { setFontPicker, setFont, setHeaderFont } from "../state/actions";
+import {
+  setFontPicker,
+  setFont,
+  setHeaderFont,
+  setRandomFontSelect,
+} from "../state/actions";
 import {
   Dialog,
   DialogTitle,
@@ -135,11 +140,10 @@ const FontPicker = ({
           native
           value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
           onChange={(e) => {
-            if (fontPicker.section === "bodyFont") {
-              dispatch(setFont(fonts[e.currentTarget.value]));
-            } else {
-              dispatch(setHeaderFont(fonts[e.currentTarget.value]));
-            }
+            dispatch(setRandomFontSelect(false));
+            dispatch(
+              setFontPicker({ ...fontPicker, selection: e.currentTarget.value })
+            );
           }}
         >
           {fonts &&
