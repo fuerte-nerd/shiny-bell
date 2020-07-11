@@ -5,6 +5,7 @@ import {
   setFont,
   setHeaderFont,
   setRandomFontSelect,
+  setFontLoading,
 } from "../state/actions";
 import {
   Dialog,
@@ -144,6 +145,7 @@ const FontPicker = ({
             dispatch(
               setFontPicker({ ...fontPicker, selection: e.currentTarget.value })
             );
+            dispatch(setFontLoading(true));
           }}
         >
           {fonts &&

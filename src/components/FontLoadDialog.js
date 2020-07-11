@@ -13,12 +13,19 @@ const FontLoadDialog = ({
   staticFontLoaded,
   locked,
   randomFontSelect,
+  fontPicker,
 }) => {
   const handleEntered = () => {
     if (randomFontSelect) {
       !locked.bodyFont && fonts && dispatch(setFont(randomFont()));
       if (twoFonts) {
         !locked.headerFont && fonts && dispatch(setHeaderFont(randomFont()));
+      }
+    } else {
+      if (fontPicker.section === "bodyFont") {
+        return dispatch(setFont(fonts[fontPicker.selection]));
+      } else {
+        return dispatch(setHeaderFont(fonts[fontPicker.selection]));
       }
     }
   };
@@ -66,6 +73,7 @@ const mapStateToProps = (state) => ({
   twoFonts: state.twoFonts,
   locked: state.locked,
   randomFontSelect: state.randomFontSelect,
+  fontPicker: state.fontPicker,
 });
 
 export default connect(mapStateToProps)(FontLoadDialog);
