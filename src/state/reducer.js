@@ -19,6 +19,7 @@ import {
   SET_FONTSIZE,
   SET_COLORPICKER,
   SET_FONTPICKER,
+  SET_RANDOMFONTSELECT,
 } from "./types";
 
 const initialState = {
@@ -29,6 +30,7 @@ const initialState = {
   headerFont: "",
   fontSize: 14,
   twoFonts: false,
+  randomFontSelect: true,
   primary: "rgb(0,0,0)",
   secondaryMode: "complement",
   secondary: "rgb(255,255,255)",
@@ -53,10 +55,14 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log(action);
   const { type, payload } = action;
 
   switch (type) {
+    case SET_RANDOMFONTSELECT:
+      return {
+        ...state,
+        randomFontSelect: payload,
+      };
     case SET_FONTPICKER:
       return {
         ...state,
