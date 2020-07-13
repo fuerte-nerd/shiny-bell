@@ -70,7 +70,7 @@ function App(props) {
         const fonts = response.data.items.map((i, ind) => {
           return {
             id: ind,
-            linkName: i.family.replace(" ", "+"),
+            linkName: i.family.replace(/ /g, "+"),
             themeName: i.family,
             category: i.category,
           };
