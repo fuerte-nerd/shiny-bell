@@ -48,10 +48,7 @@ const initialState = {
     revertFont: {},
     categories: ["serif", "sans-serif", "display", "monospace", "handwriting"],
     selection: null,
-    error: {
-      show: false,
-      msg: "",
-    },
+    notFound: false,
   },
   locked: {
     bodyFont: false,
