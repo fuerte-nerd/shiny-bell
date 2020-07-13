@@ -86,11 +86,14 @@ const FontPicker = ({
         </Typography>
       </DialogTitle>
       <DialogContent>
-        <Snackbar open={fontPicker.notFound}>
+        <Snackbar
+          open={fontPicker.notFound}
+          autoHideDuration={6000}
+          onClose={() =>
+            dispatch(setFontPicker({ ...fontPicker, notFound: false }))
+          }
+        >
           <Alert style={{ fontFamily: "Roboto" }} severity="error">
-            <AlertTitle style={{ fontFamily: "Roboto" }}>
-              Font not found
-            </AlertTitle>
             Sorry, but we were unable to load that font. Please select a
             different font.
           </Alert>
