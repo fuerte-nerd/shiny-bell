@@ -77,12 +77,16 @@ const ThemeCode = ({
   };
 
   const spacingCodeString = () => {
-    return spacing !== 8 ? `spacing: ${spacing},` : ``;
+    return spacing !== 8
+      ? `
+  spacing: ${spacing},`
+      : ``;
   };
 
   const overridesCodeString = () => {
     return buttonTextTransform !== "uppercase"
-      ? `overrides: {
+      ? `
+  overrides: {
     MuiButton: {
       root: { textTransform: "${buttonTextTransform}"}
     }
