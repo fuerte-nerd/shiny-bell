@@ -150,6 +150,9 @@ function App(props) {
             MuiDialog: {
               root: { fontFamily: "Roboto" },
             },
+            MuiDialogTitle: {
+              root: { fontFamily: "Roboto" },
+            },
             MuiListItemText: {
               primary: { fontFamily: "Roboto" },
               secondary: { fontFamily: "Roboto" },
