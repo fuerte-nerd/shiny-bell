@@ -76,6 +76,10 @@ const ThemeCode = ({
       : `typography: { fontFamily: "${font.themeName}" },`;
   };
 
+  const spacingCodeString = () => {
+    return spacing !== 8 ? `spacing: ${spacing}` : ``;
+  };
+
   const overridesCodeString = () => {
     return buttonTextTransform !== "uppercase"
       ? `
@@ -83,9 +87,7 @@ const ThemeCode = ({
     MuiButton: {
       root: { textTransform: "${buttonTextTransform}"}
     }
-  }
-
-    `
+  }`
       : "";
   };
 
@@ -103,8 +105,7 @@ export default responsiveFontSizes(createMuiTheme({
     },
   },
   ${typographyCodeString()}
-  spacing: ${spacing},
-  ${overridesCodeString()}
+  ${spacingCodeString()},${overridesCodeString()}
 })) `;
 
   const helmetCodeString = () => {
