@@ -133,6 +133,11 @@ export default responsiveFontSizes(createMuiTheme({
           </SyntaxHighlighter>
         </DialogContentText>
       </DialogContent>
+      <DialogActions>
+        <Button style={{ fontFamily: "Roboto" }} onClick={handleClose}>
+          Close
+        </Button>
+      </DialogActions>
     </Dialog>
   );
 };
