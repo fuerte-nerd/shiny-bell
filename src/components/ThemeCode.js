@@ -12,6 +12,8 @@ import {
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 
+import AppTypography from "./AppTypography";
+
 const ThemeCode = ({
   dispatch,
   themeCode,
@@ -107,7 +109,9 @@ export default responsiveFontSizes(createMuiTheme({
 
   return (
     <Dialog maxWidth="sm" fullWidth open={themeCode} onClose={handleClose}>
-      <DialogTitle>Theme Code</DialogTitle>
+      <DialogTitle disableTypography>
+        <AppTypography variant="h5">Theme Code</AppTypography>
+      </DialogTitle>
       <DialogContent dividers>
         <DialogContentText>
           Here is the code you'll need to use the current theme in your project!
