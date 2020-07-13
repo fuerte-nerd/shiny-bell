@@ -76,6 +76,19 @@ const ThemeCode = ({
       : `typography: { fontFamily: "${font.themeName}" },`;
   };
 
+  const overridesCodeString = () => {
+    return buttonTextTransform !== "uppercase"
+      ? `
+  overrides: {
+    MuiButton: {
+      root: { textTransform: "${buttonTextTransform}"}
+    }
+  }
+
+    `
+      : "";
+  };
+
   const themeCodeString = `//theme.js
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
 
@@ -91,11 +104,7 @@ export default responsiveFontSizes(createMuiTheme({
   },
   ${typographyCodeString()}
   spacing: ${spacing},
-  overrides: {
-    MuiButton: {
-      root: { textTransform: "${buttonTextTransform}"}
-    }
-  }
+  ${overridesCodeString()}
 })) `;
 
   const helmetCodeString = () => {
