@@ -83,7 +83,9 @@ const ThemeCode = ({
   };
 
   const fontSizeCodeString = () => {
-    return fontSize !== 14 ? `fontSize: ${fontSize}` : ``;
+    if (fontSize !== 14) {
+      return `fontSize: ${fontSize}`;
+    }
   };
 
   const spacingCodeString = () => {
