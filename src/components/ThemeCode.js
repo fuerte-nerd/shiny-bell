@@ -25,6 +25,7 @@ const ThemeCode = ({
   twoFonts,
   headerFont,
   buttonTextTransform,
+  rounding,
 }) => {
   const handleClose = () => {
     dispatch(setThemeCode(false));
@@ -94,6 +95,15 @@ const ThemeCode = ({
       : "";
   };
 
+  const roundingCodeString = () => {
+    return rounding !== 4
+      ? `
+  shape: {
+    borderRadius: ${rounding}
+  },`
+      : ``;
+  };
+
   const themeCodeString = `//theme.js
 import { createMuiTheme, responsiveFontSizes } from "@material-ui/core"
 
@@ -107,7 +117,12 @@ export default responsiveFontSizes(createMuiTheme({
       main: "${secondary}",
     },
   },
-  ${typographyCodeString() + spacingCodeString() + overridesCodeString()}
+  ${
+    typographyCodeString() +
+    spacingCodeString() +
+    roundingCodeString() +
+    overridesCodeString()
+  }
 })) `;
 
   const helmetCodeString = () => {
@@ -175,6 +190,7 @@ const mapStateToProps = (state) => ({
   twoFonts: state.twoFonts,
   headerFont: state.headerFont,
   buttonTextTransform: state.buttonTextTransform,
+  rounding: state.rounding,
 });
 
 export default connect(mapStateToProps)(ThemeCode);
