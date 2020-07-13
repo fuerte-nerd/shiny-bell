@@ -14,6 +14,7 @@ import {
   DialogActions,
   Typography,
   Select,
+  Snackbar,
   FormGroup,
   FormControlLabel,
   Checkbox,
@@ -85,13 +86,15 @@ const FontPicker = ({
         </Typography>
       </DialogTitle>
       <DialogContent>
-        <Alert style={{ fontFamily: "Roboto" }} severity="error">
-          <AlertTitle style={{ fontFamily: "Roboto" }}>
-            Font not found
-          </AlertTitle>
-          Sorry, but we were unable to load that font. Please select a different
-          font.
-        </Alert>
+        <Snackbar open={fontPicker.notFound}>
+          <Alert style={{ fontFamily: "Roboto" }} severity="error">
+            <AlertTitle style={{ fontFamily: "Roboto" }}>
+              Font not found
+            </AlertTitle>
+            Sorry, but we were unable to load that font. Please select a
+            different font.
+          </Alert>
+        </Snackbar>
         <FormGroup row>
           <FormControlLabel
             control={

@@ -29,6 +29,7 @@ import {
   setStaticFont,
   setHeaderFont,
   setColorPicker,
+  setFontPicker,
 } from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
@@ -132,6 +133,7 @@ function App(props) {
             dispatch(setHeaderFont(randomFont()));
           } else {
             dispatch(setHeaderFont(fontPicker.revertFont));
+            dispatch(setFontPicker({ ...fontPicker, notFound: true }));
           }
         }
       );
