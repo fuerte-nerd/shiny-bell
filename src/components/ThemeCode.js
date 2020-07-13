@@ -77,13 +77,12 @@ const ThemeCode = ({
   };
 
   const spacingCodeString = () => {
-    return spacing !== 8 ? `spacing: ${spacing}` : ``;
+    return spacing !== 8 ? `spacing: ${spacing},` : ``;
   };
 
   const overridesCodeString = () => {
     return buttonTextTransform !== "uppercase"
-      ? `
-  overrides: {
+      ? `overrides: {
     MuiButton: {
       root: { textTransform: "${buttonTextTransform}"}
     }
@@ -104,13 +103,12 @@ export default responsiveFontSizes(createMuiTheme({
       main: "${secondary}",
     },
   },
-  ${typographyCodeString()}
-  ${spacingCodeString()},${overridesCodeString()}
+  ${typographyCodeString() + spacingCodeString() + overridesCodeString()}
 })) `;
 
   const helmetCodeString = () => {
     return twoFonts
-      ? `//react-helmet (to fetch Google Font)
+      ? `//react-helmet (to fetch Google Fonts)
 <Helmet>
   <link
     href={\`https://fonts.googleapis.com/css2?family=${font.linkName}&family=${headerFont.linkName}&display=swap\`}
