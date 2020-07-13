@@ -73,15 +73,17 @@ const ThemeCode = ({
     },
     caption: {
       fontFamily: "${font.themeName}"
-    },${fontSizeCodeString()}
+    },
+    ${fontSizeCodeString()}
   },`
-      : `typography: { fontFamily: "${
-          font.themeName
-        }", ${fontSizeCodeString()} },`;
+      : `typography: {
+    fontFamily: "${font.themeName}",
+    ${fontSizeCodeString()} 
+  },`;
   };
 
   const fontSizeCodeString = () => {
-    return fontSize !== 14 ? `\nfontSize: ${fontSize}` : ``;
+    return fontSize !== 14 ? `fontSize: ${fontSize}` : ``;
   };
 
   const spacingCodeString = () => {
