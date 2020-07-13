@@ -98,7 +98,17 @@ export default responsiveFontSizes(createMuiTheme({
   }
 })) `;
 
-  const helmetCodeString = `//react-helmet (to fetch Google Font(s))
+  const helmetCodeString = () => {
+    return twoFonts
+      ? `//react-helmet (to fetch Google Font)
+<Helmet>
+  <link
+    href={\`https://fonts.googleapis.com/css2?family=${font.linkName}&family=${headerFont.linkName}&display=swap\`}
+    rel="stylesheet"
+  />
+</Helmet>
+`
+      : `//react-helmet (to fetch Google Font)
 <Helmet>
   <link
     href={\`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap\`}
@@ -106,6 +116,7 @@ export default responsiveFontSizes(createMuiTheme({
   />
 </Helmet>
 `;
+  };
 
   return (
     <Dialog maxWidth="sm" fullWidth open={themeCode} onClose={handleClose}>
@@ -129,7 +140,7 @@ export default responsiveFontSizes(createMuiTheme({
             wrapLines
             lineProps={{ style: { whiteSpace: "pre-wrap" } }}
           >
-            {helmetCodeString}
+            {helmetCodeString()}
           </SyntaxHighlighter>
         </DialogContentText>
       </DialogContent>
