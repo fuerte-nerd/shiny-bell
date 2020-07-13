@@ -178,7 +178,7 @@ const FontPicker = ({
       </DialogContent>
       <DialogActions>
         <Button
-          style={{ fontFamily: "Roboto" }}
+          style={{ fontFamily: "Roboto", textTransform: "uppercase" }}
           onClick={() => {
             twoFonts
               ? fontPicker.section === "bodyFont"
@@ -190,7 +190,10 @@ const FontPicker = ({
         >
           Cancel
         </Button>
-        <Button style={{ fontFamily: "Roboto" }} onClick={handleClose}>
+        <Button
+          style={{ fontFamily: "Roboto", textTransform: "uppercase" }}
+          onClick={handleClose}
+        >
           Update
         </Button>
       </DialogActions>
