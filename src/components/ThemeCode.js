@@ -33,46 +33,46 @@ const ThemeCode = ({
   const typographyCodeString = () => {
     return twoFonts
       ? `typography: {
-  h1: {
-    fontFamily: "${headerFont.themeName}"
-  },
-  h2: {
-    fontFamily: "${headerFont.themeName}"
-  },
-  h3: {
-    fontFamily: "${headerFont.themeName}"
-  },
-  h4: {
-    fontFamily: "${headerFont.themeName}"
-  },
-  h5: {
-    fontFamily: "${headerFont.themeName}"
-  },
-  h6: {
-    fontFamily: "${headerFont.themeName}"
-  },
-  subtitle1: {
-    fontFamily: "${font.themeName}"
-  },
-  subtitle2: {
-    fontFamily: "${font.themeName}"
-  },
-  body1: {
-    fontFamily: "${font.themeName}"
-  },
-  body2: {
-    fontFamily: "${font.themeName}"
-  },
-  button: {
-    fontFamily: "${font.themeName}"
-  },
-  overline: {
-    fontFamily: "${font.themeName}"
-  },
-  caption: {
-    fontFamily: "${font.themeName}"
-  },
-},`
+    h1: {
+      fontFamily: "${headerFont.themeName}"
+    },
+    h2: {
+      fontFamily: "${headerFont.themeName}"
+    },
+    h3: {
+      fontFamily: "${headerFont.themeName}"
+    },
+    h4: {
+      fontFamily: "${headerFont.themeName}"
+    },
+    h5: {
+      fontFamily: "${headerFont.themeName}"
+    },
+    h6: {
+      fontFamily: "${headerFont.themeName}"
+    },
+    subtitle1: {
+      fontFamily: "${font.themeName}"
+    },
+    subtitle2: {
+      fontFamily: "${font.themeName}"
+    },
+    body1: {
+      fontFamily: "${font.themeName}"
+    },
+    body2: {
+      fontFamily: "${font.themeName}"
+    },
+    button: {
+      fontFamily: "${font.themeName}"
+    },
+    overline: {
+      fontFamily: "${font.themeName}"
+    },
+    caption: {
+      fontFamily: "${font.themeName}"
+    },
+  },`
       : `typography: { fontFamily: "${font.themeName}" },`;
   };
 
