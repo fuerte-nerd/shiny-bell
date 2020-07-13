@@ -111,6 +111,8 @@ function App(props) {
         () => {
           if (randomFontSelect) {
             dispatch(setFont(randomFont()));
+          } else {
+            dispatch(setFont(fontPicker.revertFont));
           }
         }
       );
@@ -126,9 +128,11 @@ function App(props) {
           dispatch(setFontLoading(false));
         },
         () => {
-          randomFontSelect
-            ? dispatch(setHeaderFont(randomFont()))
-            : console.log("reached");
+          if (randomFontSelect) {
+            dispatch(setHeaderFont(randomFont()));
+          } else {
+            dispatch(setHeaderFont(fontPicker.revertFont));
+          }
         }
       );
     }

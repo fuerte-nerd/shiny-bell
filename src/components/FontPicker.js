@@ -150,8 +150,14 @@ const FontPicker = ({
           value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
           onChange={(e) => {
             dispatch(setRandomFontSelect(false));
+            const revertFont =
+              fontPicker.section === "bodyFont" ? font : headerFont;
             dispatch(
-              setFontPicker({ ...fontPicker, selection: e.currentTarget.value })
+              setFontPicker({
+                ...fontPicker,
+                selection: e.currentTarget.value,
+                revertFont,
+              })
             );
             dispatch(setFontLoading(true));
           }}
