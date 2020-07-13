@@ -147,7 +147,7 @@ function App(props) {
       theme={responsiveFontSizes(
         createMuiTheme({
           overrides: {
-            MuiDialog: {
+            MuiDialogContentText: {
               root: { fontFamily: "Roboto" },
             },
             MuiDialogTitle: {
