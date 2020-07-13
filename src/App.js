@@ -114,6 +114,7 @@ function App(props) {
             dispatch(setFont(randomFont()));
           } else {
             dispatch(setFont(fontPicker.revertFont));
+            dispatch(setFontPicker({ ...fontPicker, notFound: true }));
           }
         }
       );
