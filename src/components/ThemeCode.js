@@ -73,12 +73,11 @@ const ThemeCode = ({
     },
     caption: {
       fontFamily: "${font.themeName}"
-    },
-    ${fontSizeCodeString()}
+    },${fontSizeCodeString()}
   },`
       : `typography: { fontFamily: "${
           font.themeName
-        }", ${fontSizeCodeString()}},`;
+        }", ${fontSizeCodeString()} },`;
   };
 
   const fontSizeCodeString = () => {
