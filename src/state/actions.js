@@ -21,7 +21,13 @@ import {
   SET_COLORPICKER,
   SET_FONTPICKER,
   SET_RANDOMFONTSELECT,
+  SET_REVERT_FONT,
 } from "./types";
+
+export const setRevertFont = (data) => ({
+  type: SET_REVERT_FONT,
+  payload: data,
+});
 
 export const setRandomFontSelect = (data) => ({
   type: SET_RANDOMFONTSELECT,

@@ -45,6 +45,7 @@ const initialState = {
   fontPicker: {
     open: false,
     section: "",
+    revertFont: {},
     categories: ["serif", "sans-serif", "display", "monospace", "handwriting"],
     selection: null,
     error: {
@@ -57,7 +58,13 @@ const initialState = {
     headerFont: false,
     palette: false,
   },
-  undo: []
+  undo: [
+    {
+      font: "",
+      headerFont: "",
+      primary: "",
+    },
+  ],
 };
 
 export default (state = initialState, action) => {
