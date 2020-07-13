@@ -26,6 +26,7 @@ const ThemeCode = ({
   headerFont,
   buttonTextTransform,
   rounding,
+  fontSize,
 }) => {
   const handleClose = () => {
     dispatch(setThemeCode(false));
@@ -73,8 +74,15 @@ const ThemeCode = ({
     caption: {
       fontFamily: "${font.themeName}"
     },
+    ${fontSizeCodeString()}
   },`
-      : `typography: { fontFamily: "${font.themeName}" },`;
+      : `typography: { fontFamily: "${
+          font.themeName
+        }", ${fontSizeCodeString()}},`;
+  };
+
+  const fontSizeCodeString = () => {
+    return fontSize !== 14 ? `fontSize: ${fontSize}` : ``;
   };
 
   const spacingCodeString = () => {
@@ -191,6 +199,7 @@ const mapStateToProps = (state) => ({
   headerFont: state.headerFont,
   buttonTextTransform: state.buttonTextTransform,
   rounding: state.rounding,
+  fontSize: state.fontSize,
 });
 
 export default connect(mapStateToProps)(ThemeCode);
