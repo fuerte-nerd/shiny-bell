@@ -19,6 +19,7 @@ import {
   Checkbox,
   Button,
 } from "@material-ui/core";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 const FontPicker = ({
   dispatch,
@@ -84,6 +85,13 @@ const FontPicker = ({
         </Typography>
       </DialogTitle>
       <DialogContent>
+        <Alert style={{ fontFamily: "Roboto" }} severity="error">
+          <AlertTitle style={{ fontFamily: "Roboto" }}>
+            Font not found
+          </AlertTitle>
+          Sorry, but we were unable to load that font. Please select a different
+          font.
+        </Alert>
         <FormGroup row>
           <FormControlLabel
             control={

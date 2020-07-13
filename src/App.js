@@ -126,7 +126,9 @@ function App(props) {
           dispatch(setFontLoading(false));
         },
         () => {
-          dispatch(setHeaderFont(randomFont()));
+          randomFontSelect
+            ? dispatch(setHeaderFont(randomFont()))
+            : console.log("reached");
         }
       );
     }

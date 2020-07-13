@@ -47,12 +47,17 @@ const initialState = {
     section: "",
     categories: ["serif", "sans-serif", "display", "monospace", "handwriting"],
     selection: null,
+    error: {
+      show: false,
+      msg: "",
+    },
   },
   locked: {
     bodyFont: false,
     headerFont: false,
     palette: false,
   },
+  undo: []
 };
 
 export default (state = initialState, action) => {
