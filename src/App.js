@@ -15,7 +15,7 @@ import {
   responsiveFontSizes,
 } from "@material-ui/core";
 
-import { Refresh } from "@material-ui/icons";
+import { Refresh, Lock } from "@material-ui/icons";
 
 import Menu from "./components/Menu";
 import FontLoadDialog from "./components/FontLoadDialog";
@@ -266,7 +266,6 @@ function App(props) {
         style={{ transition: "all .25s" }}
         py={4}
       >
-        {/*  <Settings /> */}
         <ThemeCode />
         <Menu />
         <Toolbar />
@@ -276,21 +275,19 @@ function App(props) {
           <Buttons />
         </Container>
       </Box>
-      <Tooltip
-        title={
-          twoFonts
-            ? locked.bodyFont && locked.headerFont && locked.palette
-              ? "Locked"
-              : "Refresh"
-            : locked.bodyFont && locked.palette
-            ? "Locked"
-            : "Refresh"
-        }
-      >
+      <Tooltip title="Refresh">
         <Fab
           style={{ position: "fixed", bottom: "1.5rem", right: "1.5rem" }}
           color="secondary"
-          disabled={locked.bodyFont && locked.headerFont && locked.palette}
+          disabled={
+            twoFonts
+              ? locked.bodyFont && locked.headerFont && locked.palette
+                ? true
+                : false
+              : locked.bodyFont && locked.palette
+              ? true
+              : false
+          }
           onClick={() => {
             !locked.bodyFont &&
               dispatch(setRandomFontSelect(true)) &&
@@ -302,7 +299,17 @@ function App(props) {
             !locked.palette && dispatch(setPrimary(randomColor()));
           }}
         >
-          <Refresh />
+          {twoFonts ? (
+            locked.bodyFont && locked.headerFont && locked.palette ? (
+              <Lock />
+            ) : (
+              <Refresh />
+            )
+          ) : locked.bodyFont && locked.palette ? (
+            <Lock />
+          ) : (
+            <Refresh />
+          )}
         </Fab>
       </Tooltip>
     </ThemeProvider>
