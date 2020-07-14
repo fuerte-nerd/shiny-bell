@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
+import codeExporter from "../functions/codeExporter";
 
 import AppTypography from "./AppTypography";
 
@@ -169,7 +170,7 @@ export default responsiveFontSizes(createMuiTheme({
             wrapLines
             lineProps={{ style: { whiteSpace: "pre-wrap" } }}
           >
-            {themeCodeString}
+            {codeExporter()}
           </SyntaxHighlighter>
           <SyntaxHighlighter
             language="javascript"
