@@ -58,6 +58,7 @@ function App(props) {
     colorPicker,
     fontPicker,
     randomFontSelect,
+    responsiveText,
   } = props;
 
   useEffect(() => {
@@ -218,7 +219,7 @@ function App(props) {
   });
 
   return (
-    <ThemeProvider theme={responsiveFontSizes(theme)}>
+    <ThemeProvider theme={responsiveText ? responsiveFontSizes(theme) : theme}>
       <CssBaseline />
       <Helmet>
         <link
@@ -289,6 +290,7 @@ const mapStateToProps = (state) => ({
   colorPicker: state.colorPicker,
   fontPicker: state.fontPicker,
   randomFontSelect: state.randomFontSelect,
+  responsiveText: state.responsiveText,
 });
 
 export default connect(mapStateToProps)(App);

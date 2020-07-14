@@ -6,6 +6,7 @@ import {
   setHeaderFont,
   setFont,
   setFontPicker,
+  setResponsiveText,
 } from "../../state/actions";
 import Setting from "../Setting";
 import {
@@ -24,6 +25,7 @@ const Fonts = ({
   bodyFont,
   headerFont,
   fontPicker,
+  responsiveText,
 }) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
@@ -121,6 +123,16 @@ const Fonts = ({
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
+      <ListItem onClick={() => dispatch(set2Fonts(!twoFonts))} button>
+        <ListItemText primary="Responsive font sizes" />
+        <ListItemSecondaryAction>
+          <Switch
+            edge="end"
+            checked={responsiveText}
+            onChange={() => dispatch(setResponsiveText(!responsiveText))}
+          />
+        </ListItemSecondaryAction>
+      </ListItem>
     </Setting>
   );
 };
@@ -131,6 +143,7 @@ const mapStateToProps = (state) => ({
   headerFont: state.headerFont,
   bodyFont: state.font,
   fontPicker: state.fontPicker,
+  responsiveText: state.responsiveText,
 });
 
 export default connect(mapStateToProps)(Fonts);

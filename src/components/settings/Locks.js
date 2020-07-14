@@ -25,16 +25,16 @@ const Locks = ({ dispatch, locked, twoFonts, font, headerFont, primary }) => {
 
   return (
     <Setting title="Lock Elements">
-      <ListItem id="lock-font" onClick={handleChange} button>
-        <ListItemText primary={twoFonts ? `Body font` : `Font`} />
-        <Icon edge="end">{locked.bodyFont ? <Lock /> : <LockOpen />}</Icon>
-      </ListItem>
       {twoFonts && (
         <ListItem id="lock-header-font" onClick={handleChange} button>
           <ListItemText primary="Header font" />
           <Icon edge="end">{locked.headerFont ? <Lock /> : <LockOpen />}</Icon>
         </ListItem>
       )}
+      <ListItem id="lock-font" onClick={handleChange} button>
+        <ListItemText primary={twoFonts ? `Body font` : `Font`} />
+        <Icon edge="end">{locked.bodyFont ? <Lock /> : <LockOpen />}</Icon>
+      </ListItem>
       <ListItem id="lock-palette" onClick={handleChange} button>
         <ListItemText primary="Palette" />
         <Icon edge="end">{locked.palette ? <Lock /> : <LockOpen />}</Icon>
