@@ -54,6 +54,34 @@ const Backgrounds = ({ dispatch, backgrounds }) => {
                 page: options[currentIndexPage + 1],
               })
             );
+      case "box-back":
+        return currentIndexBox === 0
+          ? dispatch(
+              setBackgrounds({
+                ...backgrounds,
+                box: options[options.length - 1],
+              })
+            )
+          : dispatch(
+              setBackgrounds({
+                ...backgrounds,
+                box: options[currentIndexBox - 1],
+              })
+            );
+      case "box-forward":
+        return currentIndexBox === options.length - 1
+          ? dispatch(
+              setBackgrounds({
+                ...backgrounds,
+                box: options[0],
+              })
+            )
+          : dispatch(
+              setBackgrounds({
+                ...backgrounds,
+                box: options[currentIndexBox + 1],
+              })
+            );
       default:
         return;
     }
@@ -71,6 +99,22 @@ const Backgrounds = ({ dispatch, backgrounds }) => {
             size="small"
             edge="end"
             id="page-forward"
+            onClick={handleClick}
+          >
+            <ChevronRight />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <ListItem>
+        <ListItemText primary="Box" secondary={backgrounds.box} />
+        <ListItemSecondaryAction>
+          <IconButton size="small" id="box-back" onClick={handleClick}>
+            <ChevronLeft />
+          </IconButton>
+          <IconButton
+            size="small"
+            edge="end"
+            id="box-forward"
             onClick={handleClick}
           >
             <ChevronRight />
