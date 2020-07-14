@@ -59,6 +59,7 @@ function App(props) {
     fontPicker,
     randomFontSelect,
     responsiveText,
+    backgrounds,
   } = props;
 
   useEffect(() => {
@@ -255,7 +256,7 @@ function App(props) {
       <Box
         minHeight="100vh"
         maxWidth="100vw"
-        bgcolor={bgColor ? "primary.light" : "none"}
+        bgcolor={backgrounds.page}
         style={{ transition: "all .25s" }}
       >
         {/*  <Settings /> */}
@@ -291,6 +292,7 @@ const mapStateToProps = (state) => ({
   fontPicker: state.fontPicker,
   randomFontSelect: state.randomFontSelect,
   responsiveText: state.responsiveText,
+  backgrounds: state.backgrounds,
 });
 
 export default connect(mapStateToProps)(App);

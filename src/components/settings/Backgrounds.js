@@ -11,7 +11,15 @@ import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 import { setBackgrounds } from "../../state/actions";
 
 const Backgrounds = ({ dispatch, backgrounds }) => {
-  const options = ["default", "primary.light"];
+  const options = [
+    "default",
+    "primary.light",
+    "primary.main",
+    "primary.dark",
+    "secondary.light",
+    "secondary.main",
+    "secondary.dark",
+  ];
 
   const handleClick = (e) => {
     const currentIndexPage = options.indexOf(backgrounds.page);
