@@ -258,7 +258,7 @@ function App(props) {
         maxWidth="100vw"
         bgcolor={backgrounds.page}
         style={{ transition: "all .25s" }}
-        my={4}
+        py={4}
       >
         {/*  <Settings /> */}
         <ThemeCode />
