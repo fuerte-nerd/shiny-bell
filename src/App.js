@@ -100,9 +100,7 @@ function App(props) {
         () => {
           dispatch(setStaticFont(true));
         },
-        () => {
-          console.log("Static font did not load");
-        }
+        () => {}
       );
     }
     fonts && dispatch(setFont(randomFont()));
@@ -241,10 +239,12 @@ function App(props) {
             rel="stylesheet"
           />
         ) : (
-          <link
-            href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
-            rel="stylesheet"
-          />
+          fonts && (
+            <link
+              href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
+              rel="stylesheet"
+            />
+          )
         )}
       </Helmet>
       <FontPicker />
