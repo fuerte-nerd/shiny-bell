@@ -40,6 +40,20 @@ const Backgrounds = ({ dispatch, backgrounds }) => {
                 page: options[currentIndexPage - 1],
               })
             );
+      case "page-forward":
+        currentIndexPage === options.length - 1
+          ? dispatch(
+              setBackgrounds({
+                ...backgrounds,
+                page: options[0],
+              })
+            )
+          : dispatch(
+              setBackgrounds({
+                ...backgrounds,
+                page: options[currentIndexPage + 1],
+              })
+            );
     }
   };
 
@@ -51,7 +65,12 @@ const Backgrounds = ({ dispatch, backgrounds }) => {
           <IconButton size="small" id="page-back" onClick={handleClick}>
             <ChevronLeft />
           </IconButton>
-          <IconButton size="small">
+          <IconButton
+            size="small"
+            edge="end"
+            id="page-forward"
+            onClick={handleClick}
+          >
             <ChevronRight />
           </IconButton>
         </ListItemSecondaryAction>
