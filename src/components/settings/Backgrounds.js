@@ -27,7 +27,7 @@ const Backgrounds = ({ dispatch, backgrounds }) => {
 
     switch (e.currentTarget.id) {
       case "page-back":
-        currentIndexPage === 0
+        return currentIndexPage === 0
           ? dispatch(
               setBackgrounds({
                 ...backgrounds,
@@ -41,7 +41,7 @@ const Backgrounds = ({ dispatch, backgrounds }) => {
               })
             );
       case "page-forward":
-        currentIndexPage === options.length - 1
+        return currentIndexPage === options.length - 1
           ? dispatch(
               setBackgrounds({
                 ...backgrounds,
@@ -54,6 +54,8 @@ const Backgrounds = ({ dispatch, backgrounds }) => {
                 page: options[currentIndexPage + 1],
               })
             );
+      default:
+        return;
     }
   };
 
