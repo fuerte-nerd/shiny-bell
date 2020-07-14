@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Divider, Typography, Box } from "@material-ui/core";
-import { setPrimaryColorName } from "../state/actions";
+import { setPrimaryColorName, setSecondaryColorName } from "../state/actions";
 
 const ParagraphPreview = ({
   dispatch,
@@ -18,9 +18,18 @@ const ParagraphPreview = ({
     axios
       .get(`https://api.color.pizza/v1/${primary.substr(1)}`)
       .then((response) => {
-        setPrimaryColorName(response.data.colors[0].name);
+        dispatch(setPrimaryColorName(response.data.colors[0].name));
       });
   }, [primary]);
+
+  useEffect(() => {
+    axios
+      .get(`https://api.color.pizza/v1/${secondary.substr(1)}`)
+      .then((response) => {
+        dispatch(setSecondaryColorName(response.data.colors[0].name));
+      });
+  }, [secondary]);
+
   return (
     <>
       <Box my={4}>
