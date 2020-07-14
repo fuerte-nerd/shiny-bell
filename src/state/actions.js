@@ -22,7 +22,13 @@ import {
   SET_FONTPICKER,
   SET_RANDOMFONTSELECT,
   SET_REVERT_FONT,
+  SET_RESPONSIVE_TEXT,
 } from "./types";
+
+export const setResponsiveText = (data) => ({
+  type: SET_RESPONSIVE_TEXT,
+  payload: data,
+});
 
 export const setRevertFont = (data) => ({
   type: SET_REVERT_FONT,

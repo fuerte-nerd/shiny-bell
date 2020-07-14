@@ -29,6 +29,7 @@ const initialState = {
   font: "",
   headerFont: "",
   fontSize: 14,
+  responsiveText: true,
   twoFonts: false,
   randomFontSelect: true,
   primary: "rgb(0,0,0)",
