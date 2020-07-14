@@ -5,7 +5,7 @@ export default () => {
 
   const tab = `  `;
 
-  let code = ``;
+  let code = `// theme.js\n\n`;
 
   // imports
   code += `import { createMuiTheme`;
