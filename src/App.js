@@ -10,8 +10,11 @@ import {
   CssBaseline,
   createMuiTheme,
   Box,
+  Fab,
   responsiveFontSizes,
 } from "@material-ui/core";
+
+import { Refresh } from "@material-ui/icons";
 
 import Menu from "./components/Menu";
 import FontLoadDialog from "./components/FontLoadDialog";
@@ -270,6 +273,12 @@ function App(props) {
           <Buttons />
         </Container>
       </Box>
+      <Fab
+        style={{ position: "fixed", bottom: "1.5rem", right: "1.5rem" }}
+        color="secondary"
+      >
+        <Refresh />
+      </Fab>
     </ThemeProvider>
   );
 }
