@@ -23,7 +23,13 @@ import {
   SET_RANDOMFONTSELECT,
   SET_REVERT_FONT,
   SET_RESPONSIVE_TEXT,
+  SET_BACKGROUNDS,
 } from "./types";
+
+export const setBackgrounds = (data) => ({
+  type: SET_BACKGROUNDS,
+  payload: data,
+});
 
 export const setResponsiveText = (data) => ({
   type: SET_RESPONSIVE_TEXT,

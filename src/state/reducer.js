@@ -1,6 +1,7 @@
 import {
   SET_STATICFONT,
   SET_RESPONSIVE_TEXT,
+  SET_BACKGROUNDS,
   SET_ROUNDING,
   SET_SPACING,
   SET_FONT,
@@ -57,6 +58,10 @@ const initialState = {
     headerFont: false,
     palette: false,
   },
+  backgrounds: {
+    page: "default",
+    box: "none",
+  },
   undo: [
     {
       font: "",
@@ -70,6 +75,11 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case SET_BACKGROUNDS:
+      return {
+        ...state,
+        backgrounds: payload,
+      };
     case SET_RESPONSIVE_TEXT:
       return {
         ...state,
