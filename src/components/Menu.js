@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { SettingsBrightness, Settings, Code } from "@material-ui/icons";
 
-const Menu = ({ dispatch, mode, locked, twoFonts }) => {
+const Menu = ({ dispatch, mode }) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {

@@ -48,23 +48,23 @@ const ThemeCode = ({ dispatch, themeCode, font, twoFonts, headerFont }) => {
       <DialogContent dividers>
         <DialogContentText>
           Here is the code you'll need to use the current theme in your project!
-          <SyntaxHighlighter
-            language="javascript"
-            style={tomorrow}
-            wrapLines
-            lineProps={{ style: { whiteSpace: "pre-wrap" } }}
-          >
-            {codeExporter()}
-          </SyntaxHighlighter>
-          <SyntaxHighlighter
-            language="javascript"
-            style={tomorrow}
-            wrapLines
-            lineProps={{ style: { whiteSpace: "pre-wrap" } }}
-          >
-            {helmetCodeString()}
-          </SyntaxHighlighter>
         </DialogContentText>
+        <SyntaxHighlighter
+          language="javascript"
+          style={tomorrow}
+          wrapLines
+          lineProps={{ style: { whiteSpace: "pre-wrap" } }}
+        >
+          {codeExporter()}
+        </SyntaxHighlighter>
+        <SyntaxHighlighter
+          language="javascript"
+          style={tomorrow}
+          wrapLines
+          lineProps={{ style: { whiteSpace: "pre-wrap" } }}
+        >
+          {helmetCodeString()}
+        </SyntaxHighlighter>
       </DialogContent>
       <DialogActions>
         <Button style={{ fontFamily: "Roboto" }} onClick={handleClose}>

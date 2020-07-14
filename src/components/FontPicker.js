@@ -170,9 +170,11 @@ const FontPicker = ({
           }}
         >
           {fonts &&
-            fonts.map((font) => {
+            fonts.map((font, ind) => {
               return fontPicker.categories.includes(font.category) ? (
-                <option value={font.id}>{font.themeName}</option>
+                <option key={ind} value={font.id}>
+                  {font.themeName}
+                </option>
               ) : null;
             })}
         </Select>

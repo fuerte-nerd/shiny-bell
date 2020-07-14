@@ -229,10 +229,12 @@ function App(props) {
     <ThemeProvider theme={responsiveText ? responsiveFontSizes(theme) : theme}>
       <CssBaseline />
       <Helmet>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-          rel="stylesheet"
-        />
+        {fonts && (
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+            rel="stylesheet"
+          />
+        )}
         {fonts && twoFonts ? (
           <link
             href={`https://fonts.googleapis.com/css2?family=${font.linkName}&family=${headerFont.linkName}&display=swap`}
