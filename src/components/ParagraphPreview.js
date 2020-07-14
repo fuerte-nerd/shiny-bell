@@ -2,14 +2,43 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Divider, Typography, Box } from "@material-ui/core";
-import tinycolor from "tinycolor2";
+import { setColorNames } from "../state/actions";
 
-const ParagraphPreview = ({ bodyFont, headerFont, twoFonts, primary }) => {
+const ParagraphPreview = ({
+  dispatch,
+  colorNames,
+  bodyFont,
+  headerFont,
+  twoFonts,
+  primary,
+  secondary,
+}) => {
   useEffect(() => {
     axios
       .get(`https://api.color.pizza/v1/${primary.substr(1)}`)
-      .then((response) => console.log(response));
+      .then((response) =>
+        dispatch(
+          setColorNames({
+            ...colorNames,
+            primary: response.data.colors[0].name,
+          })
+        )
+      );
   }, [primary]);
+
+  useEffect(() => {
+    axios
+      .get(`https://api.color.pizza/v1/${secondary.substr(1)}`)
+      .then((response) =>
+        dispatch(
+          setColorNames({
+            ...colorNames,
+            secondary: response.data.colors[0].name,
+          })
+        )
+      );
+  }, [secondary]);
+
   return (
     <>
       <Box my={4}>
@@ -19,7 +48,8 @@ const ParagraphPreview = ({ bodyFont, headerFont, twoFonts, primary }) => {
         <Typography paragraph>
           The {twoFonts ? "body font" : "font"} is {bodyFont.themeName}
           {twoFonts && ` and the header font is ${headerFont.themeName}`}. The
-          primary color is {tinycolor(primary).toName()}
+          primary color is {colorNames.primary} and the secondary color is{" "}
+          {colorNames.secondary}.
         </Typography>
       </Box>
       <Divider />
@@ -32,6 +62,8 @@ const mapStateToProps = (state) => ({
   headerFont: state.headerFont,
   twoFonts: state.twoFonts,
   primary: state.primary,
+  secondary: state.secondary,
+  colorNames: state.colorNames,
 });
 
 export default connect(mapStateToProps)(ParagraphPreview);
