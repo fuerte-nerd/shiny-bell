@@ -24,7 +24,13 @@ import {
   SET_REVERT_FONT,
   SET_RESPONSIVE_TEXT,
   SET_BACKGROUNDS,
+  SET_COLOR_NAMES,
 } from "./types";
+
+export const setColorNames = (data) => ({
+  type: SET_COLOR_NAMES,
+  payload: data,
+});
 
 export const setBackgrounds = (data) => ({
   type: SET_BACKGROUNDS,

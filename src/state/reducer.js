@@ -22,6 +22,7 @@ import {
   SET_COLORPICKER,
   SET_FONTPICKER,
   SET_RANDOMFONTSELECT,
+  SET_COLOR_NAMES,
 } from "./types";
 
 const initialState = {
@@ -34,10 +35,13 @@ const initialState = {
   responsiveText: true,
   twoFonts: false,
   randomFontSelect: true,
-  primary: "rgb(0,0,0)",
+  primary: "#000000",
   secondaryMode: "complement",
-  secondary: "rgb(255,255,255)",
-  bgColor: false,
+  secondary: "#ffffff",
+  colorNames: {
+    primary: "Black",
+    secondary: "White",
+  },
   mode: "light",
   spacing: 8,
   rounding: 4,
@@ -59,7 +63,7 @@ const initialState = {
     palette: false,
   },
   backgrounds: {
-    page: "default",
+    page: "none",
     box: "none",
   },
   undo: [
@@ -75,6 +79,11 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case SET_COLOR_NAMES:
+      return {
+        ...state,
+        colorNames: payload,
+      };
     case SET_BACKGROUNDS:
       return {
         ...state,
