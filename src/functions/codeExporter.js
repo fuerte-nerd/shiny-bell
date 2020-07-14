@@ -12,7 +12,15 @@ export default () => {
     code += `, responsiveFontSizes`;
   }
 
-  code += ` }`;
+  code += ` } from "@material-ui/core"\n\n`;
+
+  code += `export default `;
+
+  if (state.responsiveText) {
+    code += `responsiveFontSizes(theme)`;
+  } else {
+    code += `theme`;
+  }
 
   return code;
 };
