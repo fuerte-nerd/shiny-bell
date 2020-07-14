@@ -28,14 +28,6 @@ const Menu = ({ dispatch, mode, locked, twoFonts }) => {
         return mode === "dark"
           ? dispatch(setMode("light"))
           : dispatch(setMode("dark"));
-      case "palette":
-        return !locked.palette && dispatch(setPrimary(randomColor()));
-      case "font":
-        if (!locked.bodyFont || !locked.headerFont) {
-          dispatch(setRandomFontSelect(true));
-          return dispatch(setFontLoading(true));
-        }
-        return;
       case "code":
         return dispatch(setThemeCode(true));
       default:
