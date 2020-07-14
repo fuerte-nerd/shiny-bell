@@ -20,7 +20,7 @@ import {
   Checkbox,
   Button,
 } from "@material-ui/core";
-import { Alert, AlertTitle } from "@material-ui/lab";
+import { Alert } from "@material-ui/lab";
 
 const FontPicker = ({
   dispatch,
@@ -73,6 +73,7 @@ const FontPicker = ({
     if (fontPicker.open) {
       setCancelFont(fontPicker.section === "bodyFont" ? font : headerFont);
     }
+    //eslint-disable-next-line
   }, [fontPicker.open]);
   return (
     <Dialog open={fontPicker.open} onClose={handleClose}>
