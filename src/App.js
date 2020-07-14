@@ -11,6 +11,7 @@ import {
   createMuiTheme,
   Box,
   Fab,
+  Tooltip,
   responsiveFontSizes,
 } from "@material-ui/core";
 
@@ -275,22 +276,35 @@ function App(props) {
           <Buttons />
         </Container>
       </Box>
-      <Fab
-        style={{ position: "fixed", bottom: "1.5rem", right: "1.5rem" }}
-        color="secondary"
-        onClick={() => {
-          !locked.bodyFont &&
-            dispatch(setRandomFontSelect(true)) &&
-            dispatch(setFontLoading(true));
-          twoFonts &&
-            !locked.headerFont &&
-            dispatch(setRandomFontSelect(true)) &&
-            dispatch(setFontLoading(true));
-          !locked.palette && dispatch(setPrimary(randomColor()));
-        }}
+      <Tooltip
+        title={
+          twoFonts
+            ? locked.bodyFont && locked.headerFont && locked.palette
+              ? "Locked"
+              : "Refresh"
+            : locked.bodyFont && locked.palette
+            ? "Locked"
+            : "Refresh"
+        }
       >
-        <Refresh />
-      </Fab>
+        <Fab
+          style={{ position: "fixed", bottom: "1.5rem", right: "1.5rem" }}
+          color="secondary"
+          disabled={locked.bodyFont && locked.headerFont && locked.palette}
+          onClick={() => {
+            !locked.bodyFont &&
+              dispatch(setRandomFontSelect(true)) &&
+              dispatch(setFontLoading(true));
+            twoFonts &&
+              !locked.headerFont &&
+              dispatch(setRandomFontSelect(true)) &&
+              dispatch(setFontLoading(true));
+            !locked.palette && dispatch(setPrimary(randomColor()));
+          }}
+        >
+          <Refresh />
+        </Fab>
+      </Tooltip>
     </ThemeProvider>
   );
 }
