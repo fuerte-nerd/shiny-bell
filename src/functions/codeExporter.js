@@ -3,6 +3,8 @@ import store from "../state/store";
 export default () => {
   const state = store.getState();
 
+  const tab = `  `;
+
   let code = ``;
 
   // imports
@@ -15,14 +17,12 @@ export default () => {
   code += ` } from "@material-ui/core"\n\n`;
 
   // body
-  code += `const theme = createMuiTheme({
-  palette: {\n`;
+  code += `const theme = createMuiTheme({\n${tab}palette: {\n`;
 
   if (state.mode === "dark") {
-    code += `\t\ttype: "dark",\n`;
+    code += `${tab + tab}type: "dark",\n`;
   }
-  code += `}  
-})`;
+  code += `${tab}}\n})\n\n`;
 
   code += `export default `;
 
