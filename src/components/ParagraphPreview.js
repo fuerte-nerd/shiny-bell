@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 import { Divider, Typography, Box } from "@material-ui/core";
 import tinycolor from "tinycolor2";
 
 const ParagraphPreview = ({ bodyFont, headerFont, twoFonts, primary }) => {
+  useEffect(() => {
+    axios
+      .get(`https://api.color.pizza/v1/${primary.substr(1)}`)
+      .then((response) => console.log(response));
+  }, [primary]);
   return (
     <>
       <Box my={4}>
