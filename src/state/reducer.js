@@ -62,8 +62,8 @@ const initialState = {
     palette: false,
   },
   backgrounds: {
-    page: "none",
-    box: "none",
+    page: "transparent",
+    box: "transparent",
   },
   undo: [
     {
