@@ -38,10 +38,8 @@ const initialState = {
   primary: "#000000",
   secondaryMode: "complement",
   secondary: "#ffffff",
-  colorNames: {
-    primary: "Black",
-    secondary: "White",
-  },
+  primaryColorName: "Black",
+  secondaryColorName: "White",
   mode: "light",
   spacing: 8,
   rounding: 4,

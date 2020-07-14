@@ -24,11 +24,17 @@ import {
   SET_REVERT_FONT,
   SET_RESPONSIVE_TEXT,
   SET_BACKGROUNDS,
-  SET_COLOR_NAMES,
+  SET_PRIMARY_COLOR_NAME,
+  SET_SECONDARY_COLOR_NAME,
 } from "./types";
 
-export const setColorNames = (data) => ({
-  type: SET_COLOR_NAMES,
+export const setPrimaryColorName = (data) => ({
+  type: SET_PRIMARY_COLOR_NAME,
+  payload: data,
+});
+
+export const setSecondaryColorName = (data) => ({
+  type: SET_SECONDARY_COLOR_NAME,
   payload: data,
 });
 
