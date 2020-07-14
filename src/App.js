@@ -34,6 +34,7 @@ import {
   setHeaderFont,
   setColorPicker,
   setFontPicker,
+  setRandomFontSelect,
 } from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
@@ -63,6 +64,7 @@ function App(props) {
     randomFontSelect,
     responsiveText,
     backgrounds,
+    locked,
   } = props;
 
   useEffect(() => {
@@ -276,6 +278,15 @@ function App(props) {
       <Fab
         style={{ position: "fixed", bottom: "1.5rem", right: "1.5rem" }}
         color="secondary"
+        onClick={() => {
+          !locked.bodyFont &&
+            dispatch(setRandomFontSelect(true)) &&
+            dispatch(setFontLoading(true));
+          twoFonts &&
+            !locked.headerFont &&
+            dispatch(setRandomFontSelect(true)) &&
+            dispatch(setFontLoading(true));
+        }}
       >
         <Refresh />
       </Fab>
@@ -303,6 +314,7 @@ const mapStateToProps = (state) => ({
   randomFontSelect: state.randomFontSelect,
   responsiveText: state.responsiveText,
   backgrounds: state.backgrounds,
+  locked: state.locked,
 });
 
 export default connect(mapStateToProps)(App);
