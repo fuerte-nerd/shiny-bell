@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setLocked, setFontLoading } from "../../state/actions";
+import { setLocked } from "../../state/actions";
 import Setting from "../Setting";
 import { ListItem, ListItemText, Icon } from "@material-ui/core";
 import { Lock, LockOpen } from "@material-ui/icons";
 
-const Locks = ({ dispatch, locked, twoFonts, font, headerFont, primary }) => {
+const Locks = ({ dispatch, locked, twoFonts, primary }) => {
   const handleChange = (e) => {
     const { id } = e.currentTarget;
     switch (id) {

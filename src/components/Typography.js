@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Box, Typography, Divider } from "@material-ui/core";
+import { Box, Typography, Divider } from "@material-ui/core";
 
 const TypographySection = () => {
   return (

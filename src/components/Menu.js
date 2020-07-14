@@ -1,22 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  setMode,
-  setPrimary,
-  setSettings,
-  setThemeCode,
-  setFontLoading,
-  setRandomFontSelect,
-} from "../state/actions";
+import { setMode, setSettings, setThemeCode } from "../state/actions";
 import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
-import {
-  SettingsBrightness,
-  Palette,
-  TextFields,
-  Settings,
-  Code,
-} from "@material-ui/icons";
-import randomColor from "../functions/randomColor";
+import { SettingsBrightness, Settings, Code } from "@material-ui/icons";
 
 const Menu = ({ dispatch, mode, locked, twoFonts }) => {
   const handleClick = (e) => {

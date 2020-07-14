@@ -21,6 +21,7 @@ const ParagraphPreview = ({
       .then((response) => {
         dispatch(setPrimaryColorName(response.data.colors[0].name));
       });
+    //eslint-disable-next-line
   }, [primary]);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const ParagraphPreview = ({
       .then((response) => {
         dispatch(setSecondaryColorName(response.data.colors[0].name));
       });
+    //eslint-disable-next-line
   }, [secondary]);
 
   return (

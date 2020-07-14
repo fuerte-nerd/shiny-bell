@@ -1,13 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setSettings } from "../state/actions";
-import {
-  Drawer,
-  ListSubheader,
-  List,
-  ListItem,
-  ListItemText,
-} from "@material-ui/core";
+import { Drawer, List } from "@material-ui/core";
 
 import Locks from "./settings/Locks";
 import Fonts from "./settings/Fonts";
