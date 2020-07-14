@@ -34,7 +34,7 @@ const ParagraphPreview = ({
   return (
     <>
       <Box
-        my={4}
+        mb={2}
         bgcolor={backgrounds.box}
         p={backgrounds.box !== "none" ? 2 : 0}
       >
