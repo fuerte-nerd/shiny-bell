@@ -14,6 +14,16 @@ export default () => {
 
   code += ` } from "@material-ui/core"\n\n`;
 
+  // body
+  code += `const theme = createMuiTheme({
+  palette: {\n`;
+
+  if (state.mode === "dark") {
+    code += `\t\ttype: "dark",\n`;
+  }
+  code += `}  
+})`;
+
   code += `export default `;
 
   if (state.responsiveText) {
