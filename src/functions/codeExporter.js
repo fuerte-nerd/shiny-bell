@@ -26,7 +26,10 @@ export default () => {
   code += `${tab + tab}primary: { main: "${state.primary}" },\n`;
   code += `${tab + tab}secondary: { main: "${state.secondary}" }\n`;
 
+  // closing palette
   code += `${tab}},\n`;
+  //
+
   // typography
 
   code += `${tab}typography: {\n`;
@@ -63,10 +66,19 @@ export default () => {
       state.font.themeName
     }" },\n`;
     code += `${tab + tab}caption: { fontFamily: "${state.font.themeName}" },\n`;
+  } else {
+    code += `${tab + tab}fontFamily: "${state.font.themeName}"\n`;
   }
 
+  // closing typography
   code += `${tab}},\n`;
+  //
 
+  // spacing
+
+  if (state.spacing !== 8) {
+    code += `${tab}spacing: ${state.spacing},\n`;
+  }
   code += `})\n\n`;
 
   code += `export default `;
