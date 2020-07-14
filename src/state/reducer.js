@@ -1,5 +1,6 @@
 import {
   SET_STATICFONT,
+  SET_RESPONSIVE_TEXT,
   SET_ROUNDING,
   SET_SPACING,
   SET_FONT,
@@ -69,6 +70,11 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case SET_RESPONSIVE_TEXT:
+      return {
+        ...state,
+        responsiveText: payload,
+      };
     case SET_RANDOMFONTSELECT:
       return {
         ...state,
