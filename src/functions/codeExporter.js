@@ -70,6 +70,9 @@ export default () => {
     code += `${tab + tab}fontFamily: "${state.font.themeName}"\n`;
   }
 
+  if (state.fontSize !== 14) {
+    code += `${tab + tab}fontSize: ${state.fontSize},\n`;
+  }
   // closing typography
   code += `${tab}},\n`;
   //
@@ -92,7 +95,9 @@ export default () => {
   if (state.buttonTextTransform !== "uppercase") {
     code += `${tab}overrides: {\n${
       tab + tab
-    }MuiButton: { root: { textTransform: "${state.buttonTextTransform}" }}}\n`;
+    }MuiButton: { root: { textTransform: "${
+      state.buttonTextTransform
+    }" } }\n${tab}}\n`;
   }
   //end overrides
   code += `})\n\n`;
