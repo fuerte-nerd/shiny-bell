@@ -4,7 +4,7 @@ import { Button, Box, Grid } from "@material-ui/core";
 const Buttons = () => {
   return (
     <Box align="center">
-      <Grid container justify="center" spacing={1} xs={12}>
+      <Grid container justify="center" spacing={1}>
         <Grid item>
           <Button variant="outlined">Default</Button>
         </Grid>
@@ -32,7 +32,7 @@ const Buttons = () => {
           </Button>
         </Grid>
       </Grid>
-      <Grid container justify="center" spacing={1} xs={12}>
+      <Grid container justify="center" spacing={1}>
         <Grid item>
           <Button size="large" variant="outlined">
             Default
