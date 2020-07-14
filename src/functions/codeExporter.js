@@ -79,6 +79,22 @@ export default () => {
   if (state.spacing !== 8) {
     code += `${tab}spacing: ${state.spacing},\n`;
   }
+  // end of spacing
+
+  // rounding
+
+  if (state.rounding !== 4) {
+    code += `${tab}shape: { borderRadius: ${state.rounding} },\n`;
+  }
+  //end of rounding
+
+  //start overrides
+  if (state.buttonTextTransform !== "uppercase") {
+    code += `${tab}overrides: {\n${
+      tab + tab
+    }MuiButton: { root: { textTransform: "${state.buttonTextTransform}" }}}\n`;
+  }
+  //end overrides
   code += `})\n\n`;
 
   code += `export default `;
