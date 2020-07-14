@@ -15,20 +15,7 @@ import codeExporter from "../functions/codeExporter";
 
 import AppTypography from "./AppTypography";
 
-const ThemeCode = ({
-  dispatch,
-  themeCode,
-  font,
-  mode,
-  primary,
-  secondary,
-  spacing,
-  twoFonts,
-  headerFont,
-  buttonTextTransform,
-  rounding,
-  fontSize,
-}) => {
+const ThemeCode = ({ dispatch, themeCode, font, twoFonts, headerFont }) => {
   const handleClose = () => {
     dispatch(setThemeCode(false));
   };
@@ -91,15 +78,8 @@ const ThemeCode = ({
 const mapStateToProps = (state) => ({
   themeCode: state.themeCode,
   font: state.font,
-  primary: state.primary,
-  secondary: state.secondary,
-  mode: state.mode,
-  spacing: state.spacing,
   twoFonts: state.twoFonts,
   headerFont: state.headerFont,
-  buttonTextTransform: state.buttonTextTransform,
-  rounding: state.rounding,
-  fontSize: state.fontSize,
 });
 
 export default connect(mapStateToProps)(ThemeCode);

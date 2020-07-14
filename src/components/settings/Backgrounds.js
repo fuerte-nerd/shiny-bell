@@ -12,7 +12,7 @@ import { setBackgrounds } from "../../state/actions";
 
 const Backgrounds = ({ dispatch, backgrounds }) => {
   const options = [
-    "none",
+    "transparent",
     "primary.light",
     "primary.main",
     "primary.dark",
