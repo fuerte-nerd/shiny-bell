@@ -19,6 +19,7 @@ import ThemeCode from "./components/ThemeCode";
 import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
+import ParagraphPreview from "./components/ParagraphPreview";
 
 import {
   setFontLoading,
@@ -264,6 +265,7 @@ function App(props) {
         <Menu />
         <Toolbar />
         <Container>
+          <ParagraphPreview />
           <TypographySection />
           <Buttons />
         </Container>
