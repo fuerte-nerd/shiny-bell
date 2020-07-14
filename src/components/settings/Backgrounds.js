@@ -20,21 +20,25 @@ const Backgrounds = ({ dispatch, backgrounds }) => {
     switch (e.currentTarget.id) {
       case "page-back":
         currentIndexPage === 0
-          ? setBackgrounds({
-              ...backgrounds,
-              page: options[options.length - 1],
-            })
-          : setBackgrounds({
-              ...backgrounds,
-              page: options[currentIndexPage - 1],
-            });
+          ? dispatch(
+              setBackgrounds({
+                ...backgrounds,
+                page: options[options.length - 1],
+              })
+            )
+          : dispatch(
+              setBackgrounds({
+                ...backgrounds,
+                page: options[currentIndexPage - 1],
+              })
+            );
     }
   };
 
   return (
     <Setting title="Backgrounds">
       <ListItem>
-        <ListItemText primary="Page" secondary={options[backgrounds.page]} />
+        <ListItemText primary="Page" secondary={backgrounds.page} />
         <ListItemSecondaryAction>
           <IconButton size="small" id="page-back" onClick={handleClick}>
             <ChevronLeft />
