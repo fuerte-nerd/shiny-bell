@@ -14,6 +14,7 @@ import Fonts from "./settings/Fonts";
 import Colors from "./settings/Colors";
 import Appearance from "./settings/Appearance";
 import Buttons from "./settings/Buttons";
+import Backgrounds from "./settings/Backgrounds";
 
 const Sidebar = ({ dispatch, settings }) => {
   const handleClose = () => {
@@ -33,6 +34,7 @@ const Sidebar = ({ dispatch, settings }) => {
         <Colors />
         <Appearance />
         <Buttons />
+        <Backgrounds />
       </List>
     </Drawer>
   );

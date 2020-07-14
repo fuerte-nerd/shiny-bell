@@ -8,14 +8,35 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
+import { setBackgrounds } from "../../state/actions";
 
-const Backgrounds = ({ dispatch }) => {
+const Backgrounds = ({ dispatch, backgrounds }) => {
+  const options = ["default", "primary.light"];
+
+  const handleClick = (e) => {
+    const currentIndexPage = options.indexOf(backgrounds.page);
+    const currentIndexBox = options.indexOf(backgrounds.box);
+
+    switch (e.currentTarget.id) {
+      case "page-back":
+        currentIndexPage === 0
+          ? setBackgrounds({
+              ...backgrounds,
+              page: options[options.length - 1],
+            })
+          : setBackgrounds({
+              ...backgrounds,
+              page: options[currentIndexPage - 1],
+            });
+    }
+  };
+
   return (
     <Setting title="Backgrounds">
       <ListItem>
-        <ListItemText primary="Page" secondary="" />
+        <ListItemText primary="Page" secondary={options[backgrounds.page]} />
         <ListItemSecondaryAction>
-          <IconButton size="small">
+          <IconButton size="small" id="page-back" onClick={handleClick}>
             <ChevronLeft />
           </IconButton>
           <IconButton size="small">
@@ -27,6 +48,8 @@ const Backgrounds = ({ dispatch }) => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  backgrounds: state.backgrounds,
+});
 
 export default connect(mapStateToProps)(Backgrounds);
