@@ -31,7 +31,6 @@ import {
   setHeaderFont,
   setColorPicker,
   setFontPicker,
-  setColorNames,
 } from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
@@ -51,7 +50,6 @@ function App(props) {
     secondaryMode,
     primary,
     secondary,
-    bgColor,
     staticFontLoaded,
     spacing,
     buttonTextTransform,
@@ -86,18 +84,6 @@ function App(props) {
 
   useEffect(() => {
     dispatch(setSecondary(getSecondaryColor(primary, secondaryMode)));
-    axios
-      .get(
-        `https://api.color.pizza/v1/${primary.substr(1)},${secondary.substr(1)}`
-      )
-      .then((response) =>
-        dispatch(
-          setColorNames({
-            primary: response.data.colors[0].name,
-            secondary: response.data.colors[1].name,
-          })
-        )
-      );
     //eslint-disable-next-line
   }, [primary, secondaryMode]);
 
@@ -292,7 +278,6 @@ const mapStateToProps = (state) => ({
   fonts: state.fonts,
   primary: state.primary,
   secondary: state.secondary,
-  bgColor: state.bgColor,
   mode: state.mode,
   fontLoading: state.fontLoading,
   secondaryMode: state.secondaryMode,

@@ -22,7 +22,8 @@ import {
   SET_COLORPICKER,
   SET_FONTPICKER,
   SET_RANDOMFONTSELECT,
-  SET_COLOR_NAMES,
+  SET_PRIMARY_COLOR_NAME,
+  SET_SECONDARY_COLOR_NAME,
 } from "./types";
 
 const initialState = {
@@ -77,10 +78,15 @@ export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case SET_COLOR_NAMES:
+    case SET_PRIMARY_COLOR_NAME:
       return {
         ...state,
-        colorNames: payload,
+        primaryColorName: payload,
+      };
+    case SET_SECONDARY_COLOR_NAME:
+      return {
+        ...state,
+        secondaryColorName: payload,
       };
     case SET_BACKGROUNDS:
       return {
