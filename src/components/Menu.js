@@ -1,7 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setMode, setSettings, setThemeCode } from "../state/actions";
-import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Tooltip,
+} from "@material-ui/core";
 import { SettingsBrightness, Settings, Code } from "@material-ui/icons";
 
 const Menu = ({ dispatch, mode, locked, twoFonts }) => {
@@ -25,20 +31,26 @@ const Menu = ({ dispatch, mode, locked, twoFonts }) => {
       <Toolbar>
         <Typography variant="h6">Site name</Typography>
         <div style={{ flexGrow: 1 }} />
-        <IconButton id="mode" onClick={handleClick} color="inherit">
-          <SettingsBrightness />
-        </IconButton>
-        <IconButton id="code" onClick={handleClick} color="inherit">
-          <Code />
-        </IconButton>
-        <IconButton
-          id="settings"
-          onClick={handleClick}
-          color="inherit"
-          edge="end"
-        >
-          <Settings />
-        </IconButton>
+        <Tooltip title="Toggle dark mode">
+          <IconButton id="mode" onClick={handleClick} color="inherit">
+            <SettingsBrightness />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Get the code!">
+          <IconButton id="code" onClick={handleClick} color="inherit">
+            <Code />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Open settings">
+          <IconButton
+            id="settings"
+            onClick={handleClick}
+            color="inherit"
+            edge="end"
+          >
+            <Settings />
+          </IconButton>
+        </Tooltip>
       </Toolbar>
     </AppBar>
   );
