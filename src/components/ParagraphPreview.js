@@ -13,6 +13,7 @@ const ParagraphPreview = ({
   secondary,
   primaryColorName,
   secondaryColorName,
+  backgrounds,
 }) => {
   useEffect(() => {
     axios
@@ -32,7 +33,11 @@ const ParagraphPreview = ({
 
   return (
     <>
-      <Box my={4}>
+      <Box
+        my={4}
+        bgcolor={backgrounds.box}
+        p={backgrounds.box !== "none" ? 2 : 0}
+      >
         <Typography variant="h1">
           Welcome to your new Material-UI theme!
         </Typography>
@@ -56,6 +61,7 @@ const mapStateToProps = (state) => ({
   secondary: state.secondary,
   primaryColorName: state.primaryColorName,
   secondaryColorName: state.secondaryColorName,
+  backgrounds: state.backgrounds,
 });
 
 export default connect(mapStateToProps)(ParagraphPreview);
