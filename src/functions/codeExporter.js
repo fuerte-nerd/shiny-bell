@@ -22,6 +22,10 @@ export default () => {
   if (state.mode === "dark") {
     code += `${tab + tab}type: "dark",\n`;
   }
+
+  code += `${tab + tab}primary: { main: "${state.primary}" },\n`;
+  code += `${tab + tab}secondary: { main: "${state.secondary}" }\n`;
+
   code += `${tab}}\n})\n\n`;
 
   code += `export default `;
