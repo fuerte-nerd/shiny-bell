@@ -9,8 +9,8 @@ const ParagraphPreview = ({ bodyFont, headerFont, twoFonts }) => {
         Welcome to your new Material-UI theme!
       </Typography>
       <Typography paragraph>
-        The {twoFonts ? "body font" : "font"} is {bodyFont}
-        {twoFonts && ` and the header font is ${headerFont}`}.
+        The {twoFonts ? "body font" : "font"} is {bodyFont.themeName}
+        {twoFonts && ` and the header font is ${headerFont.themeName}`}.
       </Typography>
     </Box>
   );
