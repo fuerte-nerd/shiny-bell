@@ -50,24 +50,6 @@ const Menu = ({ dispatch, mode, locked, twoFonts }) => {
         <IconButton id="mode" onClick={handleClick} color="inherit">
           <SettingsBrightness />
         </IconButton>
-        <IconButton
-          disabled={
-            twoFonts ? locked.bodyFont && locked.headerFont : locked.bodyFont
-          }
-          id="font"
-          onClick={handleClick}
-          color="inherit"
-        >
-          <TextFields />
-        </IconButton>
-        <IconButton
-          disabled={locked.palette}
-          id="palette"
-          onClick={handleClick}
-          color="inherit"
-        >
-          <Palette />
-        </IconButton>
         <IconButton id="code" onClick={handleClick} color="inherit">
           <Code />
         </IconButton>

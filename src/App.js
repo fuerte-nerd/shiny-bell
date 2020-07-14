@@ -286,6 +286,7 @@ function App(props) {
             !locked.headerFont &&
             dispatch(setRandomFontSelect(true)) &&
             dispatch(setFontLoading(true));
+          !locked.palette && dispatch(setPrimary(randomColor()));
         }}
       >
         <Refresh />
