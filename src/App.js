@@ -131,7 +131,7 @@ function App(props) {
                   0,
                   changeHistory.currentPosition + 1
                 ),
-                currentPosition: changeHistory.currentPosition - 1,
+                currentPosition: changeHistory.changes.length - 1,
               })
             );
             dispatch(setFont(randomFont()));
