@@ -80,9 +80,9 @@ function App(props) {
         `https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_APIKEY}`
       )
       .then(async (response) => {
-        const fonts = response.data.items.map((i, ind) => {
+        const fonts = response.data.items.map(async (i, ind) => {
           const link = i.family.replace(/ /g, "+");
-          axios
+          await axios
             .get(`https://fonts.googleapis.com/css2?family=${link}`)
             .then((res) => {
               console.log(res);
