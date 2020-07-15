@@ -8,7 +8,13 @@ import {
   IconButton,
   Tooltip,
 } from "@material-ui/core";
-import { SettingsBrightness, Settings, Code } from "@material-ui/icons";
+import {
+  Undo,
+  Redo,
+  SettingsBrightness,
+  Settings,
+  Code,
+} from "@material-ui/icons";
 
 const Menu = ({ dispatch, mode }) => {
   const handleClick = (e) => {
@@ -31,6 +37,16 @@ const Menu = ({ dispatch, mode }) => {
       <Toolbar>
         <Typography variant="h6">Site name</Typography>
         <div style={{ flexGrow: 1 }} />
+        <Tooltip title="Undo">
+          <IconButton color="inherit">
+            <Undo />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Redo">
+          <IconButton color="inherit">
+            <Redo />
+          </IconButton>
+        </Tooltip>
         <Tooltip title="Toggle dark mode">
           <IconButton id="mode" onClick={handleClick} color="inherit">
             <SettingsBrightness />
