@@ -36,6 +36,7 @@ import {
   setColorPicker,
   setFontPicker,
   setRandomFontSelect,
+  setChangeHistory,
 } from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
@@ -66,6 +67,7 @@ function App(props) {
     responsiveText,
     backgrounds,
     locked,
+    changeHistory,
   } = props;
 
   useEffect(() => {
@@ -147,6 +149,12 @@ function App(props) {
     }
     //eslint-disable-next-line
   }, [headerFont]);
+
+  useEffect(() => {
+    dispatch(
+      setChangeHistory([...changeHistory, { font, headerFont, primary }])
+    );
+  }, [font, headerFont, primary]);
 
   const theme = createMuiTheme({
     overrides: {
@@ -339,6 +347,7 @@ const mapStateToProps = (state) => ({
   responsiveText: state.responsiveText,
   backgrounds: state.backgrounds,
   locked: state.locked,
+  changeHistory: state.changeHistory,
 });
 
 export default connect(mapStateToProps)(App);
