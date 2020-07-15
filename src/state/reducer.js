@@ -66,7 +66,10 @@ const initialState = {
     page: "transparent",
     box: "transparent",
   },
-  changeHistory: [],
+  changeHistory: {
+    changes: [],
+    currentPosition: 0,
+  },
 };
 
 export default (state = initialState, action) => {
