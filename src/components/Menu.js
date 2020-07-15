@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setMode, setSettings, setThemeCode } from "../state/actions";
+import { setMode, setSettings, setThemeCode, setPrimary, setChangeHistory } from "../state/actions";
 import {
   AppBar,
   Toolbar,
@@ -16,7 +16,7 @@ import {
   Code,
 } from "@material-ui/icons";
 
-const Menu = ({ dispatch, mode }) => {
+const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
@@ -28,6 +28,21 @@ const Menu = ({ dispatch, mode }) => {
           : dispatch(setMode("dark"));
       case "code":
         return dispatch(setThemeCode(true));
+      case "undo":
+        const undoStateIndex = changeHistory.length - 2
+        const undo = undoState[undoStateIndex]
+        if(undo.font !== font){
+          dispatch(setFont(undo.font))
+        }
+        if(undo.headerFont !== headerFont){
+          dispatch(setHeaderFont(undo.headerFont))
+        }
+        if(undo.primary !== primary){
+          dispatch(setPrimary(undo.primary))
+        }
+        return dispatch(setChangeHistory(changeHistory.filter((i, ind)=>{
+          return ind < undoStateIndex ? i : null
+        }))
       default:
         return;
     }
@@ -43,7 +58,7 @@ const Menu = ({ dispatch, mode }) => {
           </IconButton>
         </Tooltip>
         <Tooltip title="Redo">
-          <IconButton color="inherit">
+          <IconButton color="inherit" id="undo" onClick={handleClick}>
             <Redo />
           </IconButton>
         </Tooltip>
@@ -76,6 +91,10 @@ const mapStateToProps = (state) => ({
   mode: state.mode,
   locked: state.locked,
   twoFonts: state.twoFonts,
+  changeHistory: state.changeHistory,
+  font: state.font,
+  headerFont: state.headerFont,
+  primary: state.primary
 });
 
 export default connect(mapStateToProps)(Menu);
