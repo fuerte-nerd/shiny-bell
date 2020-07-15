@@ -181,7 +181,7 @@ function App(props) {
           setTimeout(() => {
             const newArray = changeHistory.changes.slice(
               0,
-              changeHistory.currentPosition
+              changeHistory.currentPosition + 1
             );
             dispatch(
               setChangeHistory({
@@ -197,8 +197,8 @@ function App(props) {
   }, [font, headerFont, primary]);
 
   useEffect(() => {
-    console.log(state);
-  }, [state]);
+    console.log(changeHistory);
+  }, [changeHistory]);
 
   const theme = createMuiTheme({
     overrides: {
