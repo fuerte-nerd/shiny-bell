@@ -86,7 +86,8 @@ function App(props) {
             .get(`https://fonts.googleapis.com/css2?family=${link}`)
             .then((res) => {
               console.log(res);
-            });
+            })
+            .catch((err) => console.log(err));
           //return {
           //      id: ind,
           //    linkName: i.family.replace(/ /g, "+"),
