@@ -70,7 +70,6 @@ function App(props) {
     locked,
     changeHistory,
     undo,
-    state,
   } = props;
 
   useEffect(() => {
@@ -239,6 +238,7 @@ function App(props) {
         );
       }
     }
+    //eslint-disable-next-line
   }, [font, headerFont, primary]);
 
   useEffect(() => {
@@ -444,7 +444,6 @@ const mapStateToProps = (state) => ({
   locked: state.locked,
   changeHistory: state.changeHistory,
   undo: state.undo,
-  state,
 });
 
 export default connect(mapStateToProps)(App);
