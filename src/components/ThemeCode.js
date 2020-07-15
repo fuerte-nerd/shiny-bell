@@ -63,7 +63,7 @@ const ThemeCode = ({ dispatch, themeCode, font, twoFonts, headerFont }) => {
           wrapLines
           lineProps={{ style: { whiteSpace: "pre-wrap" } }}
         >
-          {helmetCodeString()}
+          {font && headerFont ? helmetCodeString() : ``}
         </SyntaxHighlighter>
       </DialogContent>
       <DialogActions>
