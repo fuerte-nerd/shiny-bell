@@ -50,13 +50,12 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
         if (undo.primary !== primary) {
           dispatch(setPrimary(undo.primary));
         }
-        dispatch(
+        return dispatch(
           setChangeHistory({
             ...changeHistory,
             currentPosition: changeHistory.currentPosition - 1,
           })
         );
-        return dispatch(setUndo(false));
       default:
         return;
     }

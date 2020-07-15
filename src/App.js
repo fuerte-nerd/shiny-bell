@@ -37,6 +37,7 @@ import {
   setFontPicker,
   setRandomFontSelect,
   setChangeHistory,
+  setUndo,
 } from "./state/actions";
 import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
@@ -160,7 +161,7 @@ function App(props) {
       if (timerId) {
         clearTimeout(timerId);
       }
-      setTimerId(
+      return setTimerId(
         setTimeout(() => {
           dispatch(
             setChangeHistory({
@@ -175,6 +176,7 @@ function App(props) {
         }, 1500)
       );
     }
+    dispatch(setUndo(false));
   }, [font, headerFont, primary]);
 
   useEffect(() => {
