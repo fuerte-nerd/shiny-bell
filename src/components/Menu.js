@@ -57,6 +57,8 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
           })
         );
         return dispatch(setUndo(false));
+      case "redo":
+
       default:
         return;
     }
@@ -77,7 +79,14 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
           </IconButton>
         </Tooltip>
         <Tooltip title="Redo">
-          <IconButton color="inherit" id="redo" onClick={handleClick}>
+          <IconButton
+            color="inherit"
+            disabled={
+              changeHistory.changes.length - 1 === changeHistory.currentPosition
+            }
+            id="redo"
+            onClick={handleClick}
+          >
             <Redo />
           </IconButton>
         </Tooltip>
