@@ -177,13 +177,28 @@ function App(props) {
           }, 1500)
         );
       } else {
+        return setTimerId(
+          setTimeout(() => {
+            const newArray = changeHistory.changes.slice(
+              0,
+              changeHistory.currentPosition
+            );
+            dispatch(
+              setChangeHistory({
+                ...changeHistory,
+                currentPosition: changeHistory.changes.length,
+                changes: [...newArray, { font, headerFont, primary }],
+              })
+            );
+          }, 1500)
+        );
       }
     }
   }, [font, headerFont, primary]);
 
   useEffect(() => {
-    console.log(undo);
-  }, [undo]);
+    console.log(state);
+  }, [state]);
 
   const theme = createMuiTheme({
     overrides: {
