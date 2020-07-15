@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   setMode,
@@ -65,12 +65,17 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
         <Typography variant="h6">Site name</Typography>
         <div style={{ flexGrow: 1 }} />
         <Tooltip title="Undo">
-          <IconButton color="inherit">
+          <IconButton
+            color="inherit"
+            id="undo"
+            disabled={changeHistory.length === 3}
+            onClick={handleClick}
+          >
             <Undo />
           </IconButton>
         </Tooltip>
         <Tooltip title="Redo">
-          <IconButton color="inherit" id="undo" onClick={handleClick}>
+          <IconButton color="inherit" id="redo" onClick={handleClick}>
             <Redo />
           </IconButton>
         </Tooltip>
