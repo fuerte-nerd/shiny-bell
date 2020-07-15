@@ -21,7 +21,7 @@ const ThemeCode = ({ dispatch, themeCode, font, twoFonts, headerFont }) => {
   };
 
   const helmetCodeString = () => {
-    return twoFonts
+    return twoFonts && font && headerFont
       ? `//react-helmet (to fetch Google Fonts)
 <Helmet>
   <link
@@ -55,7 +55,7 @@ const ThemeCode = ({ dispatch, themeCode, font, twoFonts, headerFont }) => {
           wrapLines
           lineProps={{ style: { whiteSpace: "pre-wrap" } }}
         >
-          {codeExporter()}
+          {font && headerFont ? codeExporter() : ``}
         </SyntaxHighlighter>
         <SyntaxHighlighter
           language="javascript"

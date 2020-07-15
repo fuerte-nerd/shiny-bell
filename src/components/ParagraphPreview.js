@@ -40,13 +40,17 @@ const ParagraphPreview = ({
         bgcolor={backgrounds.box}
         p={backgrounds.box !== "none" ? 2 : 0}
       >
-        <Typography variant="h1">Welcome to your new theme!</Typography>
-        <Typography paragraph>
-          The {twoFonts ? "body font" : "font"} is {bodyFont.themeName}
-          {twoFonts && ` and the header font is ${headerFont.themeName}`}. The
-          primary color is {primaryColorName} and the secondary color is{" "}
-          {secondaryColorName}.
-        </Typography>
+        {bodyFont && headerFont && (
+          <>
+            <Typography variant="h1">Welcome to your new theme!</Typography>
+            <Typography paragraph>
+              The {twoFonts ? "body font" : "font"} is {bodyFont.themeName}
+              {twoFonts && ` and the header font is ${headerFont.themeName}`}.
+              The primary color is {primaryColorName} and the secondary color is{" "}
+              {secondaryColorName}.
+            </Typography>
+          </>
+        )}
       </Box>
       <Divider />
     </>
