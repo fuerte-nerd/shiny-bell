@@ -79,14 +79,20 @@ function App(props) {
       .get(
         `https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_APIKEY}`
       )
-      .then((response) => {
-        const fonts = response.data.items.map((i, ind) => {
-          return {
-            id: ind,
-            linkName: i.family.replace(/ /g, "+"),
-            themeName: i.family,
-            category: i.category,
-          };
+      .then(async (response) => {
+        const fonts = await response.data.items.map((i, ind) => {
+          const googleFont = new FontFaceObserver(i.family);
+          googleFont.load().then(
+            () => {
+              return {
+                id: ind,
+                linkName: i.family.replace(/ /g, "+"),
+                themeName: i.family,
+                category: i.category,
+              };
+            },
+            () => {}
+          );
         });
         dispatch(setFonts(fonts));
       });
