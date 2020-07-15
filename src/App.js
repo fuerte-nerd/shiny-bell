@@ -81,25 +81,22 @@ function App(props) {
       )
       .then(async (response) => {
         const fonts = await response.data.items.filter(async (i, ind) => {
-          const link = i.family.replace(/ /g, "+");
-          await axios
-            .get(`https://fonts.googleapis.com/css2?family=${link}`)
-            .then((res) => {
-              console.log(res);
-              if (res.status === 200) {
-                return {
-                  id: ind,
-                  linkName: i.family.replace(/ /g, "+"),
-                  themeName: i.family,
-                  category: i.category,
-                };
-              } else {
-                return null;
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+          setFontTest(i.family.replace(/ /g, "+"));
+          const googleFont = new FontFaceObserver(i.family);
+          await googleFont.load().then(
+            () => {
+              console.log(`${i.family} is ok`);
+            },
+            () => {
+              console.log(`${i.family} stinks`);
+            }
+          );
+          // return {
+          //      id: ind,
+          //      linkName: i.family.replace(/ /g, "+"),
+          //       themeName: i.family,
+          //      category: i.category,
+          //    };
         });
         console.log(fonts);
         dispatch(setFonts(fonts));
@@ -290,13 +287,20 @@ function App(props) {
   }, [changeHistory]);
 
   const [theme, setTheme] = useState(null);
-
+  const [fontTest, setFontTest] = useState(null);
   return (
     <ThemeProvider
       theme={theme && responsiveText ? responsiveFontSizes(theme) : theme}
     >
       <CssBaseline />
       <Helmet>
+        {fontTest && (
+          <link
+            href={`https://fonts.googleapis.com/css2?family=${fontTest}&display=swap`}
+            rel="stylesheet"
+          />
+        )}
+
         {fonts && (
           <link
             href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
