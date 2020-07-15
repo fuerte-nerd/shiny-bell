@@ -129,7 +129,7 @@ function App(props) {
                 ...changeHistory,
                 changes: changeHistory.changes.slice(
                   0,
-                  changeHistory.currentPosition
+                  changeHistory.currentPosition + 1
                 ),
                 currentPosition: changeHistory.currentPosition - 1,
               })
