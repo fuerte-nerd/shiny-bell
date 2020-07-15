@@ -84,6 +84,7 @@ function App(props) {
           const googleFont = new FontFaceObserver(i.family);
           googleFont.load().then(
             () => {
+              console.log(`${i.family} is OK`);
               return {
                 id: ind,
                 linkName: i.family.replace(/ /g, "+"),
@@ -91,7 +92,9 @@ function App(props) {
                 category: i.category,
               };
             },
-            () => {}
+            () => {
+              console.log(`${i.family} sucks`);
+            }
           );
         });
         dispatch(setFonts(fonts));
