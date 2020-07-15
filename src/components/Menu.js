@@ -38,7 +38,7 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
       case "code":
         return dispatch(setThemeCode(true));
       case "undo":
-        const undoStateIndex = changeHistory.changes.length - 2;
+        const undoStateIndex = changeHistory.currentPosition - 1;
         const undo = changeHistory.changes[undoStateIndex];
         dispatch(setUndo(true));
         if (undo.font !== font) {
@@ -50,12 +50,13 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
         if (undo.primary !== primary) {
           dispatch(setPrimary(undo.primary));
         }
-        return dispatch(
+        dispatch(
           setChangeHistory({
             ...changeHistory,
             currentPosition: changeHistory.currentPosition - 1,
           })
         );
+        return dispatch(setUndo(false));
       default:
         return;
     }

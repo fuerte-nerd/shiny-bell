@@ -175,8 +175,6 @@ function App(props) {
           );
         }, 1500)
       );
-    } else {
-      dispatch(setUndo(false));
     }
   }, [font, headerFont, primary]);
 
