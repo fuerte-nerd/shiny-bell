@@ -122,9 +122,9 @@ function App(props) {
         () => {
           dispatch(setFontLoading(false));
         },
-        () => {
+        async () => {
           if (randomFontSelect) {
-            dispatch(
+            await dispatch(
               setChangeHistory({
                 ...changeHistory,
                 changes: changeHistory.changes.slice(
