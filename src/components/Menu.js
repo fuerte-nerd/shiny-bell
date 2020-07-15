@@ -38,8 +38,8 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
       case "code":
         return dispatch(setThemeCode(true));
       case "undo":
-        const undoStateIndex = changeHistory.length - 2;
-        const undo = changeHistory[undoStateIndex];
+        const undoStateIndex = changeHistory.changes.length - 2;
+        const undo = changeHistory.changes[undoStateIndex];
         dispatch(setUndo(true));
         if (undo.font !== font) {
           dispatch(setFont(undo.font));
@@ -50,12 +50,13 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
         if (undo.primary !== primary) {
           dispatch(setPrimary(undo.primary));
         }
-        return dispatch(
+        dispatch(
           setChangeHistory({
             ...changeHistory,
             currentPosition: changeHistory.currentPosition - 1,
           })
         );
+        return dispatch(setUndo(false));
       default:
         return;
     }
@@ -69,10 +70,7 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
           <IconButton
             color="inherit"
             id="undo"
-            disabled={
-              changeHistory.changes.length === 0 ||
-              changeHistory.currentPosition === changeHistory.changes.length
-            }
+            disabled={changeHistory.changes.length === 1}
             onClick={handleClick}
           >
             <Undo />
