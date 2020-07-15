@@ -127,7 +127,11 @@ function App(props) {
             dispatch(
               setChangeHistory({
                 ...changeHistory,
-                changes: changeHistory.changes.pop(),
+                changes: changeHistory.changes.split(
+                  0,
+                  changeHistory.currentPosition
+                ),
+                currentPosition: changeHistory.currentPosition - 1,
               })
             );
             dispatch(setFont(randomFont()));
