@@ -219,7 +219,7 @@ function App(props) {
                 ],
               })
             );
-          }, 1500)
+          }, 500)
         );
       } else {
         return setTimerId(
@@ -235,7 +235,7 @@ function App(props) {
                 changes: [...newArray, { font, headerFont, primary }],
               })
             );
-          }, 1500)
+          }, 500)
         );
       }
     }
