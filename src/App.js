@@ -269,41 +269,43 @@ function App(props) {
         style={{ transition: "all .25s" }}
         py={4}
       >
-        <Fab
-          style={{ position: "fixed", bottom: "1.5rem", right: "1.5rem" }}
-          color="secondary"
-          disabled={
-            twoFonts
-              ? locked.bodyFont && locked.headerFont && locked.palette
+        <Tooltip title="Refresh">
+          <Fab
+            style={{ position: "fixed", bottom: "1.5rem", right: "1.5rem" }}
+            color="secondary"
+            disabled={
+              twoFonts
+                ? locked.bodyFont && locked.headerFont && locked.palette
+                  ? true
+                  : false
+                : locked.bodyFont && locked.palette
                 ? true
                 : false
-              : locked.bodyFont && locked.palette
-              ? true
-              : false
-          }
-          onClick={() => {
-            !locked.bodyFont &&
-              dispatch(setRandomFontSelect(true)) &&
-              dispatch(setFontLoading(true));
-            twoFonts &&
-              !locked.headerFont &&
-              dispatch(setRandomFontSelect(true)) &&
-              dispatch(setFontLoading(true));
-            !locked.palette && dispatch(setPrimary(randomColor()));
-          }}
-        >
-          {twoFonts ? (
-            locked.bodyFont && locked.headerFont && locked.palette ? (
+            }
+            onClick={() => {
+              !locked.bodyFont &&
+                dispatch(setRandomFontSelect(true)) &&
+                dispatch(setFontLoading(true));
+              twoFonts &&
+                !locked.headerFont &&
+                dispatch(setRandomFontSelect(true)) &&
+                dispatch(setFontLoading(true));
+              !locked.palette && dispatch(setPrimary(randomColor()));
+            }}
+          >
+            {twoFonts ? (
+              locked.bodyFont && locked.headerFont && locked.palette ? (
+                <Lock />
+              ) : (
+                <Refresh />
+              )
+            ) : locked.bodyFont && locked.palette ? (
               <Lock />
             ) : (
               <Refresh />
-            )
-          ) : locked.bodyFont && locked.palette ? (
-            <Lock />
-          ) : (
-            <Refresh />
-          )}
-        </Fab>
+            )}
+          </Fab>
+        </Tooltip>
         <Menu />
         <Toolbar />
         <Container>
@@ -312,7 +314,6 @@ function App(props) {
           <Buttons />
         </Container>
       </Box>
-      <Tooltip title="Refresh"></Tooltip>
     </ThemeProvider>
   );
 }
