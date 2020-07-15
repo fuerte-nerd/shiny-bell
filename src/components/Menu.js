@@ -8,6 +8,7 @@ import {
   setFont,
   setHeaderFont,
   setChangeHistory,
+  setUndo,
 } from "../state/actions";
 import {
   AppBar,
@@ -39,6 +40,7 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
       case "undo":
         const undoStateIndex = changeHistory.length - 2;
         const undo = changeHistory[undoStateIndex];
+        dispatch(setUndo(true));
         if (undo.font !== font) {
           dispatch(setFont(undo.font));
         }
@@ -49,11 +51,10 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
           dispatch(setPrimary(undo.primary));
         }
         return dispatch(
-          setChangeHistory(
-            changeHistory.filter((i, ind) => {
-              return ind < undoStateIndex ? i : null;
-            })
-          )
+          setChangeHistory({
+            ...changeHistory,
+            currentPosition: changeHistory.currentPosition - 1,
+          })
         );
       default:
         return;
@@ -68,7 +69,10 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
           <IconButton
             color="inherit"
             id="undo"
-            disabled={changeHistory.length === 1}
+            disabled={
+              changeHistory.changes.length === 0 ||
+              changeHistory.currentPosition === changeHistory.changes.length
+            }
             onClick={handleClick}
           >
             <Undo />

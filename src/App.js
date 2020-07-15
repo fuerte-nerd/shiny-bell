@@ -163,7 +163,7 @@ function App(props) {
           dispatch(
             setChangeHistory({
               ...changeHistory,
-              currentPosition: changeHistory.changes.length - 1,
+              currentPosition: changeHistory.changes.length,
               changes: [
                 ...changeHistory.changes,
                 { font, headerFont, primary },
