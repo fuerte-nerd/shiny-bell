@@ -1,4 +1,5 @@
 import {
+  SET_CHANGE_HISTORY,
   SET_STATICFONT,
   SET_RESPONSIVE_TEXT,
   SET_BACKGROUNDS,
@@ -65,19 +66,18 @@ const initialState = {
     page: "transparent",
     box: "transparent",
   },
-  undo: [
-    {
-      font: "",
-      headerFont: "",
-      primary: "",
-    },
-  ],
+  changeHistory: [],
 };
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case SET_CHANGE_HISTORY:
+      return {
+        ...state,
+        changeHistory: payload,
+      };
     case SET_PRIMARY_COLOR_NAME:
       return {
         ...state,

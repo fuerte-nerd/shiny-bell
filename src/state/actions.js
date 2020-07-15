@@ -26,7 +26,13 @@ import {
   SET_BACKGROUNDS,
   SET_PRIMARY_COLOR_NAME,
   SET_SECONDARY_COLOR_NAME,
+  SET_CHANGE_HISTORY,
 } from "./types";
+
+export const setChangeHistory = (data) => ({
+  type: SET_CHANGE_HISTORY,
+  payload: data,
+});
 
 export const setPrimaryColorName = (data) => ({
   type: SET_PRIMARY_COLOR_NAME,
