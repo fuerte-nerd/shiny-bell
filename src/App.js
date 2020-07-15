@@ -127,7 +127,7 @@ function App(props) {
             dispatch(
               setChangeHistory({
                 ...changeHistory,
-                changes: changeHistory.changes.split(
+                changes: changeHistory.changes.slice(
                   0,
                   changeHistory.currentPosition
                 ),
