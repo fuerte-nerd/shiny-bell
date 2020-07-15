@@ -155,6 +155,7 @@ function App(props) {
 
   useEffect(() => {
     if (!undo) {
+      console.log("reached");
       if (timerId) {
         clearTimeout(timerId);
       }
