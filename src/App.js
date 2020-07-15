@@ -161,20 +161,23 @@ function App(props) {
       if (timerId) {
         clearTimeout(timerId);
       }
-      return setTimerId(
-        setTimeout(() => {
-          dispatch(
-            setChangeHistory({
-              ...changeHistory,
-              currentPosition: changeHistory.changes.length,
-              changes: [
-                ...changeHistory.changes,
-                { font, headerFont, primary },
-              ],
-            })
-          );
-        }, 1500)
-      );
+      if (changeHistory.currentPosition === changeHistory.changes.length - 1) {
+        return setTimerId(
+          setTimeout(() => {
+            dispatch(
+              setChangeHistory({
+                ...changeHistory,
+                currentPosition: changeHistory.changes.length,
+                changes: [
+                  ...changeHistory.changes,
+                  { font, headerFont, primary },
+                ],
+              })
+            );
+          }, 1500)
+        );
+      } else {
+      }
     }
   }, [font, headerFont, primary]);
 
