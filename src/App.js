@@ -80,24 +80,15 @@ function App(props) {
         `https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_APIKEY}`
       )
       .then(async (response) => {
-        const fonts = await response.data.items.filter(async (i, ind) => {
-          setFontTest(i.family.replace(/ /g, "+"));
-          const googleFont = new FontFaceObserver(i.family);
-          await googleFont.load().then(
-            () => {
-              console.log(`${i.family} is ok`);
-            },
-            () => {
-              console.log(`${i.family} stinks`);
-            }
-          );
-          // return {
-          //      id: ind,
-          //      linkName: i.family.replace(/ /g, "+"),
-          //       themeName: i.family,
-          //      category: i.category,
-          //    };
+        const fonts = await response.data.items.map(async (i, ind) => {
+          return {
+            id: ind,
+            linkName: i.family.replace(/ /g, "+"),
+            themeName: i.family,
+            category: i.category,
+          };
         });
+
         console.log(fonts);
         dispatch(setFonts(fonts));
       });
