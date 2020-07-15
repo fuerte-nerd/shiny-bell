@@ -136,6 +136,16 @@ function App(props) {
             );
             dispatch(setFont(randomFont()));
           } else {
+            await dispatch(
+              setChangeHistory({
+                ...changeHistory,
+                changes: changeHistory.changes.slice(
+                  0,
+                  changeHistory.currentPosition + 1
+                ),
+                currentPosition: changeHistory.changes.length - 1,
+              })
+            );
             dispatch(setFont(fontPicker.revertFont));
             dispatch(setFontPicker({ ...fontPicker, notFound: true }));
           }
@@ -152,10 +162,30 @@ function App(props) {
         () => {
           dispatch(setFontLoading(false));
         },
-        () => {
+        async () => {
           if (randomFontSelect) {
+            await dispatch(
+              setChangeHistory({
+                ...changeHistory,
+                changes: changeHistory.changes.slice(
+                  0,
+                  changeHistory.currentPosition + 1
+                ),
+                currentPosition: changeHistory.changes.length - 1,
+              })
+            );
             dispatch(setHeaderFont(randomFont()));
           } else {
+            await dispatch(
+              setChangeHistory({
+                ...changeHistory,
+                changes: changeHistory.changes.slice(
+                  0,
+                  changeHistory.currentPosition + 1
+                ),
+                currentPosition: changeHistory.changes.length - 1,
+              })
+            );
             dispatch(setHeaderFont(fontPicker.revertFont));
             dispatch(setFontPicker({ ...fontPicker, notFound: true }));
           }
