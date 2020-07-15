@@ -174,7 +174,9 @@ function App(props) {
                 currentPosition: changeHistory.changes.length - 1,
               })
             );
+            await dispatch(setUndo(true));
             dispatch(setHeaderFont(randomFont()));
+            await dispatch(setUndo(false));
           } else {
             await dispatch(
               setChangeHistory({
@@ -186,7 +188,9 @@ function App(props) {
                 currentPosition: changeHistory.changes.length - 1,
               })
             );
+            await dispatch(setUndo(true));
             dispatch(setHeaderFont(fontPicker.revertFont));
+            await dispatch(setUndo(false));
             dispatch(setFontPicker({ ...fontPicker, notFound: true }));
           }
         }
