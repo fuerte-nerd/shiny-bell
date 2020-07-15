@@ -279,6 +279,7 @@ function App(props) {
       </Box>
       <Tooltip title="Refresh">
         <Fab
+          tabindex="1"
           style={{ position: "fixed", bottom: "1.5rem", right: "1.5rem" }}
           color="secondary"
           disabled={
