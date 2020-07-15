@@ -70,7 +70,7 @@ const initialState = {
   undo: false,
   changeHistory: {
     changes: [],
-    currentPosition: 0,
+    currentPosition: -1,
   },
 };
 

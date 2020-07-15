@@ -157,7 +157,6 @@ function App(props) {
 
   useEffect(() => {
     if (!undo && fonts) {
-      console.log("reached");
       if (timerId) {
         clearTimeout(timerId);
       }
