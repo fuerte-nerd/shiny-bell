@@ -151,33 +151,35 @@ const FontPicker = ({
             label="Monospace"
           />
         </FormGroup>
-        <Select
-          fullWidth
-          native
-          value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
-          onChange={(e) => {
-            dispatch(setRandomFontSelect(false));
-            const revertFont =
-              fontPicker.section === "bodyFont" ? font : headerFont;
-            dispatch(
-              setFontPicker({
-                ...fontPicker,
-                selection: e.currentTarget.value,
-                revertFont,
-              })
-            );
-            dispatch(setFontLoading(true));
-          }}
-        >
-          {fonts &&
-            fonts.map((font, ind) => {
-              return fontPicker.categories.includes(font.category) ? (
-                <option key={ind} value={font.id}>
-                  {font.themeName}
-                </option>
-              ) : null;
-            })}
-        </Select>
+        {font && headerFont && (
+          <Select
+            fullWidth
+            native
+            value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
+            onChange={(e) => {
+              dispatch(setRandomFontSelect(false));
+              const revertFont =
+                fontPicker.section === "bodyFont" ? font : headerFont;
+              dispatch(
+                setFontPicker({
+                  ...fontPicker,
+                  selection: e.currentTarget.value,
+                  revertFont,
+                })
+              );
+              dispatch(setFontLoading(true));
+            }}
+          >
+            {fonts &&
+              fonts.map((font, ind) => {
+                return fontPicker.categories.includes(font.category) ? (
+                  <option key={ind} value={font.id}>
+                    {font.themeName}
+                  </option>
+                ) : null;
+              })}
+          </Select>
+        )}
       </DialogContent>
       <DialogActions>
         <Button

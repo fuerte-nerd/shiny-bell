@@ -196,7 +196,7 @@ function App(props) {
   }, [fonts]);
 
   useEffect(() => {
-    if (fonts && typeof font.themeName !== "undefined") {
+    if (fonts && font) {
       const newFont = new FontFaceObserver(font.themeName);
       newFont.load().then(
         () => {
@@ -216,7 +216,7 @@ function App(props) {
   }, [font]);
 
   useEffect(() => {
-    if (fonts && typeof headerFont.themeName !== "undefined" && twoFonts) {
+    if (fonts && headerFont && twoFonts) {
       const newFont = new FontFaceObserver(headerFont.themeName);
       newFont.load().then(
         () => {
