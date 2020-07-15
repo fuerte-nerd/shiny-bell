@@ -261,6 +261,7 @@ function App(props) {
       </Dialog>
       <Sidebar />
       <FontLoadDialog />
+      <ThemeCode />
       <Box
         minHeight="100vh"
         maxWidth="100vw"
@@ -268,18 +269,7 @@ function App(props) {
         style={{ transition: "all .25s" }}
         py={4}
       >
-        <ThemeCode />
-        <Menu />
-        <Toolbar />
-        <Container>
-          <ParagraphPreview />
-          <TypographySection />
-          <Buttons />
-        </Container>
-      </Box>
-      <Tooltip title="Refresh">
         <Fab
-          tabIndex="1"
           style={{ position: "fixed", bottom: "1.5rem", right: "1.5rem" }}
           color="secondary"
           disabled={
@@ -314,7 +304,15 @@ function App(props) {
             <Refresh />
           )}
         </Fab>
-      </Tooltip>
+        <Menu />
+        <Toolbar />
+        <Container>
+          <ParagraphPreview />
+          <TypographySection />
+          <Buttons />
+        </Container>
+      </Box>
+      <Tooltip title="Refresh"></Tooltip>
     </ThemeProvider>
   );
 }
