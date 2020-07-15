@@ -68,7 +68,7 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
           <IconButton
             color="inherit"
             id="undo"
-            disabled={changeHistory.length === 3}
+            disabled={changeHistory.length === 0}
             onClick={handleClick}
           >
             <Undo />

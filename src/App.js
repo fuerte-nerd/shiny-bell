@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import axios from "axios";
@@ -150,9 +150,18 @@ function App(props) {
     //eslint-disable-next-line
   }, [headerFont]);
 
+  const [timerId, setTimerId] = useState(0);
+
   useEffect(() => {
-    dispatch(
-      setChangeHistory([...changeHistory, { font, headerFont, primary }])
+    if (timerId) {
+      clearTimeout(timerId);
+    }
+    setTimerId(
+      setTimeout(() => {
+        dispatch(
+          setChangeHistory([...changeHistory, { font, headerFont, primary }])
+        );
+      }, 1500)
     );
   }, [font, headerFont, primary]);
 
