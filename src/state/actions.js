@@ -27,7 +27,13 @@ import {
   SET_PRIMARY_COLOR_NAME,
   SET_SECONDARY_COLOR_NAME,
   SET_CHANGE_HISTORY,
+  SET_UNDO,
 } from "./types";
+
+export const setUndo = (data) => ({
+  type: SET_UNDO,
+  payload: data,
+});
 
 export const setChangeHistory = (data) => ({
   type: SET_CHANGE_HISTORY,

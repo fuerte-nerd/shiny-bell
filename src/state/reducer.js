@@ -66,6 +66,7 @@ const initialState = {
     page: "transparent",
     box: "transparent",
   },
+  undo: false,
   changeHistory: {
     changes: [],
     currentPosition: 0,
@@ -77,6 +78,11 @@ export default (state = initialState, action) => {
   console.log(state);
 
   switch (type) {
+    case SET_UNDO:
+      return {
+        ...state,
+        undo: payload,
+      };
     case SET_CHANGE_HISTORY:
       return {
         ...state,
