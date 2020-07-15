@@ -84,17 +84,21 @@ function App(props) {
           const link = i.family.replace(/ /g, "+");
           await axios
             .get(`https://fonts.googleapis.com/css2?family=${link}`)
-            .then(() => {
-              return {
-                id: ind,
-                linkName: i.family.replace(/ /g, "+"),
-                themeName: i.family,
-                category: i.category,
-              };
+            .then((res) => {
+              console.log(res);
+              if (res.status === 200) {
+                return {
+                  id: ind,
+                  linkName: i.family.replace(/ /g, "+"),
+                  themeName: i.family,
+                  category: i.category,
+                };
+              } else {
+                return null;
+              }
             })
             .catch((err) => {
               console.log(err);
-              return null;
             });
         });
         console.log(fonts);
