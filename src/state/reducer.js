@@ -25,6 +25,7 @@ import {
   SET_RANDOMFONTSELECT,
   SET_PRIMARY_COLOR_NAME,
   SET_SECONDARY_COLOR_NAME,
+  SET_UNDO,
 } from "./types";
 
 const initialState = {

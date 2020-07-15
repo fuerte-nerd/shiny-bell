@@ -153,17 +153,19 @@ function App(props) {
   const [timerId, setTimerId] = useState(0);
 
   useEffect(() => {
+    if(!undo){
+    
     if (timerId) {
       clearTimeout(timerId);
     }
     setTimerId(
       setTimeout(() => {
         dispatch(
-          setChangeHistory([...changeHistory, { font, headerFont, primary }])
+          setChangeHistory(...changeHistory, changes: [...changeHistory.changes, { font, headerFont, primary }])
         );
       }, 1500)
     );
-  }, [font, headerFont, primary]);
+  }}, [font, headerFont, primary]);
 
   const theme = createMuiTheme({
     overrides: {
