@@ -26,7 +26,7 @@ import {
 } from "@material-ui/icons";
 
 const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "settings":
@@ -40,7 +40,7 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
       case "undo":
         const undoStateIndex = changeHistory.currentPosition - 1;
         const undo = changeHistory.changes[undoStateIndex];
-        dispatch(setUndo(true));
+        await dispatch(setUndo(true));
         if (undo.font !== font) {
           dispatch(setFont(undo.font));
         }

@@ -179,8 +179,8 @@ function App(props) {
   }, [font, headerFont, primary]);
 
   useEffect(() => {
-    console.log(state);
-  }, [state]);
+    console.log(undo);
+  }, [undo]);
 
   const theme = createMuiTheme({
     overrides: {
