@@ -124,6 +124,12 @@ function App(props) {
         },
         () => {
           if (randomFontSelect) {
+            dispatch(
+              setChangeHistory({
+                ...changeHistory,
+                changes: changeHistory.changes.pop(),
+              })
+            );
             dispatch(setFont(randomFont()));
           } else {
             dispatch(setFont(fontPicker.revertFont));
