@@ -5,6 +5,8 @@ import {
   setSettings,
   setThemeCode,
   setPrimary,
+  setFont,
+  setHeaderFont,
   setChangeHistory,
 } from "../state/actions";
 import {
@@ -36,7 +38,7 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
         return dispatch(setThemeCode(true));
       case "undo":
         const undoStateIndex = changeHistory.length - 2;
-        const undo = undoState[undoStateIndex];
+        const undo = changeHistory[undoStateIndex];
         if (undo.font !== font) {
           dispatch(setFont(undo.font));
         }
