@@ -68,6 +68,7 @@ function App(props) {
     backgrounds,
     locked,
     changeHistory,
+    undo,
   } = props;
 
   useEffect(() => {
@@ -153,19 +154,26 @@ function App(props) {
   const [timerId, setTimerId] = useState(0);
 
   useEffect(() => {
-    if(!undo){
-    
-    if (timerId) {
-      clearTimeout(timerId);
+    if (!undo) {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+      setTimerId(
+        setTimeout(() => {
+          dispatch(
+            setChangeHistory({
+              ...changeHistory,
+              currentPosition: changeHistory.changes.length - 1,
+              changes: [
+                ...changeHistory.changes,
+                { font, headerFont, primary },
+              ],
+            })
+          );
+        }, 1500)
+      );
     }
-    setTimerId(
-      setTimeout(() => {
-        dispatch(
-          setChangeHistory(...changeHistory, changes: [...changeHistory.changes, { font, headerFont, primary }])
-        );
-      }, 1500)
-    );
-  }}, [font, headerFont, primary]);
+  }, [font, headerFont, primary]);
 
   const theme = createMuiTheme({
     overrides: {
@@ -359,6 +367,7 @@ const mapStateToProps = (state) => ({
   backgrounds: state.backgrounds,
   locked: state.locked,
   changeHistory: state.changeHistory,
+  undo: state.undo,
 });
 
 export default connect(mapStateToProps)(App);
