@@ -369,7 +369,12 @@ function App(props) {
       >
         <Tooltip title="Refresh">
           <Fab
-            style={{ position: "fixed", bottom: "1.5rem", right: "1.5rem" }}
+            style={{
+              position: "fixed",
+              bottom: "1.5rem",
+              right: "1.5rem",
+              zIndex: 5,
+            }}
             color="secondary"
             disabled={
               twoFonts

@@ -69,26 +69,31 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
         <Typography variant="h6">Site name</Typography>
         <div style={{ flexGrow: 1 }} />
         <Tooltip title="Undo">
-          <IconButton
-            color="inherit"
-            id="undo"
-            disabled={changeHistory.currentPosition === 0}
-            onClick={handleClick}
-          >
-            <Undo />
-          </IconButton>
+          <span>
+            <IconButton
+              color="inherit"
+              id="undo"
+              disabled={changeHistory.currentPosition === 0}
+              onClick={handleClick}
+            >
+              <Undo />
+            </IconButton>
+          </span>
         </Tooltip>
         <Tooltip title="Redo">
-          <IconButton
-            color="inherit"
-            disabled={
-              changeHistory.changes.length - 1 === changeHistory.currentPosition
-            }
-            id="redo"
-            onClick={handleClick}
-          >
-            <Redo />
-          </IconButton>
+          <span>
+            <IconButton
+              color="inherit"
+              disabled={
+                changeHistory.changes.length - 1 ===
+                changeHistory.currentPosition
+              }
+              id="redo"
+              onClick={handleClick}
+            >
+              <Redo />
+            </IconButton>
+          </span>
         </Tooltip>
         <Tooltip title="Toggle dark mode">
           <IconButton id="mode" onClick={handleClick} color="inherit">
