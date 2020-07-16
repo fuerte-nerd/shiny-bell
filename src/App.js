@@ -87,8 +87,6 @@ function App(props) {
             category: i.category,
           };
         });
-
-        console.log(fonts);
         dispatch(setFonts(fonts));
       });
     //eslint-disable-next-line
@@ -240,10 +238,6 @@ function App(props) {
     }
     //eslint-disable-next-line
   }, [font, headerFont, primary]);
-
-  useEffect(() => {
-    console.log(changeHistory);
-  }, [changeHistory]);
 
   const theme = createMuiTheme({
     overrides: {
