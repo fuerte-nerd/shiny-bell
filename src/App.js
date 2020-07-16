@@ -92,6 +92,7 @@ function App(props) {
   useEffect(() => {
     if (fonts && font) {
       if (isFontValid(font.themeName)) {
+        console.log("should be second");
         dispatch(setFontLoading(false));
       } else {
         const nextBit = async () => {
