@@ -30,6 +30,7 @@ import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
+import isFontValid from "./functions/isFontValid";
 
 function App(props) {
   const {
@@ -90,12 +91,10 @@ function App(props) {
 
   useEffect(() => {
     if (fonts && font) {
-      const newFont = new FontFaceObserver(font.themeName);
-      newFont.load().then(
-        () => {
-          dispatch(setFontLoading(false));
-        },
-        async () => {
+      if (isFontValid(font.themeName)) {
+        dispatch(setFontLoading(false));
+      } else {
+        const nextBit = async () => {
           if (randomFontSelect) {
             await dispatch(
               setChangeHistory({
@@ -124,8 +123,14 @@ function App(props) {
             await dispatch(setUndo(false));
             dispatch(setFontPicker({ ...fontPicker, notFound: true }));
           }
-        }
-      );
+        };
+        nextBit();
+      }
+      // const newFont = new FontFaceObserver(font.themeName);
+      // newFont.load().then(
+      //  () => {
+      //    dispatch(setFontLoading(false));
+      //  },
     }
     //eslint-disable-next-line
   }, [font]);
