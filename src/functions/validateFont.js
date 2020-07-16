@@ -34,9 +34,9 @@ export default (font, target) => {
       if (randomFontSelect) {
         switch (target) {
           case "body":
-            return store.dispatch(setFont(randomFont));
+            return store.dispatch(setFont(randomFont()));
           case "header":
-            return store.dispatch(setHeaderFont(randomFont));
+            return store.dispatch(setHeaderFont(randomFont()));
           default:
             return;
         }
