@@ -6,17 +6,14 @@ import {
   Container,
   Dialog,
   Toolbar,
-  ThemeProvider,
-  CssBaseline,
-  createMuiTheme,
   Box,
   Fab,
   Tooltip,
-  responsiveFontSizes,
 } from "@material-ui/core";
 
 import { Refresh, Lock } from "@material-ui/icons";
 
+import Layout from "./components/Layout";
 import Menu from "./components/Menu";
 import FontLoadDialog from "./components/FontLoadDialog";
 import ThemeCode from "./components/ThemeCode";
@@ -24,7 +21,6 @@ import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
 import ParagraphPreview from "./components/ParagraphPreview";
-import theme from "./components/theme";
 
 import {
   setFontLoading,
@@ -50,19 +46,13 @@ import FontPicker from "./components/FontPicker";
 function App(props) {
   const {
     dispatch,
-    mode,
     font,
     headerFont,
     twoFonts,
     fonts,
     secondaryMode,
     primary,
-    secondary,
     staticFontLoaded,
-    spacing,
-    buttonTextTransform,
-    rounding,
-    fontSize,
     colorPicker,
     fontPicker,
     randomFontSelect,
@@ -241,10 +231,7 @@ function App(props) {
   }, [font, headerFont, primary]);
 
   return (
-    <ThemeProvider
-      theme={theme && responsiveText ? responsiveFontSizes(theme) : theme}
-    >
-      <CssBaseline />
+    <Layout>
       <Helmet>
         {fonts && (
           <link
@@ -338,7 +325,7 @@ function App(props) {
           <Buttons />
         </Container>
       </Box>
-    </ThemeProvider>
+    </Layout>
   );
 }
 
