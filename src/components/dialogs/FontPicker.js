@@ -6,7 +6,7 @@ import {
   setHeaderFont,
   setRandomFontSelect,
   setFontLoading,
-} from "../state/actions";
+} from "../../state/actions";
 import {
   Dialog,
   DialogTitle,

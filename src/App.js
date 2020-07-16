@@ -6,6 +6,7 @@ import { Container, Dialog, Toolbar, Box } from "@material-ui/core";
 
 import Layout from "./components/Layout";
 import RefreshButton from "./components/RefreshButton";
+import Dialogs from "./components/Dialogs";
 import Menu from "./components/Menu";
 import FontLoadDialog from "./components/FontLoadDialog";
 import ThemeCode from "./components/ThemeCode";
@@ -32,7 +33,6 @@ import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
 import { SketchPicker } from "react-color";
-import FontPicker from "./components/FontPicker";
 
 function App(props) {
   const {
@@ -242,7 +242,7 @@ function App(props) {
           )
         )}
       </Helmet>
-      <FontPicker />
+      <Dialogs />
       <Dialog
         open={colorPicker}
         onClose={() => dispatch(setColorPicker(false))}
