@@ -15,6 +15,7 @@ const ColorPicker = ({ dispatch, colorPicker, primary }) => {
       <SketchPicker
         color={primary}
         onChange={(c) => dispatch(setPrimary(c.hex))}
+        style={{ fontFamily: "Roboto" }}
       />
     </Dialog>
   );

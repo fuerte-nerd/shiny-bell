@@ -8,7 +8,7 @@ import Layout from "./components/Layout";
 import RefreshButton from "./components/RefreshButton";
 import Dialogs from "./components/Dialogs";
 import Menu from "./components/Menu";
-import FontLoadDialog from "./components/FontLoadDialog";
+import FontLoadScreen from "./components/FontLoadScreen";
 import ThemeCode from "./components/ThemeCode";
 import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
@@ -243,19 +243,8 @@ function App(props) {
         )}
       </Helmet>
       <Dialogs />
-      <Dialog
-        open={colorPicker}
-        onClose={() => dispatch(setColorPicker(false))}
-        PaperProps={{ style: { backgroundColor: "transparent" } }}
-        BackdropProps={{ style: { backgroundColor: "transparent" } }}
-      >
-        <SketchPicker
-          color={primary}
-          onChange={(c) => dispatch(setPrimary(c.hex))}
-        />
-      </Dialog>
       <Sidebar />
-      <FontLoadDialog />
+      <FontLoadScreen />
       <ThemeCode />
       <Box
         minHeight="100vh"

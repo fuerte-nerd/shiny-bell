@@ -5,7 +5,7 @@ import { Dialog, Box, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
 import randomFont from "../functions/randomFont";
 
-const FontLoadDialog = ({
+const FontLoadScreen = ({
   dispatch,
   fonts,
   twoFonts,
@@ -76,4 +76,4 @@ const mapStateToProps = (state) => ({
   fontPicker: state.fontPicker,
 });
 
-export default connect(mapStateToProps)(FontLoadDialog);
+export default connect(mapStateToProps)(FontLoadScreen);
