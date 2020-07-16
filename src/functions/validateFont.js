@@ -44,12 +44,13 @@ export default (font, target) => {
         await store.dispatch(setUndo(true));
         switch (target) {
           case "body":
-            return store.dispatch(setFont(fontPicker.revertFont));
-
+            store.dispatch(setFont(fontPicker.revertFont));
+            break;
           case "header":
-            return store.dispatch(setHeaderFont(fontPicker.revertFont));
+            store.dispatch(setHeaderFont(fontPicker.revertFont));
+            break;
           default:
-            return;
+            break;
         }
         await store.dispatch(setUndo(false));
         store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
