@@ -56,7 +56,6 @@ function App(props) {
     colorPicker,
     fontPicker,
     randomFontSelect,
-    responsiveText,
     backgrounds,
     locked,
     changeHistory,
