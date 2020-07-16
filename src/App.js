@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Helmet } from "react-helmet";
 import axios from "axios";
 import { Container, Toolbar, Box } from "@material-ui/core";
 
 import Layout from "./components/Layout";
+import Head from "./components/Head";
 import RefreshButton from "./components/RefreshButton";
 import Dialogs from "./components/Dialogs";
 import Menu from "./components/Menu";
@@ -217,27 +217,7 @@ function App(props) {
 
   return (
     <Layout>
-      <Helmet>
-        {fonts && (
-          <link
-            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-            rel="stylesheet"
-          />
-        )}
-        {twoFonts && font && headerFont ? (
-          <link
-            href={`https://fonts.googleapis.com/css2?family=${font.linkName}&family=${headerFont.linkName}&display=swap`}
-            rel="stylesheet"
-          />
-        ) : (
-          font && (
-            <link
-              href={`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap`}
-              rel="stylesheet"
-            />
-          )
-        )}
-      </Helmet>
+      <Head />
       <FontLoadScreen />
       <Dialogs />
       <Sidebar />
