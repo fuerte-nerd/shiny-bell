@@ -2,16 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import axios from "axios";
-import {
-  Container,
-  Dialog,
-  Toolbar,
-  Box,
-  Fab,
-  Tooltip,
-} from "@material-ui/core";
-
-import { Refresh, Lock } from "@material-ui/icons";
+import { Container, Dialog, Toolbar, Box } from "@material-ui/core";
 
 import Layout from "./components/Layout";
 import RefreshButton from "./components/RefreshButton";
@@ -33,7 +24,6 @@ import {
   setHeaderFont,
   setColorPicker,
   setFontPicker,
-  setRandomFontSelect,
   setChangeHistory,
   setUndo,
 } from "./state/actions";
@@ -58,7 +48,6 @@ function App(props) {
     fontPicker,
     randomFontSelect,
     backgrounds,
-    locked,
     changeHistory,
     undo,
   } = props;
@@ -293,22 +282,15 @@ const mapStateToProps = (state) => ({
   fonts: state.fonts,
   primary: state.primary,
   secondary: state.secondary,
-  mode: state.mode,
   fontLoading: state.fontLoading,
   secondaryMode: state.secondaryMode,
   staticFontLoaded: state.staticFontLoaded,
-  spacing: state.spacing,
   headerFont: state.headerFont,
   twoFonts: state.twoFonts,
-  buttonTextTransform: state.buttonTextTransform,
-  rounding: state.rounding,
-  fontSize: state.fontSize,
   colorPicker: state.colorPicker,
   fontPicker: state.fontPicker,
   randomFontSelect: state.randomFontSelect,
-  responsiveText: state.responsiveText,
   backgrounds: state.backgrounds,
-  locked: state.locked,
   changeHistory: state.changeHistory,
   undo: state.undo,
 });
