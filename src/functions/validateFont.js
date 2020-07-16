@@ -6,10 +6,11 @@ import {
   setFont,
   setUndo,
   setFontPicker,
+  setHeaderFont,
 } from "../state/actions";
 import randomFont from "./randomFont";
 
-export default (font) => {
+export default (font, target) => {
   const state = store.getState();
 
   const { randomFontSelect, changeHistory, fontPicker } = state;
@@ -31,10 +32,25 @@ export default (font) => {
         })
       );
       if (randomFontSelect) {
-        store.dispatch(setFont(randomFont));
+        switch (target) {
+          case "body":
+            return store.dispatch(setFont(randomFont));
+          case "header":
+            return store.dispatch(setHeaderFont(randomFont));
+          default:
+            return;
+        }
       } else {
         await store.dispatch(setUndo(true));
-        store.dispatch(setFont(fontPicker.revertFont));
+        switch (target) {
+          case "body":
+            return store.dispatch(setFont(fontPicker.revertFont));
+
+          case "header":
+            return store.dispatch(setHeaderFont(fontPicker.revertFont));
+          default:
+            return;
+        }
         await store.dispatch(setUndo(false));
         store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
       }
