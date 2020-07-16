@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 import axios from "axios";
-import { Container, Dialog, Toolbar, Box } from "@material-ui/core";
+import { Container, Toolbar, Box } from "@material-ui/core";
 
 import Layout from "./components/Layout";
 import RefreshButton from "./components/RefreshButton";
 import Dialogs from "./components/Dialogs";
 import Menu from "./components/Menu";
 import FontLoadScreen from "./components/FontLoadScreen";
-import ThemeCode from "./components/ThemeCode";
 import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
@@ -23,7 +22,6 @@ import {
   setSecondary,
   setStaticFont,
   setHeaderFont,
-  setColorPicker,
   setFontPicker,
   setChangeHistory,
   setUndo,
@@ -32,7 +30,6 @@ import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
-import { SketchPicker } from "react-color";
 
 function App(props) {
   const {
@@ -44,7 +41,6 @@ function App(props) {
     secondaryMode,
     primary,
     staticFontLoaded,
-    colorPicker,
     fontPicker,
     randomFontSelect,
     backgrounds,
@@ -242,10 +238,9 @@ function App(props) {
           )
         )}
       </Helmet>
+      <FontLoadScreen />
       <Dialogs />
       <Sidebar />
-      <FontLoadScreen />
-      <ThemeCode />
       <Box
         minHeight="100vh"
         maxWidth="100vw"

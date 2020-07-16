@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setThemeCode } from "../state/actions";
+import { setThemeCode } from "../../state/actions";
 import {
   Dialog,
   DialogTitle,
@@ -11,9 +11,9 @@ import {
 } from "@material-ui/core";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
-import codeExporter from "../functions/codeExporter";
+import codeExporter from "../../functions/codeExporter";
 
-import AppTypography from "./AppTypography";
+import AppTypography from "../AppTypography";
 
 const ThemeCode = ({ dispatch, themeCode, font, twoFonts, headerFont }) => {
   const handleClose = () => {
