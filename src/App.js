@@ -30,7 +30,7 @@ import randomFont from "./functions/randomFont";
 import randomColor from "./functions/randomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
-import isFontValid from "./functions/isFontValid";
+import validateFont from "./functions/validateFont";
 
 function App(props) {
   const {
@@ -91,42 +91,44 @@ function App(props) {
 
   useEffect(() => {
     if (fonts && font) {
-      if (isFontValid(font.themeName)) {
-        console.log("should be second");
-        dispatch(setFontLoading(false));
-      } else {
-        const nextBit = async () => {
-          if (randomFontSelect) {
-            await dispatch(
-              setChangeHistory({
-                ...changeHistory,
-                changes: changeHistory.changes.slice(
-                  0,
-                  changeHistory.currentPosition + 1
-                ),
-                currentPosition: changeHistory.changes.length - 1,
-              })
-            );
-            dispatch(setFont(randomFont()));
-          } else {
-            await dispatch(
-              setChangeHistory({
-                ...changeHistory,
-                changes: changeHistory.changes.slice(
-                  0,
-                  changeHistory.currentPosition + 1
-                ),
-                currentPosition: changeHistory.changes.length - 1,
-              })
-            );
-            await dispatch(setUndo(true));
-            dispatch(setFont(fontPicker.revertFont));
-            await dispatch(setUndo(false));
-            dispatch(setFontPicker({ ...fontPicker, notFound: true }));
-          }
-        };
-        nextBit();
-      }
+      validateFont(font.themeName)
+        .then(() => {
+          dispatch(setFontLoading(false));
+        })
+        .catch(() => {
+          const nextBit = async () => {
+            if (randomFontSelect) {
+              await dispatch(
+                setChangeHistory({
+                  ...changeHistory,
+                  changes: changeHistory.changes.slice(
+                    0,
+                    changeHistory.currentPosition + 1
+                  ),
+                  currentPosition: changeHistory.changes.length - 1,
+                })
+              );
+              dispatch(setFont(randomFont()));
+            } else {
+              await dispatch(
+                setChangeHistory({
+                  ...changeHistory,
+                  changes: changeHistory.changes.slice(
+                    0,
+                    changeHistory.currentPosition + 1
+                  ),
+                  currentPosition: changeHistory.changes.length - 1,
+                })
+              );
+              await dispatch(setUndo(true));
+              dispatch(setFont(fontPicker.revertFont));
+              await dispatch(setUndo(false));
+              dispatch(setFontPicker({ ...fontPicker, notFound: true }));
+            }
+          };
+          nextBit();
+        });
+
       // const newFont = new FontFaceObserver(font.themeName);
       // newFont.load().then(
       //  () => {
