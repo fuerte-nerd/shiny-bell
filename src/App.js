@@ -91,49 +91,7 @@ function App(props) {
 
   useEffect(() => {
     if (fonts && font) {
-      validateFont(font.themeName)
-        .then(() => {
-          dispatch(setFontLoading(false));
-        })
-        .catch(() => {
-          const nextBit = async () => {
-            if (randomFontSelect) {
-              await dispatch(
-                setChangeHistory({
-                  ...changeHistory,
-                  changes: changeHistory.changes.slice(
-                    0,
-                    changeHistory.currentPosition + 1
-                  ),
-                  currentPosition: changeHistory.changes.length - 1,
-                })
-              );
-              dispatch(setFont(randomFont()));
-            } else {
-              await dispatch(
-                setChangeHistory({
-                  ...changeHistory,
-                  changes: changeHistory.changes.slice(
-                    0,
-                    changeHistory.currentPosition + 1
-                  ),
-                  currentPosition: changeHistory.changes.length - 1,
-                })
-              );
-              await dispatch(setUndo(true));
-              dispatch(setFont(fontPicker.revertFont));
-              await dispatch(setUndo(false));
-              dispatch(setFontPicker({ ...fontPicker, notFound: true }));
-            }
-          };
-          nextBit();
-        });
-
-      // const newFont = new FontFaceObserver(font.themeName);
-      // newFont.load().then(
-      //  () => {
-      //    dispatch(setFontLoading(false));
-      //  },
+      validateFont(font.themeName);
     }
     //eslint-disable-next-line
   }, [font]);
