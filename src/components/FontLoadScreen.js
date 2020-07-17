@@ -18,13 +18,13 @@ const FontLoadScreen = ({
       if (twoFonts) {
         !locked.headerFont && fonts && loadFonts();
       } else {
-        !locked.bodyFont && fonts && loadFonts("body");
+        !locked.bodyFont && fonts && loadFonts(["body"]);
       }
     } else {
       if (fontPicker.section === "bodyFont") {
-        return loadFonts("body", false, fonts[fontPicker.selection]);
+        return loadFonts(["body"], false, fonts[fontPicker.selection]);
       } else {
-        return loadFonts("header", false, fonts[fontPicker.selection]);
+        return loadFonts(["header"], false, fonts[fontPicker.selection]);
       }
     }
   };
