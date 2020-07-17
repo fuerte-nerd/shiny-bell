@@ -7,7 +7,7 @@ import {
 } from "../state/actions";
 import { Tooltip, Fab } from "@material-ui/core";
 import { Refresh, Lock } from "@material-ui/icons";
-import randomColor from "../functions/randomColor";
+import getRandomColor from "../functions/getRandomColor";
 
 const RefreshButton = ({ dispatch, twoFonts, locked }) => {
   return (
@@ -37,7 +37,7 @@ const RefreshButton = ({ dispatch, twoFonts, locked }) => {
             !locked.headerFont &&
             dispatch(setRandomFontSelect(true)) &&
             dispatch(setFontLoading(true));
-          !locked.palette && dispatch(setPrimary(randomColor()));
+          !locked.palette && dispatch(setPrimary(getRandomColor()));
         }}
       >
         {twoFonts ? (
