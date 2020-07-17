@@ -52,8 +52,14 @@ const loadFonts = async (
               default:
                 break;
             }
-            store.dispatch(setFontLoading(false));
           });
+          store.dispatch(
+            setFontToValidate({
+              enabled: false,
+              fonts: null,
+            })
+          );
+          store.dispatch(setFontLoading(false));
         }
       },
       () => {
@@ -70,6 +76,13 @@ const loadFonts = async (
           }
         } else {
           store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
+          store.dispatch(
+            setFontToValidate({
+              enabled: false,
+              fonts: null,
+            })
+          );
+          store.dispatch(setFontLoading(false));
         }
       }
     );
