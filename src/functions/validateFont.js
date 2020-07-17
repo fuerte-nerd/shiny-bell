@@ -8,12 +8,12 @@ import {
   setFontPicker,
   setHeaderFont,
 } from "../state/actions";
-import randomFont from "./randomFont";
+import getRandomFont from "./getRandomFont";
 
 export default (font, target) => {
   const state = store.getState();
 
-  const { randomFontSelect, changeHistory, fontPicker } = state;
+  const { getRandomFontSelect, changeHistory, fontPicker } = state;
 
   const newFont = new FontFaceObserver(font);
   newFont.load().then(
@@ -31,12 +31,12 @@ export default (font, target) => {
           currentPosition: changeHistory.changes.length - 1,
         })
       );
-      if (randomFontSelect) {
+      if (getRandomFontSelect) {
         switch (target) {
           case "body":
-            return store.dispatch(setFont(randomFont()));
+            return store.dispatch(setFont(getRandomFont()));
           case "header":
-            return store.dispatch(setHeaderFont(randomFont()));
+            return store.dispatch(setHeaderFont(getRandomFont()));
           default:
             return;
         }

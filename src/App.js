@@ -30,7 +30,7 @@ import getRandomFont from "./functions/getRandomFont";
 import getRandomColor from "./functions/getRandomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
-import validateFont from "./functions/validateFont";
+import loadFont from "./functions/loadFont";
 
 function App(props) {
   const {
@@ -74,8 +74,8 @@ function App(props) {
       () => {}
     );
 
-    fonts && dispatch(setFont(getRandomFont()));
-    fonts && dispatch(setHeaderFont(getRandomFont()));
+    fonts && loadFont(getRandomFont(), "body");
+    fonts && loadFont(getRandomFont(), "header");
     //eslint-disable-next-line
   }, [fonts]);
 
@@ -86,14 +86,14 @@ function App(props) {
 
   useEffect(() => {
     if (fonts && font) {
-      validateFont(font.themeName, "body");
+      // loadFont(font, "body");
     }
     //eslint-disable-next-line
   }, [font]);
 
   useEffect(() => {
     if (fonts && headerFont) {
-      validateFont(headerFont.themeName, "header");
+      // loadFont(headerFont, "header");
     }
     //eslint-disable-next-line
   }, [headerFont]);
