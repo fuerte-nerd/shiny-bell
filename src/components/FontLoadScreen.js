@@ -1,12 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setFont, setHeaderFont } from "../state/actions";
 import { Dialog, Box, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
-import randomFont from "../functions/randomFont";
+import getRandomFont from "../functions/getRandomFont";
+import loadFont from "../functions/loadFont";
 
 const FontLoadScreen = ({
-  dispatch,
   fonts,
   twoFonts,
   fontLoading,
@@ -17,15 +16,15 @@ const FontLoadScreen = ({
 }) => {
   const handleEntered = () => {
     if (randomFontSelect) {
-      !locked.bodyFont && fonts && dispatch(setFont(randomFont()));
+      !locked.bodyFont && fonts && loadFont(getRandomFont(), "body");
       if (twoFonts) {
-        !locked.headerFont && fonts && dispatch(setHeaderFont(randomFont()));
+        !locked.headerFont && fonts && loadFont(getRandomFont(), "header");
       }
     } else {
       if (fontPicker.section === "bodyFont") {
-        return dispatch(setFont(fonts[fontPicker.selection]));
+        return loadFont(fonts[fontPicker.selection], "body");
       } else {
-        return dispatch(setHeaderFont(fonts[fontPicker.selection]));
+        return loadFont(fonts[fontPicker.selection], "header");
       }
     }
   };
