@@ -16,15 +16,15 @@ const loadFonts = async (
 ) => {
   const state = store.getState();
 
-  const { fontPicker } = state;
+  const { fontPicker, font, headerFont } = state;
 
   // prepare fonts for validation
 
   const fontsArr = targets.map((i) => {
-    const font = random ? getRandomFont() : fontToLoad;
+    const fontToValidate = random ? getRandomFont() : fontToLoad;
     return {
       target: i,
-      font,
+      font: fontToValidate,
     };
   });
 
@@ -53,13 +53,17 @@ const loadFonts = async (
                 break;
             }
           });
-          store.dispatch(
-            setFontToValidate({
-              enabled: false,
-              fonts: null,
-            })
-          );
-          store.dispatch(setFontLoading(false));
+          const body = new FontFaceObserver(font.themeName);
+          const header = new FontFaceObserver(headerFont.themeName);
+          Promise.all([body.load(), header.load()]).then(() => {
+            store.dispatch(
+              setFontToValidate({
+                enabled: false,
+                fonts: null,
+              })
+            );
+            store.dispatch(setFontLoading(false));
+          });
         }
       },
       () => {
