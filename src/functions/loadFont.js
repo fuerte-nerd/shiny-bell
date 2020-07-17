@@ -8,51 +8,39 @@ import {
   setFontPicker,
   setHeaderFont,
 } from "../state/actions";
-import randomFont from "./randomFont";
+import getRandomFont from "./getRandomFont";
 
 export default (font, target) => {
   const state = store.getState();
 
-  const { randomFontSelect, changeHistory, fontPicker } = state;
+  const { randomFontSelect, fontPicker } = state;
 
-  const newFont = new FontFaceObserver(font);
+  const newFont = new FontFaceObserver(font.themeName);
   newFont.load().then(
     () => {
-      store.dispatch(setFontLoading(false));
+      switch (target) {
+        case "body":
+          store.dispatch(setFont(font));
+          break;
+        case "header":
+          store.dispatch(setHeaderFont(font));
+          break;
+        default:
+          return;
+      }
+      return store.dispatch(setFontLoading(false));
     },
-    async () => {
-      await store.dispatch(
-        setChangeHistory({
-          ...changeHistory,
-          changes: changeHistory.changes.slice(
-            0,
-            changeHistory.currentPosition + 1
-          ),
-          currentPosition: changeHistory.changes.length - 1,
-        })
-      );
+    () => {
       if (randomFontSelect) {
         switch (target) {
           case "body":
-            return store.dispatch(setFont(randomFont()));
+            return store.dispatch(setFont(getRandomFont()));
           case "header":
-            return store.dispatch(setHeaderFont(randomFont()));
+            return store.dispatch(setHeaderFont(getRandomFont()));
           default:
             return;
         }
       } else {
-        await store.dispatch(setUndo(true));
-        switch (target) {
-          case "body":
-            store.dispatch(setFont(fontPicker.revertFont));
-            break;
-          case "header":
-            store.dispatch(setHeaderFont(fontPicker.revertFont));
-            break;
-          default:
-            break;
-        }
-        await store.dispatch(setUndo(false));
         store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
       }
     }
