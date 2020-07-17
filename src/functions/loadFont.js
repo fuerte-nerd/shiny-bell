@@ -9,26 +9,35 @@ import {
 } from "../state/actions";
 import getRandomFont from "./getRandomFont";
 
-const loadFont = (targets, random = true) => {
+const loadFonts = (
+  targets = ["body", "header"],
+  random = true,
+  fontToLoad = null
+) => {
   const state = store.getState();
 
   const { fontToValidate, randomFontSelect, fontPicker } = state;
 
-  store.dispatch(
-    setFontToValidate({
-      ...fontToValidate,
-      [target]: font,
-    })
-  );
+  // prepare fonts for validation
 
-  const validateFontCleanup = () => {
-    store.dispatch(
-      setFontToValidate({
-        ...fontToValidate,
-        [target]: null,
-      })
-    );
-  };
+  const fontsArr = targets.map((i) => {
+    const font = random ? getRandomFont() : fontToLoad;
+    return {
+      target: i,
+      font,
+    };
+  });
+
+  store.dispatch(setFontToValidate(fontsArr));
+
+  // validate fonts
+  //
+  // update fonts / request new fonts
+
+  fontsArr.map((f) => {
+    const newFont = new FontFaceObserver(f.font.themeName);
+    newFont.load().then(() => {});
+  });
 
   const newFont = new FontFaceObserver(font.themeName);
   newFont.load().then(
