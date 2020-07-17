@@ -9,7 +9,7 @@ import {
 } from "../state/actions";
 import getRandomFont from "./getRandomFont";
 
-const loadFonts = (
+const loadFonts = async (
   targets = ["body", "header"],
   random = true,
   fontToLoad = null
@@ -28,7 +28,7 @@ const loadFonts = (
     };
   });
 
-  store.dispatch(setFontToValidate(fontsArr));
+  await store.dispatch(setFontToValidate(fontsArr));
 
   // validate fonts
   //
@@ -36,13 +36,8 @@ const loadFonts = (
 
   fontsArr.map((f) => {
     const newFont = new FontFaceObserver(f.font.themeName);
-    newFont.load().then(() => {});
-  });
-
-  const newFont = new FontFaceObserver(font.themeName);
-  newFont.load().then(
-    () => {
-      switch (target) {
+    newFont.load().then(() => {
+      switch(target){
         case "body":
           store.dispatch(setFont(font));
           break;
@@ -51,11 +46,11 @@ const loadFonts = (
           break;
         default:
           break;
+
       }
-      validateFontCleanup();
       return store.dispatch(setFontLoading(false));
-    },
-    () => {
+
+    },()=> {
       if (randomFontSelect) {
         switch (target) {
           case "body":
@@ -73,7 +68,9 @@ const loadFonts = (
         return store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
       }
     }
-  );
-};
 
+    );
+
+}
+}
 export default loadFont;
