@@ -74,24 +74,6 @@ function App(props) {
       },
       () => {}
     );
-
-    updateElements([
-      {
-        element: "bodyFont",
-        update: true,
-        method: "random",
-      },
-      {
-        element: "headerFont",
-        update: true,
-        method: "random",
-      },
-      {
-        element: "primaryColor",
-        update: true,
-        method: "random",
-      },
-    ]);
     fonts && loadFonts();
     //eslint-disable-next-line
   }, [fonts]);
@@ -104,12 +86,26 @@ function App(props) {
   useEffect(() => {
     if (fonts && font) {
       // loadFont(font, "body");
+      const bFont = new FontFaceObserver(font.themeName);
+      bFont.load().then(
+        () => {
+          setFontLoading(false);
+        },
+        () => {}
+      );
     }
     //eslint-disable-next-line
   }, [font]);
 
   useEffect(() => {
     if (fonts && headerFont) {
+      const hFont = new FontFaceObserver(headerFont.themeName);
+      hFont.load().then(
+        () => {
+          setFontLoading(false);
+        },
+        () => {}
+      );
       // loadFont(headerFont, "header");
     }
     //eslint-disable-next-line
