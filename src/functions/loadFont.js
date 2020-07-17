@@ -12,6 +12,7 @@ const loadFont = (font, target) => {
   const state = store.getState();
 
   const { randomFontSelect, fontPicker } = state;
+  console.log(font);
 
   const newFont = new FontFaceObserver(font.themeName);
   newFont.load().then(
