@@ -44,7 +44,7 @@ function App(props) {
     backgrounds,
     changeHistory,
     undo,
-    fontToValidate,
+    fontValidation,
   } = props;
 
   useEffect(() => {
@@ -92,8 +92,8 @@ function App(props) {
         () => {
           dispatch(
             setFontToValidate({
-              ...fontToValidate,
-              fonts: fontToValidate.fonts.filter((i) => {
+              ...fontValidation,
+              fonts: fontValidation.fonts.filter((i) => {
                 return i.font.themeName === font.themeName ? null : i;
               }),
             })
@@ -112,8 +112,8 @@ function App(props) {
         () => {
           dispatch(
             setFontToValidate({
-              ...fontToValidate,
-              fonts: fontToValidate.fonts.filter((i) => {
+              ...fontValidation,
+              fonts: fontValidation.fonts.filter((i) => {
                 return i.font.themeName === headerFont.themeName ? null : i;
               }),
             })
@@ -127,10 +127,12 @@ function App(props) {
   }, [headerFont]);
 
   useEffect(() => {
-    if (setFontToValidate.length === 0) {
-      dispatch(setFontLoading(false));
+    if (fontValidation.fonts) {
+      if (fontValidation.fonts.length === 0) {
+        dispatch(setFontLoading(false));
+      }
     }
-  }, [setFontToValidate]);
+  }, [fontValidation]);
 
   const [timerId, setTimerId] = useState(0);
 
@@ -175,10 +177,6 @@ function App(props) {
     //eslint-disable-next-line
   }, [font, headerFont, primary]);
 
-  useEffect(() => {
-    console.log(fontToValidate);
-  }, [fontToValidate]);
-
   return (
     <Layout>
       <Head />
@@ -214,7 +212,7 @@ const mapStateToProps = (state) => ({
   backgrounds: state.backgrounds,
   changeHistory: state.changeHistory,
   undo: state.undo,
-  fontToValidate: state.fontToValidate,
+  fontValidation: state.fontValidation,
 });
 
 export default connect(mapStateToProps)(App);
