@@ -33,9 +33,9 @@ const initialState = {
   staticFontLoaded: false,
   fonts: null,
   fontLoading: true,
-  fontToValidate: {
-    body: null,
-    header: null,
+  fontValidation: {
+    enabled: false,
+    fonts: null,
   },
   font: "",
   headerFont: "",
@@ -85,7 +85,7 @@ export default (state = initialState, action) => {
     case SET_FONT_TO_VALIDATE:
       return {
         ...state,
-        fontToValidate: payload,
+        fontValidation: payload,
       };
     case SET_UNDO:
       return {
