@@ -34,8 +34,8 @@ const loadFonts = async (
       fonts: fontsArr,
     })
   );
-
   fontsArr.map(async (f, ind) => {
+    console.log(f.font.themeName);
     const newFont = new FontFaceObserver(f.font.themeName);
     await newFont.load().then(
       () => {
@@ -74,6 +74,5 @@ const loadFonts = async (
       }
     );
   });
-  return store.dispatch(setFontToValidate({ enabled: false, fonts: null }));
 };
 export default loadFonts;
