@@ -128,6 +128,7 @@ function App(props) {
 
   useEffect(() => {
     if (fontValidation.fonts) {
+      console.log(fontValidation.fonts.length);
       if (fontValidation.fonts.length === 0) {
         dispatch(setFontLoading(false));
       }
