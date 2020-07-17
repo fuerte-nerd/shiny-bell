@@ -10,7 +10,7 @@ import {
 } from "../state/actions";
 import getRandomFont from "./getRandomFont";
 
-export default (font, target) => {
+const loadFont = (font, target) => {
   const state = store.getState();
 
   const { randomFontSelect, fontPicker } = state;
@@ -34,9 +34,11 @@ export default (font, target) => {
       if (randomFontSelect) {
         switch (target) {
           case "body":
-            return store.dispatch(setFont(getRandomFont()));
+            loadFont(getRandomFont(), "body");
+            break;
           case "header":
-            return store.dispatch(setHeaderFont(getRandomFont()));
+            loadFont(getRandomFont(), "header");
+            break;
           default:
             return;
         }
@@ -46,3 +48,5 @@ export default (font, target) => {
     }
   );
 };
+
+export default loadFont;
