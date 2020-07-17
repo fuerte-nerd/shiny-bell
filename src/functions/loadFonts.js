@@ -16,7 +16,7 @@ const loadFonts = async (
 ) => {
   const state = store.getState();
 
-  const { fontPicker, font, headerFont } = state;
+  const { fontPicker } = state;
 
   // prepare fonts for validation
 
@@ -53,8 +53,10 @@ const loadFonts = async (
                 break;
             }
           });
-          const body = new FontFaceObserver(font.themeName);
-          const header = new FontFaceObserver(headerFont.themeName);
+          const body = new FontFaceObserver(store.getState().font.themeName);
+          const header = new FontFaceObserver(
+            store.getState().headerFont.themeName
+          );
           Promise.all([body.load(), header.load()]).then(() => {
             store.dispatch(
               setFontToValidate({
