@@ -30,7 +30,7 @@ import getRandomFont from "./functions/getRandomFont";
 import getRandomColor from "./functions/getRandomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
-import loadFont from "./functions/loadFont";
+import loadFonts from "./functions/loadFonts";
 
 function App(props) {
   const {
@@ -75,8 +75,7 @@ function App(props) {
       () => {}
     );
 
-    fonts && loadFont(getRandomFont(), "body");
-    fonts && loadFont(getRandomFont(), "header");
+    fonts && loadFonts();
     //eslint-disable-next-line
   }, [fonts]);
 

@@ -28,49 +28,48 @@ const loadFonts = async (
     };
   });
 
-  await store.dispatch(setFontToValidate(fontsArr));
-
-  // validate fonts
-  //
-  // update fonts / request new fonts
+  await store.dispatch(
+    setFontToValidate({
+      enabled: true,
+      fonts: fontsArr,
+    })
+  );
 
   fontsArr.map((f) => {
     const newFont = new FontFaceObserver(f.font.themeName);
-    newFont.load().then(() => {
-      switch(target){
-        case "body":
-          store.dispatch(setFont(font));
-          break;
-        case "header":
-          store.dispatch(setHeaderFont(font));
-          break;
-        default:
-          break;
-
-      }
-      return store.dispatch(setFontLoading(false));
-
-    },()=> {
-      if (randomFontSelect) {
-        switch (target) {
+    newFont.load().then(
+      () => {
+        switch (f.target) {
           case "body":
-            loadFont(getRandomFont(), "body");
+            store.dispatch(setFont(f.font));
             break;
           case "header":
-            loadFont(getRandomFont(), "header");
+            store.dispatch(setHeaderFont(f.font));
             break;
           default:
             break;
         }
-        return validateFontCleanup();
-      } else {
-        validateFontCleanup();
-        return store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
+        return store.dispatch(setFontLoading(false));
+      },
+      () => {
+        if (random) {
+          switch (f.target) {
+            case "body":
+              loadFonts("body");
+              break;
+            case "header":
+              loadFonts("header");
+              break;
+            default:
+              break;
+          }
+        } else {
+          return store.dispatch(
+            setFontPicker({ ...fontPicker, notFound: true })
+          );
+        }
       }
-    }
-
     );
-
-}
-}
-export default loadFont;
+  });
+};
+export default loadFonts;
