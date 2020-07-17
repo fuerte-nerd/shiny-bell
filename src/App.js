@@ -41,8 +41,6 @@ function App(props) {
     fonts,
     secondaryMode,
     primary,
-    staticFontLoaded,
-    fontPicker,
     randomFontSelect,
     backgrounds,
     changeHistory,
@@ -70,15 +68,14 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    if (!staticFontLoaded) {
-      const staticFont = new FontFaceObserver("Roboto");
-      staticFont.load().then(
-        () => {
-          dispatch(setStaticFont(true));
-        },
-        () => {}
-      );
-    }
+    const staticFont = new FontFaceObserver("Roboto");
+    staticFont.load().then(
+      () => {
+        dispatch(setStaticFont(true));
+      },
+      () => {}
+    );
+
     fonts && dispatch(setFont(randomFont()));
     fonts && dispatch(setHeaderFont(randomFont()));
     //eslint-disable-next-line
@@ -176,14 +173,9 @@ const mapStateToProps = (state) => ({
   font: state.font,
   fonts: state.fonts,
   primary: state.primary,
-  secondary: state.secondary,
-  fontLoading: state.fontLoading,
   secondaryMode: state.secondaryMode,
-  staticFontLoaded: state.staticFontLoaded,
   headerFont: state.headerFont,
   twoFonts: state.twoFonts,
-  colorPicker: state.colorPicker,
-  fontPicker: state.fontPicker,
   randomFontSelect: state.randomFontSelect,
   backgrounds: state.backgrounds,
   changeHistory: state.changeHistory,
