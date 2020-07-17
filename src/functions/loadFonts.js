@@ -16,7 +16,7 @@ const loadFonts = async (
 ) => {
   const state = store.getState();
 
-  const { fontToValidate, randomFontSelect, fontPicker } = state;
+  const { fontPicker } = state;
 
   // prepare fonts for validation
 
@@ -39,6 +39,7 @@ const loadFonts = async (
     const newFont = new FontFaceObserver(f.font.themeName);
     await newFont.load().then(
       () => {
+        console.log(ind);
         if (ind === fontsArr.length - 1) {
           fontsArr.map((i) => {
             switch (i.target) {
@@ -59,10 +60,10 @@ const loadFonts = async (
         if (random) {
           switch (f.target) {
             case "body":
-              loadFonts("body");
+              loadFonts(["body"]);
               break;
             case "header":
-              loadFonts("header");
+              loadFonts(["header"]);
               break;
             default:
               break;
