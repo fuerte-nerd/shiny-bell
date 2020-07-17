@@ -35,21 +35,25 @@ const loadFonts = async (
     })
   );
 
-  fontsArr.map((f) => {
+  fontsArr.map(async (f, ind) => {
     const newFont = new FontFaceObserver(f.font.themeName);
-    newFont.load().then(
+    await newFont.load().then(
       () => {
-        switch (f.target) {
-          case "body":
-            store.dispatch(setFont(f.font));
-            break;
-          case "header":
-            store.dispatch(setHeaderFont(f.font));
-            break;
-          default:
-            break;
+        if (ind === fontsArr.length - 1) {
+          fontsArr.map((i) => {
+            switch (i.target) {
+              case "body":
+                store.dispatch(setFont(i.font));
+                break;
+              case "header":
+                store.dispatch(setHeaderFont(i.font));
+                break;
+              default:
+                break;
+            }
+            store.dispatch(setFontLoading(false));
+          });
         }
-        return store.dispatch(setFontLoading(false));
       },
       () => {
         if (random) {
@@ -64,12 +68,11 @@ const loadFonts = async (
               break;
           }
         } else {
-          return store.dispatch(
-            setFontPicker({ ...fontPicker, notFound: true })
-          );
+          store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
         }
       }
     );
   });
+  return store.dispatch(setFontToValidate({ enabled: false, fonts: null }));
 };
 export default loadFonts;
