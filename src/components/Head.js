@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 
 const Head = ({ fonts, twoFonts, font, headerFont, fontValidation }) => {
+  useEffect(() => {
+    console.log(fontValidation);
+  }, [fontValidation]);
+
   return (
     <Helmet>
-      {fontValidation.enabled &&
-        fontValidation.fonts.map((f) => (
-          <link
-            href={`https://fonts.googleapis.com/css2?family=${f.linkName}&display=swap`}
-            rel="stylesheet"
-          />
-        ))}
+      {fontValidation.enabled
+        ? fontValidation.fonts.map((f) => (
+            <link
+              href={`https://fonts.googleapis.com/css2?family=${f.font.linkName}&display=swap`}
+              rel="stylesheet"
+            />
+          ))
+        : null}
       {fonts && (
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
