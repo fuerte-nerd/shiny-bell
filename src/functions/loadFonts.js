@@ -41,13 +41,13 @@ const loadFonts = async (
       () => {
         console.log(ind);
         if (ind === fontsArr.length - 1) {
-          fontsArr.map((i) => {
+          fontsArr.map(async (i) => {
             switch (i.target) {
               case "body":
-                store.dispatch(setFont(i.font));
+                await store.dispatch(setFont(i.font));
                 break;
               case "header":
-                store.dispatch(setHeaderFont(i.font));
+                await store.dispatch(setHeaderFont(i.font));
                 break;
               default:
                 break;
