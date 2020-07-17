@@ -43,6 +43,7 @@ function App(props) {
     backgrounds,
     changeHistory,
     undo,
+    fontToValidate,
   } = props;
 
   useEffect(() => {
@@ -141,6 +142,10 @@ function App(props) {
     //eslint-disable-next-line
   }, [font, headerFont, primary]);
 
+  useEffect(() => {
+    console.log(fontToValidate);
+  }, [fontToValidate]);
+
   return (
     <Layout>
       <Head />
@@ -176,6 +181,7 @@ const mapStateToProps = (state) => ({
   backgrounds: state.backgrounds,
   changeHistory: state.changeHistory,
   undo: state.undo,
+  fontToValidate: state.fontToValidate,
 });
 
 export default connect(mapStateToProps)(App);
