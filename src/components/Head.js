@@ -5,9 +5,9 @@ import { Helmet } from "react-helmet";
 const Head = ({ fonts, twoFonts, font, headerFont, fontToValidate }) => {
   return (
     <Helmet>
-      {fontToValidate && (
+      {fontToValidate.body && fontToValidate.header && (
         <link
-          href={`https://fonts.googleapis.com/css2?family=${fontToValidate.linkName}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${fontToValidate.body.linkName}&family=${fontToValidate.header.linkName}&display=swap`}
           rel="stylesheet"
         />
       )}

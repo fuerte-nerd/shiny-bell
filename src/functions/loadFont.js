@@ -12,9 +12,23 @@ import getRandomFont from "./getRandomFont";
 const loadFont = (font, target) => {
   const state = store.getState();
 
-  const { randomFontSelect, fontPicker } = state;
+  const { fontToValidate, randomFontSelect, fontPicker } = state;
 
-  store.dispatch(setFontToValidate(font));
+  store.dispatch(
+    setFontToValidate({
+      ...fontToValidate,
+      [target]: font,
+    })
+  );
+
+  const validateFontCleanup = () => {
+    store.dispatch(
+      setFontToValidate({
+        ...fontToValidate,
+        [target]: null,
+      })
+    );
+  };
 
   const newFont = new FontFaceObserver(font.themeName);
   newFont.load().then(
@@ -29,7 +43,7 @@ const loadFont = (font, target) => {
         default:
           break;
       }
-      store.dispatch(setFontToValidate(null));
+      validateFontCleanup();
       return store.dispatch(setFontLoading(false));
     },
     () => {
@@ -44,9 +58,9 @@ const loadFont = (font, target) => {
           default:
             break;
         }
-        return store.dispatch(setFontToValidate(null));
+        return validateFontCleanup();
       } else {
-        store.dispatch(setFontToValidate(null));
+        validateFontCleanup();
         return store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
       }
     }
