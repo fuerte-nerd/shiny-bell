@@ -90,9 +90,10 @@ function App(props) {
       const bFont = new FontFaceObserver(font.themeName);
       bFont.load().then(
         () => {
-          dispatch(setFontLoading(false));
-          dispatch(setFontToValidate({ enabled: false, fonts: null }));
-        },
+            dispatch(setFontToValidate({...fontToValidate, fonts: fontToValidate.fonts.filter((i)=>{
+              return i.font.themeName === font.themeName ? null : i 
+          })
+        })},
         () => {}
       );
     }
