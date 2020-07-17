@@ -70,11 +70,6 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    dispatch(setSecondary(getSecondaryColor(primary, secondaryMode)));
-    //eslint-disable-next-line
-  }, [primary, secondaryMode]);
-
-  useEffect(() => {
     if (!staticFontLoaded) {
       const staticFont = new FontFaceObserver("Roboto");
       staticFont.load().then(
@@ -90,6 +85,11 @@ function App(props) {
   }, [fonts]);
 
   useEffect(() => {
+    dispatch(setSecondary(getSecondaryColor(primary, secondaryMode)));
+    //eslint-disable-next-line
+  }, [primary, secondaryMode]);
+
+  useEffect(() => {
     if (fonts && font) {
       validateFont(font.themeName, "body");
     }
@@ -97,7 +97,7 @@ function App(props) {
   }, [font]);
 
   useEffect(() => {
-    if (fonts && headerFont && twoFonts) {
+    if (fonts && headerFont) {
       validateFont(headerFont.themeName, "header");
     }
     //eslint-disable-next-line
