@@ -26,12 +26,14 @@ import {
   SET_PRIMARY_COLOR_NAME,
   SET_SECONDARY_COLOR_NAME,
   SET_UNDO,
+  SET_FONT_TO_VALIDATE,
 } from "./types";
 
 const initialState = {
   staticFontLoaded: false,
   fonts: null,
   fontLoading: true,
+  fontToValidate: null,
   font: "",
   headerFont: "",
   fontSize: 14,
@@ -77,6 +79,11 @@ const initialState = {
 export default (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case SET_FONT_TO_VALIDATE:
+      return {
+        ...state,
+        fontToValidate: payload,
+      };
     case SET_UNDO:
       return {
         ...state,

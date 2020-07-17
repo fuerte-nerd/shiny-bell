@@ -28,7 +28,13 @@ import {
   SET_SECONDARY_COLOR_NAME,
   SET_CHANGE_HISTORY,
   SET_UNDO,
+  SET_FONT_TO_VALIDATE,
 } from "./types";
+
+export const setFontToValidate = (data) => ({
+  type: SET_FONT_TO_VALIDATE,
+  payload: data,
+});
 
 export const setUndo = (data) => ({
   type: SET_UNDO,
