@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Dialog, Box, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
 import getRandomFont from "../functions/getRandomFont";
-import loadFont from "../functions/loadFont";
+import loadFonts from "../functions/loadFonts";
 
 const FontLoadScreen = ({
   fonts,
@@ -16,15 +16,16 @@ const FontLoadScreen = ({
 }) => {
   const handleEntered = () => {
     if (randomFontSelect) {
-      !locked.bodyFont && fonts && loadFont(getRandomFont(), "body");
       if (twoFonts) {
-        !locked.headerFont && fonts && loadFont(getRandomFont(), "header");
+        !locked.headerFont && fonts && loadFonts();
+      } else {
+        !locked.bodyFont && fonts && loadFonts("body");
       }
     } else {
       if (fontPicker.section === "bodyFont") {
-        return loadFont(fonts[fontPicker.selection], "body");
+        return loadFonts("body", false, fonts[fontPicker.selection]);
       } else {
-        return loadFont(fonts[fontPicker.selection], "header");
+        return loadFonts("header", false, fonts[fontPicker.selection]);
       }
     }
   };
