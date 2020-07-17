@@ -2,15 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 
-const Head = ({ fonts, twoFonts, font, headerFont, fontToValidate }) => {
+const Head = ({ fonts, twoFonts, font, headerFont, fontValidation }) => {
   return (
     <Helmet>
-      {fontToValidate.body && fontToValidate.header && (
-        <link
-          href={`https://fonts.googleapis.com/css2?family=${fontToValidate.body.linkName}&family=${fontToValidate.header.linkName}&display=swap`}
-          rel="stylesheet"
-        />
-      )}
+      {fontValidation.enabled &&
+        fontValidation.fonts.map((f) => (
+          <link
+            href={`https://fonts.googleapis.com/css2?family=${f.linkName}&display=swap`}
+            rel="stylesheet"
+          />
+        ))}
       {fonts && (
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
@@ -39,7 +40,7 @@ const mapStateToProps = (state) => ({
   twoFonts: state.twoFonts,
   font: state.font,
   headerFont: state.headerFont,
-  fontToValidate: state.fontToValidate,
+  fontValidation: state.fontValidation,
 });
 
 export default connect(mapStateToProps)(Head);

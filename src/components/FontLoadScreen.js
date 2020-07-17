@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Dialog, Box, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
-import getRandomFont from "../functions/getRandomFont";
 import loadFonts from "../functions/loadFonts";
 
 const FontLoadScreen = ({
