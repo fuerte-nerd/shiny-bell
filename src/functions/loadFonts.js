@@ -53,12 +53,6 @@ const loadFonts = async (
                 break;
             }
           });
-          store.dispatch(
-            setFontToValidate({
-              enabled: false,
-              fonts: null,
-            })
-          );
         }
       },
       () => {
@@ -75,12 +69,6 @@ const loadFonts = async (
           }
         } else {
           store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
-          store.dispatch(
-            setFontToValidate({
-              enabled: false,
-              fonts: null,
-            })
-          );
         }
       }
     );

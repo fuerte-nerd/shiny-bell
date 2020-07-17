@@ -25,6 +25,7 @@ import {
   setFontPicker,
   setChangeHistory,
   setUndo,
+  setFontToValidate,
 } from "./state/actions";
 import getRandomFont from "./functions/getRandomFont";
 import getRandomColor from "./functions/getRandomColor";
@@ -89,7 +90,8 @@ function App(props) {
       const bFont = new FontFaceObserver(font.themeName);
       bFont.load().then(
         () => {
-          setFontLoading(false);
+          dispatch(setFontLoading(false));
+          dispatch(setFontToValidate({ enabled: false, fonts: null }));
         },
         () => {}
       );
@@ -102,7 +104,8 @@ function App(props) {
       const hFont = new FontFaceObserver(headerFont.themeName);
       hFont.load().then(
         () => {
-          setFontLoading(false);
+          dispatch(setFontLoading(false));
+          dispatch(setFontToValidate({ enabled: false, fonts: null }));
         },
         () => {}
       );
