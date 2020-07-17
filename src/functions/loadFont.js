@@ -2,9 +2,7 @@ import FontFaceObserver from "fontfaceobserver";
 import store from "../state/store";
 import {
   setFontLoading,
-  setChangeHistory,
   setFont,
-  setUndo,
   setFontPicker,
   setHeaderFont,
 } from "../state/actions";
