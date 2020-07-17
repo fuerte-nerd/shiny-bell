@@ -29,7 +29,8 @@ const loadFont = (font, target) => {
         default:
           break;
       }
-      store.dispatch(setFontLoading(false));
+      store.dispatch(setFontToValidate(null));
+      return store.dispatch(setFontLoading(false));
     },
     () => {
       if (randomFontSelect) {
@@ -43,12 +44,13 @@ const loadFont = (font, target) => {
           default:
             break;
         }
+        return store.dispatch(setFontToValidate(null));
       } else {
-        store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
+        store.dispatch(setFontToValidate(null));
+        return store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
       }
     }
   );
-  return store.dispatch(setFontToValidate(null));
 };
 
 export default loadFont;
