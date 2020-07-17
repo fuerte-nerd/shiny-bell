@@ -33,7 +33,10 @@ const initialState = {
   staticFontLoaded: false,
   fonts: null,
   fontLoading: true,
-  fontToValidate: null,
+  fontToValidate: {
+    body: null,
+    header: null,
+  },
   font: "",
   headerFont: "",
   fontSize: 14,
