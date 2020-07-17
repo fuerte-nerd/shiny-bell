@@ -9,7 +9,7 @@ import {
 } from "../state/actions";
 import getRandomFont from "./getRandomFont";
 
-const loadFont = (font, target) => {
+const loadFont = (targets, random = true) => {
   const state = store.getState();
 
   const { fontToValidate, randomFontSelect, fontPicker } = state;
