@@ -5,6 +5,7 @@ import {
   setFont,
   setFontPicker,
   setHeaderFont,
+  setFontToValidate,
 } from "../state/actions";
 import getRandomFont from "./getRandomFont";
 
@@ -12,7 +13,8 @@ const loadFont = (font, target) => {
   const state = store.getState();
 
   const { randomFontSelect, fontPicker } = state;
-  console.log(font);
+
+  store.dispatch(setFontToValidate(font));
 
   const newFont = new FontFaceObserver(font.themeName);
   newFont.load().then(
@@ -25,9 +27,9 @@ const loadFont = (font, target) => {
           store.dispatch(setHeaderFont(font));
           break;
         default:
-          return;
+          break;
       }
-      return store.dispatch(setFontLoading(false));
+      store.dispatch(setFontLoading(false));
     },
     () => {
       if (randomFontSelect) {
@@ -39,13 +41,14 @@ const loadFont = (font, target) => {
             loadFont(getRandomFont(), "header");
             break;
           default:
-            return;
+            break;
         }
       } else {
         store.dispatch(setFontPicker({ ...fontPicker, notFound: true }));
       }
     }
   );
+  return store.dispatch(setFontToValidate(null));
 };
 
 export default loadFont;
