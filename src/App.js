@@ -75,6 +75,20 @@ function App(props) {
       () => {}
     );
 
+    updateElements({
+      bodyFont: {
+        update: true,
+        method: "random",
+      },
+      headerFont: {
+        update: true,
+        method: "random",
+      },
+      primaryColor: {
+        update: true,
+        method: "random",
+      },
+    });
     fonts && loadFonts();
     //eslint-disable-next-line
   }, [fonts]);
