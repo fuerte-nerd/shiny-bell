@@ -26,8 +26,8 @@ import {
   setChangeHistory,
   setUndo,
 } from "./state/actions";
-import randomFont from "./functions/randomFont";
-import randomColor from "./functions/randomColor";
+import getRandomFont from "./functions/getRandomFont";
+import getRandomColor from "./functions/getRandomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
 import validateFont from "./functions/validateFont";
@@ -37,7 +37,6 @@ function App(props) {
     dispatch,
     font,
     headerFont,
-    twoFonts,
     fonts,
     secondaryMode,
     primary,
@@ -47,7 +46,7 @@ function App(props) {
   } = props;
 
   useEffect(() => {
-    dispatch(setPrimary(randomColor()));
+    dispatch(setPrimary(getRandomColor()));
     axios
       .get(
         `https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_APIKEY}`
@@ -75,8 +74,8 @@ function App(props) {
       () => {}
     );
 
-    fonts && dispatch(setFont(randomFont()));
-    fonts && dispatch(setHeaderFont(randomFont()));
+    fonts && dispatch(setFont(getRandomFont()));
+    fonts && dispatch(setHeaderFont(getRandomFont()));
     //eslint-disable-next-line
   }, [fonts]);
 
@@ -174,7 +173,6 @@ const mapStateToProps = (state) => ({
   primary: state.primary,
   secondaryMode: state.secondaryMode,
   headerFont: state.headerFont,
-  twoFonts: state.twoFonts,
   backgrounds: state.backgrounds,
   changeHistory: state.changeHistory,
   undo: state.undo,
