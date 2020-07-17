@@ -90,10 +90,15 @@ function App(props) {
       const bFont = new FontFaceObserver(font.themeName);
       bFont.load().then(
         () => {
-            dispatch(setFontToValidate({...fontToValidate, fonts: fontToValidate.fonts.filter((i)=>{
-              return i.font.themeName === font.themeName ? null : i 
-          })
-        })},
+          dispatch(
+            setFontToValidate({
+              ...fontToValidate,
+              fonts: fontToValidate.fonts.filter((i) => {
+                return i.font.themeName === font.themeName ? null : i;
+              }),
+            })
+          );
+        },
         () => {}
       );
     }
@@ -105,8 +110,14 @@ function App(props) {
       const hFont = new FontFaceObserver(headerFont.themeName);
       hFont.load().then(
         () => {
-          dispatch(setFontLoading(false));
-          dispatch(setFontToValidate({ enabled: false, fonts: null }));
+          dispatch(
+            setFontToValidate({
+              ...fontToValidate,
+              fonts: fontToValidate.fonts.filter((i) => {
+                return i.font.themeName === headerFont.themeName ? null : i;
+              }),
+            })
+          );
         },
         () => {}
       );
@@ -114,6 +125,12 @@ function App(props) {
     }
     //eslint-disable-next-line
   }, [headerFont]);
+
+  useEffect(() => {
+    if (setFontToValidate.length === 0) {
+      dispatch(setFontLoading(false));
+    }
+  }, [setFontToValidate]);
 
   const [timerId, setTimerId] = useState(0);
 
