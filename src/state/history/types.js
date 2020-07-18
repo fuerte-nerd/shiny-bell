@@ -1,0 +1,6 @@
+export const SET_PAST = "SET_PAST";
+export const SET_CURRENT = "SET_CURRENT";
+export const SET_FUTURE = "SET_FUTURE";
+export const SET_STAGE_VALIDATING = "SET_STAGE_VALIDATING";
+export const SET_STAGE_VALIDATED = "SET_STAGE_VALIDATED";
+export const SET_STAGE_CHANGES = "SET_STAGE_CHANGES";
