@@ -1,0 +1,30 @@
+//
+export const SET_LOADING = "SET_IS_LOADING";
+
+//FONTS
+//Default font
+export const SET_DEF_FONT_LOADING = "SET_DEF_FONT_LOADING";
+export const SET_DEF_FONT_LOADED = "SET_DEF_FONT_LOADED";
+
+//Body font
+export const SET_BODY_FONT = "SET_BODY_FONT";
+export const SET_BODY_FONT_LOADING = "SET_BODY_FONT_LOADING";
+export const SET_BODY_FONT_LOADED = "SET_BODY_FONT_LOADED";
+export const SET_BODY_FONT_LOCK = "SET_BODY_FONT_LOCK";
+
+//Header font
+export const SET_HEADER_FONT = "SET_HEADER_FONT";
+export const SET_HEADER_FONT_LOADING = "SET_HEADER_FONT_LOADING";
+export const SET_HEADER_FONT_LOADED = "SET_HEADER_FONT_LOADED";
+export const SET_HEADER_FONT_LOCK = "SET_HEADER_FONT_LOCK";
+
+//PALETTE
+export const SET_PALETTE_LOCK = "SET_PALETTE_LOCK";
+
+//Primary
+export const SET_PRIMARY_HEX = "SET_PRIMARY_HEX";
+export const SET_PRIMARY_NAME = "SET_PRIMARY_NAME";
+
+//Secondary
+export const SET_SECONDARY_HEX = "SET_SECONDARY_HEX";
+export const SET_SECONDARY_NAME = "SET_SECONDARY_NAME";
