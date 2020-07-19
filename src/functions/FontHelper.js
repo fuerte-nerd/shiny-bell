@@ -3,13 +3,14 @@ import FontFaceObserver from "fontfaceobserver";
 
 class FontLoader {
   constructor(target, font = null) {
-    this.fonts = store.getState().fonts;
+    this.fonts = store.getState().library.fonts;
     if (font) {
       this.font = font;
     } else {
       this.font = fetchRandomFont();
     }
     this.target = target;
+    this.categories = store.getState().settings.searchCategories[target];
   }
 
   setFont(font) {
@@ -18,6 +19,14 @@ class FontLoader {
 
   getFont() {
     return this.font;
+  }
+
+  fetchRandomFont() {
+    const fontSearchList = this.fonts.filter((i) => {
+      return this.categories.includes(i.category);
+    });
+
+    return fontSearchList[Math.floor(Math.random() * fontSearchList.length)];
   }
 
   validate() {
