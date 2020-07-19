@@ -190,7 +190,7 @@ function App(props) {
     //eslint-disable-next-line
   }, [font, headerFont, primary]);
 
-  */
+  
 
   return (
     <Layout>
@@ -216,6 +216,10 @@ function App(props) {
       </Box>
     </Layout>
   );
+}
+*/
+
+  return <div></div>;
 }
 
 const mapStateToProps = ({ library, settings }) => ({

@@ -14,16 +14,16 @@ export default (state = initialState, action) => {
 
   switch (type) {
     case SET_LOADING:
-      newState.library.isLoading = payload;
+      newState.isLoading = payload;
       break;
     case SET_LOADED:
-      newState.library.loaded = payload;
+      newState.loaded = payload;
       break;
     case SET_FONTS:
-      newState.library.fonts = payload;
+      newState.fonts = payload;
       break;
     case SET_BLACKLISTED:
-      newState.library.blacklisted = payload;
+      newState.blacklisted = payload;
       break;
     default:
       break;
