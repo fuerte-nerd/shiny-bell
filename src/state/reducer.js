@@ -6,10 +6,10 @@ import library from "./library/reducer";
 import settings from "./settings/reducer";
 import viewables from "./viewables/reducer";
 
-export default combineReducers(
+export default combineReducers({
   components,
   appState,
   library,
   settings,
-  viewables
-);
+  viewables,
+});

@@ -183,7 +183,8 @@ function App(props) {
     //eslint-disable-next-line
   }, [font, headerFont, primary]);
 
-  
+  */
+
   return (
     <Layout>
       <Head />
@@ -208,11 +209,10 @@ function App(props) {
       </Box>
     </Layout>
   );
-  */
 }
 
-const mapStateToProps = (state) => {
-  console.log(state);
-};
+const mapStateToProps = ({ settings }) => ({
+  pageBackground: settings.backgrounds.page,
+});
 
 export default connect(mapStateToProps)(App);
