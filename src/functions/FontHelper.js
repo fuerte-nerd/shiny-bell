@@ -65,6 +65,15 @@ class FontLoader {
           this.fetchRandomFont();
           this.validate();
         } else {
+          switch (this.target) {
+            case "body":
+              store.dispatch(setBodyFontLoading(false));
+              store.dispatch(setBodyFontLoaded(true));
+              break;
+            case "header":
+              store.dispatch(setHeaderFontLoading(false));
+              store.dispatch(setHeaderFontLoaded(true));
+          }
           rej();
         }
       });
