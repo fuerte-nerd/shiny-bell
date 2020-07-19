@@ -24,7 +24,18 @@ class FontLoader {
     this.init();
   }
 
-  init() {}
+  init() {
+    switch (this.target) {
+      case "body":
+        store.dispatch(setBodyFontLoading(true));
+        break;
+      case "header":
+        store.dispatch(setHeaderFontLoading(true));
+        break;
+      default:
+        break;
+    }
+  }
 
   setFont(font) {
     this.font = font;
