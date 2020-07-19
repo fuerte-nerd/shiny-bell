@@ -74,9 +74,15 @@ class FontLoader {
   deploy() {
     switch (this.target) {
       case "body":
-        return store.dispatch(setBodyFont(this.font));
+        store.dispatch(setBodyFont(this.font));
+        store.dispatch(setBodyFontLoading(false));
+        store.dispatch(setBodyFontLoaded(true));
+        return;
       case "header":
-        return store.dispatch(setHeaderFont(this.font));
+        store.dispatch(setHeaderFont(this.font));
+        store.dispatch(setHeaderFontLoading(false));
+        store.dispatch(setHeaderFontLoaded(true));
+        return;
       default:
         return;
     }
