@@ -27,9 +27,11 @@ class FontLoader {
   init() {
     switch (this.target) {
       case "body":
+        store.dispatch(setBodyFontLoaded(false));
         store.dispatch(setBodyFontLoading(true));
         break;
       case "header":
+        store.dispatch(setHeaderFontLoaded(false));
         store.dispatch(setHeaderFontLoading(true));
         break;
       default:
@@ -50,14 +52,21 @@ class FontLoader {
       return this.categories.includes(i.category);
     });
 
-    return fontSearchList[Math.floor(Math.random() * fontSearchList.length)];
+    return this.setFont(
+      fontSearchList[Math.floor(Math.random() * fontSearchList.length)]
+    );
   }
 
   validate() {
     return new Promise((res, rej) => {
       const fontLoader = new FontFaceObserver(this.font.themeName);
       fontLoader.load().then(res, () => {
-        this.method === "auto" ? this.fetchRandomFont() : rej();
+        if (this.method === "auto") {
+          this.fetchRandomFont();
+          this.validate();
+        } else {
+          rej();
+        }
       });
     });
   }
@@ -71,8 +80,6 @@ class FontLoader {
       default:
         return;
     }
-
-    // set the state!
   }
 }
 
