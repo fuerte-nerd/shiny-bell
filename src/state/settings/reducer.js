@@ -1,3 +1,5 @@
+import { SET_RANDOM_FONT_SELECT } from "./types";
+
 const initialState = {
   randomFontSelect: true,
   fontSize: 14,
@@ -12,4 +14,20 @@ const initialState = {
     page: "transparent",
     box: "transparent",
   },
+};
+
+export default (state = initialState, action) => {
+  const { type, payload } = action;
+
+  const newState = Object.assign({}, state);
+
+  switch (type) {
+    case SET_RANDOM_FONT_SELECT:
+      newState.randomFontSelect = payload;
+      break;
+    default:
+      break;
+  }
+
+  return newState;
 };
