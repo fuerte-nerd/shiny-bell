@@ -1,5 +1,12 @@
 import store from "../state/store";
-import { setBodyFont, setHeaderFont } from "../state/components/actions";
+import {
+  setBodyFontLoading,
+  setBodyFontLoaded,
+  setBodyFont,
+  setHeaderFontLoading,
+  setHeaderFontLoaded,
+  setHeaderFont,
+} from "../state/components/actions";
 import FontFaceObserver from "fontfaceobserver";
 
 class FontLoader {
@@ -14,7 +21,10 @@ class FontLoader {
     }
     this.target = target;
     this.categories = store.getState().settings.searchCategories[target];
+    this.init();
   }
+
+  init() {}
 
   setFont(font) {
     this.font = font;
@@ -35,20 +45,22 @@ class FontLoader {
   validate() {
     return new Promise((res, rej) => {
       const fontLoader = new FontFaceObserver(this.font.themeName);
-      fontLoader.load().then(
-        () => {},
-        () => {
-          this.method === "auto" ? this.fetchRandomFont() : rej();
-        }
-      );
+      fontLoader.load().then(res, () => {
+        this.method === "auto" ? this.fetchRandomFont() : rej();
+      });
     });
   }
 
   deploy() {
     switch (this.target) {
       case "body":
-        store.dispatch(setBodyFont(this.font));
+        return store.dispatch(setBodyFont(this.font));
+      case "header":
+        return store.dispatch(setHeaderFont(this.font));
+      default:
+        return;
     }
+
     // set the state!
   }
 }
