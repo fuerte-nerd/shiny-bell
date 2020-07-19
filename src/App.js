@@ -43,6 +43,7 @@ import loadFonts from "./functions/loadFonts";
 
 function App(props) {
   const {
+    state,
     pageBackground,
     setFonts,
     fontLibrary,
