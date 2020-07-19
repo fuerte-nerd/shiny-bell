@@ -14,6 +14,7 @@ import Buttons from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
 import ParagraphPreview from "./components/ParagraphPreview";
 
+/* 
 import {
   setFontLoading,
   setFonts,
@@ -27,6 +28,8 @@ import {
   setUndo,
   setFontToValidate,
 } from "./state/actions";
+*/
+
 import getRandomFont from "./functions/getRandomFont";
 import getRandomColor from "./functions/getRandomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
@@ -34,6 +37,7 @@ import FontFaceObserver from "fontfaceobserver";
 import loadFonts from "./functions/loadFonts";
 
 function App(props) {
+  /* 
   const {
     dispatch,
     font,
@@ -46,6 +50,7 @@ function App(props) {
     undo,
     fontValidation,
   } = props;
+  
 
   useEffect(() => {
     dispatch(setPrimary(getRandomColor()));
@@ -178,6 +183,7 @@ function App(props) {
     //eslint-disable-next-line
   }, [font, headerFont, primary]);
 
+  
   return (
     <Layout>
       <Head />
@@ -202,18 +208,11 @@ function App(props) {
       </Box>
     </Layout>
   );
+  */
 }
 
-const mapStateToProps = (state) => ({
-  font: state.font,
-  fonts: state.fonts,
-  primary: state.primary,
-  secondaryMode: state.secondaryMode,
-  headerFont: state.headerFont,
-  backgrounds: state.backgrounds,
-  changeHistory: state.changeHistory,
-  undo: state.undo,
-  fontValidation: state.fontValidation,
-});
+const mapStateToProps = (state) => {
+  console.log(state);
+};
 
 export default connect(mapStateToProps)(App);
