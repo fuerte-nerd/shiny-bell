@@ -37,6 +37,7 @@ import FontFaceObserver from "fontfaceobserver";
 import loadFonts from "./functions/loadFonts";
 
 function App(props) {
+  const { pageBackground } = props;
   /* 
   const {
     dispatch,
@@ -194,7 +195,7 @@ function App(props) {
       <Box
         minHeight="100vh"
         maxWidth="100vw"
-        bgcolor={backgrounds.page}
+        bgcolor={pageBackground}
         style={{ transition: "all .25s" }}
         py={4}
       >
