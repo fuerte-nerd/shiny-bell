@@ -15,6 +15,10 @@ import Sidebar from "./components/Sidebar";
 import ParagraphPreview from "./components/ParagraphPreview";
 
 import { setFonts } from "./state/library/actions";
+import {
+  setDefFontLoading,
+  setDefFontLoaded,
+} from "./state/components/actions";
 /* 
 import {
   setFontLoading,
@@ -38,7 +42,13 @@ import FontFaceObserver from "fontfaceobserver";
 import loadFonts from "./functions/loadFonts";
 
 function App(props) {
-  const { pageBackground, setFonts, fontLibrary } = props;
+  const {
+    pageBackground,
+    setFonts,
+    fontLibrary,
+    setDefFontLoading,
+    setDefFontLoaded,
+  } = props;
   /* 
   const {
     dispatch,
@@ -73,6 +83,20 @@ function App(props) {
       });
     //eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    // Load default font
+    setDefFontLoading(true);
+    const defFont = new FontFaceObserver("Roboto");
+    defFont.load().then(
+      () => {
+        setDefFontLoaded(true);
+      },
+      () => {
+        //handle error})
+      }
+    );
+  }, [fontLibrary]);
 
   useEffect(() => {
     console.log(state);
@@ -228,4 +252,8 @@ const mapStateToProps = (state) => ({
   state,
 });
 
-export default connect(mapStateToProps, { setFonts })(App);
+export default connect(mapStateToProps, {
+  setFonts,
+  setDefFontLoading,
+  setDefFontLoaded,
+})(App);
