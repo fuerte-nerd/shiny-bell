@@ -14,6 +14,7 @@ import Buttons from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
 import ParagraphPreview from "./components/ParagraphPreview";
 
+import { setFonts } from "./state/library/actions";
 /* 
 import {
   setFontLoading,
@@ -37,7 +38,7 @@ import FontFaceObserver from "fontfaceobserver";
 import loadFonts from "./functions/loadFonts";
 
 function App(props) {
-  const { pageBackground } = props;
+  const { pageBackground, setFonts, fontLibrary } = props;
   /* 
   const {
     dispatch,
@@ -52,9 +53,9 @@ function App(props) {
     fontValidation,
   } = props;
   
+  */
 
   useEffect(() => {
-    dispatch(setPrimary(getRandomColor()));
     axios
       .get(
         `https://www.googleapis.com/webfonts/v1/webfonts?key=${process.env.REACT_APP_APIKEY}`
@@ -68,10 +69,15 @@ function App(props) {
             category: i.category,
           };
         });
-        dispatch(setFonts(fonts));
+        setFonts(fonts);
       });
     //eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    console.log(fontLibrary);
+  }, [fontLibrary]);
+  /*
 
   useEffect(() => {
     const staticFont = new FontFaceObserver("Roboto");
@@ -212,8 +218,9 @@ function App(props) {
   );
 }
 
-const mapStateToProps = ({ settings }) => ({
+const mapStateToProps = ({ library, settings }) => ({
   pageBackground: settings.backgrounds.page,
+  fontLibrary: library.fonts,
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { setFonts })(App);
