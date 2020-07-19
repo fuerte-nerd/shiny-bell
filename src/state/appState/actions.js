@@ -7,17 +7,17 @@ import {
   SET_STAGE_CHANGES,
 } from "./types";
 
-export const setPastHistory = (payload) => ({
+export const setPastAppStates = (payload) => ({
   type: SET_PAST,
   payload,
 });
 
-export const setCurrentHistory = (payload) => ({
+export const setCurrentAppState = (payload) => ({
   type: SET_CURRENT,
   payload,
 });
 
-export const setFutureHistory = (payload) => ({
+export const setFutureAppStates = (payload) => ({
   type: SET_FUTURE,
   payload,
 });
