@@ -75,8 +75,8 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    console.log(fontLibrary);
-  }, [fontLibrary]);
+    console.log(state);
+  }, [state]);
   /*
 
   useEffect(() => {
@@ -222,9 +222,10 @@ function App(props) {
   return <div></div>;
 }
 
-const mapStateToProps = ({ library, settings }) => ({
-  pageBackground: settings.backgrounds.page,
-  fontLibrary: library.fonts,
+const mapStateToProps = (state) => ({
+  pageBackground: state.settings.backgrounds.page,
+  fontLibrary: state.library.fonts,
+  state,
 });
 
 export default connect(mapStateToProps, { setFonts })(App);
