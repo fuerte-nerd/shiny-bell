@@ -1,9 +1,15 @@
+import store from "../state/store";
 import FontFaceObserver from "fontfaceobserver";
 
 class FontLoader {
-  constructor(options) {
-    this.font = options.font;
-    this.target = options.target;
+  constructor(target, font = null) {
+    this.fonts = store.getState().fonts;
+    if (font) {
+      this.font = font;
+    } else {
+      this.font = fetchRandomFont();
+    }
+    this.target = target;
   }
 
   setFont(font) {
