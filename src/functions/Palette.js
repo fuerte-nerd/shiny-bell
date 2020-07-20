@@ -17,5 +17,7 @@ class Palette {
     };
 
     const rgb = `rgb(${generateRandomNumber()}, ${generateRandomNumber()}, ${generateRandomNumber()})`;
+
+    return tinycolor(rgb).toHex();
   }
 }
