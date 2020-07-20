@@ -4,18 +4,18 @@ import store from "../state/store";
 
 class Palette {
   constructor(config = null) {
-    if (config.primary) {
+    if (config && config.primary) {
       this.primaryHex = config.primary;
     } else {
       this.primaryHex = this.getRandomColor();
     }
-    this.primaryName = this.getColorName(this.primaryName);
-    if (config.secondary) {
+    this.primaryName = this.getColorName(this.primaryHex);
+    if (config && config.secondary) {
       this.secondaryHex = config.secondary;
     } else {
       this.secondaryHex = this.getSecondaryColor();
     }
-    this.secondaryName = this.getColorName();
+    this.secondaryName = this.getColorName(this.secondaryHex);
   }
 
   getColorName(color) {
