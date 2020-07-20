@@ -24,7 +24,7 @@ import {
   setDefFontLoaded,
 } from "./state/components/actions";
 
-import { setCurrentAppState } from "./state/appState/actions";
+import { setCurrentAppState, setPastAppStates } from "./state/appState/actions";
 /* 
 import {
   setFontLoading,
@@ -55,6 +55,7 @@ function App(props) {
     setDefFontLoading,
     setDefFontLoaded,
     setCurrentAppState,
+    setPastAppStates,
     defFontLoaded,
     componentsLoading,
     bodyFont,
@@ -310,4 +311,5 @@ export default connect(mapStateToProps, {
   setDefFontLoading,
   setDefFontLoaded,
   setCurrentAppState,
+  setPastAppStates,
 })(App);
