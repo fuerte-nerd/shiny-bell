@@ -3,7 +3,7 @@ import axios from "axios";
 import store from "../state/store";
 
 class Palette {
-  constructor(config) {
+  constructor(config = null) {
     if (config.primary) {
       this.primaryHex = config.primary;
     } else {
