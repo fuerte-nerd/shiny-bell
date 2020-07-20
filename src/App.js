@@ -102,7 +102,17 @@ function App(props) {
     //eslint-disable-next-line
   }, [fontLibrary]);
 
-  useEffect(() => {}, [defFontLoaded]);
+  useEffect(() => {
+    const newBodyFont = new FontLoader("body");
+    newBodyFont
+      .validate()
+      .then(() => {
+        newBodyFont.deploy();
+      })
+      .catch(() => {
+        console.log("There was an error");
+      });
+  }, [defFontLoaded]);
 
   useEffect(() => {
     console.log(state);
