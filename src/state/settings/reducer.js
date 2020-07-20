@@ -27,7 +27,7 @@ const initialState = {
     box: "transparent",
   },
   fontCategoryFilters: {
-    body: ["serif", "sans-serif", "display", "handwriting", "monospace"],
+    body: ["display"],
     header: ["serif", "sans-serif", "display", "handwriting", "monospace"],
   },
 };
