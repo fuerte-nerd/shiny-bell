@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import axios from "axios";
 import { Container, Toolbar, Box } from "@material-ui/core";
 import FontLoader from "./functions/FontHelper";
+import Palette from "./functions/Palette";
 
 import GoogleFontValidator from "./components/GoogleFontValidator";
 import Layout from "./components/Layout";
@@ -38,7 +39,6 @@ import {
 } from "./state/actions";
 */
 
-import getRandomFont from "./functions/getRandomFont";
 import getRandomColor from "./functions/getRandomColor";
 import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
@@ -54,21 +54,6 @@ function App(props) {
     setDefFontLoaded,
     defFontLoaded,
   } = props;
-  /* 
-  const {
-    dispatch,
-    font,
-    headerFont,
-    fonts,
-    secondaryMode,
-    primary,
-    backgrounds,
-    changeHistory,
-    undo,
-    fontValidation,
-  } = props;
-  
-  */
 
   useEffect(() => {
     axios
@@ -105,6 +90,10 @@ function App(props) {
       );
     };
 
+    const palette = new Palette();
+
+    console.log(palette);
+
     if (fontLibrary) {
       // Load default font
       setDefFontLoading(true);
@@ -116,7 +105,6 @@ function App(props) {
   useEffect(() => {
     if (defFontLoaded) {
       const newBodyFont = new FontLoader("body");
-      console.log(newBodyFont);
       newBodyFont
         .validate()
         .then(() => {
@@ -141,18 +129,6 @@ function App(props) {
     console.log(state);
   }, [state]);
   /*
-
-  useEffect(() => {
-    const staticFont = new FontFaceObserver("Roboto");
-    staticFont.load().then(
-      () => {
-        dispatch(setStaticFont(true));
-      },
-      () => {}
-    );
-    fonts && loadFonts();
-    //eslint-disable-next-line
-  }, [fonts]);
 
   useEffect(() => {
     dispatch(setSecondary(getSecondaryColor(primary, secondaryMode)));

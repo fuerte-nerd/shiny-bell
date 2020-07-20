@@ -15,6 +15,7 @@ class Palette {
     } else {
       this.secondaryHex = this.getSecondaryColor();
     }
+    this.secondaryName = this.getColorName();
   }
 
   getColorName(color) {
