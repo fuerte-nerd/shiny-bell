@@ -1,23 +1,31 @@
 import tinycolor from "tinycolor2";
+import axios from "axios";
 import store from "../state/store";
 
 class Palette {
   constructor(config) {
     if (config.primary) {
-      this.primary = config.primary;
+      this.primaryHex = config.primary;
     } else {
-      this.primary = this.getRandomColor();
+      this.primaryHex = this.getRandomColor();
     }
+    this.primaryName = this.getColorName(this.primaryName);
     if (config.secondary) {
-      this.secondary = config.secondary;
+      this.secondaryHex = config.secondary;
     } else {
-      this.secondary = this.getSecondaryColor();
+      this.secondaryHex = this.getSecondaryColor();
     }
   }
 
-  getRandomColor() {
-    //returns hex value
+  getColorName(color) {
+    axios
+      .get(`https://api.color.pizza/v1/${color.substr(1)}`)
+      .then((response) => {
+        return response.data.colors[0].name;
+      });
+  }
 
+  getRandomColor() {
     const generateRandomNumber = () => {
       return Math.floor(Math.random() * 255);
     };
