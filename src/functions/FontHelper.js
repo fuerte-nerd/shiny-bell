@@ -102,9 +102,9 @@ class FontLoader {
             }
             rej(this.font);
           }
-          runValidation();
         });
       };
+      runValidation();
     });
   }
 
