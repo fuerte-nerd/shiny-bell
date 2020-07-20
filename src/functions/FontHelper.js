@@ -65,40 +65,46 @@ class FontLoader {
 
   validate() {
     return new Promise((res, rej) => {
-      const fontLoader = new FontFaceObserver(this.font.themeName);
-      fontLoader.load().then(res, () => {
-        if (this.method === "auto") {
-          store.dispatch(
-            setBlacklisted([...store.getState().library.blacklisted, this.font])
-          );
-          this.setFont(this.fetchRandomFont());
-          switch (this.target) {
-            case "body":
-              store.dispatch(setNextBodyFont(this.font));
-              break;
-            case "header":
-              store.dispatch(setNextHeaderFont(this.font));
-              break;
-            default:
-              break;
+      const runValidation = () => {
+        const fontLoader = new FontFaceObserver(this.font.themeName);
+        fontLoader.load().then(res, () => {
+          if (this.method === "auto") {
+            store.dispatch(
+              setBlacklisted([
+                ...store.getState().library.blacklisted,
+                this.font,
+              ])
+            );
+            this.setFont(this.fetchRandomFont());
+            switch (this.target) {
+              case "body":
+                store.dispatch(setNextBodyFont(this.font));
+                break;
+              case "header":
+                store.dispatch(setNextHeaderFont(this.font));
+                break;
+              default:
+                break;
+            }
+            runValidation();
+          } else {
+            switch (this.target) {
+              case "body":
+                store.dispatch(setBodyFontLoading(false));
+                store.dispatch(setBodyFontLoaded(true));
+                break;
+              case "header":
+                store.dispatch(setHeaderFontLoading(false));
+                store.dispatch(setHeaderFontLoaded(true));
+                break;
+              default:
+                break;
+            }
+            rej(this.font);
           }
-          this.validate();
-        } else {
-          switch (this.target) {
-            case "body":
-              store.dispatch(setBodyFontLoading(false));
-              store.dispatch(setBodyFontLoaded(true));
-              break;
-            case "header":
-              store.dispatch(setHeaderFontLoading(false));
-              store.dispatch(setHeaderFontLoaded(true));
-              break;
-            default:
-              break;
-          }
-          rej(this.font);
-        }
-      });
+          runValidation();
+        });
+      };
     });
   }
 
