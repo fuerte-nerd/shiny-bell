@@ -90,9 +90,7 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    if (fontLibrary) {
-      // Load default font
-      setDefFontLoading(true);
+    const validateDefFont = () => {
       const defFont = new FontFaceObserver("Roboto");
       defFont.load().then(
         () => {
@@ -102,8 +100,15 @@ function App(props) {
         () => {
           //handle error})
           console.log("Houston we have a problem!");
+          validateDefFont();
         }
       );
+    };
+
+    if (fontLibrary) {
+      // Load default font
+      setDefFontLoading(true);
+      validateDefFont();
     }
     //eslint-disable-next-line
   }, [fontLibrary]);
@@ -279,6 +284,7 @@ function App(props) {
 
   return (
     <>
+      <Head />
       <GoogleFontValidator />
     </>
   );
