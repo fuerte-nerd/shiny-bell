@@ -164,7 +164,7 @@ function App(props) {
   }, [fontsLoading, paletteLoading]);
 
   useEffect(() => {
-    console.log(state);
+    //console.log(state);
   }, [state]);
   /*
 
