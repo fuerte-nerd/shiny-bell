@@ -23,6 +23,8 @@ import {
   setDefFontLoading,
   setDefFontLoaded,
 } from "./state/components/actions";
+
+import { setCurrentAppState } from "./state/appState/actions";
 /* 
 import {
   setFontLoading,
@@ -52,7 +54,15 @@ function App(props) {
     fontLibrary,
     setDefFontLoading,
     setDefFontLoaded,
+    setCurrentAppState,
     defFontLoaded,
+    componentsLoading,
+    bodyFont,
+    headerFont,
+    primary,
+    secondary,
+    currentAppState,
+    pastAppStates,
   } = props;
 
   useEffect(() => {
@@ -125,6 +135,20 @@ function App(props) {
         });
     }
   }, [defFontLoaded]);
+
+  useEffect(() => {
+    if (!componentsLoading) {
+      if (currentAppState) {
+        setPastAppStates([...pastAppStates, currentAppState]);
+      }
+      setCurrentAppState({
+        primary,
+        secondary,
+        bodyFont,
+        headerFont,
+      });
+    }
+  }, [componentsLoading]);
 
   useEffect(() => {
     console.log(state);
@@ -271,6 +295,13 @@ const mapStateToProps = (state) => ({
   pageBackground: state.settings.backgrounds.page,
   fontLibrary: state.library.fonts,
   defFontLoaded: state.components.fonts.default.loaded,
+  componentsLoading: state.components.loading,
+  primary: state.components.palette.primary,
+  secondary: state.components.palette.secondary,
+  bodyFont: state.components.fonts.body.currentFont,
+  headerFont: state.components.fonts.header.currentFont,
+  currentAppState: state.appState.current,
+  pastAppState: state.appState.past,
   state,
 });
 
@@ -278,4 +309,5 @@ export default connect(mapStateToProps, {
   setFonts,
   setDefFontLoading,
   setDefFontLoaded,
+  setCurrentAppState,
 })(App);
