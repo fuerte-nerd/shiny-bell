@@ -12,13 +12,13 @@ const GoogleFontValidator = (props) => {
 
   return (
     <Helmet>
-      {bodyFontIsLoading && (
+      {nextBodyFont && (
         <link
           rel="stylesheet"
           href={`https://fonts.googleapis.com/css2?family=${nextBodyFont.linkName}&display=swap`}
         />
       )}
-      {headerFontIsLoading && (
+      {nextHeaderFont && (
         <link
           rel="stylesheet"
           href={`https://fonts.googleapis.com/css2?family=${nextHeaderFont.linkName}&display=swap`}

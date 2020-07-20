@@ -23,7 +23,7 @@ const initialState = {
   loading: true,
   fonts: {
     default: {
-      isValidating: false,
+      isLoading: false,
       loaded: false,
     },
     body: {

@@ -96,6 +96,7 @@ function App(props) {
       const defFont = new FontFaceObserver("Roboto");
       defFont.load().then(
         () => {
+          setDefFontLoading(false);
           setDefFontLoaded(true);
         },
         () => {
@@ -278,12 +279,6 @@ function App(props) {
 
   return (
     <>
-      <Helmet>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-          rel="stylesheet"
-        />
-      </Helmet>
       <GoogleFontValidator />
     </>
   );
