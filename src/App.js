@@ -100,6 +100,7 @@ function App(props) {
         },
         () => {
           //handle error})
+          console.log("Houston we have a problem!");
         }
       );
     }
@@ -278,8 +279,8 @@ function App(props) {
     <>
       <Helmet>
         <link
-          rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+          rel="stylesheet"
         />
       </Helmet>
       <GoogleFontValidator />
