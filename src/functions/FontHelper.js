@@ -12,6 +12,7 @@ import {
   setComponentsLoading,
 } from "../state/components/actions";
 import FontFaceObserver from "fontfaceobserver";
+import { setBlacklisted } from "../state/library/actions";
 
 class FontLoader {
   constructor(target, font = null) {
@@ -67,7 +68,10 @@ class FontLoader {
       const fontLoader = new FontFaceObserver(this.font.themeName);
       fontLoader.load().then(res, () => {
         if (this.method === "auto") {
-          this.fetchRandomFont();
+          store.dispatch(
+            setBlacklisted([...store.getState().library.blacklisted, this.font])
+          );
+          this.setFont(this.fetchRandomFont());
           this.validate();
         } else {
           switch (this.target) {
@@ -82,7 +86,7 @@ class FontLoader {
             default:
               break;
           }
-          rej();
+          rej(this.font);
         }
       });
     });
