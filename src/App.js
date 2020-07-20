@@ -112,6 +112,7 @@ function App(props) {
 
   useEffect(() => {
     if (defFontLoaded) {
+      setComponentsLoading(true);
       const palette = new Palette();
       palette.getColorNames().then(() => {
         palette.deploy();
