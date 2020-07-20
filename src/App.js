@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
 import axios from "axios";
 import { Container, Toolbar, Box } from "@material-ui/core";
 import FontLoader from "./functions/FontHelper";
@@ -271,7 +272,17 @@ function App(props) {
 }
 */
 
-  return <GoogleFontValidator />;
+  return (
+    <>
+      <Helmet>
+        <link
+          rel="stylesheet"
+          href={`https://fonts.googleapis.com/css2?family=Roboto&display=swap`}
+        />
+      </Helmet>
+      <GoogleFontValidator />
+    </>
+  );
 }
 
 const mapStateToProps = (state) => ({
