@@ -2,10 +2,12 @@ import store from "../state/store";
 import {
   setBodyFontLoading,
   setBodyFontLoaded,
-  setBodyFont,
+  setNextBodyFont,
+  setCurrentBodyFont,
   setHeaderFontLoading,
   setHeaderFontLoaded,
-  setHeaderFont,
+  setNextHeaderFont
+  setCurrentHeaderFont,
   setNextBodyFont,
   setNextHeaderFont,
   setCurrentBodyFont,
@@ -91,15 +93,13 @@ class FontLoader {
     switch (this.target) {
       case "body":
         store.dispatch(setCurrentBodyFont(this.font));
-        store.dispatch(setNextBodyFont(null));
-        const bodyFontLoader = new FontFaceObserver(this.font.themeName);
-        bodyFontLoader.load().then(
-          () => {
-            store.dispatch(setBodyFontLoading(false));
-            store.dispatch(setBodyFontLoaded(true));
-          },
-          () => {}
-        );
+        store.dispatch(setNextBodyFont(null))
+        const bodyFontLoader = new FontFaceObserver(this.font.themeName)
+        bodyFontLoader.load().then(()=>{
+        store.dispatch(setBodyFontLoading(false));
+        store.dispatch(setBodyFontLoaded(true));
+          
+        },()=>{})
         return;
       case "header":
         store.dispatch(setCurrentHeaderFont(this.font));
