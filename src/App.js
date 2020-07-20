@@ -64,6 +64,8 @@ function App(props) {
     pastAppStates,
     setComponentsLoading,
     setLibraryLoaded,
+    fontsLoading,
+    paletteLoading,
   } = props;
 
   useEffect(() => {
@@ -154,6 +156,12 @@ function App(props) {
       });
     }
   }, [componentsLoading]);
+
+  useEffect(() => {
+    if (!fontsLoading && !paletteLoading) {
+      setComponentsLoading(false);
+    }
+  }, [fontsLoading, paletteLoading]);
 
   useEffect(() => {
     console.log(state);
@@ -307,6 +315,8 @@ const mapStateToProps = (state) => ({
   headerFont: state.components.fonts.header.currentFont,
   currentAppState: state.appState.current,
   pastAppState: state.appState.past,
+  fontsLoading: state.components.fonts.loading,
+  paletteLoading: state.components.palette.isLoading,
   state,
 });
 
