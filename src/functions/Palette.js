@@ -68,6 +68,7 @@ class Palette {
   }
 
   deploy() {
+    console.log(this);
     store.dispatch(setPrimaryHex(this.primaryHex));
     store.dispatch(setPrimaryName(this.primaryName));
     store.dispatch(setSecondaryHex(this.secondaryHex));
