@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Container, Toolbar, Box } from "@material-ui/core";
+import FontLoader from "./functions/FontHelper";
 
 import Layout from "./components/Layout";
 import Head from "./components/Head";
@@ -49,6 +50,7 @@ function App(props) {
     fontLibrary,
     setDefFontLoading,
     setDefFontLoaded,
+    defFontLoaded,
   } = props;
   /* 
   const {
@@ -97,7 +99,10 @@ function App(props) {
         //handle error})
       }
     );
+    //eslint-disable-next-line
   }, [fontLibrary]);
+
+  useEffect(() => {}, [defFontLoaded]);
 
   useEffect(() => {
     console.log(state);
@@ -250,6 +255,7 @@ function App(props) {
 const mapStateToProps = (state) => ({
   pageBackground: state.settings.backgrounds.page,
   fontLibrary: state.library.fonts,
+  defFontLoaded: state.components.fonts.default.loaded,
   state,
 });
 
