@@ -90,10 +90,6 @@ function App(props) {
       );
     };
 
-    const palette = new Palette();
-
-    console.log(palette);
-
     if (fontLibrary) {
       // Load default font
       setDefFontLoading(true);
@@ -104,6 +100,11 @@ function App(props) {
 
   useEffect(() => {
     if (defFontLoaded) {
+      const palette = new Palette();
+      palette.getColorNames().then(() => {
+        console.log(palette);
+      });
+
       const newBodyFont = new FontLoader("body");
       newBodyFont
         .validate()
