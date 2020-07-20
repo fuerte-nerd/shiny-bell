@@ -73,6 +73,16 @@ class FontLoader {
             setBlacklisted([...store.getState().library.blacklisted, this.font])
           );
           this.setFont(this.fetchRandomFont());
+          switch (this.target) {
+            case "body":
+              store.dispatch(setNextBodyFont(this.font));
+              break;
+            case "header":
+              store.dispatch(setNextHeaderFont(this.font));
+              break;
+            default:
+              break;
+          }
           this.validate();
         } else {
           switch (this.target) {
