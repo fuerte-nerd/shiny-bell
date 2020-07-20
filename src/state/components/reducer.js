@@ -17,11 +17,13 @@ import {
   SET_PRIMARY_NAME,
   SET_SECONDARY_HEX,
   SET_SECONDARY_NAME,
+  SET_FONTS_LOADING,
 } from "./types";
 
 const initialState = {
   loading: true,
   fonts: {
+    loading: true,
     default: {
       isLoading: false,
       loaded: false,
@@ -63,6 +65,9 @@ export default (state = initialState, action) => {
   switch (type) {
     case SET_LOADING:
       newState.loading = payload;
+      break;
+    case SET_FONTS_LOADING:
+      newState.fonts.loading = payload;
       break;
     case SET_DEF_FONT_LOADING:
       newState.fonts.default.isLoading = payload;

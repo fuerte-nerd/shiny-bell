@@ -17,10 +17,16 @@ import {
   SET_PRIMARY_NAME,
   SET_SECONDARY_HEX,
   SET_SECONDARY_NAME,
+  SET_FONTS_LOADING,
 } from "./types";
 
 export const setComponentsLoading = (payload) => ({
   type: SET_LOADING,
+  payload,
+});
+
+export const setFontsLoading = (payload) => ({
+  type: SET_FONTS_LOADING,
   payload,
 });
 
