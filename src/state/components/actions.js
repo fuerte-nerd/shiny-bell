@@ -18,6 +18,7 @@ import {
   SET_SECONDARY_HEX,
   SET_SECONDARY_NAME,
   SET_FONTS_LOADING,
+  SET_PALETTE_LOADING,
 } from "./types";
 
 export const setComponentsLoading = (payload) => ({
@@ -87,6 +88,11 @@ export const setHeaderFontLoaded = (payload) => ({
 
 export const setHeaderFontLock = (payload) => ({
   type: SET_HEADER_FONT_LOCK,
+  payload,
+});
+
+export const setPaletteLoading = (payload) => ({
+  type: SET_PALETTE_LOADING,
   payload,
 });
 

@@ -18,6 +18,7 @@ import {
   SET_SECONDARY_HEX,
   SET_SECONDARY_NAME,
   SET_FONTS_LOADING,
+  SET_PALETTE_LOADING,
 } from "./types";
 
 const initialState = {
@@ -45,6 +46,7 @@ const initialState = {
   },
   palette: {
     locked: false,
+    isLoading: false,
     primary: {
       hex: "#000000",
       name: "Black",
@@ -104,6 +106,9 @@ export default (state = initialState, action) => {
       break;
     case SET_HEADER_FONT_LOCK:
       newState.fonts.header.locked = payload;
+      break;
+    case SET_PALETTE_LOADING:
+      newState.palette.isLoading = payload;
       break;
     case SET_PALETTE_LOCK:
       newState.palette.locked = payload;
