@@ -18,10 +18,11 @@ import Buttons from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
 import ParagraphPreview from "./components/ParagraphPreview";
 
-import { setFonts } from "./state/library/actions";
+import { setFonts, setLibraryLoaded } from "./state/library/actions";
 import {
   setDefFontLoading,
   setDefFontLoaded,
+  setComponentsLoading,
 } from "./state/components/actions";
 
 import { setCurrentAppState, setPastAppStates } from "./state/appState/actions";
@@ -41,10 +42,7 @@ import {
 } from "./state/actions";
 */
 
-import getRandomColor from "./functions/getRandomColor";
-import getSecondaryColor from "./functions/getSecondaryColor";
 import FontFaceObserver from "fontfaceobserver";
-import loadFonts from "./functions/loadFonts";
 
 function App(props) {
   const {
@@ -64,6 +62,8 @@ function App(props) {
     secondary,
     currentAppState,
     pastAppStates,
+    setComponentsLoading,
+    setLibraryLoaded,
   } = props;
 
   useEffect(() => {
@@ -81,6 +81,7 @@ function App(props) {
           };
         });
         setFonts(fonts);
+        setLibraryLoaded(true);
       });
     //eslint-disable-next-line
   }, []);
@@ -136,6 +137,8 @@ function App(props) {
         });
     }
   }, [defFontLoaded]);
+
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (!componentsLoading) {
@@ -312,4 +315,6 @@ export default connect(mapStateToProps, {
   setDefFontLoaded,
   setCurrentAppState,
   setPastAppStates,
+  setComponentsLoading,
+  setLibraryLoaded,
 })(App);
