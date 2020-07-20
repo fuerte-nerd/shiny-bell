@@ -8,6 +8,7 @@ import {
   setHeaderFontLoaded,
   setNextHeaderFont,
   setCurrentHeaderFont,
+  setFontsLoading,
 } from "../state/components/actions";
 import FontFaceObserver from "fontfaceobserver";
 
@@ -27,6 +28,7 @@ class FontLoader {
   }
 
   init() {
+    store.dispatch(setFontsLoading(true));
     switch (this.target) {
       case "body":
         store.dispatch(setNextBodyFont(this.font));
@@ -95,14 +97,27 @@ class FontLoader {
           () => {
             store.dispatch(setBodyFontLoading(false));
             store.dispatch(setBodyFontLoaded(true));
+            if (!store.getState().components.fonts.header.isLoading) {
+              store.dispatch(setFontsLoading(false));
+            }
           },
           () => {}
         );
         return;
       case "header":
         store.dispatch(setCurrentHeaderFont(this.font));
-        store.dispatch(setHeaderFontLoading(false));
-        store.dispatch(setHeaderFontLoaded(true));
+        store.dispatch(setNextHeaderFont(null));
+        const headerFontLoader = new FontFaceObserver(this.font.themeName);
+        headerFontLoader.load().then(
+          () => {
+            store.dispatch(setHeaderFontLoading(false));
+            store.dispatch(setHeaderFontLoaded(true));
+            if (!store.getState().components.fonts.body.isLoading) {
+              store.dispatch(setFontsLoading(false));
+            }
+          },
+          () => {}
+        );
         return;
       default:
         return;
