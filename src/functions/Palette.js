@@ -1,6 +1,12 @@
 import tinycolor from "tinycolor2";
 import axios from "axios";
 import store from "../state/store";
+import {
+  setPrimaryHex,
+  setPrimaryName,
+  setSecondaryHex,
+  setSecondaryName,
+} from "../state/components/actions";
 
 class Palette {
   constructor(config = null) {
@@ -59,6 +65,13 @@ class Palette {
       default:
         return;
     }
+  }
+
+  deploy() {
+    store.dispatch(setPrimaryHex(this.primaryHex));
+    store.dispatch(setPrimaryName(this.primaryName));
+    store.dispatch(setSecondaryHex(this.secondaryHex));
+    store.dispatch(setSecondaryName(this.secondaryName));
   }
 }
 
