@@ -16,6 +16,7 @@ import FontFaceObserver from "fontfaceobserver";
 class FontLoader {
   constructor(target, font = null) {
     this.fonts = store.getState().library.fonts;
+    this.categories = store.getState().settings.fontCategoryFilters[target];
     if (font) {
       this.font = font;
       this.method = "manual";
@@ -24,7 +25,6 @@ class FontLoader {
       this.method = "auto";
     }
     this.target = target;
-    this.categories = store.getState().settings.fontCategoryFilters[target];
     this.init();
   }
 
@@ -58,9 +58,7 @@ class FontLoader {
       return this.categories.includes(i.category);
     });
 
-    return this.setFont(
-      fontSearchList[Math.floor(Math.random() * fontSearchList.length)]
-    );
+    return fontSearchList[Math.floor(Math.random() * fontSearchList.length)];
   }
 
   validate() {
