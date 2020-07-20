@@ -26,6 +26,10 @@ const initialState = {
     page: "transparent",
     box: "transparent",
   },
+  fontCategoryFilters: {
+    body: ["serif", "sans-serif", "display", "handwriting", "monospace"],
+    header: ["serif", "sans-serif", "display", "handwriting", "monospace"],
+  },
 };
 
 export default (state = initialState, action) => {
