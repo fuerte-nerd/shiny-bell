@@ -4,6 +4,7 @@ import axios from "axios";
 import { Container, Toolbar, Box } from "@material-ui/core";
 import FontLoader from "./functions/FontHelper";
 
+import GoogleFontValidator from "./components/GoogleFontValidator";
 import Layout from "./components/Layout";
 import Head from "./components/Head";
 import RefreshButton from "./components/RefreshButton";
@@ -108,6 +109,15 @@ function App(props) {
       .validate()
       .then(() => {
         newBodyFont.deploy();
+      })
+      .catch(() => {
+        console.log("There was an error");
+      });
+    const newHeaderFont = new FontLoader("header");
+    newHeaderFont
+      .validate()
+      .then(() => {
+        newHeaderFont.deploy();
       })
       .catch(() => {
         console.log("There was an error");
@@ -259,7 +269,7 @@ function App(props) {
 }
 */
 
-  return <div></div>;
+  return <GoogleFontValidator />;
 }
 
 const mapStateToProps = (state) => ({
