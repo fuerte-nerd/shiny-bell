@@ -38,7 +38,6 @@ class Palette {
           this.secondaryName = response.data.colors[1].name;
           res();
         });
-      res();
     });
   }
 
