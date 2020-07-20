@@ -2,11 +2,13 @@ import {
   SET_LOADING,
   SET_DEF_FONT_LOADING,
   SET_DEF_FONT_LOADED,
-  SET_BODY_FONT,
+  SET_CURRENT_BODY_FONT,
+  SET_NEXT_BODY_FONT,
   SET_BODY_FONT_LOADING,
   SET_BODY_FONT_LOADED,
   SET_BODY_FONT_LOCK,
-  SET_HEADER_FONT,
+  SET_CURRENT_HEADER_FONT,
+  SET_NEXT_HEADER_FONT,
   SET_HEADER_FONT_LOADING,
   SET_HEADER_FONT_LOADED,
   SET_HEADER_FONT_LOCK,
@@ -28,13 +30,15 @@ const initialState = {
       isLoading: false,
       loaded: false,
       locked: false,
-      font: null,
+      currentFont: null,
+      nextFont: null,
     },
     header: {
       isLoading: false,
       loaded: false,
       locked: false,
-      font: null,
+      currentFont: null,
+      nextFont: null,
     },
   },
   palette: {
@@ -65,8 +69,11 @@ export default (state = initialState, action) => {
     case SET_DEF_FONT_LOADED:
       newState.fonts.default.loaded = payload;
       break;
-    case SET_BODY_FONT:
-      newState.fonts.body.font = payload;
+    case SET_CURRENT_BODY_FONT:
+      newState.fonts.body.currentFont = payload;
+      break;
+    case SET_NEXT_BODY_FONT:
+      newState.fonts.body.nextFont = payload;
       break;
     case SET_BODY_FONT_LOADING:
       newState.fonts.body.isLoading = payload;
@@ -77,8 +84,11 @@ export default (state = initialState, action) => {
     case SET_BODY_FONT_LOCK:
       newState.fonts.body.locked = payload;
       break;
-    case SET_HEADER_FONT:
-      newState.fonts.header.font = payload;
+    case SET_CURRENT_HEADER_FONT:
+      newState.fonts.header.currentFont = payload;
+      break;
+    case SET_NEXT_HEADER_FONT:
+      newState.fonts.header.nextFont = payload;
       break;
     case SET_HEADER_FONT_LOADING:
       newState.fonts.header.isLoading = payload;

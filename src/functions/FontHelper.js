@@ -8,6 +8,8 @@ import {
   setHeaderFont,
   setNextBodyFont,
   setNextHeaderFont,
+  setCurrentBodyFont,
+  setCurrentHeaderFont,
 } from "../state/components/actions";
 import FontFaceObserver from "fontfaceobserver";
 
@@ -90,12 +92,12 @@ class FontLoader {
   deploy() {
     switch (this.target) {
       case "body":
-        store.dispatch(setBodyFont(this.font));
+        store.dispatch(setCurrentBodyFont(this.font));
         store.dispatch(setBodyFontLoading(false));
         store.dispatch(setBodyFontLoaded(true));
         return;
       case "header":
-        store.dispatch(setHeaderFont(this.font));
+        store.dispatch(setCurrentHeaderFont(this.font));
         store.dispatch(setHeaderFontLoading(false));
         store.dispatch(setHeaderFontLoaded(true));
         return;
