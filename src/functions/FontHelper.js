@@ -65,7 +65,6 @@ class FontLoader {
 
   validate() {
     return new Promise((res, rej) => {
-      console.log(this.font);
       const fontLoader = new FontFaceObserver(this.font.themeName);
       fontLoader.load().then(res, () => {
         if (this.method === "auto") {
