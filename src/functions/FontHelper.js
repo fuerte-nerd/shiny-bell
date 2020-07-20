@@ -65,6 +65,7 @@ class FontLoader {
 
   validate() {
     return new Promise((res, rej) => {
+      console.log(this.font);
       const fontLoader = new FontFaceObserver(this.font.themeName);
       fontLoader.load().then(res, () => {
         if (this.method === "auto") {
@@ -119,9 +120,6 @@ class FontLoader {
             store.dispatch(setHeaderFontLoaded(true));
             if (!store.getState().components.fonts.body.isLoading) {
               store.dispatch(setFontsLoading(false));
-              if (!store.getState().components.palette.isLoading) {
-                store.dispatch(setComponentsLoading(false));
-              }
             }
           },
           () => {}

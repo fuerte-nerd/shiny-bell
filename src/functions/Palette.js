@@ -76,9 +76,6 @@ class Palette {
     store.dispatch(setSecondaryHex(this.secondaryHex));
     store.dispatch(setSecondaryName(this.secondaryName));
     store.dispatch(setPaletteLoading(false));
-    if (!store.getState().components.fonts.loading) {
-      store.dispatch(setComponentsLoading(false));
-    }
   }
 }
 
