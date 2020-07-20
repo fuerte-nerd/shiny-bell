@@ -104,24 +104,26 @@ function App(props) {
   }, [fontLibrary]);
 
   useEffect(() => {
-    const newBodyFont = new FontLoader("body");
-    newBodyFont
-      .validate()
-      .then(() => {
-        newBodyFont.deploy();
-      })
-      .catch(() => {
-        console.log("There was an error");
-      });
-    const newHeaderFont = new FontLoader("header");
-    newHeaderFont
-      .validate()
-      .then(() => {
-        newHeaderFont.deploy();
-      })
-      .catch(() => {
-        console.log("There was an error");
-      });
+    if (defFontLoaded) {
+      const newBodyFont = new FontLoader("body");
+      newBodyFont
+        .validate()
+        .then(() => {
+          newBodyFont.deploy();
+        })
+        .catch(() => {
+          console.log("There was an error");
+        });
+      const newHeaderFont = new FontLoader("header");
+      newHeaderFont
+        .validate()
+        .then(() => {
+          newHeaderFont.deploy();
+        })
+        .catch(() => {
+          console.log("There was an error");
+        });
+    }
   }, [defFontLoaded]);
 
   useEffect(() => {
