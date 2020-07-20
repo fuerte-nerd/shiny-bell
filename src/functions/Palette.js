@@ -33,6 +33,16 @@ class Palette {
     switch (mixMode) {
       case "complement":
         return tinycolor(this.primary).complement().toHexString();
+      case "desaturate":
+        return tinycolor(this.primary).desaturate(50).toHexString();
+      case "saturate":
+        return tinycolor(this.primary).saturate(50).toHexString();
+      case "darken":
+        return tinycolor(this.primary).darken().toHexString();
+      case "lighten":
+        return tinycolor(this.primary).lighten().toHexString();
+      default:
+        return;
     }
   }
 }
