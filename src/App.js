@@ -90,17 +90,19 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    // Load default font
-    setDefFontLoading(true);
-    const defFont = new FontFaceObserver("Roboto");
-    defFont.load().then(
-      () => {
-        setDefFontLoaded(true);
-      },
-      () => {
-        //handle error})
-      }
-    );
+    if (fontLibrary) {
+      // Load default font
+      setDefFontLoading(true);
+      const defFont = new FontFaceObserver("Roboto");
+      defFont.load().then(
+        () => {
+          setDefFontLoaded(true);
+        },
+        () => {
+          //handle error})
+        }
+      );
+    }
     //eslint-disable-next-line
   }, [fontLibrary]);
 
@@ -277,7 +279,7 @@ function App(props) {
       <Helmet>
         <link
           rel="stylesheet"
-          href={`https://fonts.googleapis.com/css2?family=Roboto&display=swap`}
+          href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
         />
       </Helmet>
       <GoogleFontValidator />

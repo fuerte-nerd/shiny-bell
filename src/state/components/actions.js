@@ -40,7 +40,7 @@ export const setCurrentBodyFont = (payload) => ({
 });
 
 export const setNextBodyFont = (payload) => ({
-  type: SET_NEXT_HEADER_FONT,
+  type: SET_NEXT_BODY_FONT,
   payload,
 });
 

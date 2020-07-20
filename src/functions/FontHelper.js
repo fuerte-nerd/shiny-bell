@@ -24,7 +24,7 @@ class FontLoader {
       this.method = "auto";
     }
     this.target = target;
-    this.categories = store.getState().settings.searchCategories[target];
+    this.categories = store.getState().settings.fontCategoryFilters[target];
     this.init();
   }
 
