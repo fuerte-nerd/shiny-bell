@@ -2,14 +2,17 @@ import tinycolor from "tinycolor2";
 import axios from "axios";
 import store from "../state/store";
 import {
+  setPaletteLoading,
   setPrimaryHex,
   setPrimaryName,
   setSecondaryHex,
   setSecondaryName,
+  setComponentsLoading,
 } from "../state/components/actions";
 
 class Palette {
   constructor(config = null) {
+    store.dispatch(setPaletteLoading(true));
     if (config && config.primary) {
       this.primaryHex = config.primary;
     } else {
@@ -35,6 +38,7 @@ class Palette {
           this.secondaryName = response.data.colors[1].name;
           res();
         });
+      res();
     });
   }
 
@@ -68,11 +72,14 @@ class Palette {
   }
 
   deploy() {
-    console.log(this);
     store.dispatch(setPrimaryHex(this.primaryHex));
     store.dispatch(setPrimaryName(this.primaryName));
     store.dispatch(setSecondaryHex(this.secondaryHex));
     store.dispatch(setSecondaryName(this.secondaryName));
+    store.dispatch(setPaletteLoading(false));
+    if (!store.getState().components.fonts.loading) {
+      store.dispatch(setComponentsLoading(false));
+    }
   }
 }
 

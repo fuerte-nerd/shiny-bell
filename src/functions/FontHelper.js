@@ -9,6 +9,7 @@ import {
   setNextHeaderFont,
   setCurrentHeaderFont,
   setFontsLoading,
+  setComponentsLoading,
 } from "../state/components/actions";
 import FontFaceObserver from "fontfaceobserver";
 
@@ -114,6 +115,9 @@ class FontLoader {
             store.dispatch(setHeaderFontLoaded(true));
             if (!store.getState().components.fonts.body.isLoading) {
               store.dispatch(setFontsLoading(false));
+              if (!store.getState().components.palette.isLoading) {
+                store.dispatch(setComponentsLoading(false));
+              }
             }
           },
           () => {}
