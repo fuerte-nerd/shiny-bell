@@ -9,21 +9,27 @@ class Palette {
     } else {
       this.primaryHex = this.getRandomColor();
     }
-    this.primaryName = this.getColorName(this.primaryHex);
     if (config && config.secondary) {
       this.secondaryHex = config.secondary;
     } else {
       this.secondaryHex = this.getSecondaryColor();
     }
-    this.secondaryName = this.getColorName(this.secondaryHex);
   }
 
-  getColorName(color) {
-    axios
-      .get(`https://api.color.pizza/v1/${color.substr(1)}`)
-      .then((response) => {
-        return response.data.colors[0].name;
-      });
+  getColorNames() {
+    return new Promise((res, rej) => {
+      axios
+        .get(
+          `https://api.color.pizza/v1/${this.primaryHex.substr(
+            1
+          )},${this.secondaryHex.substr(1)} `
+        )
+        .then((response) => {
+          this.primaryName = response.data.colors[0].name;
+          this.secondaryName = response.data.colors[1].name;
+          res();
+        });
+    });
   }
 
   getRandomColor() {
@@ -41,15 +47,15 @@ class Palette {
 
     switch (mixMode) {
       case "complement":
-        return tinycolor(this.primary).complement().toHexString();
+        return tinycolor(this.primaryHex).complement().toHexString();
       case "desaturate":
-        return tinycolor(this.primary).desaturate(50).toHexString();
+        return tinycolor(this.primaryHex).desaturate(50).toHexString();
       case "saturate":
-        return tinycolor(this.primary).saturate(50).toHexString();
+        return tinycolor(this.primaryHex).saturate(50).toHexString();
       case "darken":
-        return tinycolor(this.primary).darken().toHexString();
+        return tinycolor(this.primaryHex).darken().toHexString();
       case "lighten":
-        return tinycolor(this.primary).lighten().toHexString();
+        return tinycolor(this.primaryHex).lighten().toHexString();
       default:
         return;
     }
