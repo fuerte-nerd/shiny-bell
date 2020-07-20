@@ -2,11 +2,13 @@ import {
   SET_LOADING,
   SET_DEF_FONT_LOADING,
   SET_DEF_FONT_LOADED,
-  SET_BODY_FONT,
+  SET_CURRENT_BODY_FONT,
+  SET_NEXT_BODY_FONT,
   SET_BODY_FONT_LOADING,
   SET_BODY_FONT_LOADED,
   SET_BODY_FONT_LOCK,
-  SET_HEADER_FONT,
+  SET_CURRENT_HEADER_FONT,
+  SET_NEXT_HEADER_FONT,
   SET_HEADER_FONT_LOADING,
   SET_HEADER_FONT_LOADED,
   SET_HEADER_FONT_LOCK,
@@ -32,8 +34,13 @@ export const setDefFontLoaded = (payload) => ({
   payload,
 });
 
-export const setBodyFont = (payload) => ({
-  type: SET_BODY_FONT,
+export const setCurrentBodyFont = (payload) => ({
+  type: SET_CURRENT_BODY_FONT,
+  payload,
+});
+
+export const setNextBodyFont = (payload) => ({
+  type: SET_NEXT_HEADER_FONT,
   payload,
 });
 
@@ -52,8 +59,13 @@ export const setBodyFontLock = (payload) => ({
   payload,
 });
 
-export const setHeaderFont = (payload) => ({
-  type: SET_HEADER_FONT,
+export const setCurrentHeaderFont = (payload) => ({
+  type: SET_CURRENT_HEADER_FONT,
+  payload,
+});
+
+export const setNextHeaderFont = (payload) => ({
+  type: SET_NEXT_HEADER_FONT,
   payload,
 });
 
