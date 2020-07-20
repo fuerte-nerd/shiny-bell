@@ -101,9 +101,7 @@ function App(props) {
   useEffect(() => {
     if (defFontLoaded) {
       const palette = new Palette();
-      palette.getColorNames().then(() => {
-        console.log(palette);
-      });
+      palette.getColorNames().then(deploy);
 
       const newBodyFont = new FontLoader("body");
       newBodyFont
