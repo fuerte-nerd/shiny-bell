@@ -110,6 +110,7 @@ function App(props) {
   useEffect(() => {
     if (defFontLoaded) {
       const newBodyFont = new FontLoader("body");
+      console.log(newBodyFont);
       newBodyFont
         .validate()
         .then(() => {
