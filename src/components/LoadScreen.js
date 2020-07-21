@@ -100,9 +100,7 @@ const FontLoadScreen = ({
         zIndex={1}
       >
         <Box mt="15px">
-          {loadScreenFeedback.map((message, ind) => (
-            <AppTypography key={ind}>{message}</AppTypography>
-          ))}
+          <AppTypography>Loading...</AppTypography>
         </Box>
       </Box>
     </Dialog>
