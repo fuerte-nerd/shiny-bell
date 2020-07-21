@@ -1,23 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setLocked } from "../../state/actions";
 import Setting from "../Setting";
 import { ListItem, ListItemText, Icon } from "@material-ui/core";
 import { Lock, LockOpen } from "@material-ui/icons";
 
-const Locks = ({ dispatch, locked, twoFonts, primary }) => {
+const Locks = ({ dispatch, locked, twoFonts }) => {
   const handleChange = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "lock-font":
-        return dispatch(setLocked({ ...locked, bodyFont: !locked.bodyFont }));
       case "lock-header-font":
-        return dispatch(
-          setLocked({ ...locked, headerFont: !locked.headerFont })
-        );
 
       case "lock-palette":
-        return dispatch(setLocked({ ...locked, palette: !locked.palette }));
       default:
         return;
     }
@@ -28,12 +22,12 @@ const Locks = ({ dispatch, locked, twoFonts, primary }) => {
       {twoFonts && (
         <ListItem id="lock-header-font" onClick={handleChange} button>
           <ListItemText primary="Header font" />
-          <Icon edge="end">{locked.headerFont ? <Lock /> : <LockOpen />}</Icon>
+          <Icon edge="end">{locked.header ? <Lock /> : <LockOpen />}</Icon>
         </ListItem>
       )}
       <ListItem id="lock-font" onClick={handleChange} button>
         <ListItemText primary={twoFonts ? `Body font` : `Font`} />
-        <Icon edge="end">{locked.bodyFont ? <Lock /> : <LockOpen />}</Icon>
+        <Icon edge="end">{locked.body ? <Lock /> : <LockOpen />}</Icon>
       </ListItem>
       <ListItem id="lock-palette" onClick={handleChange} button>
         <ListItemText primary="Palette" />
@@ -44,11 +38,12 @@ const Locks = ({ dispatch, locked, twoFonts, primary }) => {
 };
 
 const mapStateToProps = (state) => ({
-  locked: state.locked,
-  font: state.font,
-  headerFont: state.headerFont,
-  twoFonts: state.twoFonts,
-  primary: state.primary,
+  locked: {
+    body: state.components.fonts.body.locked,
+    header: state.components.fonts.header.locked,
+    palette: state.components.palette.locked,
+  },
+  twoFonts: state.settings.twoFonts,
 });
 
 export default connect(mapStateToProps)(Locks);

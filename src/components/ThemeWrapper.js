@@ -14,6 +14,11 @@ const ThemeWrapper = (props) => {
     headerFont && (
       <ThemeProvider
         theme={createMuiTheme({
+          overrides: {
+            MuiDrawer: {
+              root: { fontFamily: "Roboto" },
+            },
+          },
           typography: {
             h1: {
               fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
