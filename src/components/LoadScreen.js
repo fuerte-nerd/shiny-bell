@@ -15,6 +15,8 @@ const FontLoadScreen = ({
     //eslint-disable-next-line
   }, [componentsLoading]);
 
+  useEffect(() => {}, []);
+
   return (
     <Dialog
       fullScreen
@@ -42,6 +44,8 @@ const mapStateToProps = (state) => ({
   componentsLoading: state.components.loading,
   loadingScreen: state.display.loadingScreen,
   loadScreenMsg: state.feedback.loadScreen,
+  bodyFontIsLoading: state.components.fonts.body.isLoading,
+  headerFontIsLoading: state.components.fonts.header.isLoading,
 });
 
 export default connect(mapStateToProps)(FontLoadScreen);
