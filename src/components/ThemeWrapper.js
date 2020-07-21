@@ -14,68 +14,67 @@ const ThemeWrapper = (props) => {
   const { primaryColor, secondaryColor } = props;
   const { responsiveTextSizes } = props;
 
-  const theme = createMuiTheme({
-    overrides: {
-      MuiListItemText: {
-        primary: { fontFamily: "Roboto" },
-        secondary: { fontFamily: "Roboto" },
+  const handleLoad = () => {
+    const theme = createMuiTheme({
+      overrides: {
+        MuiListItemText: {
+          primary: { fontFamily: "Roboto" },
+          secondary: { fontFamily: "Roboto" },
+        },
       },
-    },
-    typography: {
-      h1: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+      typography: {
+        h1: {
+          fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        },
+        h2: {
+          fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        },
+        h3: {
+          fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        },
+        h4: {
+          fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        },
+        h5: {
+          fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        },
+        h6: {
+          fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        },
+        subtitle1: {
+          fontFamily: bodyFont.themeName,
+        },
+        subtitle2: {
+          fontFamily: bodyFont.themeName,
+        },
+        body1: {
+          fontFamily: bodyFont.themeName,
+        },
+        body2: {
+          fontFamily: bodyFont.themeName,
+        },
+        button: {
+          fontFamily: bodyFont.themeName,
+        },
+        overline: {
+          fontFamily: bodyFont.themeName,
+        },
+        caption: {
+          fontFamily: bodyFont.themeName,
+        },
       },
-      h2: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+      palette: {
+        primary: { main: primaryColor },
+        secondary: { main: secondaryColor },
       },
-      h3: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
-      },
-      h4: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
-      },
-      h5: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
-      },
-      h6: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
-      },
-      subtitle1: {
-        fontFamily: bodyFont.themeName,
-      },
-      subtitle2: {
-        fontFamily: bodyFont.themeName,
-      },
-      body1: {
-        fontFamily: bodyFont.themeName,
-      },
-      body2: {
-        fontFamily: bodyFont.themeName,
-      },
-      button: {
-        fontFamily: bodyFont.themeName,
-      },
-      overline: {
-        fontFamily: bodyFont.themeName,
-      },
-      caption: {
-        fontFamily: bodyFont.themeName,
-      },
-    },
-    palette: {
-      primary: { main: primaryColor },
-      secondary: { main: secondaryColor },
-    },
-  });
+    });
+    return responsiveTextSizes ? responsiveFontSizes(theme) : theme;
+  };
 
   return (
     bodyFont &&
     headerFont && (
-      <ThemeProvider
-        theme={responsiveTextSizes ? responsiveFontSizes(theme) : theme}
-      >
-        {children}
-      </ThemeProvider>
+      <ThemeProvider theme={() => handleLoad()}>{children}</ThemeProvider>
     )
   );
 };
