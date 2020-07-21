@@ -17,6 +17,9 @@ const FontLoadScreen = ({
 }) => {
   useEffect(() => {
     dispatch(setLoadingScreen(componentsLoading));
+    if (!componentsLoading) {
+      dispatch(setLoadScreenFeedback([]));
+    }
     //eslint-disable-next-line
   }, [componentsLoading]);
 
@@ -63,9 +66,13 @@ const FontLoadScreen = ({
     if (paletteIsLoading !== null) {
       !paletteIsLoading &&
         dispatch(
-          setLoadScreenFeedback([...loadScreenFeedback, "Palette loaded."])
+          setLoadScreenFeedback([
+            ...loadScreenFeedback,
+            "Generated new palette.",
+          ])
         );
     }
+    //eslint-disable-next-line
   }, [paletteIsLoading]);
 
   return (
