@@ -305,6 +305,10 @@ function App(props) {
       {!componentsLoading && (
         <ThemeWrapper>
           <Menu />
+          <Toolbar />
+          <Container>
+            <ParagraphPreview />
+          </Container>
         </ThemeWrapper>
       )}
     </>

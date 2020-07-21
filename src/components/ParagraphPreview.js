@@ -17,11 +17,7 @@ const ParagraphPreview = ({
 }) => {
   return (
     <>
-      <Box
-        mb={2}
-        bgcolor={backgrounds.box}
-        p={backgrounds.box !== "none" ? 2 : 0}
-      >
+      <Box mb={2} bgcolor={`transparent`}>
         <>
           <Typography variant="h1">Welcome to your new theme!</Typography>
           <Typography paragraph>
@@ -40,11 +36,11 @@ const ParagraphPreview = ({
 };
 
 const mapStateToProps = (state) => ({
-  bodyFont: state.font,
-  headerFont: state.headerFont,
-  twoFonts: state.twoFonts,
-  primaryColorName: state.primaryColorName,
-  secondaryColorName: state.secondaryColorName,
+  bodyFont: state.components.fonts.body.currentFont,
+  headerFont: state.components.fonts.header.currentFont,
+  twoFonts: state.settings.twoFonts,
+  primaryColorName: state.components.palette.primary.name,
+  secondaryColorName: state.components.palette.secondary.name,
   backgrounds: state.backgrounds,
 });
 
