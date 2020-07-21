@@ -14,12 +14,14 @@ import {
   Settings,
   Code,
 } from "@material-ui/icons";
+import { setSidebar } from "../state/display/actions";
 
 const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
   const handleClick = async (e) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "settings":
+        dispatch(setSidebar(true));
       case "mode":
       case "code":
       case "undo":

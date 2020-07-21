@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setSettings } from "../state/actions";
+import { setSidebar } from "../state/display/actions";
+
 import { Drawer, List } from "@material-ui/core";
 
 import Locks from "./settings/Locks";
@@ -12,7 +13,7 @@ import Backgrounds from "./settings/Backgrounds";
 
 const Sidebar = ({ dispatch, settings }) => {
   const handleClose = () => {
-    dispatch(setSettings(false));
+    dispatch(setSidebar(false));
   };
 
   return (
@@ -28,7 +29,7 @@ const Sidebar = ({ dispatch, settings }) => {
         <Colors />
         <Appearance />
         <Buttons />
-        <Backgrounds />
+        {/*<Backgrounds />*/}
       </List>
     </Drawer>
   );

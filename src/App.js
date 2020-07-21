@@ -304,6 +304,7 @@ function App(props) {
       <Head />
       <LoadScreen />
       <GoogleFontValidator />
+      <Sidebar />
       {!componentsLoading && (
         <ThemeWrapper>
           <Menu />
