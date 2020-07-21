@@ -76,11 +76,23 @@ const FontLoadScreen = ({
   }, [paletteIsLoading]);
 
   return (
-    <Dialog
-      fullScreen
-      open={loadingScreen}
-      transitionDuration={{ enter: 0, exit: 50 }}
-    >
+    <Dialog fullScreen open={true} transitionDuration={{ enter: 0, exit: 50 }}>
+      <Box
+        height="100vh"
+        width="100vw"
+        position="fixed"
+        zIndex={0}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <CircularProgress
+          size={180}
+          thickness={30}
+          color="primary"
+          style={{ opacity: 0.5 }}
+        />
+      </Box>
       <Box
         height="100%"
         width="100%"
@@ -89,7 +101,6 @@ const FontLoadScreen = ({
         alignItems="center"
         flexDirection="column"
       >
-        <CircularProgress size={80} color="primary" />
         <Box mt="15px">
           {loadScreenFeedback.map((message) => (
             <AppTypography>{message}</AppTypography>
