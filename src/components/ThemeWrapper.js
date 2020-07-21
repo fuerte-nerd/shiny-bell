@@ -17,6 +17,9 @@ const ThemeWrapper = (props) => {
 
   const theme = createMuiTheme({
     overrides: {
+      MuiListSubheader: {
+        root: { fontSize: 14 },
+      },
       MuiListItemText: {
         primary: { fontFamily: "Roboto", fontSize: 14 },
         secondary: { fontFamily: "Roboto", fontSize: 14 },
