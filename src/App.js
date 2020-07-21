@@ -14,7 +14,6 @@ import Head from "./components/Head";
 import RefreshButton from "./components/RefreshButton";
 import Dialogs from "./components/Dialogs";
 import Menu from "./components/Menu";
-import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
 import Preview from "./components/Preview";
