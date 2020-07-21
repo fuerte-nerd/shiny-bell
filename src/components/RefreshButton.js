@@ -1,15 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  setRandomFontSelect,
-  setFontLoading,
-  setPrimary,
-} from "../state/actions";
 import { Tooltip, Fab } from "@material-ui/core";
 import { Refresh, Lock } from "@material-ui/icons";
-import getRandomColor from "../functions/getRandomColor";
+
+import FontLoader from "../functions/FontHelper";
+import Palette from "../functions/Palette";
 
 const RefreshButton = ({ dispatch, twoFonts, locked }) => {
+  const handleClick = () => {
+    if (!locked.body) {
+      const newBodyFont = new FontLoader("body");
+      newBodyFont.validate().then(newBodyFont.deploy);
+    }
+
+    if (twoFonts && !locked.header) {
+      const newHeaderFont = new FontLoader("header");
+      newHeaderFont.validate().then(newHeaderFont.deploy);
+    }
+
+    if (!locked.palette) {
+      const newPalette = new Palette();
+      newPalette.getColorNames().then(newPalette.deploy);
+    }
+  };
+
   return (
     <Tooltip title="Refresh">
       <Fab
@@ -22,31 +36,22 @@ const RefreshButton = ({ dispatch, twoFonts, locked }) => {
         color="secondary"
         disabled={
           twoFonts
-            ? locked.bodyFont && locked.headerFont && locked.palette
+            ? locked.body && locked.header && locked.palette
               ? true
               : false
-            : locked.bodyFont && locked.palette
+            : locked.body && locked.palette
             ? true
             : false
         }
-        onClick={() => {
-          !locked.bodyFont &&
-            dispatch(setRandomFontSelect(true)) &&
-            dispatch(setFontLoading(true));
-          twoFonts &&
-            !locked.headerFont &&
-            dispatch(setRandomFontSelect(true)) &&
-            dispatch(setFontLoading(true));
-          !locked.palette && dispatch(setPrimary(getRandomColor()));
-        }}
+        onClick={handleClick}
       >
         {twoFonts ? (
-          locked.bodyFont && locked.headerFont && locked.palette ? (
+          locked.body && locked.header && locked.palette ? (
             <Lock />
           ) : (
             <Refresh />
           )
-        ) : locked.bodyFont && locked.palette ? (
+        ) : locked.body && locked.palette ? (
           <Lock />
         ) : (
           <Refresh />
@@ -57,8 +62,12 @@ const RefreshButton = ({ dispatch, twoFonts, locked }) => {
 };
 
 const mapStateToProps = (state) => ({
-  locked: state.locked,
-  twoFonts: state.twoFonts,
+  locked: {
+    body: state.components.fonts.body.locked,
+    header: state.components.fonts.header.locked,
+    palette: state.components.palette.locked,
+  },
+  twoFonts: state.settings.twoFonts,
 });
 
 export default connect(mapStateToProps)(RefreshButton);
