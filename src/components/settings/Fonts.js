@@ -1,13 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  set2Fonts,
-  setFontSize,
-  setHeaderFont,
-  setFont,
-  setFontPicker,
-  setResponsiveText,
-} from "../../state/actions";
 import Setting from "../Setting";
 import {
   ListItem,
@@ -18,21 +10,12 @@ import {
 } from "@material-ui/core";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
 
-const Fonts = ({
-  dispatch,
-  twoFonts,
-  fontSize,
-  bodyFont,
-  headerFont,
-  fontPicker,
-  responsiveText,
-}) => {
+const Fonts = (props) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "two-font-mode":
       case "two-font-mode-switch":
-        return dispatch(set2Fonts(!twoFonts));
       default:
         return;
     }
@@ -41,18 +24,7 @@ const Fonts = ({
   return (
     <Setting title="Fonts">
       {twoFonts && (
-        <ListItem
-          button
-          onClick={() =>
-            dispatch(
-              setFontPicker({
-                ...fontPicker,
-                open: true,
-                section: "headerFont",
-              })
-            )
-          }
-        >
+        <ListItem button onClick={handleClick}>
           <ListItemText
             primary="Select header font"
             secondary={headerFont.themeName}
