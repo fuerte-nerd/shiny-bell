@@ -32,16 +32,34 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
       {twoFonts && (
         <ListItem id="lock-header-font" onClick={handleChange} button>
           <ListItemText primary="Header font" />
-          <Icon edge="end">{locked.header ? <Lock /> : <LockOpen />}</Icon>
+          <ListItemSecondaryAction>
+            {locked.header ? (
+              <Lock style={{ fontSize: "1.5rem" }} />
+            ) : (
+              <LockOpen style={{ fontSize: "1.5rem" }} />
+            )}
+          </ListItemSecondaryAction>
         </ListItem>
       )}
       <ListItem id="lock-font" onClick={handleChange} button>
         <ListItemText primary={twoFonts ? `Body font` : `Font`} />
-        <Icon edge="end">{locked.body ? <Lock /> : <LockOpen />}</Icon>
+        <ListItemSecondaryAction>
+          {locked.body ? (
+            <Lock style={{ fontSize: "1.5rem" }} />
+          ) : (
+            <LockOpen style={{ fontSize: "1.5rem" }} />
+          )}
+        </ListItemSecondaryAction>
       </ListItem>
       <ListItem id="lock-palette" onClick={handleChange} button>
         <ListItemText primary="Palette" />
-        <Icon edge="end">{locked.palette ? <Lock /> : <LockOpen />}</Icon>
+        <Icon edge="end">
+          {locked.palette ? (
+            <Lock style={{ fontSize: "1.5rem" }} />
+          ) : (
+            <LockOpen style={{ fontSize: "1.5rem" }} />
+          )}
+        </Icon>
       </ListItem>
     </Setting>
   );
