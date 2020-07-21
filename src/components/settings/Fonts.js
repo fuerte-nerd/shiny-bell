@@ -12,14 +12,14 @@ import { AddCircle, RemoveCircle } from "@material-ui/icons";
 import { setTwoFonts } from "../../state/settings/actions";
 
 const Fonts = (props) => {
+  const { dispatch } = props;
   const { twoFonts, header, body, fontSize, responsiveFontSizes } = props;
 
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
-      case "two-font-mode":
-        return dispatch(setTwoFonts(true));
       case "two-font-mode-switch":
+        return dispatch(setTwoFonts(!twoFonts));
       case "open-font-picker":
       default:
         return;
