@@ -10,6 +10,7 @@ import {
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
+  IconButton,
 } from "@material-ui/core";
 import { Lock, LockOpen } from "@material-ui/icons";
 
@@ -17,13 +18,14 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
   const handleChange = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
-      case "lock-font":
+      case "lock-body-font":
+      case "lock-body-font-btn":
         return dispatch(setBodyFontLock(!locked.body));
-
       case "lock-header-font":
+      case "lock-header-font-btn":
         return dispatch(setHeaderFontLock(!locked.header));
-
       case "lock-palette":
+      case "lock-palette-btn":
         return dispatch(setPaletteLock(!locked.palette));
 
       default:
@@ -37,7 +39,7 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
         <ListItem id="lock-header-font" onClick={handleChange} button>
           <ListItemText primary="Header font" />
           <ListItemSecondaryAction>
-            <IconButton>
+            <IconButton onClick={handleChange} id="lock-header-font-btn">
               {locked.header ? (
                 <Lock style={{ fontSize: "1.5rem" }} />
               ) : (
@@ -47,24 +49,28 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
           </ListItemSecondaryAction>
         </ListItem>
       )}
-      <ListItem id="lock-font" onClick={handleChange} button>
+      <ListItem id="lock-body-font" onClick={handleChange} button>
         <ListItemText primary={twoFonts ? `Body font` : `Font`} />
         <ListItemSecondaryAction>
-          {locked.body ? (
-            <Lock style={{ fontSize: "1.5rem" }} />
-          ) : (
-            <LockOpen style={{ fontSize: "1.5rem" }} />
-          )}
+          <IconButton onClick={handleChange} id="lock-body-font-btn">
+            {locked.body ? (
+              <Lock style={{ fontSize: "1.5rem" }} />
+            ) : (
+              <LockOpen style={{ fontSize: "1.5rem" }} />
+            )}
+          </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
       <ListItem id="lock-palette" onClick={handleChange} button>
         <ListItemText primary="Palette" />
         <ListItemSecondaryAction>
-          {locked.palette ? (
-            <Lock style={{ fontSize: "1.5rem" }} />
-          ) : (
-            <LockOpen style={{ fontSize: "1.5rem" }} />
-          )}
+          <IconButton onClick={handleChange} id="lock-palette-btn">
+            {locked.palette ? (
+              <Lock style={{ fontSize: "1.5rem" }} />
+            ) : (
+              <LockOpen style={{ fontSize: "1.5rem" }} />
+            )}
+          </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
     </Setting>
