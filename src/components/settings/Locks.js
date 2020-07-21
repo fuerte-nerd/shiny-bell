@@ -1,5 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import {
+  setBodyFontLock,
+  setHeaderFontLock,
+  setPaletteLock,
+} from "../../state/components/actions";
 import Setting from "../Setting";
 import { ListItem, ListItemText, Icon } from "@material-ui/core";
 import { Lock, LockOpen } from "@material-ui/icons";
@@ -9,13 +14,13 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "lock-font":
-        return dispatch(setLockBodyFont(!locked.body));
+        return dispatch(setBodyFontLock(!locked.body));
 
       case "lock-header-font":
-        return dispatch(setLockHeaderFont(!locked.header));
+        return dispatch(setHeaderFontLock(!locked.header));
 
       case "lock-palette":
-        return dispatch(setLockPalette(!locked.palette));
+        return dispatch(setPaletteLock(!locked.palette));
 
       default:
         return;

@@ -17,9 +17,7 @@ const FontLoadScreen = ({
 }) => {
   useEffect(() => {
     dispatch(setLoadingScreen(componentsLoading));
-    if (!componentsLoading) {
-      dispatch(setLoadScreenFeedback([]));
-    }
+    dispatch(setLoadScreenFeedback([]));
     //eslint-disable-next-line
   }, [componentsLoading]);
 
