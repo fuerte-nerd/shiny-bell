@@ -6,7 +6,11 @@ import {
   setPaletteLock,
 } from "../../state/components/actions";
 import Setting from "../Setting";
-import { ListItem, ListItemText, Icon } from "@material-ui/core";
+import {
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+} from "@material-ui/core";
 import { Lock, LockOpen } from "@material-ui/icons";
 
 const Locks = ({ dispatch, locked, twoFonts }) => {
@@ -33,11 +37,13 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
         <ListItem id="lock-header-font" onClick={handleChange} button>
           <ListItemText primary="Header font" />
           <ListItemSecondaryAction>
-            {locked.header ? (
-              <Lock style={{ fontSize: "1.5rem" }} />
-            ) : (
-              <LockOpen style={{ fontSize: "1.5rem" }} />
-            )}
+            <IconButton>
+              {locked.header ? (
+                <Lock style={{ fontSize: "1.5rem" }} />
+              ) : (
+                <LockOpen style={{ fontSize: "1.5rem" }} />
+              )}
+            </IconButton>
           </ListItemSecondaryAction>
         </ListItem>
       )}
@@ -53,13 +59,13 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
       </ListItem>
       <ListItem id="lock-palette" onClick={handleChange} button>
         <ListItemText primary="Palette" />
-        <Icon edge="end">
+        <ListItemSecondaryAction>
           {locked.palette ? (
             <Lock style={{ fontSize: "1.5rem" }} />
           ) : (
             <LockOpen style={{ fontSize: "1.5rem" }} />
           )}
-        </Icon>
+        </ListItemSecondaryAction>
       </ListItem>
     </Setting>
   );
