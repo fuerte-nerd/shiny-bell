@@ -11,7 +11,7 @@ import Appearance from "./settings/Appearance";
 import Buttons from "./settings/Buttons";
 import Backgrounds from "./settings/Backgrounds";
 
-const Sidebar = ({ dispatch, settings }) => {
+const Sidebar = ({ dispatch, isOpen }) => {
   const handleClose = () => {
     dispatch(setSidebar(false));
   };
@@ -19,24 +19,24 @@ const Sidebar = ({ dispatch, settings }) => {
   return (
     <Drawer
       anchor="right"
-      open={settings}
+      open={isOpen}
       onClose={handleClose}
       BackdropProps={{ style: { backgroundColor: "transparent" } }}
     >
-      <List dense disablePadding style={{ width: 250, fontFamily: "Roboto" }}>
+      <List dense disablePadding style={{ width: 250 }}>
         <Locks />
-        <Fonts />
+        {/* <Fonts />
         <Colors />
         <Appearance />
         <Buttons />
-        {/*<Backgrounds />*/}
+        <Backgrounds />*/}
       </List>
     </Drawer>
   );
 };
 
 const mapStateToProps = (state) => ({
-  settings: state.settings,
+  isOpen: state.display.sidebar,
 });
 
 export default connect(mapStateToProps)(Sidebar);
