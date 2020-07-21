@@ -9,9 +9,11 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
-import { setTwoFonts } from "../../state/settings/actions";
+import {
+  setTwoFonts,
+  setResponsiveFontSizes,
+} from "../../state/settings/actions";
 import FontLoader from "../../functions/FontHelper";
-import { setResponsiveText } from "../../state/actions";
 
 const Fonts = (props) => {
   const { dispatch } = props;
@@ -35,7 +37,7 @@ const Fonts = (props) => {
         break;
       case "toggle-responsive-font-sizes-btn":
       case "toggle-responsive-font-sizes-switch":
-        dispatch(setResponsiveText(!responsiveFontSizes));
+        dispatch(setResponsiveFontSizes(!responsiveFontSizes));
         break;
 
       default:
