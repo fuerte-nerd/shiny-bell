@@ -1,7 +1,7 @@
-import { SET_LOAD_SCREEN_MESSAGE, SET_FONT_SELECTOR_MESSAGE } from "./types";
+import { SET_LOAD_SCREEN_FEEDBACK, SET_FONT_SELECTOR_MESSAGE } from "./types";
 
-export const setLoadScreenMessage = (payload) => ({
-  type: SET_LOAD_SCREEN_MESSAGE,
+export const setLoadScreenFeedback = (payload) => ({
+  type: SET_LOAD_SCREEN_FEEDBACK,
   payload,
 });
 
