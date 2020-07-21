@@ -22,9 +22,11 @@ const Fonts = (props) => {
     switch (id) {
       case "two-font-mode":
       case "two-font-mode-switch":
-        return dispatch(setTwoFonts(!twoFonts));
+        dispatch(setTwoFonts(!twoFonts));
+        break;
       case "open-body-font-picker":
       case "swap-fonts":
+        console.log("reached");
         dispatch(setComponentsLoading(true));
         const currentBodyFont = body;
         const currentHeaderFont = header;
