@@ -11,7 +11,6 @@ import {
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
 import { setTwoFonts } from "../../state/settings/actions";
 import FontLoader from "../../functions/FontHelper";
-import { setComponentsLoading } from "../../state/components/actions";
 
 const Fonts = (props) => {
   const { dispatch } = props;
@@ -26,8 +25,6 @@ const Fonts = (props) => {
         break;
       case "open-body-font-picker":
       case "swap-fonts":
-        console.log("reached");
-        dispatch(setComponentsLoading(true));
         const currentBodyFont = body;
         const currentHeaderFont = header;
         const BodyFont = new FontLoader("body", currentHeaderFont);
