@@ -20,7 +20,7 @@ const FontLoadScreen = ({
   }, [componentsLoading]);
 
   useEffect(() => {
-    if (typeof bodyFontIsLoading !== null) {
+    if (bodyFontIsLoading !== null) {
       const label = twoFonts ? "body font" : "font";
       bodyFontIsLoading
         ? dispatch(
