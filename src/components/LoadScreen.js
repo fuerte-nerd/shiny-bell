@@ -61,13 +61,10 @@ const FontLoadScreen = ({
 
   useEffect(() => {
     if (paletteIsLoading !== null) {
-      paletteIsLoading
-        ? dispatch(
-            setLoadScreenFeedback([...loadScreenFeedback, "Loading palette..."])
-          )
-        : dispatch(
-            setLoadScreenFeedback([...loadScreenFeedback, "Palette loaded."])
-          );
+      !paletteIsLoading &&
+        dispatch(
+          setLoadScreenFeedback([...loadScreenFeedback, "Palette loaded."])
+        );
     }
   }, [paletteIsLoading]);
 
