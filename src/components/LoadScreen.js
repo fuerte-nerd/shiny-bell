@@ -20,15 +20,22 @@ const FontLoadScreen = ({
   }, [componentsLoading]);
 
   useEffect(() => {
-    const label = twoFonts ? "body font" : "font";
-    bodyFontIsLoading
-      ? dispatch(
-          setLoadScreenFeedback([...loadScreenFeedback, `Loading ${label}...`])
-        )
-      : dispatch(
-          setLoadScreenFeedback([...loadScreenFeedback, `${label} loaded.`])
-        );
-
+    if (typeof bodyFontIsLoading !== null) {
+      const label = twoFonts ? "body font" : "font";
+      bodyFontIsLoading
+        ? dispatch(
+            setLoadScreenFeedback([
+              ...loadScreenFeedback,
+              `Loading ${label}...`,
+            ])
+          )
+        : dispatch(
+            setLoadScreenFeedback([
+              ...loadScreenFeedback,
+              `${label.charAt(0).toUpperCase() + label.substr(1)} loaded.`,
+            ])
+          );
+    }
     //eslint-disable-next-line
   }, [bodyFontIsLoading]);
 

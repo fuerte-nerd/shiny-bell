@@ -26,18 +26,18 @@ const initialState = {
   fonts: {
     loading: true,
     default: {
-      isLoading: false,
+      isLoading: null,
       loaded: false,
     },
     body: {
-      isLoading: false,
+      isLoading: null,
       loaded: false,
       locked: false,
       currentFont: null,
       nextFont: null,
     },
     header: {
-      isLoading: false,
+      isLoading: null,
       loaded: false,
       locked: false,
       currentFont: null,
