@@ -31,8 +31,8 @@ const ThemeWrapper = (props) => {
         fontFamily:
           bodyFont && headerFont
             ? twoFonts
-              ? headerFont.themeName
-              : bodyFont.themeName
+              ? `"${headerFont.themeName}"`
+              : `"${bodyFont.themeName}"`
             : null,
       },
       h2: {
