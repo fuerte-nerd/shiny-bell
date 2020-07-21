@@ -13,6 +13,7 @@ const FontLoadScreen = ({
   bodyFontIsLoading,
   headerFontIsLoading,
   twoFonts,
+  paletteIsLoading,
 }) => {
   useEffect(() => {
     dispatch(setLoadingScreen(componentsLoading));
@@ -58,6 +59,18 @@ const FontLoadScreen = ({
     //eslint-disable-next-line
   }, [headerFontIsLoading]);
 
+  useEffect(() => {
+    if (paletteIsLoading !== null) {
+      paletteIsLoading
+        ? dispatch(
+            setLoadScreenFeedback([...loadScreenFeedback, "Loading palette..."])
+          )
+        : dispatch(
+            setLoadScreenFeedback([...loadScreenFeedback, "Palette loaded."])
+          );
+    }
+  }, [paletteIsLoading]);
+
   return (
     <Dialog
       fullScreen
@@ -90,6 +103,7 @@ const mapStateToProps = (state) => ({
   bodyFontIsLoading: state.components.fonts.body.isLoading,
   headerFontIsLoading: state.components.fonts.header.isLoading,
   twoFonts: state.settings.twoFonts,
+  paletteIsLoading: state.components.palette.isLoading,
 });
 
 export default connect(mapStateToProps)(FontLoadScreen);

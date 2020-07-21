@@ -46,7 +46,7 @@ const initialState = {
   },
   palette: {
     locked: false,
-    isLoading: false,
+    isLoading: null,
     primary: {
       hex: "#000000",
       name: "Black",
