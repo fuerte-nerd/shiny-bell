@@ -10,6 +10,8 @@ import {
 } from "@material-ui/core";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
 import { setTwoFonts } from "../../state/settings/actions";
+import FontLoader from "../../functions/FontHelper";
+import { setComponentsLoading } from "../../state/components/actions";
 
 const Fonts = (props) => {
   const { dispatch } = props;
@@ -18,9 +20,20 @@ const Fonts = (props) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
+      case "two-font-mode":
       case "two-font-mode-switch":
         return dispatch(setTwoFonts(!twoFonts));
-      case "open-font-picker":
+      case "open-body-font-picker":
+      case "swap-fonts":
+        dispatch(setComponentsLoading(true));
+        const currentBodyFont = body;
+        const currentHeaderFont = header;
+        const BodyFont = new FontLoader("body", currentHeaderFont);
+        const HeaderFont = new FontLoader("header", currentBodyFont);
+        BodyFont.validate().then(() => BodyFont.deploy());
+        HeaderFont.validate().then(() => HeaderFont.deploy());
+        break;
+
       default:
         return;
     }
