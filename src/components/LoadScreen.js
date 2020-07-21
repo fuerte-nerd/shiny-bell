@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { setLoadingScreen } from "../state/viewables";
+import { setLoadingScreen } from "../state/display/actions";
 import { Dialog, Box, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
 
-const FontLoadScreen = ({ dispatch, componentsLoading, loadingScreen }) => {
+const FontLoadScreen = ({
+  dispatch,
+  componentsLoading,
+  loadingScreen,
+  loadScreenMsg,
+}) => {
   useEffect(() => {
     dispatch(setLoadingScreen(componentsLoading));
     //eslint-disable-next-line
@@ -26,7 +31,7 @@ const FontLoadScreen = ({ dispatch, componentsLoading, loadingScreen }) => {
       >
         <CircularProgress size={80} color="primary" />
         <Box mt="15px">
-          <AppTypography></AppTypography>
+          <AppTypography>{loadScreenMsg.msg}</AppTypography>
         </Box>
       </Box>
     </Dialog>
@@ -35,7 +40,8 @@ const FontLoadScreen = ({ dispatch, componentsLoading, loadingScreen }) => {
 
 const mapStateToProps = (state) => ({
   componentsLoading: state.components.loading,
-  loadingScreen: state.viewables.loadingScreen,
+  loadingScreen: state.display.loadingScreen,
+  loadScreenMsg: state.feedback.loadScreen,
 });
 
 export default connect(mapStateToProps)(FontLoadScreen);

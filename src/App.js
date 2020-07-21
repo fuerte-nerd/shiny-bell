@@ -7,12 +7,12 @@ import FontLoader from "./functions/FontHelper";
 import Palette from "./functions/Palette";
 
 import GoogleFontValidator from "./components/GoogleFontValidator";
+import LoadScreen from "./components/LoadScreen";
 import Layout from "./components/Layout";
 import Head from "./components/Head";
 import RefreshButton from "./components/RefreshButton";
 import Dialogs from "./components/Dialogs";
 import Menu from "./components/Menu";
-import FontLoadScreen from "./components/FontLoadScreen";
 import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
@@ -299,6 +299,7 @@ function App(props) {
   return (
     <>
       <Head />
+      <LoadScreen />
       <GoogleFontValidator />
     </>
   );
