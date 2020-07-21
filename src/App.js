@@ -17,7 +17,7 @@ import Menu from "./components/Menu";
 import TypographySection from "./components/Typography";
 import Buttons from "./components/Buttons";
 import Sidebar from "./components/Sidebar";
-import ParagraphPreview from "./components/ParagraphPreview";
+import Preview from "./components/Preview";
 
 import { setFonts, setLibraryLoaded } from "./state/library/actions";
 import {
@@ -289,7 +289,7 @@ function App(props) {
         <Menu />
         <Toolbar />
         <Container>
-          <ParagraphPreview />
+          <Preview />
           <TypographySection />
           <Buttons />
         </Container>
@@ -310,7 +310,7 @@ function App(props) {
         <RefreshButton />
         <Toolbar />
         <Container>
-          <ParagraphPreview />
+          <Preview />
         </Container>
       </ThemeWrapper>
     </>

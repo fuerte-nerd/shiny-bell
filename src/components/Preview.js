@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { Divider, Typography, Box } from "@material-ui/core";
 import { setPrimaryColorName, setSecondaryColorName } from "../state/actions";
-import TypographySection from "./Typography";
+import Text from "./Text";
 import Buttons from "./Buttons";
 
-const ParagraphPreview = ({
+const Preview = ({
   dispatch,
   bodyFont,
   headerFont,
@@ -44,7 +44,7 @@ const ParagraphPreview = ({
           </Typography>
         </>
       </Box>
-      <TypographySection />
+      <Text />
       <Buttons />
       <Divider />
     </>
@@ -60,4 +60,4 @@ const mapStateToProps = (state) => ({
   backgrounds: state.backgrounds,
 });
 
-export default connect(mapStateToProps)(ParagraphPreview);
+export default connect(mapStateToProps)(Preview);

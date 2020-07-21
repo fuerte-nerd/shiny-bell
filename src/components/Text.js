@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography, Divider } from "@material-ui/core";
 
-const TypographySection = () => {
+const Text = () => {
   return (
     <Box>
       <Box my={1}>
@@ -49,4 +49,4 @@ const TypographySection = () => {
   );
 };
 
-export default TypographySection;
+export default Text;
