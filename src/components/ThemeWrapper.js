@@ -7,6 +7,8 @@ const ThemeWrapper = (props) => {
 
   const { twoFonts, bodyFont, headerFont } = props;
 
+  const { primaryColor, secondaryColor } = props;
+
   return (
     bodyFont &&
     headerFont && (
@@ -53,6 +55,10 @@ const ThemeWrapper = (props) => {
               fontFamily: bodyFont.themeName,
             },
           },
+          palette: {
+            primary: { main: primaryColor },
+            secondary: { main: secondaryColor },
+          },
         })}
       >
         {children}
@@ -65,6 +71,8 @@ const mapStateToProps = (state) => ({
   twoFonts: state.settings.twoFonts,
   bodyFont: state.components.fonts.body.currentFont,
   headerFont: state.components.fonts.header.currentFont,
+  primaryColor: state.components.palette.primary.hex,
+  secondaryColor: state.components.palette.secondary.hex,
 });
 
 export default connect(mapStateToProps)(ThemeWrapper);

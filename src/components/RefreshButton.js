@@ -12,7 +12,6 @@ const RefreshButton = ({ dispatch, twoFonts, locked }) => {
     dispatch(setComponentsLoading(true));
     if (!locked.body) {
       const newBodyFont = new FontLoader("body");
-      console.log(newBodyFont);
       newBodyFont.validate().then(() => newBodyFont.deploy());
     }
 

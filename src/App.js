@@ -304,10 +304,10 @@ function App(props) {
       <Head />
       <LoadScreen />
       <GoogleFontValidator />
-      <RefreshButton />
       {!componentsLoading && (
         <ThemeWrapper>
           <Menu />
+          <RefreshButton />
           <Toolbar />
           <Container>
             <ParagraphPreview />

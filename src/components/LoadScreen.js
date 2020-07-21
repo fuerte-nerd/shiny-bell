@@ -79,7 +79,7 @@ const FontLoadScreen = ({
     <Dialog
       fullScreen
       open={loadingScreen}
-      transitionDuration={{ enter: 0, exit: 50 }}
+      transitionDuration={{ enter: 0, exit: 250 }}
     >
       <Box
         height="100vh"
