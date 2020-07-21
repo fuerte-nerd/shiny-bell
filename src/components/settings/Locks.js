@@ -9,9 +9,14 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "lock-font":
+        return dispatch(setLockBodyFont(!locked.body));
+
       case "lock-header-font":
+        return dispatch(setLockHeaderFont(!locked.header));
 
       case "lock-palette":
+        return dispatch(setLockPalette(!locked.palette));
+
       default:
         return;
     }

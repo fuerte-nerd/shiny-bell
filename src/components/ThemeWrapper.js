@@ -15,8 +15,9 @@ const ThemeWrapper = (props) => {
       <ThemeProvider
         theme={createMuiTheme({
           overrides: {
-            MuiDrawer: {
-              root: { fontFamily: "Roboto" },
+            MuiListItemText: {
+              primary: { fontFamily: "Roboto" },
+              secondary: { fontFamily: "Roboto" },
             },
           },
           typography: {
