@@ -8,6 +8,7 @@ import Palette from "./functions/Palette";
 
 import GoogleFontValidator from "./components/GoogleFontValidator";
 import LoadScreen from "./components/LoadScreen";
+import ThemeWrapper from "./components/ThemeWrapper";
 import Layout from "./components/Layout";
 import Head from "./components/Head";
 import RefreshButton from "./components/RefreshButton";
@@ -301,7 +302,9 @@ function App(props) {
       <Head />
       <LoadScreen />
       <GoogleFontValidator />
-      <Menu />
+      <ThemeWrapper>
+        <Menu />
+      </ThemeWrapper>
     </>
   );
 }
