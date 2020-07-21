@@ -1,32 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { setLoadingScreen } from "../state/viewables";
 import { Dialog, Box, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
-import loadFonts from "../functions/loadFonts";
 
-const FontLoadScreen = ({}) => {
-  const handleEntered = () => {
-    if (randomFontSelect) {
-      if (twoFonts) {
-        !locked.headerFont && fonts && loadFonts();
-      } else {
-        !locked.bodyFont && fonts && loadFonts(["body"]);
-      }
-    } else {
-      if (fontPicker.section === "bodyFont") {
-        return loadFonts(["body"], false, fonts[fontPicker.selection]);
-      } else {
-        return loadFonts(["header"], false, fonts[fontPicker.selection]);
-      }
-    }
-  };
+const FontLoadScreen = ({ dispatch, componentsLoading, loadingScreen }) => {
+  useEffect(() => {
+    dispatch(setLoadingScreen(componentsLoading));
+    //eslint-disable-next-line
+  }, [componentsLoading]);
 
   return (
     <Dialog
       fullScreen
-      open={fontLoading}
-      onEntered={handleEntered}
-      transitionDuration={{ enter: 0, exit: 20 }}
+      open={loadingScreen}
+      transitionDuration={{ enter: 0, exit: 50 }}
     >
       <Box
         height="100%"
@@ -37,26 +25,17 @@ const FontLoadScreen = ({}) => {
         flexDirection="column"
       >
         <CircularProgress size={80} color="primary" />
-        {staticFontLoaded && (
-          <Box mt="15px">
-            <AppTypography>
-              Fetching new{` `}
-              {twoFonts
-                ? locked.bodyFont
-                  ? "header font"
-                  : !locked.headerFont
-                  ? "fonts"
-                  : "body font"
-                : "font"}
-              ...
-            </AppTypography>
-          </Box>
-        )}
+        <Box mt="15px">
+          <AppTypography></AppTypography>
+        </Box>
       </Box>
     </Dialog>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  componentsLoading: state.components.loading,
+  loadingScreen: state.viewables.loadingScreen,
+});
 
 export default connect(mapStateToProps)(FontLoadScreen);
