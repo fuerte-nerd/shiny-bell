@@ -81,14 +81,13 @@ const FontLoadScreen = ({
         height="100vh"
         width="100vw"
         position="fixed"
-        zIndex={0}
         display="flex"
         justifyContent="center"
         alignItems="center"
       >
         <CircularProgress
-          size={180}
-          thickness={30}
+          size={250}
+          thickness={12}
           color="primary"
           style={{ opacity: 0.5 }}
         />
@@ -100,10 +99,11 @@ const FontLoadScreen = ({
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
+        zIndex={1}
       >
         <Box mt="15px">
-          {loadScreenFeedback.map((message) => (
-            <AppTypography>{message}</AppTypography>
+          {loadScreenFeedback.map((message, ind) => (
+            <AppTypography key={ind}>{message}</AppTypography>
           ))}
         </Box>
       </Box>
