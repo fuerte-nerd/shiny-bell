@@ -9,13 +9,18 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
+import { setTwoFonts } from "../../state/settings/actions";
 
 const Fonts = (props) => {
+  const { twoFonts, header, body, fontSize, responsiveFontSizes } = props;
+
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "two-font-mode":
+        return dispatch(setTwoFonts(true));
       case "two-font-mode-switch":
+      case "open-font-picker":
       default:
         return;
     }
@@ -24,31 +29,20 @@ const Fonts = (props) => {
   return (
     <Setting title="Fonts">
       {twoFonts && (
-        <ListItem button onClick={handleClick}>
+        <ListItem button id="open-header-font-picker" onClick={handleClick}>
           <ListItemText
             primary="Select header font"
-            secondary={headerFont.themeName}
+            secondary={header.themeName}
           />
         </ListItem>
       )}
-      <ListItem
-        button
-        onClick={() =>
-          dispatch(
-            setFontPicker({ ...fontPicker, open: true, section: "bodyFont" })
-          )
-        }
-      >
+      <ListItem button id="open-body-font-picker" onClick={handleClick}>
         <ListItemText
           primary={twoFonts ? "Select body font" : "Select font"}
-          secondary={bodyFont.themeName}
+          secondary={body.themeName}
         />
       </ListItem>
-      <ListItem
-        id="two-font-mode"
-        onClick={() => dispatch(set2Fonts(!twoFonts))}
-        button
-      >
+      <ListItem id="two-font-mode" onClick={handleClick} button>
         <ListItemText primary="Two font mode" />
         <ListItemSecondaryAction>
           <Switch
@@ -60,48 +54,38 @@ const Fonts = (props) => {
         </ListItemSecondaryAction>
       </ListItem>
       {twoFonts && (
-        <ListItem
-          id="swap-fonts"
-          onClick={() => {
-            const font = bodyFont;
-            const hFont = headerFont;
-            dispatch(setFont(hFont));
-            dispatch(setHeaderFont(font));
-          }}
-          button
-        >
+        <ListItem id="swap-fonts" onClick={handleClick} button>
           <ListItemText primary="Swap fonts" />
         </ListItem>
       )}
       <ListItem>
         <ListItemText primary="Font size" secondary={fontSize} />
         <ListItemSecondaryAction>
-          <IconButton
-            size="small"
-            onClick={() => {
-              dispatch(setFontSize(fontSize - 1));
-            }}
-          >
+          <IconButton size="small" id="dec-font-size" onClick={handleClick}>
             <RemoveCircle />
           </IconButton>
           <IconButton
             size="small"
             edge="end"
-            onClick={() => {
-              dispatch(setFontSize(fontSize + 1));
-            }}
+            id="inc-font-size"
+            onClick={handleClick}
           >
             <AddCircle />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
-      <ListItem onClick={() => dispatch(set2Fonts(!twoFonts))} button>
+      <ListItem
+        id="toggle-responsive-font-sizes-btn"
+        onClick={handleClick}
+        button
+      >
         <ListItemText primary="Responsive font sizes" />
         <ListItemSecondaryAction>
           <Switch
             edge="end"
-            checked={responsiveText}
-            onChange={() => dispatch(setResponsiveText(!responsiveText))}
+            id="toggle-responsive-font-sizes-switch"
+            checked={responsiveFontSizes}
+            onChange={handleClick}
           />
         </ListItemSecondaryAction>
       </ListItem>
@@ -110,12 +94,12 @@ const Fonts = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  twoFonts: state.twoFonts,
-  fontSize: state.fontSize,
-  headerFont: state.headerFont,
-  bodyFont: state.font,
+  twoFonts: state.settings.twoFonts,
+  fontSize: state.settings.fontSize,
+  header: state.components.fonts.header.currentFont,
+  body: state.components.fonts.body.currentFont,
   fontPicker: state.fontPicker,
-  responsiveText: state.responsiveText,
+  responsiveFontSizes: state.settings.responsiveFontSizes,
 });
 
 export default connect(mapStateToProps)(Fonts);
