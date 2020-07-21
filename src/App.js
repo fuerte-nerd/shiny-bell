@@ -305,17 +305,13 @@ function App(props) {
       <LoadScreen />
       <GoogleFontValidator />
       <ThemeWrapper>
-        {!componentsLoading && (
-          <>
-            <Sidebar />
-            <Menu />
-            <RefreshButton />
-            <Toolbar />
-            <Container>
-              <ParagraphPreview />
-            </Container>
-          </>
-        )}
+        <Sidebar />
+        <Menu />
+        <RefreshButton />
+        <Toolbar />
+        <Container>
+          <ParagraphPreview />
+        </Container>
       </ThemeWrapper>
     </>
   );
