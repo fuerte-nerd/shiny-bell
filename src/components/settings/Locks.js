@@ -39,7 +39,12 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
         <ListItem id="lock-header-font" onClick={handleChange} button>
           <ListItemText primary="Header font" />
           <ListItemSecondaryAction>
-            <IconButton onClick={handleChange} id="lock-header-font-btn">
+            <IconButton
+              size="small"
+              onClick={handleChange}
+              id="lock-header-font-btn"
+              edge="end"
+            >
               {locked.header ? (
                 <Lock style={{ fontSize: "1.5rem" }} />
               ) : (
@@ -52,7 +57,12 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
       <ListItem id="lock-body-font" onClick={handleChange} button>
         <ListItemText primary={twoFonts ? `Body font` : `Font`} />
         <ListItemSecondaryAction>
-          <IconButton onClick={handleChange} id="lock-body-font-btn">
+          <IconButton
+            size="small"
+            onClick={handleChange}
+            id="lock-body-font-btn"
+            edge="end"
+          >
             {locked.body ? (
               <Lock style={{ fontSize: "1.5rem" }} />
             ) : (
@@ -64,7 +74,12 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
       <ListItem id="lock-palette" onClick={handleChange} button>
         <ListItemText primary="Palette" />
         <ListItemSecondaryAction>
-          <IconButton onClick={handleChange} id="lock-palette-btn">
+          <IconButton
+            size="small"
+            onClick={handleChange}
+            id="lock-palette-btn"
+            edge="end"
+          >
             {locked.palette ? (
               <Lock style={{ fontSize: "1.5rem" }} />
             ) : (
