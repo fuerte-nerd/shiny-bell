@@ -5,22 +5,24 @@ import { Refresh, Lock } from "@material-ui/icons";
 
 import FontLoader from "../functions/FontHelper";
 import Palette from "../functions/Palette";
+import { setComponentsLoading } from "../state/components/actions";
 
 const RefreshButton = ({ dispatch, twoFonts, locked }) => {
   const handleClick = () => {
+    dispatch(setComponentsLoading(true));
     if (!locked.body) {
       const newBodyFont = new FontLoader("body");
-      newBodyFont.validate().then(newBodyFont.deploy);
+      newBodyFont.validate().then(() => newBodyFont.deploy);
     }
 
     if (twoFonts && !locked.header) {
       const newHeaderFont = new FontLoader("header");
-      newHeaderFont.validate().then(newHeaderFont.deploy);
+      newHeaderFont.validate().then(() => newHeaderFont.deploy);
     }
 
     if (!locked.palette) {
       const newPalette = new Palette();
-      newPalette.getColorNames().then(newPalette.deploy);
+      newPalette.getColorNames().then(() => newPalette.deploy);
     }
   };
 
