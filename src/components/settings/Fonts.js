@@ -96,7 +96,7 @@ const Fonts = (props) => {
             id="inc-font-size"
             onClick={handleClick}
           >
-            <AddCircle />
+            <AddCircle style={{ fontSize: "1.5rem" }} />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
