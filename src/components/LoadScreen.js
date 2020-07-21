@@ -85,17 +85,13 @@ const FontLoadScreen = ({
         justifyContent="center"
         alignItems="center"
       >
-        <CircularProgress
-          size={250}
-          thickness={12}
-          color="primary"
-          style={{ opacity: 0.5 }}
-        />
+        <CircularProgress size={250} color="primary" style={{ opacity: 0.5 }} />
       </Box>
       <Box
         height="100%"
         width="100%"
         display="flex"
+        align="center"
         justifyContent="center"
         alignItems="center"
         flexDirection="column"

@@ -301,6 +301,7 @@ function App(props) {
       <Head />
       <LoadScreen />
       <GoogleFontValidator />
+      <Menu />
     </>
   );
 }
