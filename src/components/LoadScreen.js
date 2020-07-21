@@ -22,10 +22,8 @@ const FontLoadScreen = ({
   useEffect(() => {
     const label = twoFonts ? "body font" : "font";
     bodyFontIsLoading
-      ? dispatch(
-          setLoadScreenMessage({ msg: `Loading ${label}`, severity: "info" })
-        )
-      : dispatch(setLoadScreenMessage({ msg: "", severity: "" }));
+      ? dispatch(setLoadScreenMessage(`Loading ${label}...`))
+      : dispatch(setLoadScreenMessage(`${loadScreenMsg}\n${label} loaded`));
     //eslint-disable-next-line
   }, [bodyFontIsLoading]);
 
@@ -45,7 +43,7 @@ const FontLoadScreen = ({
       >
         <CircularProgress size={80} color="primary" />
         <Box mt="15px">
-          <AppTypography>{loadScreenMsg.msg}</AppTypography>
+          <AppTypography>{loadScreenMsg}</AppTypography>
         </Box>
       </Box>
     </Dialog>

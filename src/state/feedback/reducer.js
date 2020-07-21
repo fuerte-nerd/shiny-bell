@@ -1,10 +1,7 @@
-import { SET_LOAD_SCREEN_MESSAGE, SET_FONT_SELECTOR_MESSAGE } from "./types";
+import { SET_LOAD_SCREEN_FEEDBACK, SET_FONT_SELECTOR_MESSAGE } from "./types";
 
 const initialState = {
-  loadScreen: {
-    msg: "",
-    severity: "",
-  },
+  loadScreenFeedback: "",
   fontSelector: {
     msg: "",
     severity: "",
@@ -17,9 +14,8 @@ export default (state = initialState, action) => {
   const newState = Object.assign({}, state);
 
   switch (type) {
-    case SET_LOAD_SCREEN_MESSAGE:
-      newState.loadScreen.msg = payload.msg;
-      newState.loadScreen.severity = payload.severity;
+    case SET_LOAD_SCREEN_FEEDBACK:
+      newState.loadScreenFeedback = payload;
       break;
     case SET_FONT_SELECTOR_MESSAGE:
       newState.fontSelector.msg = payload.msg;
