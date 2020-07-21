@@ -1,7 +1,7 @@
 import { SET_LOAD_SCREEN_FEEDBACK, SET_FONT_SELECTOR_MESSAGE } from "./types";
 
 const initialState = {
-  loadScreenFeedback: "",
+  loadScreenFeedback: [],
   fontSelector: {
     msg: "",
     severity: "",

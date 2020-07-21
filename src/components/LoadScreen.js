@@ -22,12 +22,34 @@ const FontLoadScreen = ({
   useEffect(() => {
     const label = twoFonts ? "body font" : "font";
     bodyFontIsLoading
-      ? dispatch(setLoadScreenFeedback(`Loading ${label}...`))
+      ? dispatch(
+          setLoadScreenFeedback([...loadScreenFeedback, `Loading ${label}...`])
+        )
       : dispatch(
-          setLoadScreenFeedback(`${loadScreenFeedback}\n${label} loaded`)
+          setLoadScreenFeedback([...loadScreenFeedback, `${label} loaded.`])
         );
+
     //eslint-disable-next-line
   }, [bodyFontIsLoading]);
+
+  useEffect(() => {
+    if (twoFonts) {
+      headerFontIsLoading
+        ? dispatch(
+            setLoadScreenFeedback([
+              ...loadScreenFeedback,
+              `Loading header font...`,
+            ])
+          )
+        : dispatch(
+            setLoadScreenFeedback([
+              ...loadScreenFeedback,
+              `Header font loaded.`,
+            ])
+          );
+    }
+    //eslint-disable-next-line
+  }, [headerFontIsLoading]);
 
   return (
     <Dialog
@@ -45,7 +67,9 @@ const FontLoadScreen = ({
       >
         <CircularProgress size={80} color="primary" />
         <Box mt="15px">
-          <AppTypography>{loadScreenFeedback}</AppTypography>
+          {loadScreenFeedback.map((message) => (
+            <AppTypography>{message}</AppTypography>
+          ))}
         </Box>
       </Box>
     </Dialog>
