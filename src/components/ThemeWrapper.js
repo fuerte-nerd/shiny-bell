@@ -13,6 +13,8 @@ const ThemeWrapper = (props) => {
 
   const { primaryColor, secondaryColor } = props;
 
+  const { responsive } = props;
+
   const theme = createMuiTheme({
     overrides: {
       MuiListItemText: {
@@ -99,7 +101,11 @@ const ThemeWrapper = (props) => {
 
   return (
     bodyFont &&
-    headerFont && <ThemeProvider theme={theme}>{children}</ThemeProvider>
+    headerFont && (
+      <ThemeProvider theme={responsive ? responsiveFontSizes(theme) : theme}>
+        {children}
+      </ThemeProvider>
+    )
   );
 };
 
@@ -109,6 +115,7 @@ const mapStateToProps = (state) => ({
   headerFont: state.components.fonts.header.currentFont,
   primaryColor: state.components.palette.primary.hex,
   secondaryColor: state.components.palette.secondary.hex,
+  responsive: state.settings.responsiveFontSizes,
 });
 
 export default connect(mapStateToProps)(ThemeWrapper);

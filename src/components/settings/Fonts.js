@@ -11,6 +11,7 @@ import {
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
 import { setTwoFonts } from "../../state/settings/actions";
 import FontLoader from "../../functions/FontHelper";
+import { setResponsiveText } from "../../state/actions";
 
 const Fonts = (props) => {
   const { dispatch } = props;
@@ -31,6 +32,10 @@ const Fonts = (props) => {
         const HeaderFont = new FontLoader("header", currentBodyFont);
         BodyFont.validate().then(() => BodyFont.deploy());
         HeaderFont.validate().then(() => HeaderFont.deploy());
+        break;
+      case "toggle-responsive-font-sizes-btn":
+      case "toggle-responsive-font-sizes-switch":
+        dispatch(setResponsiveText(!responsiveFontSizes));
         break;
 
       default:
