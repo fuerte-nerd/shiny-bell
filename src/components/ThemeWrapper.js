@@ -23,45 +23,72 @@ const ThemeWrapper = (props) => {
     typography: {
       h1: {
         fontFamily:
-          bodyFont && headerFont && twoFonts
-            ? headerFont.themeName
-            : bodyFont.themeName,
+          bodyFont && headerFont
+            ? twoFonts
+              ? headerFont.themeName
+              : bodyFont.themeName
+            : null,
       },
       h2: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        fontFamily:
+          bodyFont && headerFont
+            ? twoFonts
+              ? headerFont.themeName
+              : bodyFont.themeName
+            : null,
       },
       h3: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        fontFamily:
+          bodyFont && headerFont
+            ? twoFonts
+              ? headerFont.themeName
+              : bodyFont.themeName
+            : null,
       },
       h4: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        fontFamily:
+          bodyFont && headerFont
+            ? twoFonts
+              ? headerFont.themeName
+              : bodyFont.themeName
+            : null,
       },
       h5: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        fontFamily:
+          bodyFont && headerFont
+            ? twoFonts
+              ? headerFont.themeName
+              : bodyFont.themeName
+            : null,
       },
       h6: {
-        fontFamily: twoFonts ? headerFont.themeName : bodyFont.themeName,
+        fontFamily:
+          bodyFont && headerFont
+            ? twoFonts
+              ? headerFont.themeName
+              : bodyFont.themeName
+            : null,
       },
       subtitle1: {
-        fontFamily: bodyFont.themeName,
+        fontFamily: bodyFont ? bodyFont.themeName : null,
       },
       subtitle2: {
-        fontFamily: bodyFont.themeName,
+        fontFamily: bodyFont ? bodyFont.themeName : null,
       },
       body1: {
-        fontFamily: bodyFont.themeName,
+        fontFamily: bodyFont ? bodyFont.themeName : null,
       },
       body2: {
-        fontFamily: bodyFont.themeName,
+        fontFamily: bodyFont ? bodyFont.themeName : null,
       },
       button: {
-        fontFamily: bodyFont.themeName,
+        fontFamily: bodyFont ? bodyFont.themeName : null,
       },
       overline: {
-        fontFamily: bodyFont.themeName,
+        fontFamily: bodyFont ? bodyFont.themeName : null,
       },
       caption: {
-        fontFamily: bodyFont.themeName,
+        fontFamily: bodyFont ? bodyFont.themeName : null,
       },
     },
     palette: {
