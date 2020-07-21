@@ -19,8 +19,9 @@ const ThemeWrapper = (props) => {
     overrides: {
       MuiListItemText: {
         primary: { fontFamily: "Roboto", fontSize: 14 },
-        secondary: { fontFamily: "Roboto" },
+        secondary: { fontFamily: "Roboto", fontSize: 14 },
       },
+      MuiListItemSecondaryAction: { fontSize: 14 },
     },
     typography: {
       h1: {

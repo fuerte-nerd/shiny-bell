@@ -88,7 +88,7 @@ const Fonts = (props) => {
         <ListItemText primary="Font size" secondary={fontSize} />
         <ListItemSecondaryAction>
           <IconButton size="small" id="dec-font-size" onClick={handleClick}>
-            <RemoveCircle />
+            <RemoveCircle style={{ fontSize: 14 }} />
           </IconButton>
           <IconButton
             size="small"
