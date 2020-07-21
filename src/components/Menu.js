@@ -35,24 +35,14 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
         <div style={{ flexGrow: 1 }} />
         <Tooltip title="Undo">
           <span>
-            <IconButton
-              color="inherit"
-              id="undo"
-              disabled={}
-              onClick={handleClick}
-            >
+            <IconButton color="inherit" id="undo" onClick={handleClick}>
               <Undo />
             </IconButton>
           </span>
         </Tooltip>
         <Tooltip title="Redo">
           <span>
-            <IconButton
-              color="inherit"
-              disabled={}
-              id="redo"
-              onClick={handleClick}
-            >
+            <IconButton color="inherit" id="redo" onClick={handleClick}>
               <Redo />
             </IconButton>
           </span>
