@@ -9,9 +9,10 @@ import { setComponentsLoading } from "../state/components/actions";
 
 const RefreshButton = ({ dispatch, twoFonts, locked }) => {
   const handleClick = () => {
-    if (!locked.body || !locked.header) {
-      dispatch(setComponentsLoading(true));
-    }
+    // if (!locked.body || (twoFonts && !locked.header)) {
+    //  dispatch(setComponentsLoading(true));
+    // }
+    dispatch(setComponentsLoading(true));
     if (!locked.body) {
       const newBodyFont = new FontLoader("body");
       newBodyFont.validate().then(() => newBodyFont.deploy());

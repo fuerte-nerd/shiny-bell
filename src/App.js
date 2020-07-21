@@ -302,9 +302,9 @@ function App(props) {
   return (
     <>
       <Head />
-      <LoadScreen />
       <GoogleFontValidator />
       <ThemeWrapper>
+        <LoadScreen />
         <Sidebar />
         <Menu />
         <RefreshButton />
