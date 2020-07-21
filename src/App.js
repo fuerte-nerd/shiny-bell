@@ -62,7 +62,7 @@ function App(props) {
     primary,
     secondary,
     currentAppState,
-    pastAppStates,
+    pastAppState,
     setComponentsLoading,
     setLibraryLoaded,
     fontsLoading,
@@ -147,7 +147,7 @@ function App(props) {
   useEffect(() => {
     if (!componentsLoading) {
       if (currentAppState) {
-        setPastAppStates([...pastAppStates, currentAppState]);
+        setPastAppStates(pastAppState.concat([currentAppState]));
       }
       setCurrentAppState({
         primary,
@@ -156,12 +156,14 @@ function App(props) {
         headerFont,
       });
     }
+    //eslint-disable-next-line
   }, [componentsLoading]);
 
   useEffect(() => {
     if (!fontsLoading && !paletteLoading) {
       setComponentsLoading(false);
     }
+    //eslint-disable-next-line
   }, [fontsLoading, paletteLoading]);
 
   useEffect(() => {
