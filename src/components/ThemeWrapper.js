@@ -13,7 +13,7 @@ const ThemeWrapper = (props) => {
 
   const { primaryColor, secondaryColor } = props;
 
-  const { responsive } = props;
+  const { responsive, fontSize } = props;
 
   const theme = createMuiTheme({
     overrides: {
@@ -92,6 +92,7 @@ const ThemeWrapper = (props) => {
       caption: {
         fontFamily: bodyFont ? bodyFont.themeName : null,
       },
+      fontSize,
     },
     palette: {
       primary: { main: primaryColor },
@@ -116,6 +117,7 @@ const mapStateToProps = (state) => ({
   primaryColor: state.components.palette.primary.hex,
   secondaryColor: state.components.palette.secondary.hex,
   responsive: state.settings.responsiveFontSizes,
+  fontSize: state.settings.fontSize,
 });
 
 export default connect(mapStateToProps)(ThemeWrapper);
