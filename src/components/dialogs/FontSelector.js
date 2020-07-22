@@ -18,10 +18,21 @@ import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
 import { setFontSelector } from "../../state/display/actions";
 import { setComponentsLoading } from "../../state/components/actions";
 import FontLoader from "../../functions/FontHelper";
+import { setCurrentAppState } from "../../state/appState/actions";
 
 const FontPicker = (props) => {
   const { dispatch } = props;
-  const { isOpen, section, error, filters, fonts, body, header } = props;
+  const {
+    isOpen,
+    section,
+    error,
+    filters,
+    fonts,
+    body,
+    header,
+    primary,
+    secondary,
+  } = props;
 
   const [initialFont, setInitialFont] = useState();
 
@@ -50,10 +61,17 @@ const FontPicker = (props) => {
   };
 
   const handleClose = () => {
-    console.log(props[section]);
-    /*    const currentFont = [section]
-    if(initialFont !== [section]){}
-    dispatch(setFontSelector(false));*/
+    if (initialFont !== props[section]) {
+      dispatch(
+        setCurrentAppState({
+          primary,
+          secondary,
+          header,
+          body,
+        })
+      );
+    }
+    dispatch(setFontSelector(false));
   };
 
   const handleCancel = () => {
@@ -185,6 +203,8 @@ const mapStateToProps = (state) => ({
   twoFonts: state.settings.twoFonts,
   body: state.components.fonts.body.currentFont,
   header: state.components.fonts.header.currentFont,
+  primary: state.components.palette.primary,
+  secondary: state.components.palette.secondary,
 });
 
 export default connect(mapStateToProps)(FontPicker);
