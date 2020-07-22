@@ -17,15 +17,17 @@ const UndoRedo = (props) => {
 
   useEffect(() => {
     if (componentsLoading && undoEnabled) {
-      setPastAppStates([
-        ...past,
-        {
-          body,
-          header,
-          primary,
-          secondary,
-        },
-      ]);
+      dispatch(
+        setPastAppStates([
+          ...past,
+          {
+            body,
+            header,
+            primary,
+            secondary,
+          },
+        ])
+      );
     }
   }, [componentsLoading]);
 

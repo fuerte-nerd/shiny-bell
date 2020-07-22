@@ -25,7 +25,11 @@ import {
   setComponentsLoading,
 } from "./state/components/actions";
 
-import { setCurrentAppState, setPastAppStates } from "./state/appState/actions";
+import {
+  setCurrentAppState,
+  setPastAppStates,
+  setEnabled,
+} from "./state/appState/actions";
 /* 
 import {
   setFontLoading,
@@ -67,6 +71,7 @@ function App(props) {
     setLibraryLoaded,
     fontsLoading,
     paletteLoading,
+    dispatch,
   } = props;
 
   useEffect(() => {
@@ -116,6 +121,7 @@ function App(props) {
   useEffect(() => {
     if (defFontLoaded) {
       setComponentsLoading(true);
+      dispatch(setEnabled(true));
       const palette = new Palette();
       palette.getColorNames().then(() => {
         palette.deploy();
