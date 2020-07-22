@@ -42,7 +42,6 @@ const FontPicker = (props) => {
 
   const handleSelect = (e) => {
     const v = e.currentTarget.value;
-    dispatch(setComponentsLoading(true));
     const newFont = new FontLoader(section, fonts[v]);
     newFont
       .validate()
@@ -51,7 +50,10 @@ const FontPicker = (props) => {
   };
 
   const handleClose = () => {
-    dispatch(setFontSelector(false));
+    console.log(props[section]);
+    /*    const currentFont = [section]
+    if(initialFont !== [section]){}
+    dispatch(setFontSelector(false));*/
   };
 
   const handleCancel = () => {
