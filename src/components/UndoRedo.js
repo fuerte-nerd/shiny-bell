@@ -37,6 +37,10 @@ const UndoRedo = (props) => {
     }
   }, [componentsLoading]);
 
+  useEffect(() => {
+    console.log(componentsLoading);
+  }, [undoEnabled]);
+
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
