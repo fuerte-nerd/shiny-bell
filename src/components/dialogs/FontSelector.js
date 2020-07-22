@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import {} from "../../state/actions";
 import {
   Dialog,
   DialogTitle,
@@ -16,10 +15,14 @@ import {
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import { setError } from "../../state/fontSelector/actions";
+import { setFontSelector } from "../../state/display/actions";
 
 const FontPicker = (props) => {
   const { dispatch } = props;
-  const { isOpen, section, error, filters } = props;
+  const { isOpen, section, error, filters, body, header } = props;
+
+  const [initialFont, setInitialFont] = useState();
+
   const handleChange = (e) => {
     const { id, checked } = e.currentTarget;
     if (checked) {
@@ -34,6 +37,7 @@ const FontPicker = (props) => {
 
   useEffect(() => {
     if (isOpen) {
+      setInitialFont(section === "body" ? body : header);
     }
     //eslint-disable-next-line
   }, [isOpen]);
@@ -109,11 +113,10 @@ const FontPicker = (props) => {
           <Select
             fullWidth
             native
-            value={fontPicker.section === "bodyFont" ? font.id : headerFont.id}
+            value={section === "bodyFont" ? font.id : headerFont.id}
             onChange={(e) => {
               dispatch(setRandomFontSelect(false));
-              const revertFont =
-                fontPicker.section === "bodyFont" ? font : headerFont;
+              const revertFont = section === "bodyFont" ? font : headerFont;
               dispatch(
                 setFontPicker({
                   ...fontPicker,
@@ -140,7 +143,7 @@ const FontPicker = (props) => {
           style={{ fontFamily: "Roboto", textTransform: "uppercase" }}
           onClick={() => {
             twoFonts
-              ? fontPicker.section === "bodyFont"
+              ? section === "bodyFont"
                 ? dispatch(setFont(cancelFont))
                 : dispatch(setHeaderFont(cancelFont))
               : dispatch(setFont(cancelFont));
@@ -165,6 +168,9 @@ const mapStateToProps = (state) => ({
   section: state.fontSelector.section,
   filters: state.fontSelector.categoryFilters,
   error: state.fontSelector.error,
+  twoFonts: state.settings.twoFonts,
+  body: state.components.fonts.body.currentFont,
+  header: state.components.fonts.header.currentFont,
 });
 
 export default connect(mapStateToProps)(FontPicker);
