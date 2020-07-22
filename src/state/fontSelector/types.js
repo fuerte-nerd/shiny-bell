@@ -1,0 +1,3 @@
+export const SET_SECTION = "SET_SECTION";
+export const SET_CATEGORY_FILTERS = "SET_CATEGORY_FILTERS";
+export const SET_ERROR = "SET_ERROR";
