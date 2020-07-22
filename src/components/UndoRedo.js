@@ -25,6 +25,11 @@ const UndoRedo = (props) => {
           primary: previousAppState.primary.hex,
           secondary: previousAppState.secondary.hex,
         });
+        bf.validate().then(() => bf.deploy());
+        hf.validate().then(() => hf.deploy());
+        palette.getColorNames().then(() => {
+          palette.deploy();
+        });
     }
   };
 
