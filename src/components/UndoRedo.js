@@ -4,6 +4,7 @@ import { IconButton, Tooltip } from "@material-ui/core";
 import { Undo, Redo } from "@material-ui/icons";
 import { setComponentsLoading } from "../state/components/actions";
 import {
+  setCurrentAppState,
   setPastAppStates,
   setFutureAppStates,
 } from "../state/appState/actions";
@@ -12,7 +13,7 @@ import Palette from "../functions/Palette";
 
 const UndoRedo = (props) => {
   const { dispatch } = props;
-  const { past, current, future, componentsLoading } = props;
+  const { past, current, future, undoEnabled, componentsLoading } = props;
 
   useEffect(() => {
     if (componentsLoading && undoEnabled && current) {
@@ -28,7 +29,7 @@ const UndoRedo = (props) => {
         const previousAppState = past[past.length - 1];
         dispatch(setPastAppStates(past.slice(0, past.length - 1)));
         dispatch(setFutureAppStates([current, ...future]));
-        dispatch(setCurrent(previousAppState));
+        dispatch(setCurrentAppState(previousAppState));
         //bypass setting an appstate
 
         //commit it
@@ -44,6 +45,9 @@ const UndoRedo = (props) => {
         palette.getColorNames().then(() => {
           palette.deploy();
         });
+        break;
+      default:
+        break;
     }
   };
 
