@@ -1,9 +1,10 @@
-import { SET_PAST, SET_CURRENT, SET_FUTURE } from "./types";
+import { SET_PAST, SET_CURRENT, SET_FUTURE, SET_ENABLED } from "./types";
 
 const initialState = {
   past: [],
   current: null,
   future: [],
+  enabled: true,
 };
 
 export default (state = initialState, action) => {
@@ -20,6 +21,9 @@ export default (state = initialState, action) => {
       break;
     case SET_FUTURE:
       newState.future = payload;
+      break;
+    case SET_ENABLED:
+      newState.enabled = payload;
       break;
     default:
       break;

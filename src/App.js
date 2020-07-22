@@ -57,8 +57,8 @@ function App(props) {
     setPastAppStates,
     defFontLoaded,
     componentsLoading,
-    bodyFont,
-    headerFont,
+    body,
+    header,
     primary,
     secondary,
     currentAppState,
@@ -143,23 +143,6 @@ function App(props) {
     //eslint-disable-next-line
   }, [defFontLoaded]);
 
-  useEffect(() => {}, []);
-
-  useEffect(() => {
-    if (!componentsLoading) {
-      if (currentAppState) {
-        setPastAppStates(pastAppState.concat([currentAppState]));
-      }
-      setCurrentAppState({
-        primary,
-        secondary,
-        bodyFont,
-        headerFont,
-      });
-    }
-    //eslint-disable-next-line
-  }, [componentsLoading]);
-
   useEffect(() => {
     if (!fontsLoading && !paletteLoading) {
       setComponentsLoading(false);
@@ -199,25 +182,25 @@ function App(props) {
   }, [font]);
 
   useEffect(() => {
-    if (fonts && headerFont) {
-      const hFont = new FontFaceObserver(headerFont.themeName);
+    if (fonts && header) {
+      const hFont = new FontFaceObserver(header.themeName);
       hFont.load().then(
         () => {
           dispatch(
             setFontToValidate({
               ...fontValidation,
               fonts: fontValidation.fonts.filter((i) => {
-                return i.font.themeName === headerFont.themeName ? null : i;
+                return i.font.themeName === header.themeName ? null : i;
               }),
             })
           );
         },
         () => {}
       );
-      // loadFont(headerFont, "header");
+      // loadFont(header, "header");
     }
     //eslint-disable-next-line
-  }, [headerFont]);
+  }, [header]);
 
   useEffect(() => {
     if (fontValidation.fonts) {
@@ -244,7 +227,7 @@ function App(props) {
                 currentPosition: changeHistory.changes.length,
                 changes: [
                   ...changeHistory.changes,
-                  { font, headerFont, primary },
+                  { font, header, primary },
                 ],
               })
             );
@@ -261,7 +244,7 @@ function App(props) {
               setChangeHistory({
                 ...changeHistory,
                 currentPosition: newArray.length,
-                changes: [...newArray, { font, headerFont, primary }],
+                changes: [...newArray, { font, header, primary }],
               })
             );
           }, 500)
@@ -269,7 +252,7 @@ function App(props) {
       }
     }
     //eslint-disable-next-line
-  }, [font, headerFont, primary]);
+  }, [font, header, primary]);
 
   
 
@@ -326,8 +309,8 @@ const mapStateToProps = (state) => ({
   componentsLoading: state.components.loading,
   primary: state.components.palette.primary,
   secondary: state.components.palette.secondary,
-  bodyFont: state.components.fonts.body.currentFont,
-  headerFont: state.components.fonts.header.currentFont,
+  body: state.components.fonts.body.currentFont,
+  header: state.components.fonts.header.currentFont,
   currentAppState: state.appState.current,
   pastAppState: state.appState.past,
   fontsLoading: state.components.fonts.loading,
