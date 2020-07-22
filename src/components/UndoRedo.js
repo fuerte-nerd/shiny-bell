@@ -16,6 +16,7 @@ const UndoRedo = (props) => {
   const { past, future, undoEnabled, componentsLoading } = props;
   const { body, header, primary, secondary } = props;
 
+  /*
   useEffect(() => {
     if (componentsLoading) {
       if (undoEnabled) {
@@ -35,7 +36,7 @@ const UndoRedo = (props) => {
       }
     }
   }, [componentsLoading]);
-
+  */
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
