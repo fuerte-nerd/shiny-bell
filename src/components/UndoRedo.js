@@ -4,7 +4,6 @@ import { IconButton, Tooltip } from "@material-ui/core";
 import { Undo, Redo } from "@material-ui/icons";
 import { setComponentsLoading } from "../state/components/actions";
 import {
-  setCurrentAppState,
   setPastAppStates,
   setFutureAppStates,
 } from "../state/appState/actions";
@@ -13,11 +12,11 @@ import Palette from "../functions/Palette";
 
 const UndoRedo = (props) => {
   const { dispatch } = props;
-  const { past, current, future, undoEnabled, componentsLoading } = props;
+  const { past, future, undoEnabled, componentsLoading } = props;
   const { body, header, primary, secondary } = props;
 
   useEffect(() => {
-    if (componentsLoading && undoEnabled && current) {
+    if (componentsLoading && undoEnabled) {
       setPastAppStates([
         ...past,
         {
@@ -37,8 +36,9 @@ const UndoRedo = (props) => {
         // grab the previous change
         const previousAppState = past[past.length - 1];
         dispatch(setPastAppStates(past.slice(0, past.length - 1)));
-        dispatch(setFutureAppStates([current, ...future]));
-        dispatch(setCurrentAppState(previousAppState));
+        dispatch(
+          setFutureAppStates([{ body, header, primary, secondary }, ...future])
+        );
         //bypass setting an appstate
 
         //commit it
@@ -81,7 +81,6 @@ const UndoRedo = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  current: state.appState.current,
   past: state.appState.past,
   future: state.appState.future,
   componentsLoading: state.components.loading,
