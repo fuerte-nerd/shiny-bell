@@ -82,6 +82,7 @@ const FontPicker = (props) => {
         revertFont.deploy();
       })
       .catch((err) => console.log(err));
+    dispatch(setFontSelector(false));
   };
 
   useEffect(() => {
