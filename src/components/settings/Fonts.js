@@ -34,6 +34,10 @@ const Fonts = (props) => {
         dispatch(setSection("body"));
         dispatch(setFontSelector(true));
         break;
+      case "open-header-font-picker":
+        dispatch(setSection("header"));
+        dispatch(setFontSelector(true));
+        break;
       case "swap-fonts":
         const currentBodyFont = body;
         const currentHeaderFont = header;
