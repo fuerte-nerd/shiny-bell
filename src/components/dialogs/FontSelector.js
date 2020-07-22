@@ -44,6 +44,8 @@ const FontPicker = (props) => {
     dispatch(setFontSelector(false));
   };
 
+  const handleCancel = () => {};
+
   useEffect(() => {
     if (isOpen) {
       setInitialFont(section === "body" ? body : header);
@@ -139,14 +141,7 @@ const FontPicker = (props) => {
       <DialogActions>
         <Button
           style={{ fontFamily: "Roboto", textTransform: "uppercase" }}
-          onClick={() => {
-            twoFonts
-              ? section === "body"
-                ? 
-                : 
-              : 
-            handleClose();
-          }}
+          onClick={handleCancel}
         >
           Cancel
         </Button>

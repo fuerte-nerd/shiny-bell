@@ -1,4 +1,4 @@
-import { SET_SECTION, SET_CATEGORY_FILTERS } from "./types";
+import { SET_SECTION, SET_CATEGORY_FILTERS, SET_ERROR } from "./types";
 
 const initialState = {
   section: "",
