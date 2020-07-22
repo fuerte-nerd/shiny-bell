@@ -54,7 +54,15 @@ const FontPicker = (props) => {
     dispatch(setFontSelector(false));
   };
 
-  const handleCancel = () => {};
+  const handleCancel = () => {
+    const revertFont = new FontLoader(section, initialFont);
+    revertFont
+      .validate()
+      .then(() => {
+        revertFont.deploy();
+      })
+      .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     if (isOpen) {
