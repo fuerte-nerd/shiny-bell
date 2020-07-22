@@ -20,11 +20,9 @@ const ThemeWrapper = (props) => {
       MuiFormControlLabel: {
         label: { fontFamily: "Roboto" },
       },
+      MuiSelect: { root: { fontFamily: "Roboto" } },
       MuiDialogContentText: {
         root: { fontFamily: "Roboto" },
-      },
-      MuiListSubheader: {
-        root: { fontSize: 14 },
       },
       MuiListItemText: {
         primary: { fontFamily: "Roboto", fontSize: 14 },
