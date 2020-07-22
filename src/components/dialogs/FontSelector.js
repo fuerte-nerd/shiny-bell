@@ -15,10 +15,11 @@ import {
   Button,
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
+import { setError } from "../../state/fontSelector/actions";
 
 const FontPicker = (props) => {
   const { dispatch } = props;
-  const { isOpen, section, error } = props;
+  const { isOpen, section, error, filters } = props;
   const handleChange = (e) => {
     const { id, checked } = e.currentTarget;
     if (checked) {
@@ -28,26 +29,24 @@ const FontPicker = (props) => {
   };
 
   const handleClose = () => {
-    dispatch();
+    dispatch(setFontSelector(false));
   };
 
   useEffect(() => {
-    if (fontPicker.open) {
+    if (isOpen) {
     }
     //eslint-disable-next-line
-  }, [fontPicker.open]);
+  }, [isOpen]);
   return (
-    <Dialog open={fontPicker.open} onClose={handleClose}>
+    <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}></Typography>
       </DialogTitle>
       <DialogContent>
         <Snackbar
-          open={fontPicker.notFound}
+          open={error}
           autoHideDuration={6000}
-          onClose={() =>
-            dispatch(setFontPicker({ ...fontPicker, notFound: false }))
-          }
+          onClose={() => dispatch(setError(null))}
         >
           <Alert style={{ fontFamily: "Roboto" }} severity="error">
             Sorry, but we were unable to load that font. Please select a
@@ -60,7 +59,7 @@ const FontPicker = (props) => {
               <Checkbox
                 id="serif"
                 onChange={handleChange}
-                checked={fontPicker && fontPicker.categories.includes("serif")}
+                checked={isOpen && filters.includes("serif")}
               />
             }
             label="Serif"
@@ -70,7 +69,7 @@ const FontPicker = (props) => {
               <Checkbox
                 id="sans-serif"
                 onChange={handleChange}
-                checked={fontPicker.categories.includes("sans-serif")}
+                checked={filters.includes("sans-serif")}
               />
             }
             label="Sans Serif"
@@ -80,7 +79,7 @@ const FontPicker = (props) => {
               <Checkbox
                 id="display"
                 onChange={handleChange}
-                checked={fontPicker.categories.includes("display")}
+                checked={filters.includes("display")}
               />
             }
             label="Display"
@@ -90,7 +89,7 @@ const FontPicker = (props) => {
               <Checkbox
                 id="handwriting"
                 onChange={handleChange}
-                checked={fontPicker.categories.includes("handwriting")}
+                checked={filters.includes("handwriting")}
               />
             }
             label="Handwriting"
@@ -100,7 +99,7 @@ const FontPicker = (props) => {
               <Checkbox
                 id="monospace"
                 onChange={handleChange}
-                checked={fontPicker.categories.includes("monospace")}
+                checked={filters.includes("monospace")}
               />
             }
             label="Monospace"
@@ -127,7 +126,7 @@ const FontPicker = (props) => {
           >
             {fonts &&
               fonts.map((font, ind) => {
-                return fontPicker.categories.includes(font.category) ? (
+                return filters.includes(font.category) ? (
                   <option key={ind} value={font.id}>
                     {font.themeName}
                   </option>
@@ -164,6 +163,7 @@ const FontPicker = (props) => {
 const mapStateToProps = (state) => ({
   isOpen: state.display.fontSelector,
   section: state.fontSelector.section,
+  filters: state.fontSelector.categoryFilters,
   error: state.fontSelector.error,
 });
 
