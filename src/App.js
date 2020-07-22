@@ -140,6 +140,7 @@ function App(props) {
           console.log("There was an error");
         });
     }
+    //eslint-disable-next-line
   }, [defFontLoaded]);
 
   useEffect(() => {}, []);

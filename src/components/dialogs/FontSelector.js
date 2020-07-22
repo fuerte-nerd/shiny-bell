@@ -19,20 +19,22 @@ import { setFontSelector } from "../../state/display/actions";
 
 const FontPicker = (props) => {
   const { dispatch } = props;
-  const { isOpen, section, error, filters, body, header } = props;
+  const { isOpen, section, error, filters, fonts, body, header } = props;
 
   const [initialFont, setInitialFont] = useState();
 
   const handleChange = (e) => {
     const { id, checked } = e.currentTarget;
     if (checked) {
-      dispatch(setCategoryFilters([...filters, id))
+      dispatch(setCategoryFilters([...filters, id]));
     } else {
-      dispatch(setCategoryFilters(
-        filters.filter((i)=>{
-          return i === id ? null : i
-        })
-      ));
+      dispatch(
+        setCategoryFilters(
+          filters.filter((i) => {
+            return i === id ? null : i;
+          })
+        )
+      );
     }
   };
 
@@ -139,10 +141,10 @@ const FontPicker = (props) => {
           style={{ fontFamily: "Roboto", textTransform: "uppercase" }}
           onClick={() => {
             twoFonts
-              ? section === "bodyFont"
-                ? dispatch(setFont(cancelFont))
-                : dispatch(setHeaderFont(cancelFont))
-              : dispatch(setFont(cancelFont));
+              ? section === "body"
+                ? 
+                : 
+              : 
             handleClose();
           }}
         >
@@ -164,6 +166,7 @@ const mapStateToProps = (state) => ({
   section: state.fontSelector.section,
   filters: state.fontSelector.categoryFilters,
   error: state.fontSelector.error,
+  fonts: state.library.fonts,
   twoFonts: state.settings.twoFonts,
   body: state.components.fonts.body.currentFont,
   header: state.components.fonts.header.currentFont,
