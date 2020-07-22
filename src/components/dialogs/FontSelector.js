@@ -16,6 +16,7 @@ import {
 import { Alert } from "@material-ui/lab";
 import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
 import { setFontSelector } from "../../state/display/actions";
+import FontLoader from "../../functions/FontHelper";
 
 const FontPicker = (props) => {
   const { dispatch } = props;
@@ -38,7 +39,15 @@ const FontPicker = (props) => {
     }
   };
 
-  const handleSelect = (e) => {};
+  const handleSelect = (e, v) => {
+    console.log(v);
+    /* const newFont = new FontLoader(section, fonts[v]);
+    newFont
+      .validate()
+      .then(() => newFont.deploy())
+      .catch((err) => console.log(err));
+    */
+  };
 
   const handleClose = () => {
     dispatch(setFontSelector(false));
