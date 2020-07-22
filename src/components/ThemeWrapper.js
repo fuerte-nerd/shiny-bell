@@ -39,62 +39,62 @@ const ThemeWrapper = (props) => {
         fontFamily:
           bodyFont && headerFont
             ? twoFonts
-              ? headerFont.themeName
-              : bodyFont.themeName
+              ? `"${headerFont.themeName}"`
+              : `"${bodyFont.themeName}"`
             : null,
       },
       h3: {
         fontFamily:
           bodyFont && headerFont
             ? twoFonts
-              ? headerFont.themeName
-              : bodyFont.themeName
+              ? `"${headerFont.themeName}"`
+              : `"${bodyFont.themeName}"`
             : null,
       },
       h4: {
         fontFamily:
           bodyFont && headerFont
             ? twoFonts
-              ? headerFont.themeName
-              : bodyFont.themeName
+              ? `"${headerFont.themeName}"`
+              : `"${bodyFont.themeName}"`
             : null,
       },
       h5: {
         fontFamily:
           bodyFont && headerFont
             ? twoFonts
-              ? headerFont.themeName
-              : bodyFont.themeName
+              ? `"${headerFont.themeName}"`
+              : `"${bodyFont.themeName}"`
             : null,
       },
       h6: {
         fontFamily:
           bodyFont && headerFont
             ? twoFonts
-              ? headerFont.themeName
-              : bodyFont.themeName
+              ? `"${headerFont.themeName}"`
+              : `"${bodyFont.themeName}"`
             : null,
       },
       subtitle1: {
-        fontFamily: bodyFont ? bodyFont.themeName : null,
+        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
       },
       subtitle2: {
-        fontFamily: bodyFont ? bodyFont.themeName : null,
+        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
       },
       body1: {
-        fontFamily: bodyFont ? bodyFont.themeName : null,
+        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
       },
       body2: {
-        fontFamily: bodyFont ? bodyFont.themeName : null,
+        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
       },
       button: {
-        fontFamily: bodyFont ? bodyFont.themeName : null,
+        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
       },
       overline: {
-        fontFamily: bodyFont ? bodyFont.themeName : null,
+        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
       },
       caption: {
-        fontFamily: bodyFont ? bodyFont.themeName : null,
+        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
       },
       fontSize,
     },
