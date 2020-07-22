@@ -43,6 +43,7 @@ import {
 */
 
 import FontFaceObserver from "fontfaceobserver";
+import FontSelector from "./components/dialogs/FontSelector";
 
 function App(props) {
   const {
@@ -304,6 +305,7 @@ function App(props) {
       <GoogleFontValidator />
       <ThemeWrapper>
         <LoadScreen />
+        <FontSelector />
         <Sidebar />
         <Menu />
         <RefreshButton />

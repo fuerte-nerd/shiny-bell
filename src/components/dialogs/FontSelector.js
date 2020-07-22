@@ -14,7 +14,7 @@ import {
   Button,
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
-import { setError } from "../../state/fontSelector/actions";
+import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
 import { setFontSelector } from "../../state/display/actions";
 
 const FontPicker = (props) => {
@@ -26,8 +26,13 @@ const FontPicker = (props) => {
   const handleChange = (e) => {
     const { id, checked } = e.currentTarget;
     if (checked) {
+      dispatch(setCategoryFilters([...filters, id))
     } else {
-      dispatch();
+      dispatch(setCategoryFilters(
+        filters.filter((i)=>{
+          return i === id ? null : i
+        })
+      ));
     }
   };
 
