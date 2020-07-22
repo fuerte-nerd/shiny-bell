@@ -14,6 +14,7 @@ import {
   Settings,
   Code,
 } from "@material-ui/icons";
+import UndoRedo from "./UndoRedo";
 import { setSidebar } from "../state/display/actions";
 
 const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
@@ -24,8 +25,6 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
         dispatch(setSidebar(true));
       case "mode":
       case "code":
-      case "undo":
-      case "redo":
       default:
         return;
     }
@@ -35,20 +34,7 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
       <Toolbar>
         <Typography variant="h6">Site name</Typography>
         <div style={{ flexGrow: 1 }} />
-        <Tooltip title="Undo">
-          <span>
-            <IconButton color="inherit" id="undo" onClick={handleClick}>
-              <Undo />
-            </IconButton>
-          </span>
-        </Tooltip>
-        <Tooltip title="Redo">
-          <span>
-            <IconButton color="inherit" id="redo" onClick={handleClick}>
-              <Redo />
-            </IconButton>
-          </span>
-        </Tooltip>
+        <UndoRedo />
         <Tooltip title="Toggle dark mode">
           <IconButton id="mode" onClick={handleClick} color="inherit">
             <SettingsBrightness />
