@@ -53,12 +53,7 @@ function App(props) {
   const {
     state,
     pageBackground,
-    setFonts,
     fontLibrary,
-    setDefFontLoading,
-    setDefFontLoaded,
-    setCurrentAppState,
-    setPastAppStates,
     defFontLoaded,
     componentsLoading,
     body,
@@ -67,8 +62,6 @@ function App(props) {
     secondary,
     currentAppState,
     pastAppState,
-    setComponentsLoading,
-    setLibraryLoaded,
     fontsLoading,
     paletteLoading,
     dispatch,
@@ -88,8 +81,8 @@ function App(props) {
             category: i.category,
           };
         });
-        setFonts(fonts);
-        setLibraryLoaded(true);
+        dispatch(setFonts(fonts));
+        dispatch(setLibraryLoaded(true));
       });
     //eslint-disable-next-line
   }, []);
@@ -112,7 +105,7 @@ function App(props) {
 
     if (fontLibrary) {
       // Load default font
-      setDefFontLoading(true);
+      dispatch(setDefFontLoading(true));
       validateDefFont();
     }
     //eslint-disable-next-line
@@ -120,7 +113,7 @@ function App(props) {
 
   useEffect(() => {
     if (defFontLoaded) {
-      setComponentsLoading(true);
+      dispatch(setComponentsLoading(true));
       dispatch(setEnabled(true));
       const palette = new Palette();
       palette.getColorNames().then(() => {
@@ -151,7 +144,7 @@ function App(props) {
 
   useEffect(() => {
     if (!fontsLoading && !paletteLoading) {
-      setComponentsLoading(false);
+      dispatch(setComponentsLoading(false));
     }
     //eslint-disable-next-line
   }, [fontsLoading, paletteLoading]);
@@ -324,12 +317,4 @@ const mapStateToProps = (state) => ({
   state,
 });
 
-export default connect(mapStateToProps, {
-  setFonts,
-  setDefFontLoading,
-  setDefFontLoaded,
-  setCurrentAppState,
-  setPastAppStates,
-  setComponentsLoading,
-  setLibraryLoaded,
-})(App);
+export default connect(mapStateToProps)(App);
