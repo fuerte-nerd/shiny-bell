@@ -31,6 +31,8 @@ const FontPicker = (props) => {
     }
   };
 
+  const handleSelect = (e) => {};
+
   const handleClose = () => {
     dispatch(setFontSelector(false));
   };
@@ -109,23 +111,12 @@ const FontPicker = (props) => {
             label="Monospace"
           />
         </FormGroup>
-        {font && headerFont && (
+        {body && header && (
           <Select
             fullWidth
             native
-            value={section === "bodyFont" ? font.id : headerFont.id}
-            onChange={(e) => {
-              dispatch(setRandomFontSelect(false));
-              const revertFont = section === "bodyFont" ? font : headerFont;
-              dispatch(
-                setFontPicker({
-                  ...fontPicker,
-                  selection: e.currentTarget.value,
-                  revertFont,
-                })
-              );
-              dispatch(setFontLoading(true));
-            }}
+            value={section === "body" ? body.id : header.id}
+            onChange={handleSelect}
           >
             {fonts &&
               fonts.map((font, ind) => {
