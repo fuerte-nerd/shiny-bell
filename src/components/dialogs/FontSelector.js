@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import {
-  setFontPicker,
-  setFont,
-  setHeaderFont,
-  setRandomFontSelect,
-  setFontLoading,
-} from "../../state/actions";
+import {} from "../../state/actions";
 import {
   Dialog,
   DialogTitle,
@@ -22,69 +16,30 @@ import {
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 
-const FontPicker = ({
-  dispatch,
-  fontPicker,
-  fonts,
-  font,
-  headerFont,
-  twoFonts,
-}) => {
+const FontPicker = (props) => {
+  const { dispatch } = props;
+  const { isOpen, section, error } = props;
   const handleChange = (e) => {
     const { id, checked } = e.currentTarget;
     if (checked) {
-      dispatch(
-        setFontPicker({
-          ...fontPicker,
-          categories: [...fontPicker.categories, id],
-        })
-      );
     } else {
-      dispatch(
-        setFontPicker({
-          ...fontPicker,
-          categories: fontPicker.categories.filter((i) => {
-            return i !== id ? id : null;
-          }),
-        })
-      );
+      dispatch();
     }
   };
 
   const handleClose = () => {
-    dispatch(
-      setFontPicker({
-        ...fontPicker,
-        categories: [
-          "serif",
-          "sans-serif",
-          "display",
-          "handwriting",
-          "monospace",
-        ],
-        open: false,
-      })
-    );
+    dispatch();
   };
-
-  const [cancelFont, setCancelFont] = useState();
 
   useEffect(() => {
     if (fontPicker.open) {
-      setCancelFont(fontPicker.section === "bodyFont" ? font : headerFont);
     }
     //eslint-disable-next-line
   }, [fontPicker.open]);
   return (
     <Dialog open={fontPicker.open} onClose={handleClose}>
       <DialogTitle disableTypography>
-        <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
-          {twoFonts
-            ? fontPicker.section === "bodyFont"
-              ? "Select body font"
-              : "Select header font"
-            : "Select font"}
-        </Typography>
+        <Typography variant="h5" style={{ fontFamily: "Roboto" }}></Typography>
       </DialogTitle>
       <DialogContent>
         <Snackbar
@@ -207,11 +162,9 @@ const FontPicker = ({
 };
 
 const mapStateToProps = (state) => ({
-  fonts: state.fonts,
-  font: state.font,
-  headerFont: state.headerFont,
-  fontPicker: state.fontPicker,
-  twoFonts: state.twoFonts,
+  isOpen: state.display.fontSelector,
+  section: state.fontSelector.section,
+  error: state.fontSelector.error,
 });
 
 export default connect(mapStateToProps)(FontPicker);
