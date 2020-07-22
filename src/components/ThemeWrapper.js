@@ -28,7 +28,6 @@ const ThemeWrapper = (props) => {
         primary: { fontFamily: "Roboto", fontSize: 14 },
         secondary: { fontFamily: "Roboto", fontSize: 14 },
       },
-      MuiListItemSecondaryAction: { fontSize: 14 },
     },
     typography: {
       h1: {

@@ -39,14 +39,13 @@ const FontPicker = (props) => {
     }
   };
 
-  const handleSelect = (e, v) => {
-    console.log(v);
-    /* const newFont = new FontLoader(section, fonts[v]);
+  const handleSelect = (e) => {
+    const v = e.currentTarget.value;
+    const newFont = new FontLoader(section, fonts[v]);
     newFont
       .validate()
       .then(() => newFont.deploy())
       .catch((err) => console.log(err));
-    */
   };
 
   const handleClose = () => {
