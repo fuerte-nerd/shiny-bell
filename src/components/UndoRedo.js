@@ -6,6 +6,7 @@ import { setComponentsLoading } from "../state/components/actions";
 import {
   setPastAppStates,
   setFutureAppStates,
+  setEnabled,
 } from "../state/appState/actions";
 import FontLoader from "../functions/FontHelper";
 import Palette from "../functions/Palette";
@@ -16,18 +17,22 @@ const UndoRedo = (props) => {
   const { body, header, primary, secondary } = props;
 
   useEffect(() => {
-    if (componentsLoading && undoEnabled) {
-      dispatch(
-        setPastAppStates([
-          ...past,
-          {
-            body,
-            header,
-            primary,
-            secondary,
-          },
-        ])
-      );
+    if (componentsLoading) {
+      if (undoEnabled) {
+        dispatch(
+          setPastAppStates([
+            ...past,
+            {
+              body,
+              header,
+              primary,
+              secondary,
+            },
+          ])
+        );
+      } else {
+        dispatch(setEnabled(true));
+      }
     }
   }, [componentsLoading]);
 
