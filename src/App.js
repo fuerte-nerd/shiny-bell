@@ -92,8 +92,8 @@ function App(props) {
       const defFont = new FontFaceObserver("Roboto");
       defFont.load().then(
         () => {
-          setDefFontLoading(false);
-          setDefFontLoaded(true);
+          dispatch(setDefFontLoading(false));
+          dispatch(setDefFontLoaded(true));
         },
         () => {
           //handle error})
@@ -114,7 +114,6 @@ function App(props) {
   useEffect(() => {
     if (defFontLoaded) {
       dispatch(setComponentsLoading(true));
-      dispatch(setEnabled(true));
       const palette = new Palette();
       palette.getColorNames().then(() => {
         palette.deploy();
@@ -138,6 +137,7 @@ function App(props) {
         .catch(() => {
           console.log("There was an error");
         });
+      dispatch(setEnabled(true));
     }
     //eslint-disable-next-line
   }, [defFontLoaded]);
