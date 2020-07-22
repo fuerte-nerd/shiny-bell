@@ -30,7 +30,9 @@ class FontLoader {
   }
 
   init() {
-    store.dispatch(setFontsLoading(true));
+    if (!store.getState().components.fonts.loading) {
+      store.dispatch(setFontsLoading(true));
+    }
     switch (this.target) {
       case "body":
         store.dispatch(setNextBodyFont(this.font));

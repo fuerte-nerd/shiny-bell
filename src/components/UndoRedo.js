@@ -18,6 +18,7 @@ const UndoRedo = (props) => {
 
   useEffect(() => {
     if (componentsLoading) {
+      console.log(componentsLoading);
       if (undoEnabled) {
         dispatch(
           setPastAppStates([

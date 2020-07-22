@@ -22,9 +22,9 @@ import {
 } from "./types";
 
 const initialState = {
-  loading: true,
+  loading: false,
   fonts: {
-    loading: true,
+    loading: false,
     default: {
       isLoading: null,
       loaded: false,
