@@ -14,6 +14,7 @@ import {
   setResponsiveFontSizes,
   setFontSize,
 } from "../../state/settings/actions";
+import { setFontSelector } from "../../state/display/actions";
 import FontLoader from "../../functions/FontHelper";
 
 const Fonts = (props) => {
@@ -28,6 +29,8 @@ const Fonts = (props) => {
         dispatch(setTwoFonts(!twoFonts));
         break;
       case "open-body-font-picker":
+        dispatch(setFontSelector(true));
+        break;
       case "swap-fonts":
         const currentBodyFont = body;
         const currentHeaderFont = header;
