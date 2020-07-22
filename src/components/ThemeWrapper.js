@@ -17,6 +17,12 @@ const ThemeWrapper = (props) => {
 
   const theme = createMuiTheme({
     overrides: {
+      MuiFormControlLabel: {
+        label: { fontFamily: "Roboto" },
+      },
+      MuiDialogContentText: {
+        root: { fontFamily: "Roboto" },
+      },
       MuiListSubheader: {
         root: { fontSize: 14 },
       },
