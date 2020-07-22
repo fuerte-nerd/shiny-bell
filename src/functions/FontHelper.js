@@ -100,7 +100,7 @@ class FontLoader {
               default:
                 break;
             }
-            rej(this.font);
+            rej("Failed");
           }
         });
       };
