@@ -57,7 +57,7 @@ const FontPicker = (props) => {
     newFont
       .validate()
       .then(() => newFont.deploy())
-      .catch((err) => console.log(err));
+      .catch((err) => dispatch(setError(true)));
   };
 
   const handleClose = () => {
