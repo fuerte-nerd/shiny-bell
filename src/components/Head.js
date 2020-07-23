@@ -5,31 +5,21 @@ import { Helmet } from "react-helmet";
 const Head = (props) => {
   const { current } = props;
 
-  const [body, setBody] = useState(null);
-  const [header, setHeader] = useState(null);
-
-  useEffect(() => {
-    if (current && current.body.linkName && current.header.linkName) {
-      setBody(current.body.linkName);
-      setHeader(current.header.linkName);
-    }
-  }, [current]);
-
   return (
     <Helmet>
       <link
         href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
         rel="stylesheet"
       />
-      {body && (
+      {current && current.body.linkName && (
         <link
-          href={`https://fonts.googleapis.com/css2?family=${body}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${current.body.linkName}&display=swap`}
           rel="stylesheet"
         />
       )}
-      {header && (
+      {current && current.header.linkName && (
         <link
-          href={`https://fonts.googleapis.com/css2?family=${header}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${current.header.linkName}&display=swap`}
           rel="stylesheet"
         />
       )}
