@@ -1,5 +1,6 @@
 import store from "../state/store";
 import Font from "./Font";
+import tinycolor from "tinycolor2";
 import { setComponentsLoading } from "../state/components/actions";
 
 class AppState {
@@ -30,6 +31,15 @@ class AppState {
       } else {
         this.primary = this.getRandomColor();
       }
+
+      if (config.secondary) {
+        this.secondary = config.palette.secondary;
+      } else {
+        this.secondary = this.getRandomColor();
+      }
+    } else {
+      this.primary = state.appState.current.primary.hex;
+      this.secondary = state.appState.current.secondary.hex;
     }
   }
 
