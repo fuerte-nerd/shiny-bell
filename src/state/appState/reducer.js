@@ -2,7 +2,30 @@ import { SET_PAST, SET_CURRENT, SET_FUTURE, SET_ENABLED } from "./types";
 
 const initialState = {
   past: [],
-  current: null,
+  current: {
+    body: {
+      themeName: "",
+      linkName: "",
+      id: 0,
+      category: "",
+    },
+    header: {
+      themeName: "",
+      linkName: "",
+      id: 0,
+      category: "",
+    },
+    palette: {
+      primary: {
+        hex: "#000000",
+        name: "Black",
+      },
+      secondary: {
+        hex: "#FFFFFF",
+        name: "White",
+      },
+    },
+  },
   future: [],
   enabled: true,
 };
