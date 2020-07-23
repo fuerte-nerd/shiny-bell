@@ -84,10 +84,7 @@ function App(props) {
         dispatch(setFonts(fonts));
         dispatch(setLibraryLoaded(true));
       });
-    //eslint-disable-next-line
-  }, []);
 
-  useEffect(() => {
     const validateDefFont = () => {
       const defFont = new FontFaceObserver("Roboto");
       defFont.load().then(
@@ -103,11 +100,13 @@ function App(props) {
       );
     };
 
-    if (fontLibrary) {
-      // Load default font
-      dispatch(setDefFontLoading(true));
-      validateDefFont();
-    }
+    // Load default font
+    dispatch(setDefFontLoading(true));
+    validateDefFont();
+    //eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
     //eslint-disable-next-line
   }, [fontLibrary]);
 
