@@ -89,7 +89,7 @@ class AppState {
     return fontSearchList[Math.floor(Math.random() * fontSearchList.length)];
   }
 
-  validate() {
+  validateFonts() {
     const validateFont = (target) => {
       return new Promise((res, rej) => {
         const f = new FontFaceObserver(this[target]);
@@ -102,6 +102,10 @@ class AppState {
       });
     };
     validateFont("body").then(validateFont("header"));
+  }
+
+  commit() {
+    set;
   }
 }
 
