@@ -9,6 +9,7 @@ import {
   setSecondaryName,
   setComponentsLoading,
 } from "../state/components/actions";
+import { setCurrentAppState } from "../state/appState/actions";
 
 class Palette {
   constructor(config = null) {
@@ -71,10 +72,13 @@ class Palette {
   }
 
   deploy() {
-    store.dispatch(setPrimaryHex(this.primaryHex));
-    store.dispatch(setPrimaryName(this.primaryName));
-    store.dispatch(setSecondaryHex(this.secondaryHex));
-    store.dispatch(setSecondaryName(this.secondaryName));
+    const palette = {
+      primary: { hex: this.primaryHex, name: this.primaryName },
+      secondary: { hex: this.secondaryHex, name: this.secondaryName },
+    };
+    store.dispatch(
+      setCurrentAppState({ ...store.getState().appState.current, palette })
+    );
     store.dispatch(setPaletteLoading(false));
   }
 }
