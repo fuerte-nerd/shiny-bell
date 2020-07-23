@@ -1,9 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 
 const Head = (props) => {
-  const { body, header } = props;
+  const { current } = props;
+
+  const [body, setBody] = useState(null);
+  const [header, setHeader] = useState(null);
+
+  useEffect(() => {
+    if (current && current.body.linkName && current.header.linkName) {
+      setBody(current.body.linkName);
+      setHeader(current.header.linkName);
+    }
+  }, [current]);
 
   return (
     <Helmet>
@@ -28,11 +38,7 @@ const Head = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  body:
-    typeof state.current.body.linkName !== "undefined"
-      ? state.current.body.linkName
-      : null,
-  header: state.current.header.linkName ? state.current.header.linkName : null,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(Head);
