@@ -13,24 +13,14 @@ import Palette from "../functions/Palette";
 
 const UndoRedo = (props) => {
   const { dispatch } = props;
-  const { past, future, undoEnabled, componentsLoading } = props;
+  const { past, current, future, undoEnabled, componentsLoading } = props;
   const { body, header, primary, secondary } = props;
 
   useEffect(() => {
     if (componentsLoading) {
       console.log(componentsLoading);
       if (undoEnabled) {
-        dispatch(
-          setPastAppStates([
-            ...past,
-            {
-              body,
-              header,
-              primary,
-              secondary,
-            },
-          ])
-        );
+        dispatch(setPastAppStates([...past, current]));
       } else {
         dispatch(setEnabled(true));
       }
@@ -94,6 +84,7 @@ const UndoRedo = (props) => {
 
 const mapStateToProps = (state) => ({
   past: state.appState.past,
+  current: state.appState.current,
   future: state.appState.future,
   componentsLoading: state.components.loading,
   undoEnabled: state.appState.enabled,
