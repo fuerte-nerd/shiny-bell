@@ -1,5 +1,5 @@
 import store from "../state/store";
-import Font from "./Font";
+import FontFaceObserver from "fontfaceobserver";
 import tinycolor from "tinycolor2";
 import { setComponentsLoading } from "../state/components/actions";
 
@@ -82,7 +82,9 @@ class AppState {
 
   fetchRandomFont(target) {
     const fontSearchList = store.getState().libray.fonts.filter((i) => {
-      return state.settings.fontCategoryFilters[target].includes(i.category);
+      return store
+        .getState()
+        .settings.fontCategoryFilters[target].includes(i.category);
     });
     return fontSearchList[Math.floor(Math.random() * fontSearchList.length)];
   }
@@ -92,19 +94,14 @@ class AppState {
       return new Promise((res, rej) => {
         const f = new FontFaceObserver(this[target]);
         f.load().then(res, () => {
-          if (this.fontSelectionMode === "manual")
+          if (this.fontSelectionMode === "manual") {
             store.dispatch(setComponentsLoading(false));
-          rej(target);
+            rej(target);
+          }
         });
       });
     };
-    const bodyFont = new FontFaceObserver(this.body);
-    const headerFont = new FontFaceObserver(this.header);
-
-    bodyFont.load().then(
-      () => {},
-      () => {}
-    );
+    validateFont("body").then(validateFont("header"));
   }
 }
 
