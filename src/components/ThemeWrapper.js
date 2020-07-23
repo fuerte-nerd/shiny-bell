@@ -136,14 +136,14 @@ const ThemeWrapper = (props) => {
     palette: {
       primary: {
         main: current
-          ? current.primary.hex
+          ? typeof current.primary !== "undefined"
             ? current.primary.hex
             : "#000000"
           : "#000000",
       },
       secondary: {
         main: current
-          ? current.secondary.hex
+          ? typeof current.secondary !== "undefined"
             ? current.secondary.hex
             : "#FFFFFF"
           : "#FFFFFF",
