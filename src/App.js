@@ -111,7 +111,7 @@ function App(props) {
   }, [fontLibrary]);
 
   useEffect(() => {
-    if (defFontLoaded) {
+    if (defFontLoaded && fontLibrary) {
       dispatch(setComponentsLoading(true));
       const palette = new Palette();
       palette.getColorNames().then(() => {
@@ -139,7 +139,7 @@ function App(props) {
       dispatch(setEnabled(true));
     }
     //eslint-disable-next-line
-  }, [defFontLoaded]);
+  }, [defFontLoaded, fontLibrary]);
 
   useEffect(() => {
     if (!fontsLoading && !paletteLoading) {
