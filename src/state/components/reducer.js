@@ -73,9 +73,6 @@ export default (state = initialState, action) => {
     case SET_DEF_FONT_LOADED:
       newState.fonts.default.loaded = payload;
       break;
-    case SET_CURRENT_BODY_FONT:
-      newState.fonts.body.currentFont = payload;
-      break;
     case SET_NEXT_BODY_FONT:
       newState.fonts.body.nextFont = payload;
       break;
@@ -87,9 +84,6 @@ export default (state = initialState, action) => {
       break;
     case SET_BODY_FONT_LOCK:
       newState.fonts.body.locked = payload;
-      break;
-    case SET_CURRENT_HEADER_FONT:
-      newState.fonts.header.currentFont = payload;
       break;
     case SET_NEXT_HEADER_FONT:
       newState.fonts.header.nextFont = payload;

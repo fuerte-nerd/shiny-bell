@@ -3,16 +3,15 @@ import {
   setBodyFontLoading,
   setBodyFontLoaded,
   setNextBodyFont,
-  setCurrentBodyFont,
   setHeaderFontLoading,
   setHeaderFontLoaded,
   setNextHeaderFont,
-  setCurrentHeaderFont,
   setFontsLoading,
   setComponentsLoading,
 } from "../state/components/actions";
 import FontFaceObserver from "fontfaceobserver";
 import { setBlacklisted } from "../state/library/actions";
+import { setCurrentAppState } from "../state/appState/actions";
 
 class FontLoader {
   constructor(target, font = null) {
@@ -113,7 +112,12 @@ class FontLoader {
   deploy() {
     switch (this.target) {
       case "body":
-        store.dispatch(setCurrentBodyFont(this.font));
+        store.dispatch(
+          setCurrentAppState({
+            ...store.getState().appState.current,
+            body: this.font,
+          })
+        );
         store.dispatch(setNextBodyFont(null));
         const bodyFontLoader = new FontFaceObserver(this.font.themeName);
         bodyFontLoader.load().then(
@@ -128,7 +132,12 @@ class FontLoader {
         );
         return;
       case "header":
-        store.dispatch(setCurrentHeaderFont(this.font));
+        store.dispatch(
+          setCurrentAppState({
+            ...store.getState().appState.current,
+            header: this.font,
+          })
+        );
         store.dispatch(setNextHeaderFont(null));
         const headerFontLoader = new FontFaceObserver(this.font.themeName);
         headerFontLoader.load().then(
