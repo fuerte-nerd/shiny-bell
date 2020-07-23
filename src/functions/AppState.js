@@ -9,23 +9,23 @@ class AppState {
     this.fontSelectionMode = "auto";
     if (!state.components.fonts.body.locked) {
       if (config.body) {
-        this.body = new Font("body", config.body);
+        this.body = config.body;
         this.fontSelectionMode = "manual";
       } else {
-        this.body = new Font("body");
+        this.body = this.fetchRandomFont("body");
       }
     } else {
-      this.font = state.appState.current.body;
+      this.body = state.appState.current.body;
     }
     if (!state.components.fonts.header.locked) {
       if (config.header) {
-        this.header = new Font("header", config.header);
+        this.header = config.header;
         this.fontSelectionMode = "manual";
       } else {
-        this.header = new Font("header");
+        this.header = this.fetchRandomFont("header");
       }
     } else {
-      this.font = state.appState.current.header;
+      this.header = state.appState.current.header;
     }
 
     if (!state.components.palette.locked) {
@@ -81,13 +81,31 @@ class AppState {
   }
 
   fetchRandomFont(target) {
-    const fontSearchList = this.fontLib.filter((i) => {
-      return this.categories[target].includes(i.category);
+    const fontSearchList = store.getState().libray.fonts.filter((i) => {
+      return state.settings.fontCategoryFilters[target].includes(i.category);
     });
     return fontSearchList[Math.floor(Math.random() * fontSearchList.length)];
   }
 
-  validate() {}
+  validate() {
+    const validateFont = (target) => {
+      return new Promise((res, rej) => {
+        const f = new FontFaceObserver(this[target]);
+        f.load().then(res, () => {
+          if (this.fontSelectionMode === "manual")
+            store.dispatch(setComponentsLoading(false));
+          rej(target);
+        });
+      });
+    };
+    const bodyFont = new FontFaceObserver(this.body);
+    const headerFont = new FontFaceObserver(this.header);
+
+    bodyFont.load().then(
+      () => {},
+      () => {}
+    );
+  }
 }
 
 export default AppState;
