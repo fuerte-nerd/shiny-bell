@@ -134,8 +134,20 @@ const ThemeWrapper = (props) => {
       fontSize,
     },
     palette: {
-      primary: { main: current.primary.hex },
-      secondary: { main: current.secondary.hex },
+      primary: {
+        main: current
+          ? current.primary.hex
+            ? current.primary.hex
+            : "#000000"
+          : "#000000",
+      },
+      secondary: {
+        main: current
+          ? current.secondary.hex
+            ? current.secondary.hex
+            : "#FFFFFF"
+          : "#FFFFFF",
+      },
     },
   });
 
