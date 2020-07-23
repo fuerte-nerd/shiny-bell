@@ -16,8 +16,9 @@ const Preview = ({
   primaryColorName,
   secondaryColorName,
   backgrounds,
+  current,
 }) => {
-  return (
+  return current.header && current.body ? (
     <>
       <Box mb={2} bgcolor={`transparent`}>
         <>
@@ -25,10 +26,10 @@ const Preview = ({
           <Typography variant="subtitle1" paragraph>
             The {twoFonts ? `header font ` : `font `} is{" "}
             {twoFonts
-              ? `${headerFont.themeName} and the body font is ${bodyFont.themeName}`
-              : bodyFont.themeName}
-            . The primary color is {primaryColorName} and the secondary color is{" "}
-            {secondaryColorName}.
+              ? `${current.header.themeName} and the body font is ${current.body.themeName}`
+              : current.body.themeName}
+            . The primary color is {current.primary.name} and the secondary
+            color is {current.secondary.name}.
           </Typography>
           <Typography paragraph>
             Consectetur officia assumenda magni cupiditate perspiciatis
@@ -48,10 +49,11 @@ const Preview = ({
       <Buttons />
       <Divider />
     </>
-  );
+  ) : null;
 };
 
 const mapStateToProps = (state) => ({
+  current: state.appState.current,
   bodyFont: state.components.fonts.body.currentFont,
   headerFont: state.components.fonts.header.currentFont,
   twoFonts: state.settings.twoFonts,
