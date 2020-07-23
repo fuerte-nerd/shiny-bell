@@ -18,7 +18,7 @@ const Preview = ({
   backgrounds,
   current,
 }) => {
-  return current.header && current.body ? (
+  return current.header && current.body && current.palette ? (
     <>
       <Box mb={2} bgcolor={`transparent`}>
         <>
@@ -28,8 +28,8 @@ const Preview = ({
             {twoFonts
               ? `${current.header.themeName} and the body font is ${current.body.themeName}`
               : current.body.themeName}
-            . The primary color is {current.primary.name} and the secondary
-            color is {current.secondary.name}.
+            . The primary color is {current.palette.primary.name} and the
+            secondary color is {current.palette.secondary.name}.
           </Typography>
           <Typography paragraph>
             Consectetur officia assumenda magni cupiditate perspiciatis
