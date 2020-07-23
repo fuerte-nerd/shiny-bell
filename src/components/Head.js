@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 
 const Head = (props) => {
-  const { currentBodyFont, currentHeaderFont } = props;
+  const { body, header } = props;
 
   return (
     <Helmet>
@@ -11,15 +11,15 @@ const Head = (props) => {
         href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
         rel="stylesheet"
       />
-      {currentBodyFont && (
+      {body && (
         <link
-          href={`https://fonts.googleapis.com/css2?family=${currentBodyFont.linkName}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${body}&display=swap`}
           rel="stylesheet"
         />
       )}
-      {currentHeaderFont && (
+      {header && (
         <link
-          href={`https://fonts.googleapis.com/css2?family=${currentHeaderFont.linkName}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${header}&display=swap`}
           rel="stylesheet"
         />
       )}
@@ -28,8 +28,11 @@ const Head = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  currentBodyFont: state.components.fonts.body.currentFont,
-  currentHeaderFont: state.components.fonts.header.currentFont,
+  body:
+    typeof state.current.body.linkName !== "undefined"
+      ? state.current.body.linkName
+      : null,
+  header: state.current.header.linkName ? state.current.header.linkName : null,
 });
 
 export default connect(mapStateToProps)(Head);
