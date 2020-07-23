@@ -9,9 +9,9 @@ import {
 const ThemeWrapper = (props) => {
   const { children } = props;
 
-  const { twoFonts, bodyFont, headerFont } = props;
+  const { current, twoFonts } = props;
 
-  const { primaryColor, secondaryColor } = props;
+  const { body, header, primary, secondary } = current;
 
   const { responsive, fontSize } = props;
 
@@ -31,85 +31,83 @@ const ThemeWrapper = (props) => {
     },
     typography: {
       h1: {
-        fontFamily:
-          bodyFont && headerFont
-            ? twoFonts
-              ? `"${headerFont.themeName}"`
-              : `"${bodyFont.themeName}"`
-            : null,
+        fontFamily: current
+          ? twoFonts
+            ? `"${header.themeName}"`
+            : `"${body.themeName}"`
+          : null,
       },
       h2: {
         fontFamily:
-          bodyFont && headerFont
+          body && header
             ? twoFonts
-              ? `"${headerFont.themeName}"`
-              : `"${bodyFont.themeName}"`
+              ? `"${header.themeName}"`
+              : `"${body.themeName}"`
             : null,
       },
       h3: {
         fontFamily:
-          bodyFont && headerFont
+          body && header
             ? twoFonts
-              ? `"${headerFont.themeName}"`
-              : `"${bodyFont.themeName}"`
+              ? `"${header.themeName}"`
+              : `"${body.themeName}"`
             : null,
       },
       h4: {
         fontFamily:
-          bodyFont && headerFont
+          body && header
             ? twoFonts
-              ? `"${headerFont.themeName}"`
-              : `"${bodyFont.themeName}"`
+              ? `"${header.themeName}"`
+              : `"${body.themeName}"`
             : null,
       },
       h5: {
         fontFamily:
-          bodyFont && headerFont
+          body && header
             ? twoFonts
-              ? `"${headerFont.themeName}"`
-              : `"${bodyFont.themeName}"`
+              ? `"${header.themeName}"`
+              : `"${body.themeName}"`
             : null,
       },
       h6: {
         fontFamily:
-          bodyFont && headerFont
+          body && header
             ? twoFonts
-              ? `"${headerFont.themeName}"`
-              : `"${bodyFont.themeName}"`
+              ? `"${header.themeName}"`
+              : `"${body.themeName}"`
             : null,
       },
       subtitle1: {
-        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
+        fontFamily: body ? `"${body.themeName}"` : null,
       },
       subtitle2: {
-        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
+        fontFamily: body ? `"${body.themeName}"` : null,
       },
       body1: {
-        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
+        fontFamily: body ? `"${body.themeName}"` : null,
       },
       body2: {
-        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
+        fontFamily: body ? `"${body.themeName}"` : null,
       },
       button: {
-        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
+        fontFamily: body ? `"${body.themeName}"` : null,
       },
       overline: {
-        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
+        fontFamily: body ? `"${body.themeName}"` : null,
       },
       caption: {
-        fontFamily: bodyFont ? `"${bodyFont.themeName}"` : null,
+        fontFamily: body ? `"${body.themeName}"` : null,
       },
       fontSize,
     },
     palette: {
-      primary: { main: primaryColor },
-      secondary: { main: secondaryColor },
+      primary: { main: primary.hex },
+      secondary: { main: secondary.hex },
     },
   });
 
   return (
-    bodyFont &&
-    headerFont && (
+    current && (
       <ThemeProvider theme={responsive ? responsiveFontSizes(theme) : theme}>
         {children}
       </ThemeProvider>
@@ -118,11 +116,8 @@ const ThemeWrapper = (props) => {
 };
 
 const mapStateToProps = (state) => ({
+  current: state.appState.current,
   twoFonts: state.settings.twoFonts,
-  bodyFont: state.components.fonts.body.currentFont,
-  headerFont: state.components.fonts.header.currentFont,
-  primaryColor: state.components.palette.primary.hex,
-  secondaryColor: state.components.palette.secondary.hex,
   responsive: state.settings.responsiveFontSizes,
   fontSize: state.settings.fontSize,
 });
