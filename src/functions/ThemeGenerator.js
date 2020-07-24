@@ -27,6 +27,7 @@ class Theme {
     this.spacing = state.settings.spacing;
     this.buttonTextTransform = state.settings.buttonTextTransform;
 
+    this.bypassUndo = false;
     // overwrites
     const params = Object.entries(config);
     for (const [key, value] of params) {
@@ -34,7 +35,7 @@ class Theme {
     }
   }
 
-  private getRandomColor() {
+  getRandomColor() {
     const generateRandomNumber = () => {
       return Math.floor(Math.random() * 255);
     };
@@ -44,7 +45,7 @@ class Theme {
     return tinycolor(rgb).toHexString();
   }
 
-  private getSecondaryColor() {
+  getSecondaryColor() {
     const mixMode = store.getState().settings.secondaryColorMix;
 
     switch (mixMode) {
@@ -63,7 +64,11 @@ class Theme {
     }
   }
 
-  private fetchRandomFont(target) {
+  setFont(target, font) {
+    this[target] = font;
+  }
+
+  fetchRandomFont(target) {
     const fontSearchList = store.getState().libray.fonts.filter((i) => {
       return store
         .getState()
@@ -82,6 +87,7 @@ class Theme {
               store.dispatch(setComponentsLoading(false));
               rej2(target);
             } else {
+              setFont(target, this.fetchRandomFont());
               validateFont();
             }
           });
@@ -95,9 +101,13 @@ class Theme {
   }
 
   commit() {
-    return new Promise((res, rej) => {
-      store.dispatch(set);
-    });
+    store.dispatch(
+      setUndos([
+        ...store.getState().appState.past,
+        store.getState().appState.current,
+      ])
+    );
+    store.dispatch(setCurrentAppState(this));
   }
 }
 
