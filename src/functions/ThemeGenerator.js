@@ -70,8 +70,8 @@ class ThemeGenerator {
   }
 
   validateFonts() {
-      return new Promise((res1, rej1) => {
-    const validateFont = (target) => {
+    return new Promise((res1, rej1) => {
+      const validateFont = (target) => {
         return new Promise((res2, rej2) => {
           const f = new FontFaceObserver(this[target].name);
           f.load().then(res2, () => {
@@ -84,9 +84,12 @@ class ThemeGenerator {
           });
         });
       };
-        validateFont("body").then(validateFont("header")).then(res1()).catch(err=> console.log(err));
-    };
-      ) }
+      validateFont("body")
+        .then(validateFont("header"))
+        .then(res1)
+        .catch((err) => console.log(err));
+    });
+  }
 
   commit() {
     return new Promise();
