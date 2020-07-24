@@ -52,7 +52,6 @@ class Theme {
 
   getSecondaryColor() {
     const mixMode = store.getState().settings.secondaryColorMix;
-
     switch (mixMode) {
       case "complement":
         return tinycolor(this.getProp("primary")).complement().toHexString();
@@ -106,12 +105,14 @@ class Theme {
   }
 
   commit() {
-    store.dispatch(
-      setUndos([
-        ...store.getState().appState.past,
-        store.getState().appState.current,
-      ])
-    );
+    if (!this.bypassUndo) {
+      store.dispatch(
+        setUndos([
+          ...store.getState().appState.past,
+          store.getState().appState.current,
+        ])
+      );
+    }
     store.dispatch(setCurrentAppState(this));
   }
 }
