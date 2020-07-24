@@ -7,10 +7,19 @@ class ThemeGenerator {
   constructor(config) {
     const state = store.getState();
 
-    this.primary = this.getRandomColor();
-    this.secondary = this.getSecondaryColor();
-    this.body = this.fetchRandomFont("body");
-    this.header = this.fetchRandomFont("header");
+    this.primary = state.components.palette.locked
+      ? state.appState.current.primary
+      : this.getRandomColor();
+    this.secondary = state.components.palette.locked
+      ? state.appState.current.secondary
+      : this.getSecondaryColor();
+    this.body = state.components.fonts.body.locked
+      ? state.appState.current.body
+      : this.fetchRandomFont("body");
+    this.header = state.components.fonts.header.locked
+      ? state.appState.current.header
+      : this.fetchRandomFont("header");
+    this.twoFonts = state.settings.twoFonts;
     this.fontSize = state.settings.fontSize;
     this.responsiveFontSizes = state.settings.responsiveFontSizes;
     this.mode = state.settings.mode;
@@ -20,7 +29,7 @@ class ThemeGenerator {
 
     // overwrites
     const params = Object.entries(config);
-    for (const [key, value] of entries) {
+    for (const [key, value] of params) {
       this[key] = value;
     }
 
@@ -87,13 +96,14 @@ class ThemeGenerator {
       validateFont("body")
         .then(validateFont("header"))
         .then(res1)
-        .catch((err) => console.log(err));
+        .catch((err) => rej(err));
     });
   }
 
   commit() {
-    return new Promise();
-    store.dispatch(set);
+    return new Promise((res, rej) => {
+      store.dispatch(set);
+    });
   }
 }
 
