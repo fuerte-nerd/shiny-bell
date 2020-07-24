@@ -70,22 +70,27 @@ class ThemeGenerator {
   }
 
   validateFonts() {
+      return new Promise((res1, rej1) => {
     const validateFont = (target) => {
-      return new Promise((res, rej) => {
-        const f = new FontFaceObserver(this[target]);
-        f.load().then(res, () => {
-          if (this.fontSelectionMode === "manual") {
-            store.dispatch(setComponentsLoading(false));
-            rej(target);
-          }
+        return new Promise((res2, rej2) => {
+          const f = new FontFaceObserver(this[target].name);
+          f.load().then(res2, () => {
+            if (this.fontSelectionMode === "manual") {
+              store.dispatch(setComponentsLoading(false));
+              rej2(target);
+            } else {
+              validateFont();
+            }
+          });
         });
-      });
+      };
+        validateFont("body").then(validateFont("header")).then(res1()).catch(err=> console.log(err));
     };
-    validateFont("body").then(validateFont("header"));
-  }
+      ) }
 
   commit() {
-    set;
+    return new Promise();
+    store.dispatch(set);
   }
 }
 
