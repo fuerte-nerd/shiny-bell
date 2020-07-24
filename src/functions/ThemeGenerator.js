@@ -3,48 +3,28 @@ import FontFaceObserver from "fontfaceobserver";
 import tinycolor from "tinycolor2";
 import { setComponentsLoading } from "../state/components/actions";
 
-class AppState {
+class ThemeGenerator {
   constructor(config) {
     const state = store.getState();
-    this.fontSelectionMode = "auto";
-    if (!state.components.fonts.body.locked) {
-      if (config.body) {
-        this.body = config.body;
-        this.fontSelectionMode = "manual";
-      } else {
-        this.body = this.fetchRandomFont("body");
-      }
-    } else {
-      this.body = state.appState.current.body;
-    }
-    if (!state.components.fonts.header.locked) {
-      if (config.header) {
-        this.header = config.header;
-        this.fontSelectionMode = "manual";
-      } else {
-        this.header = this.fetchRandomFont("header");
-      }
-    } else {
-      this.header = state.appState.current.header;
+
+    this.primary = this.getRandomColor();
+    this.secondary = this.getSecondaryColor();
+    this.body = this.fetchRandomFont("body");
+    this.header = this.fetchRandomFont("header");
+    this.fontSize = state.settings.fontSize;
+    this.responsiveFontSizes = state.settings.responsiveFontSizes;
+    this.mode = state.settings.mode;
+    this.rounding = state.settings.rounding;
+    this.spacing = state.settings.spacing;
+    this.buttonTextTransform = state.settings.buttonTextTransform;
+
+    // overwrites
+    const params = Object.entries(config);
+    for (const [key, value] of entries) {
+      this[key] = value;
     }
 
-    if (!state.components.palette.locked) {
-      if (config.primary) {
-        this.primary = config.primary;
-      } else {
-        this.primary = this.getRandomColor();
-      }
-
-      if (config.secondary) {
-        this.secondary = config.secondary;
-      } else {
-        this.secondary = this.getSecondaryColor();
-      }
-    } else {
-      this.primary = state.appState.current.primary.hex;
-      this.secondary = state.appState.current.secondary.hex;
-    }
-    this.innit();
+    this.init();
   }
 
   init() {
@@ -66,15 +46,15 @@ class AppState {
 
     switch (mixMode) {
       case "complement":
-        return tinycolor(this.primaryHex).complement().toHexString();
+        return tinycolor(this.primary).complement().toHexString();
       case "desaturate":
-        return tinycolor(this.primaryHex).desaturate(50).toHexString();
+        return tinycolor(this.primary).desaturate(50).toHexString();
       case "saturate":
-        return tinycolor(this.primaryHex).saturate(50).toHexString();
+        return tinycolor(this.primary).saturate(50).toHexString();
       case "darken":
-        return tinycolor(this.primaryHex).darken().toHexString();
+        return tinycolor(this.primary).darken().toHexString();
       case "lighten":
-        return tinycolor(this.primaryHex).lighten().toHexString();
+        return tinycolor(this.primary).lighten().toHexString();
       default:
         return;
     }
@@ -109,4 +89,4 @@ class AppState {
   }
 }
 
-export default AppState;
+export default ThemeGenerator;
