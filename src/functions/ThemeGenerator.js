@@ -3,7 +3,7 @@ import FontFaceObserver from "fontfaceobserver";
 import tinycolor from "tinycolor2";
 import { setComponentsLoading } from "../state/components/actions";
 
-class ThemeGenerator {
+class Theme {
   constructor(config) {
     const state = store.getState();
 
@@ -32,15 +32,9 @@ class ThemeGenerator {
     for (const [key, value] of params) {
       this[key] = value;
     }
-
-    this.init();
   }
 
-  init() {
-    store.dispatch(setComponentsLoading(true));
-  }
-
-  getRandomColor() {
+  private getRandomColor() {
     const generateRandomNumber = () => {
       return Math.floor(Math.random() * 255);
     };
@@ -50,7 +44,7 @@ class ThemeGenerator {
     return tinycolor(rgb).toHexString();
   }
 
-  getSecondaryColor() {
+  private getSecondaryColor() {
     const mixMode = store.getState().settings.secondaryColorMix;
 
     switch (mixMode) {
@@ -69,7 +63,7 @@ class ThemeGenerator {
     }
   }
 
-  fetchRandomFont(target) {
+  private fetchRandomFont(target) {
     const fontSearchList = store.getState().libray.fonts.filter((i) => {
       return store
         .getState()
@@ -107,4 +101,4 @@ class ThemeGenerator {
   }
 }
 
-export default ThemeGenerator;
+export default Theme;
