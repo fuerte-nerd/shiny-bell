@@ -3,25 +3,14 @@ import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
 
 const GoogleFontValidator = (props) => {
-  const {
-    bodyFontIsLoading,
-    headerFontIsLoading,
-    nextBodyFont,
-    nextHeaderFont,
-  } = props;
+  const { validationFont } = props;
 
   return (
     <Helmet>
-      {nextBodyFont && (
+      {validationFont && (
         <link
           rel="stylesheet"
-          href={`https://fonts.googleapis.com/css2?family=${nextBodyFont.linkName}&display=swap`}
-        />
-      )}
-      {nextHeaderFont && (
-        <link
-          rel="stylesheet"
-          href={`https://fonts.googleapis.com/css2?family=${nextHeaderFont.linkName}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${validationFont}&display=swap`}
         />
       )}
     </Helmet>
@@ -29,10 +18,7 @@ const GoogleFontValidator = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  bodyFontIsLoading: state.components.fonts.body.isLoading,
-  headerFontIsLoading: state.components.fonts.header.isLoading,
-  nextBodyFont: state.components.fonts.body.nextFont,
-  nextHeaderFont: state.components.fonts.header.nextFont,
+  validationFont: state.components.validationFont,
 });
 
 export default connect(mapStateToProps)(GoogleFontValidator);

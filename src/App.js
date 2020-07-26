@@ -3,11 +3,19 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { Container, Toolbar, Box } from "@material-ui/core";
 
-import { setFonts, setLibraryLoaded } from "./state/library/actions";
-import FontSelector from "./components/dialogs/FontSelector";
-import AppState from "./functions/AppState";
+import Theme from "./functions/Theme";
 
-function App({ dispatch }) {
+import Head from "./components/Head";
+import GoogleFontValidator from "./components/GoogleFontValidator";
+import ThemeWrapper from "./components/ThemeWrapper";
+import LoadScreen from "./components/LoadScreen";
+import Menu from "./components/Menu";
+import RefreshButton from "./components/RefreshButton";
+import FontSelector from "./components/dialogs/FontSelector";
+import { setFonts, setLibraryLoaded } from "./state/library/actions";
+import { setLoadingScreen } from "./state/display/actions";
+
+function App({ dispatch, current }) {
   useEffect(() => {
     axios
       .get(
@@ -17,35 +25,49 @@ function App({ dispatch }) {
         const fonts = response.data.items.map((i, ind) => {
           return {
             id: ind,
-            linkName: i.family.replace(/ /g, "+"),
-            themeName: i.family,
+            family: i.family,
             category: i.category,
           };
         });
         dispatch(setFonts(fonts));
         dispatch(setLibraryLoaded(true));
+        const theme = new Theme();
+        theme
+          .validateFonts()
+          .then(() => {
+            theme.commit().then(() => dispatch(setLoadingScreen(false)));
+          })
+          .catch((err) => console.log(err));
       });
-  });
+  }, []);
 
   return (
     <>
-      <Head />
       <GoogleFontValidator />
-      <ThemeWrapper>
-        <LoadScreen />
+      {current && (
+        <>
+          <Head />
+          <ThemeWrapper>
+            <LoadScreen />
+            <Menu />
+            <RefreshButton />
+            {/*
         <FontSelector />
         <Sidebar />
-        <Menu />
-        <RefreshButton />
-        <Toolbar />
-        <Container>
-          <Preview />
-        </Container>
-      </ThemeWrapper>
+            <Toolbar />
+            <Container>
+              <Preview />
+                </Container>
+                  */}
+          </ThemeWrapper>
+        </>
+      )}
     </>
   );
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  current: state.appState.current,
+});
 
 export default connect(mapStateToProps)(App);

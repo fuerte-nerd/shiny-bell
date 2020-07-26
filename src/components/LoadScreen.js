@@ -5,12 +5,7 @@ import { Dialog, Box, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
 import { setLoadScreenFeedback } from "../state/feedback/actions";
 
-const FontLoadScreen = ({ dispatch, componentsLoading, loadingScreen }) => {
-  useEffect(() => {
-    dispatch(setLoadingScreen(componentsLoading));
-    //eslint-disable-next-line
-  }, [componentsLoading]);
-
+const FontLoadScreen = ({ loadingScreen }) => {
   return (
     <Dialog
       fullScreen

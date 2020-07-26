@@ -17,9 +17,11 @@ import {
   SET_SECONDARY_NAME,
   SET_FONTS_LOADING,
   SET_PALETTE_LOADING,
+  SET_VALIDATION_FONT,
 } from "./types";
 
 const initialState = {
+  validationFont: null,
   loading: false,
   fonts: {
     loading: false,
@@ -61,6 +63,9 @@ export default (state = initialState, action) => {
   const newState = Object.assign({}, state);
 
   switch (type) {
+    case SET_VALIDATION_FONT:
+      newState.validationFont = payload;
+      break;
     case SET_LOADING:
       newState.loading = payload;
       break;

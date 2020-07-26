@@ -3,30 +3,21 @@ import { connect } from "react-redux";
 import { Tooltip, Fab } from "@material-ui/core";
 import { Refresh, Lock } from "@material-ui/icons";
 
-import FontLoader from "../functions/FontHelper";
-import Palette from "../functions/Palette";
+import Theme from "../functions/Theme";
+
 import { setComponentsLoading } from "../state/components/actions";
+import { setLoadingScreen } from "../state/display/actions";
+import { setPastAppStates } from "../state/appState/actions";
 
-const RefreshButton = ({ dispatch, twoFonts, locked }) => {
+const RefreshButton = ({ dispatch, twoFonts, locked, past, current }) => {
   const handleClick = () => {
-    // if (!locked.body || (twoFonts && !locked.header)) {
-    //  dispatch(setComponentsLoading(true));
-    // }
-    dispatch(setComponentsLoading(true));
-    if (!locked.body) {
-      const newBodyFont = new FontLoader("body");
-      newBodyFont.validate().then(() => newBodyFont.deploy());
-    }
+    dispatch(setLoadingScreen(true));
 
-    if (twoFonts && !locked.header) {
-      const newHeaderFont = new FontLoader("header");
-      newHeaderFont.validate().then(() => newHeaderFont.deploy());
-    }
-
-    if (!locked.palette) {
-      const newPalette = new Palette();
-      newPalette.getColorNames().then(() => newPalette.deploy());
-    }
+    const theme = new Theme();
+    dispatch(setPastAppStates([...past, current]));
+    theme.validateFonts().then(() => {
+      theme.commit().then(() => dispatch(setLoadingScreen(false)));
+    });
   };
 
   return (
@@ -73,6 +64,8 @@ const mapStateToProps = (state) => ({
     palette: state.components.palette.locked,
   },
   twoFonts: state.settings.twoFonts,
+  past: state.appState.past,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(RefreshButton);

@@ -7,55 +7,27 @@ import {
   setPastAppStates,
   setFutureAppStates,
   setEnabled,
+  setCurrentAppState,
 } from "../state/appState/actions";
 import FontLoader from "../functions/FontHelper";
 import Palette from "../functions/Palette";
+import { setLoadingScreen } from "../state/display/actions";
 
 const UndoRedo = (props) => {
   const { dispatch } = props;
-  const { past, current, future, undoEnabled, componentsLoading } = props;
-  const { body, header, primary, secondary } = props;
-
-  useEffect(() => {
-    if (componentsLoading) {
-      console.log(componentsLoading);
-      if (undoEnabled) {
-        dispatch(setPastAppStates([...past, current]));
-      } else {
-        dispatch(setEnabled(true));
-      }
-    }
-  }, [componentsLoading]);
-
-  useEffect(() => {
-    console.log(componentsLoading);
-  }, [undoEnabled]);
+  const { past, current, future } = props;
 
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "undo":
-        // grab the previous change
-        const previousAppState = past[past.length - 1];
-        dispatch(setPastAppStates(past.slice(0, past.length - 1)));
-        dispatch(
-          setFutureAppStates([{ body, header, primary, secondary }, ...future])
-        );
-        //bypass setting an appstate
+        dispatch(setLoadingScreen(true));
 
-        //commit it
-        dispatch(setComponentsLoading(true));
-        const bf = new FontLoader("body", previousAppState.body);
-        const hf = new FontLoader("header", previousAppState.header);
-        const palette = new Palette({
-          primary: previousAppState.primary.hex,
-          secondary: previousAppState.secondary.hex,
-        });
-        bf.validate().then(() => bf.deploy());
-        hf.validate().then(() => hf.deploy());
-        palette.getColorNames().then(() => {
-          palette.deploy();
-        });
+        dispatch(setFutureAppStates([...future, current]));
+        dispatch(setCurrentAppState(past[past.length - 1]));
+        dispatch(setPastAppStates(past.slice(0, past.length - 1)));
+
+        dispatch(setLoadingScreen(false));
         break;
       default:
         break;
@@ -66,14 +38,24 @@ const UndoRedo = (props) => {
     <>
       <Tooltip title="Undo">
         <span>
-          <IconButton color="inherit" id="undo" onClick={handleClick}>
+          <IconButton
+            color="inherit"
+            id="undo"
+            disabled={past.length === 0}
+            onClick={handleClick}
+          >
             <Undo />
           </IconButton>
         </span>
       </Tooltip>
       <Tooltip title="Redo">
         <span>
-          <IconButton color="inherit" id="redo" onClick={handleClick}>
+          <IconButton
+            color="inherit"
+            id="redo"
+            disabled={future.length === 0}
+            onClick={handleClick}
+          >
             <Redo />
           </IconButton>
         </span>

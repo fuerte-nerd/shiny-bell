@@ -17,7 +17,13 @@ import {
   SET_SECONDARY_NAME,
   SET_FONTS_LOADING,
   SET_PALETTE_LOADING,
+  SET_VALIDATION_FONT,
 } from "./types";
+
+export const setValidationFont = (payload) => ({
+  type: SET_VALIDATION_FONT,
+  payload,
+});
 
 export const setComponentsLoading = (payload) => ({
   type: SET_LOADING,

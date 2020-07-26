@@ -11,15 +11,21 @@ const Head = (props) => {
         href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
         rel="stylesheet"
       />
-      {current && current.body.linkName && (
+      {current && current.body && (
         <link
-          href={`https://fonts.googleapis.com/css2?family=${current.body.linkName}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${current.body.family.replace(
+            / /g,
+            "+"
+          )}&display=swap`}
           rel="stylesheet"
         />
       )}
-      {current && current.header.linkName && (
+      {current && current.header && (
         <link
-          href={`https://fonts.googleapis.com/css2?family=${current.header.linkName}&display=swap`}
+          href={`https://fonts.googleapis.com/css2?family=${current.header.family.replace(
+            / /g,
+            "+"
+          )}&display=swap`}
           rel="stylesheet"
         />
       )}

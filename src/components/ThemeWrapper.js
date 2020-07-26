@@ -9,9 +9,7 @@ import {
 const ThemeWrapper = (props) => {
   const { children } = props;
 
-  const { current, twoFonts } = props;
-
-  const { responsive, fontSize } = props;
+  const { current } = props;
 
   const theme = createMuiTheme({
     overrides: {
@@ -31,129 +29,123 @@ const ThemeWrapper = (props) => {
       h1: {
         fontFamily: current
           ? current.body && current.header
-            ? twoFonts
-              ? `"${current.header.themeName}"`
-              : `"${current.body.themeName}"`
+            ? current.twoFonts
+              ? `"${current.header.family}"`
+              : `"${current.body.family}"`
             : null
           : null,
       },
       h2: {
         fontFamily: current
           ? current.body && current.header
-            ? twoFonts
-              ? `"${current.header.themeName}"`
-              : `"${current.body.themeName}"`
+            ? current.twoFonts
+              ? `"${current.header.family}"`
+              : `"${current.body.family}"`
             : null
           : null,
       },
       h3: {
         fontFamily: current
           ? current.body && current.header
-            ? twoFonts
-              ? `"${current.header.themeName}"`
-              : `"${current.body.themeName}"`
+            ? current.twoFonts
+              ? `"${current.header.family}"`
+              : `"${current.body.family}"`
             : null
           : null,
       },
       h4: {
         fontFamily: current
           ? current.body && current.header
-            ? twoFonts
-              ? `"${current.header.themeName}"`
-              : `"${current.body.themeName}"`
+            ? current.twoFonts
+              ? `"${current.header.family}"`
+              : `"${current.body.family}"`
             : null
           : null,
       },
       h5: {
         fontFamily: current
           ? current.body && current.header
-            ? twoFonts
-              ? `"${current.header.themeName}"`
-              : `"${current.body.themeName}"`
+            ? current.twoFonts
+              ? `"${current.header.family}"`
+              : `"${current.body.family}"`
             : null
           : null,
       },
       h6: {
         fontFamily: current
           ? current.body && current.header
-            ? twoFonts
-              ? `"${current.header.themeName}"`
-              : `"${current.body.themeName}"`
+            ? current.twoFonts
+              ? `"${current.header.family}"`
+              : `"${current.body.family}"`
             : null
           : null,
       },
       subtitle1: {
         fontFamily: current
           ? current.body
-            ? `"${current.body.themeName}"`
+            ? `"${current.body.family}"`
             : null
           : null,
       },
       subtitle2: {
         fontFamily: current
           ? current.body
-            ? `"${current.body.themeName}"`
+            ? `"${current.body.family}"`
             : null
           : null,
       },
       body1: {
         fontFamily: current
           ? current.body
-            ? `"${current.body.themeName}"`
+            ? `"${current.body.family}"`
             : null
           : null,
       },
       body2: {
         fontFamily: current
           ? current.body
-            ? `"${current.body.themeName}"`
+            ? `"${current.body.family}"`
             : null
           : null,
       },
       button: {
         fontFamily: current
           ? current.body
-            ? `"${current.body.themeName}"`
+            ? `"${current.body.family}"`
             : null
           : null,
       },
       overline: {
         fontFamily: current
           ? current.body
-            ? `"${current.body.themeName}"`
+            ? `"${current.body.family}"`
             : null
           : null,
       },
       caption: {
         fontFamily: current
           ? current.body
-            ? `"${current.body.themeName}"`
+            ? `"${current.body.family}"`
             : null
           : null,
       },
-      fontSize,
+      fontSize: current ? current.fontSize : null,
     },
     palette: {
       primary: {
-        main: current
-          ? current.palette
-            ? current.palette.primary.hex
-            : "#000000"
-          : "#000000",
+        main: current ? current.primary : "#000000",
       },
       secondary: {
-        main: current
-          ? current.palette
-            ? current.palette.secondary.hex
-            : "#FFFFFF"
-          : "#FFFFFF",
+        main: current ? current.secondary : "#FFFFFF",
       },
     },
   });
 
   return (
     current && (
-      <ThemeProvider theme={responsive ? responsiveFontSizes(theme) : theme}>
+      <ThemeProvider
+        theme={current.responsiveFontSizes ? responsiveFontSizes(theme) : theme}
+      >
         {children}
       </ThemeProvider>
     )

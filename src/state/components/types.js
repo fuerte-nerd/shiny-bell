@@ -1,3 +1,5 @@
+export const SET_VALIDATION_FONT = "SET_VALIDATION_FONT";
+
 //
 export const SET_LOADING = "SET_IS_LOADING";
 export const SET_FONTS_LOADING = "SET_FONTS_LOADING";
