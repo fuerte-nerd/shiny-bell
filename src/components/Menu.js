@@ -30,7 +30,7 @@ const Menu = ({ dispatch, mode, changeHistory, font, headerFont, primary }) => {
     }
   };
   return (
-    <AppBar style={{ transition: "all .25s" }}>
+    <AppBar>
       <Toolbar>
         <Typography variant="h6">Site name</Typography>
         <div style={{ flexGrow: 1 }} />
