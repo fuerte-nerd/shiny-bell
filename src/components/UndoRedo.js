@@ -12,6 +12,7 @@ import {
 import FontLoader from "../functions/FontHelper";
 import Palette from "../functions/Palette";
 import { setLoadingScreen } from "../state/display/actions";
+import Theme from "../functions/Theme";
 
 const UndoRedo = (props) => {
   const { dispatch } = props;
@@ -22,12 +23,14 @@ const UndoRedo = (props) => {
     switch (id) {
       case "undo":
         dispatch(setLoadingScreen(true));
-
         dispatch(setFutureAppStates([...future, current]));
-        dispatch(setCurrentAppState(past[past.length - 1]));
+        const theme = new Theme(past[past.length - 1]);
+        theme.validateFonts().then(() => {
+          theme.commit().then(() => dispatch(setLoadingScreen(false)));
+        });
+
         dispatch(setPastAppStates(past.slice(0, past.length - 1)));
 
-        dispatch(setLoadingScreen(false));
         break;
       default:
         break;

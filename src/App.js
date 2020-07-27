@@ -11,6 +11,8 @@ import ThemeWrapper from "./components/ThemeWrapper";
 import LoadScreen from "./components/LoadScreen";
 import Menu from "./components/Menu";
 import RefreshButton from "./components/RefreshButton";
+import Preview from "./components/Preview";
+
 import FontSelector from "./components/dialogs/FontSelector";
 import { setFonts, setLibraryLoaded } from "./state/library/actions";
 import { setLoadingScreen } from "./state/display/actions";
@@ -51,13 +53,13 @@ function App({ dispatch, current }) {
             <LoadScreen />
             <Menu />
             <RefreshButton />
-            {/*
-        <FontSelector />
-        <Sidebar />
             <Toolbar />
             <Container>
               <Preview />
-                </Container>
+            </Container>
+            {/*
+        <FontSelector />
+        <Sidebar />
                   */}
           </ThemeWrapper>
         </>

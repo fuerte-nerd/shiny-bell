@@ -151,18 +151,9 @@ class Theme {
       const body = new FontFaceObserver(this.body.family);
       const header = new FontFaceObserver(this.header.family);
 
-      if (store.getState().appState.current) {
-        store.dispatch(
-          setPastAppStates([
-            ...store.getState().appState.past,
-            store.getState().appState.current,
-          ])
-        );
-      }
       store.dispatch(setCurrentAppState(this));
 
       body.load().then(() => header.load().then(() => res()));
-      res();
     });
   }
 
