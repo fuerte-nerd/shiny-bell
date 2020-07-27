@@ -67,7 +67,7 @@ const mapStateToProps = (state) => ({
     header: state.components.fonts.header.locked,
     palette: state.components.palette.locked,
   },
-  twoFonts: state.settings.twoFonts,
+  twoFonts: state.appState.current.twoFonts,
   past: state.appState.past,
   current: state.appState.current,
 });
