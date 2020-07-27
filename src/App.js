@@ -9,6 +9,7 @@ import Head from "./components/Head";
 import GoogleFontValidator from "./components/GoogleFontValidator";
 import ThemeWrapper from "./components/ThemeWrapper";
 import LoadScreen from "./components/LoadScreen";
+import Sidebar from "./components/Sidebar";
 import Menu from "./components/Menu";
 import RefreshButton from "./components/RefreshButton";
 import Preview from "./components/Preview";
@@ -51,6 +52,7 @@ function App({ dispatch, current }) {
           <Head />
           <ThemeWrapper>
             <LoadScreen />
+            <Sidebar />
             <Menu />
             <RefreshButton />
             <Toolbar />
@@ -60,7 +62,6 @@ function App({ dispatch, current }) {
           </ThemeWrapper>
           {/*
         <FontSelector />
-        <Sidebar />
                   */}
         </>
       )}

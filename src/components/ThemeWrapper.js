@@ -151,8 +151,7 @@ const ThemeWrapper = (props) => {
   }, [current]);
 
   return (
-    current &&
-    theme && (
+    current && (
       <ThemeProvider
         theme={current.responsiveFontSizes ? responsiveFontSizes(theme) : theme}
       >
