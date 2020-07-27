@@ -32,6 +32,7 @@ const Fonts = (props) => {
 
   const handleClick = (e) => {
     const { id } = e.currentTarget;
+    let theme;
     switch (id) {
       case "two-font-mode":
       case "two-font-mode-switch":
@@ -48,20 +49,16 @@ const Fonts = (props) => {
       case "swap-fonts":
         const b = body;
         const h = header;
-        dispatch(setLoadingScreen(true));
-        const theme = new Theme({ body: h, header: b });
-        theme.commit().then(() => dispatch(setLoadingScreen(false)));
-
-        const currentBodyFont = body;
-        const currentHeaderFont = header;
-        const BodyFont = new FontLoader("body", currentHeaderFont);
-        const HeaderFont = new FontLoader("header", currentBodyFont);
-        BodyFont.validate().then(() => BodyFont.deploy());
-        HeaderFont.validate().then(() => HeaderFont.deploy());
+        theme = new Theme({ ...current, body: h, header: b });
+        theme.commit();
         break;
       case "toggle-responsive-font-sizes-btn":
       case "toggle-responsive-font-sizes-switch":
-        dispatch(setResponsiveFontSizes(!responsiveFontSizes));
+        theme = new Theme({
+          ...current,
+          responsiveFontSizes: !responsiveFontSizes,
+        });
+        theme.commit();
         break;
       case "inc-font-size":
         dispatch(setFontSize(fontSize + 1));
