@@ -7,7 +7,10 @@ import Theme from "../functions/Theme";
 
 import { setComponentsLoading } from "../state/components/actions";
 import { setLoadingScreen } from "../state/display/actions";
-import { setPastAppStates } from "../state/appState/actions";
+import {
+  setPastAppStates,
+  setFutureAppStates,
+} from "../state/appState/actions";
 
 const RefreshButton = ({ dispatch, twoFonts, locked, past, current }) => {
   const handleClick = () => {
@@ -18,6 +21,7 @@ const RefreshButton = ({ dispatch, twoFonts, locked, past, current }) => {
     theme.validateFonts().then(() => {
       theme.commit().then(() => dispatch(setLoadingScreen(false)));
     });
+    dispatch(setFutureAppStates([]));
   };
 
   return (

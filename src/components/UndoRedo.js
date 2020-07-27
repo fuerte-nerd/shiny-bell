@@ -2,15 +2,10 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { IconButton, Tooltip } from "@material-ui/core";
 import { Undo, Redo } from "@material-ui/icons";
-import { setComponentsLoading } from "../state/components/actions";
 import {
   setPastAppStates,
   setFutureAppStates,
-  setEnabled,
-  setCurrentAppState,
 } from "../state/appState/actions";
-import FontLoader from "../functions/FontHelper";
-import Palette from "../functions/Palette";
 import { setLoadingScreen } from "../state/display/actions";
 import Theme from "../functions/Theme";
 
@@ -20,11 +15,12 @@ const UndoRedo = (props) => {
 
   const handleClick = (e) => {
     const { id } = e.currentTarget;
+    let theme;
     switch (id) {
       case "undo":
         dispatch(setLoadingScreen(true));
         dispatch(setFutureAppStates([...future, current]));
-        const theme = new Theme(past[past.length - 1]);
+        theme = new Theme(past[past.length - 1]);
         theme.validateFonts().then(() => {
           theme.commit().then(() => dispatch(setLoadingScreen(false)));
         });
@@ -32,6 +28,15 @@ const UndoRedo = (props) => {
         dispatch(setPastAppStates(past.slice(0, past.length - 1)));
 
         break;
+      case "redo":
+        dispatch(setLoadingScreen(true));
+        dispatch(setPastAppStates([...past, current]));
+        theme = new Theme(future[0]);
+        theme.validateFonts().then(() => {
+          theme.commit().then(() => dispatch(setLoadingScreen(false)));
+        });
+        dispatch(setFutureAppStates(future.slice(1)));
+
       default:
         break;
     }
