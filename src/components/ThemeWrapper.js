@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { connect } from "react-redux";
 import {
@@ -11,9 +11,6 @@ const ThemeWrapper = (props) => {
   const { children } = props;
 
   const { current } = props;
-  useEffect(() => {
-    console.log(current);
-  }, [current]);
 
   const theme = createMuiTheme({
     overrides: {
@@ -149,7 +146,9 @@ const ThemeWrapper = (props) => {
   return (
     current && (
       <ThemeProvider
-        theme={current.responsiveFontSizes ? responsiveFontSizes(theme) : theme}
+        theme={() =>
+          current.responsiveFontSizes ? responsiveFontSizes(theme) : theme
+        }
       >
         {children}
       </ThemeProvider>
