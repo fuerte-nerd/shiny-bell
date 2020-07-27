@@ -26,8 +26,8 @@ const Sidebar = ({ dispatch, isOpen, body, header }) => {
       <List dense disablePadding style={{ width: 250 }}>
         <Locks />
         <Fonts />
-        {/*  <Colors />
-        <Appearance />
+        <Colors />
+        {/*  <Appearance />
         <Buttons />
         <Backgrounds />*/}
       </List>

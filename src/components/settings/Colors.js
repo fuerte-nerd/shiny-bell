@@ -18,8 +18,8 @@ const Colors = ({ dispatch, primary, secondaryMode }) => {
       <ListItem button onClick={() => dispatch(setColorPicker(true))}>
         <ListItemText primary="Adjust color" secondary={primary} />
       </ListItem>
-      <ListItem>
-        <ListItemText
+      {/*  <ListItem>
+         <ListItemText
           primary="Secondary color mode"
           secondary={
             secondaryMode.charAt(0).toUpperCase() + secondaryMode.substr(1)
@@ -50,14 +50,14 @@ const Colors = ({ dispatch, primary, secondaryMode }) => {
             <ChevronRight />
           </IconButton>
         </ListItemSecondaryAction>
-      </ListItem>
+          </ListItem>
+            */}
     </Setting>
   );
 };
 
 const mapStateToProps = (state) => ({
-  secondaryMode: state.secondaryMode,
-  primary: state.primary,
+  primary: state.appState.current.primary,
 });
 
 export default connect(mapStateToProps)(Colors);
