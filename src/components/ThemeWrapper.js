@@ -5,6 +5,7 @@ import {
   ThemeProvider,
   createMuiTheme,
   responsiveFontSizes,
+  CssBaseline,
 } from "@material-ui/core";
 
 const ThemeWrapper = (props) => {
@@ -155,6 +156,7 @@ const ThemeWrapper = (props) => {
       <ThemeProvider
         theme={current.responsiveFontSizes ? responsiveFontSizes(theme) : theme}
       >
+        <CssBaseline />
         {children}
       </ThemeProvider>
     )

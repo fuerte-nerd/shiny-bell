@@ -57,11 +57,11 @@ function App({ dispatch, current }) {
             <Container>
               <Preview />
             </Container>
-            {/*
+          </ThemeWrapper>
+          {/*
         <FontSelector />
         <Sidebar />
                   */}
-          </ThemeWrapper>
         </>
       )}
     </>
