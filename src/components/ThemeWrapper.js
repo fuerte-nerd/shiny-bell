@@ -12,149 +12,148 @@ const ThemeWrapper = (props) => {
 
   const { current } = props;
 
-  const [theme, setTheme] = useState();
+  const [theme, setTheme] = useState(createMuiTheme());
 
   useEffect(() => {
-    setTheme(createMuiTheme({
-    overrides: {
-      MuiFormControlLabel: {
-        label: { fontFamily: "Roboto" },
-      },
-      MuiSelect: { root: { fontFamily: "Roboto" } },
-      MuiDialogContentText: {
-        root: { fontFamily: "Roboto" },
-      },
-      MuiListItemText: {
-        primary: { fontFamily: "Roboto", fontSize: 14 },
-        secondary: { fontFamily: "Roboto", fontSize: 14 },
-      },
-    },
-    typography: {
-      h1: {
-        fontFamily: current
-          ? current.body && current.header
-            ? current.twoFonts
-              ? `"${current.header.family}"`
-              : `"${current.body.family}"`
-            : null
-          : null,
-      },
-      h2: {
-        fontFamily: current
-          ? current.body && current.header
-            ? current.twoFonts
-              ? `"${current.header.family}"`
-              : `"${current.body.family}"`
-            : null
-          : null,
-      },
-      h3: {
-        fontFamily: current
-          ? current.body && current.header
-            ? current.twoFonts
-              ? `"${current.header.family}"`
-              : `"${current.body.family}"`
-            : null
-          : null,
-      },
-      h4: {
-        fontFamily: current
-          ? current.body && current.header
-            ? current.twoFonts
-              ? `"${current.header.family}"`
-              : `"${current.body.family}"`
-            : null
-          : null,
-      },
-      h5: {
-        fontFamily: current
-          ? current.body && current.header
-            ? current.twoFonts
-              ? `"${current.header.family}"`
-              : `"${current.body.family}"`
-            : null
-          : null,
-      },
-      h6: {
-        fontFamily: current
-          ? current.body && current.header
-            ? current.twoFonts
-              ? `"${current.header.family}"`
-              : `"${current.body.family}"`
-            : null
-          : null,
-      },
-      subtitle1: {
-        fontFamily: current
-          ? current.body
-            ? `"${current.body.family}"`
-            : null
-          : null,
-      },
-      subtitle2: {
-        fontFamily: current
-          ? current.body
-            ? `"${current.body.family}"`
-            : null
-          : null,
-      },
-      body1: {
-        fontFamily: current
-          ? current.body
-            ? `"${current.body.family}"`
-            : null
-          : null,
-      },
-      body2: {
-        fontFamily: current
-          ? current.body
-            ? `"${current.body.family}"`
-            : null
-          : null,
-      },
-      button: {
-        fontFamily: current
-          ? current.body
-            ? `"${current.body.family}"`
-            : null
-          : null,
-      },
-      overline: {
-        fontFamily: current
-          ? current.body
-            ? `"${current.body.family}"`
-            : null
-          : null,
-      },
-      caption: {
-        fontFamily: current
-          ? current.body
-            ? `"${current.body.family}"`
-            : null
-          : null,
-      },
-      fontSize: current ? current.fontSize : null,
-    },
-    palette: {
-      type: current ? current.mode : "light",
-      primary: {
-        main: current ? current.primary : "#000000",
-      },
-      secondary: {
-        main: current ? current.secondary : "#FFFFFF",
-      },
-    },
-  });
-
+    setTheme(
+      createMuiTheme({
+        overrides: {
+          MuiFormControlLabel: {
+            label: { fontFamily: "Roboto" },
+          },
+          MuiSelect: { root: { fontFamily: "Roboto" } },
+          MuiDialogContentText: {
+            root: { fontFamily: "Roboto" },
+          },
+          MuiListItemText: {
+            primary: { fontFamily: "Roboto", fontSize: 14 },
+            secondary: { fontFamily: "Roboto", fontSize: 14 },
+          },
+        },
+        typography: {
+          h1: {
+            fontFamily: current
+              ? current.body && current.header
+                ? current.twoFonts
+                  ? `"${current.header.family}"`
+                  : `"${current.body.family}"`
+                : null
+              : null,
+          },
+          h2: {
+            fontFamily: current
+              ? current.body && current.header
+                ? current.twoFonts
+                  ? `"${current.header.family}"`
+                  : `"${current.body.family}"`
+                : null
+              : null,
+          },
+          h3: {
+            fontFamily: current
+              ? current.body && current.header
+                ? current.twoFonts
+                  ? `"${current.header.family}"`
+                  : `"${current.body.family}"`
+                : null
+              : null,
+          },
+          h4: {
+            fontFamily: current
+              ? current.body && current.header
+                ? current.twoFonts
+                  ? `"${current.header.family}"`
+                  : `"${current.body.family}"`
+                : null
+              : null,
+          },
+          h5: {
+            fontFamily: current
+              ? current.body && current.header
+                ? current.twoFonts
+                  ? `"${current.header.family}"`
+                  : `"${current.body.family}"`
+                : null
+              : null,
+          },
+          h6: {
+            fontFamily: current
+              ? current.body && current.header
+                ? current.twoFonts
+                  ? `"${current.header.family}"`
+                  : `"${current.body.family}"`
+                : null
+              : null,
+          },
+          subtitle1: {
+            fontFamily: current
+              ? current.body
+                ? `"${current.body.family}"`
+                : null
+              : null,
+          },
+          subtitle2: {
+            fontFamily: current
+              ? current.body
+                ? `"${current.body.family}"`
+                : null
+              : null,
+          },
+          body1: {
+            fontFamily: current
+              ? current.body
+                ? `"${current.body.family}"`
+                : null
+              : null,
+          },
+          body2: {
+            fontFamily: current
+              ? current.body
+                ? `"${current.body.family}"`
+                : null
+              : null,
+          },
+          button: {
+            fontFamily: current
+              ? current.body
+                ? `"${current.body.family}"`
+                : null
+              : null,
+          },
+          overline: {
+            fontFamily: current
+              ? current.body
+                ? `"${current.body.family}"`
+                : null
+              : null,
+          },
+          caption: {
+            fontFamily: current
+              ? current.body
+                ? `"${current.body.family}"`
+                : null
+              : null,
+          },
+          fontSize: current ? current.fontSize : null,
+        },
+        palette: {
+          type: current ? current.mode : "light",
+          primary: {
+            main: current ? current.primary : "#000000",
+          },
+          secondary: {
+            main: current ? current.secondary : "#FFFFFF",
+          },
+        },
+      })
+    );
   }, [current]);
 
-  const theme = 
   return (
-    current && (
+    current &&
+    theme && (
       <ThemeProvider
-        theme={() =>
-          current.responsiveFontSizes ? responsiveFontSizes(theme) : theme
-        }
+        theme={current.responsiveFontSizes ? responsiveFontSizes(theme) : theme}
       >
         {children}
       </ThemeProvider>
