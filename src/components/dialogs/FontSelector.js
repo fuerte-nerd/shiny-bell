@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
-import { setFontSelector } from "../../state/display/actions";
+import { setFontSelector, setLoadingScreen } from "../../state/display/actions";
 import FontLoader from "../../functions/FontHelper";
 import { setCurrentAppState } from "../../state/appState/actions";
 import Theme from "../../functions/Theme";
@@ -54,10 +54,15 @@ const FontPicker = (props) => {
 
   const handleSelect = (e) => {
     const v = e.currentTarget.value;
-    const theme = new Theme({ ...current, [section]: fonts[v] })
+    dispatch(setLoadingScreen(true));
+    const theme = new Theme({ ...current, [section]: fonts[v] });
+    theme
       .validateFonts()
-      .commit()
-      .catch((err) => dispatch(setError(true)));
+      .then(() => theme.commit().then(() => dispatch(setLoadingScreen(false))))
+      .catch((err) => {
+        dispatch(setLoadingScreen(false));
+        dispatch(setError(true));
+      });
   };
 
   const handleClose = () => {
