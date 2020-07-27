@@ -16,7 +16,6 @@ import {
 import { Alert } from "@material-ui/lab";
 import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
 import { setFontSelector } from "../../state/display/actions";
-import { setComponentsLoading } from "../../state/components/actions";
 import FontLoader from "../../functions/FontHelper";
 import { setCurrentAppState } from "../../state/appState/actions";
 
@@ -32,6 +31,7 @@ const FontPicker = (props) => {
     header,
     primary,
     secondary,
+    current,
   } = props;
 
   const [initialFont, setInitialFont] = useState();
@@ -159,21 +159,22 @@ const FontPicker = (props) => {
             label="Monospace"
           />
         </FormGroup>
-          {current && (
-        <Select
-          fullWidth
-          native
-          value={section === "body" ? body.id : header.id}
-          onChange={handleSelect}
-        >
+        {current && (
+          <Select
+            fullWidth
+            native
+            value={section === "body" ? body.id : header.id}
+            onChange={handleSelect}
+          >
             {fonts.map((font, ind) => {
               return filters.includes(font.category) ? (
                 <option key={ind} value={font.id}>
-                  {font.themeName}
+                  {font.family}
                 </option>
               ) : null;
-                  }) 
-        </Select> )}
+            })}
+          </Select>
+        )}
       </DialogContent>
       <DialogActions>
         <Button
@@ -200,10 +201,11 @@ const mapStateToProps = (state) => ({
   error: state.fontSelector.error,
   fonts: state.library.fonts,
   twoFonts: state.settings.twoFonts,
-  body: state.components.fonts.body.currentFont,
-  header: state.components.fonts.header.currentFont,
+  body: state.appState.current.body,
+  header: state.appState.current.header,
   primary: state.components.palette.primary,
   secondary: state.components.palette.secondary,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(FontPicker);
