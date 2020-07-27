@@ -159,21 +159,21 @@ const FontPicker = (props) => {
             label="Monospace"
           />
         </FormGroup>
+          {current && (
         <Select
           fullWidth
           native
           value={section === "body" ? body.id : header.id}
           onChange={handleSelect}
         >
-          {fonts &&
-            fonts.map((font, ind) => {
+            {fonts.map((font, ind) => {
               return filters.includes(font.category) ? (
                 <option key={ind} value={font.id}>
                   {font.themeName}
                 </option>
               ) : null;
-            })}
-        </Select>
+                  }) 
+        </Select> )}
       </DialogContent>
       <DialogActions>
         <Button
