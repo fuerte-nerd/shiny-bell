@@ -16,6 +16,8 @@ import RefreshButton from "./components/RefreshButton";
 import Preview from "./components/Preview";
 
 import FontSelector from "./components/dialogs/FontSelector";
+import ColorPicker from "./components/dialogs/ColorPicker";
+
 import { setFonts, setLibraryLoaded } from "./state/library/actions";
 import { setLoadingScreen } from "./state/display/actions";
 import { setDefFontLoaded } from "./state/components/actions";
@@ -59,6 +61,7 @@ function App({ dispatch, current }) {
           <ThemeWrapper>
             <LoadScreen />
             <FontSelector />
+            <ColorPicker />
             <Sidebar />
             <Menu />
             <RefreshButton />

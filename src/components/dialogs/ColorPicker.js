@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { setPrimary, setColorPicker } from "../../state/actions";
 import { Dialog } from "@material-ui/core";
 import { SketchPicker } from "react-color";
+import { setCurrentAppState } from "../../state/appState/actions";
 
-const ColorPicker = ({ dispatch, colorPicker, primary }) => {
+const ColorPicker = ({ dispatch, colorPicker, primary, current }) => {
   return (
     <Dialog
       open={colorPicker}
@@ -14,7 +15,9 @@ const ColorPicker = ({ dispatch, colorPicker, primary }) => {
     >
       <SketchPicker
         color={primary}
-        onChange={(c) => dispatch(setPrimary(c.hex))}
+        onChange={(c) => {
+          dispatch(setCurrentAppState({ ...current, primary: c.hex }));
+        }}
         style={{ fontFamily: "Roboto" }}
       />
     </Dialog>
@@ -24,6 +27,7 @@ const ColorPicker = ({ dispatch, colorPicker, primary }) => {
 const mapStateToProps = (state) => ({
   colorPicker: state.colorPicker,
   primary: state.primary,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(ColorPicker);
