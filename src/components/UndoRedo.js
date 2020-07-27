@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { IconButton, Tooltip } from "@material-ui/core";
 import { Undo, Redo } from "@material-ui/icons";
@@ -19,7 +19,7 @@ const UndoRedo = (props) => {
     switch (id) {
       case "undo":
         dispatch(setLoadingScreen(true));
-        dispatch(setFutureAppStates([...future, current]));
+        dispatch(setFutureAppStates([current, ...future]));
         theme = new Theme(past[past.length - 1]);
         theme.validateFonts().then(() => {
           theme.commit().then(() => dispatch(setLoadingScreen(false)));
@@ -36,7 +36,7 @@ const UndoRedo = (props) => {
           theme.commit().then(() => dispatch(setLoadingScreen(false)));
         });
         dispatch(setFutureAppStates(future.slice(1)));
-
+        break;
       default:
         break;
     }
