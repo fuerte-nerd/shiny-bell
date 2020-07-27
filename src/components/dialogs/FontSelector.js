@@ -92,7 +92,7 @@ const FontPicker = (props) => {
     //eslint-disable-next-line
   }, [isOpen]);
   return (
-    <Dialog open={isOpen} onClose={handleClose}>
+    <Dialog open={isOpen} maxWidth="lg" onClose={handleClose}>
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}></Typography>
       </DialogTitle>
