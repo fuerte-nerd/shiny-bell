@@ -52,6 +52,7 @@ function App({ dispatch, current }) {
           <Head />
           <ThemeWrapper>
             <LoadScreen />
+            <FontSelector />
             <Sidebar />
             <Menu />
             <RefreshButton />
@@ -60,9 +61,6 @@ function App({ dispatch, current }) {
               <Preview />
             </Container>
           </ThemeWrapper>
-          {/*
-        <FontSelector />
-                  */}
         </>
       )}
     </>
