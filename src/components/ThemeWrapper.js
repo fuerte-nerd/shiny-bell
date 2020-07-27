@@ -12,7 +12,10 @@ const ThemeWrapper = (props) => {
 
   const { current } = props;
 
-  const theme = createMuiTheme({
+  const [theme, setTheme] = useState();
+
+  useEffect(() => {
+    setTheme(createMuiTheme({
     overrides: {
       MuiFormControlLabel: {
         label: { fontFamily: "Roboto" },
@@ -143,6 +146,9 @@ const ThemeWrapper = (props) => {
     },
   });
 
+  }, [current]);
+
+  const theme = 
   return (
     current && (
       <ThemeProvider
