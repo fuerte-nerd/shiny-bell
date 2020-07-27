@@ -10,14 +10,14 @@ import {
 } from "@material-ui/core";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
 import {
-  setTwoFonts,
   setResponsiveFontSizes,
   setFontSize,
 } from "../../state/settings/actions";
-import { setFontSelector } from "../../state/display/actions";
+import { setFontSelector, setLoadingScreen } from "../../state/display/actions";
 import { setSection } from "../../state/fontSelector/actions";
 import { setCurrentAppState } from "../../state/appState/actions";
 import FontLoader from "../../functions/FontHelper";
+import Theme from "../../functions/Theme";
 
 const Fonts = (props) => {
   const { dispatch } = props;
@@ -46,6 +46,12 @@ const Fonts = (props) => {
         dispatch(setFontSelector(true));
         break;
       case "swap-fonts":
+        const b = body;
+        const h = header;
+        dispatch(setLoadingScreen(true));
+        const theme = new Theme({ body: h, header: b });
+        theme.commit().then(() => dispatch(setLoadingScreen(false)));
+
         const currentBodyFont = body;
         const currentHeaderFont = header;
         const BodyFont = new FontLoader("body", currentHeaderFont);
