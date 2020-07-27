@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { Container, Toolbar, Box } from "@material-ui/core";
+import FontFaceObserver from "fontfaceobserver";
+import { Container, Toolbar } from "@material-ui/core";
 
 import Theme from "./functions/Theme";
 
@@ -17,6 +18,7 @@ import Preview from "./components/Preview";
 import FontSelector from "./components/dialogs/FontSelector";
 import { setFonts, setLibraryLoaded } from "./state/library/actions";
 import { setLoadingScreen } from "./state/display/actions";
+import { setDefFontLoaded } from "./state/components/actions";
 
 function App({ dispatch, current }) {
   useEffect(() => {
@@ -42,6 +44,10 @@ function App({ dispatch, current }) {
           })
           .catch((err) => console.log(err));
       });
+    const defFont = new FontFaceObserver("Roboto");
+    defFont.load().then(() => {
+      dispatch(setDefFontLoaded(true));
+    });
   }, []);
 
   return (

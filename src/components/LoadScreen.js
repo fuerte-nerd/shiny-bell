@@ -42,6 +42,7 @@ const FontLoadScreen = ({ loadingScreen }) => {
 
 const mapStateToProps = (state) => ({
   componentsLoading: state.components.loading,
+  defFontLoaded: state.components.fonts.default.loaded,
   loadingScreen: state.display.loadingScreen,
 });
 
