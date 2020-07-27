@@ -36,7 +36,7 @@ const Fonts = (props) => {
     switch (id) {
       case "two-font-mode":
       case "two-font-mode-switch":
-        dispatch(setCurrentAppState({ ...current, twoFonts: !twoFonts }));
+        theme = new Theme({ ...current, twoFonts: !twoFonts }).commit();
         break;
       case "open-body-font-picker":
         dispatch(setSection("body"));
@@ -49,22 +49,20 @@ const Fonts = (props) => {
       case "swap-fonts":
         const b = body;
         const h = header;
-        theme = new Theme({ ...current, body: h, header: b });
-        theme.commit();
+        theme = new Theme({ ...current, body: h, header: b }).commit();
         break;
       case "toggle-responsive-font-sizes-btn":
       case "toggle-responsive-font-sizes-switch":
         theme = new Theme({
           ...current,
           responsiveFontSizes: !responsiveFontSizes,
-        });
-        theme.commit();
+        }).commit();
         break;
       case "inc-font-size":
-        dispatch(setFontSize(fontSize + 1));
+        theme = new Theme({ ...current, fontSize: fontSize + 1 }).commit();
         break;
       case "dec-font-size":
-        dispatch(setFontSize(fontSize - 1));
+        theme = new Theme({ ...current, fontSize: fontSize - 1 }).commit();
         break;
 
       default:
