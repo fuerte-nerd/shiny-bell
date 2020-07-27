@@ -18,6 +18,7 @@ import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
 import { setFontSelector } from "../../state/display/actions";
 import FontLoader from "../../functions/FontHelper";
 import { setCurrentAppState } from "../../state/appState/actions";
+import Theme from "../../functions/Theme";
 
 const FontPicker = (props) => {
   const { dispatch } = props;
@@ -34,7 +35,7 @@ const FontPicker = (props) => {
     current,
   } = props;
 
-  const [initialFont, setInitialFont] = useState();
+  const [initialFont, setInitialFont] = useState(current[section]);
 
   const handleChange = (e) => {
     const { id, checked } = e.currentTarget;
@@ -53,10 +54,9 @@ const FontPicker = (props) => {
 
   const handleSelect = (e) => {
     const v = e.currentTarget.value;
-    const newFont = new FontLoader(section, fonts[v]);
-    newFont
-      .validate()
-      .then(() => newFont.deploy())
+    const theme = new Theme({ ...current, [section]: fonts[v] })
+      .validateFonts()
+      .commit()
       .catch((err) => dispatch(setError(true)));
   };
 
