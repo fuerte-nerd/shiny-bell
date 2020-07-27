@@ -37,7 +37,7 @@ const Menu = ({
         dispatch(
           setCurrentAppState({
             ...current,
-            mode: !current.mode,
+            mode: current.mode === "light" ? "dark" : "light",
           })
         );
         break;

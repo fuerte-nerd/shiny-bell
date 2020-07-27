@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import { connect } from "react-redux";
 import {
   ThemeProvider,
@@ -10,6 +11,9 @@ const ThemeWrapper = (props) => {
   const { children } = props;
 
   const { current } = props;
+  useEffect(() => {
+    console.log(current);
+  }, [current]);
 
   const theme = createMuiTheme({
     overrides: {
