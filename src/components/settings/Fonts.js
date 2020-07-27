@@ -16,18 +16,26 @@ import {
 } from "../../state/settings/actions";
 import { setFontSelector } from "../../state/display/actions";
 import { setSection } from "../../state/fontSelector/actions";
+import { setCurrentAppState } from "../../state/appState/actions";
 import FontLoader from "../../functions/FontHelper";
 
 const Fonts = (props) => {
   const { dispatch } = props;
-  const { twoFonts, header, body, fontSize, responsiveFontSizes } = props;
+  const {
+    twoFonts,
+    header,
+    body,
+    fontSize,
+    responsiveFontSizes,
+    current,
+  } = props;
 
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "two-font-mode":
       case "two-font-mode-switch":
-        dispatch(setTwoFonts(!twoFonts));
+        dispatch(setCurrentAppState({ ...current, twoFonts: !twoFonts }));
         break;
       case "open-body-font-picker":
         dispatch(setSection("body"));
@@ -135,6 +143,7 @@ const mapStateToProps = (state) => ({
   body: state.appState.current.body,
   responsiveFontSizes: state.appState.current.responsiveFontSizes,
   fontPicker: state.fontPicker,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(Fonts);

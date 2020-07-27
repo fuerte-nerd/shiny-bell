@@ -24,7 +24,7 @@ const Preview = ({
         <>
           <Typography variant="h1">Welcome to your new theme!</Typography>
           <Typography variant="subtitle1" paragraph>
-            The {current.twoFonts ? `header font ` : `font `} is{" "}
+            The {twoFonts ? `header font ` : `font `} is{" "}
             {twoFonts
               ? `${current.header.family} and the body font is ${current.body.family}`
               : current.body.family}
@@ -58,7 +58,7 @@ const mapStateToProps = (state) => ({
   current: state.appState.current,
   bodyFont: state.components.fonts.body.currentFont,
   headerFont: state.components.fonts.header.currentFont,
-  twoFonts: state.settings.twoFonts,
+  twoFonts: state.appState.current.twoFonts,
   primaryColorName: state.components.palette.primary.name,
   secondaryColorName: state.components.palette.secondary.name,
   backgrounds: state.backgrounds,
