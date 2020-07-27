@@ -55,7 +55,11 @@ const FontPicker = (props) => {
   const handleSelect = (e) => {
     const v = e.currentTarget.value;
     dispatch(setLoadingScreen(true));
-    const theme = new Theme({ ...current, [section]: fonts[v] });
+    const theme = new Theme({
+      ...current,
+      [section]: fonts[v],
+      fontSelectionMode: "manual",
+    });
     theme
       .validateFonts()
       .then(() => theme.commit().then(() => dispatch(setLoadingScreen(false))))

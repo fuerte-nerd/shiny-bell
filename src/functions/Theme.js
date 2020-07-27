@@ -47,11 +47,7 @@ class Theme {
       ? appState.current.buttonTextTransform
       : "uppercase";
 
-    if (config && (config.body || config.header)) {
-      this.fontSelectionMode = "manual";
-    } else {
-      this.fontSelectionMode = "auto";
-    }
+    this.fontSelectionMode = "auto";
 
     // overwrites
     const params = Object.entries(config);
@@ -110,7 +106,6 @@ class Theme {
         await store.dispatch(
           setValidationFont(this[target].family.replace(/ /g, "+"))
         );
-        console.log(store.getState());
         const f = new FontFaceObserver(this[target].family);
         f.load().then(
           async () => {
@@ -133,7 +128,6 @@ class Theme {
   }
 
   validateFonts() {
-    store.dispatch(setComponentsLoading(true));
     return new Promise((res, rej) => {
       this.validateFont("body")
         .then(() => {
