@@ -132,6 +132,7 @@ const ThemeWrapper = (props) => {
       fontSize: current ? current.fontSize : null,
     },
     palette: {
+      type: current ? current.mode : "light",
       primary: {
         main: current ? current.primary : "#000000",
       },
