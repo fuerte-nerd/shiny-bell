@@ -98,7 +98,7 @@ const mapStateToProps = (state) => ({
     header: state.components.fonts.header.locked,
     palette: state.components.palette.locked,
   },
-  twoFonts: state.settings.twoFonts,
+  twoFonts: state.appState.current.twoFonts,
 });
 
 export default connect(mapStateToProps)(Locks);

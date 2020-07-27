@@ -17,7 +17,6 @@ import {
 import { setFontSelector } from "../../state/display/actions";
 import { setSection } from "../../state/fontSelector/actions";
 import FontLoader from "../../functions/FontHelper";
-import { setComponentsLoading } from "../../state/components/actions";
 
 const Fonts = (props) => {
   const { dispatch } = props;
@@ -68,14 +67,14 @@ const Fonts = (props) => {
         <ListItem button id="open-header-font-picker" onClick={handleClick}>
           <ListItemText
             primary="Select header font"
-            secondary={header.themeName}
+            secondary={header.family}
           />
         </ListItem>
       )}
       <ListItem button id="open-body-font-picker" onClick={handleClick}>
         <ListItemText
           primary={twoFonts ? "Select body font" : "Select font"}
-          secondary={body.themeName}
+          secondary={body.family}
         />
       </ListItem>
       <ListItem id="two-font-mode" onClick={handleClick} button>
@@ -130,12 +129,12 @@ const Fonts = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  twoFonts: state.settings.twoFonts,
-  fontSize: state.settings.fontSize,
-  header: state.components.fonts.header.currentFont,
-  body: state.components.fonts.body.currentFont,
+  twoFonts: state.appState.current.twoFonts,
+  fontSize: state.appState.current.fontSize,
+  header: state.appState.current.header,
+  body: state.appState.current.body,
+  responsiveFontSizes: state.appState.current.responsiveFontSizes,
   fontPicker: state.fontPicker,
-  responsiveFontSizes: state.settings.responsiveFontSizes,
 });
 
 export default connect(mapStateToProps)(Fonts);
