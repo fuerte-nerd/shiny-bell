@@ -17,7 +17,10 @@ import { Alert } from "@material-ui/lab";
 import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
 import { setFontSelector, setLoadingScreen } from "../../state/display/actions";
 import FontLoader from "../../functions/FontHelper";
-import { setCurrentAppState } from "../../state/appState/actions";
+import {
+  setPastAppStates,
+  setCurrentAppState,
+} from "../../state/appState/actions";
 import Theme from "../../functions/Theme";
 
 const FontPicker = (props) => {
@@ -33,9 +36,10 @@ const FontPicker = (props) => {
     primary,
     secondary,
     current,
+    past,
   } = props;
 
-  const [initialFont, setInitialFont] = useState(current[section]);
+  const [initialState, setInitialState] = useState(current);
 
   const handleChange = (e) => {
     const { id, checked } = e.currentTarget;
@@ -70,36 +74,17 @@ const FontPicker = (props) => {
   };
 
   const handleClose = () => {
-    if (initialFont !== props[section]) {
-      dispatch(
-        setCurrentAppState({
-          primary,
-          secondary,
-          header,
-          body,
-        })
-      );
+    if (current !== initialState) {
+      dispatch(setPastAppStates([...past, initialState]));
     }
     dispatch(setFontSelector(false));
   };
 
   const handleCancel = () => {
-    const revertFont = new FontLoader(section, initialFont);
-    revertFont
-      .validate()
-      .then(() => {
-        revertFont.deploy();
-      })
-      .catch((err) => console.log(err));
+    setCurrentAppState(initialState);
     dispatch(setFontSelector(false));
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      setInitialFont(section === "body" ? body : header);
-    }
-    //eslint-disable-next-line
-  }, [isOpen]);
   return (
     <Dialog open={isOpen} maxWidth="lg" onClose={handleClose}>
       <DialogTitle disableTypography>
@@ -215,6 +200,7 @@ const mapStateToProps = (state) => ({
   primary: state.components.palette.primary,
   secondary: state.components.palette.secondary,
   current: state.appState.current,
+  past: state.appState.past,
 });
 
 export default connect(mapStateToProps)(FontPicker);
