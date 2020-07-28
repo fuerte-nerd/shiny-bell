@@ -85,6 +85,8 @@ class Theme {
         return tinycolor(this.getProp("primary")).darken().toHexString();
       case "lighten":
         return tinycolor(this.getProp("primary")).lighten().toHexString();
+      case "manual":
+        return this.getProp("primary");
       default:
         return;
     }

@@ -12,7 +12,7 @@ import {
 } from "@material-ui/core";
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 
-const Colors = ({ dispatch, current, primary, secondaryMode }) => {
+const Colors = ({ dispatch, current, primary, secondary, secondaryMode }) => {
   const options = [
     "complement",
     "desaturate",
@@ -27,6 +27,14 @@ const Colors = ({ dispatch, current, primary, secondaryMode }) => {
       <ListItem button onClick={() => dispatch(setColorPicker(true))}>
         <ListItemText primary="Adjust primary color" secondary={primary} />
       </ListItem>
+      {secondaryMode === "manual" && (
+        <ListItem button onClick={() => dispatch(setColorPicker(true))}>
+          <ListItemText
+            primary="Adjust secondary color"
+            secondary={secondary}
+          />
+        </ListItem>
+      )}
       <ListItem>
         <ListItemText
           primary="Secondary color mode"
@@ -86,6 +94,7 @@ const Colors = ({ dispatch, current, primary, secondaryMode }) => {
 
 const mapStateToProps = (state) => ({
   primary: state.appState.current.primary,
+  secondary: state.appState.current.secondary,
   secondaryMode: state.appState.current.secondaryColorMix,
   current: state.appState.current,
 });
