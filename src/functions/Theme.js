@@ -156,8 +156,8 @@ class Theme {
       const body = new FontFaceObserver(this.body.family);
       const header = new FontFaceObserver(this.header.family);
       const runValidator = async () => {
-        body.load().then(
-          () => header.load().then(res, () => runValidator()),
+        body.load(null, 8000).then(
+          () => header.load(null, 8000).then(res, () => runValidator()),
           () => runValidator()
         );
       };
