@@ -118,7 +118,7 @@ class Theme {
           setValidationFont(this[target].family.replace(/ /g, "+"))
         );
         const f = new FontFaceObserver(this[target].family);
-        f.load().then(
+        f.load(null, 10000).then(
           async () => {
             await store.dispatch(setValidationFont(null));
             res();
