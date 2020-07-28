@@ -86,7 +86,7 @@ class Theme {
       case "lighten":
         return tinycolor(this.getProp("primary")).lighten().toHexString();
       case "manual":
-        return this.getProp("primary");
+        return store.getState().appState.current.secondary;
       default:
         return;
     }
