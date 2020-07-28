@@ -50,6 +50,12 @@ const ColorPicker = ({
             }
             dispatch(setColorPicker(false));
           }}
+          onCancel={() => {
+            if (current !== initialState) {
+              dispatch(setCurrentAppState(initialState));
+            }
+            dispatch(setColorPicker(false));
+          }}
         />
       </Box>
     </Dialog>

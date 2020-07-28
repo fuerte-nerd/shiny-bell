@@ -27,8 +27,8 @@ const Preview = ({
       )
       .then((res) => {
         setColorNames({
-          primary: res.colors[0].name,
-          secondary: res.colors[1].name,
+          primary: res.data.colors[0].name,
+          secondary: res.data.colors[1].name,
         });
       });
   }, [primary, secondary]);
