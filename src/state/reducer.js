@@ -7,6 +7,7 @@ import settings from "./settings/reducer";
 import display from "./display/reducer";
 import feedback from "./feedback/reducer";
 import fontSelector from "./fontSelector/reducer";
+import colorPicker from "./colorPicker/reducer";
 
 export default combineReducers({
   components,
@@ -16,4 +17,5 @@ export default combineReducers({
   display,
   feedback,
   fontSelector,
+  colorPicker,
 });
