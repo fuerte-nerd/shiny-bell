@@ -12,6 +12,7 @@ import {
   FormControlLabel,
   Checkbox,
   Button,
+  Box,
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
@@ -106,58 +107,67 @@ const FontPicker = (props) => {
             different font.
           </Alert>
         </Snackbar>
-        <FormGroup row>
-          <FormControlLabel
-            control={
-              <Checkbox
-                id="serif"
-                onChange={handleChange}
-                checked={isOpen && filters.includes("serif")}
-              />
-            }
-            label="Serif"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                id="sans-serif"
-                onChange={handleChange}
-                checked={filters.includes("sans-serif")}
-              />
-            }
-            label="Sans Serif"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                id="display"
-                onChange={handleChange}
-                checked={filters.includes("display")}
-              />
-            }
-            label="Display"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                id="handwriting"
-                onChange={handleChange}
-                checked={filters.includes("handwriting")}
-              />
-            }
-            label="Handwriting"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                id="monospace"
-                onChange={handleChange}
-                checked={filters.includes("monospace")}
-              />
-            }
-            label="Monospace"
-          />
-        </FormGroup>
+        <Box mb={2}>
+          <FormGroup row>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  id="serif"
+                  size="small"
+                  onChange={handleChange}
+                  checked={isOpen && filters.includes("serif")}
+                />
+              }
+              label="Serif"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  id="sans-serif"
+                  size="small"
+                  onChange={handleChange}
+                  checked={filters.includes("sans-serif")}
+                />
+              }
+              label="Sans Serif"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  id="display"
+                  size="small"
+                  onChange={handleChange}
+                  checked={filters.includes("display")}
+                />
+              }
+              label="Display"
+            />
+          </FormGroup>
+          <FormGroup row>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  id="handwriting"
+                  size="small"
+                  onChange={handleChange}
+                  checked={filters.includes("handwriting")}
+                />
+              }
+              label="Handwriting"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  id="monospace"
+                  size="small"
+                  onChange={handleChange}
+                  checked={filters.includes("monospace")}
+                />
+              }
+              label="Monospace"
+            />
+          </FormGroup>
+        </Box>
         {current && (
           <Select
             fullWidth
