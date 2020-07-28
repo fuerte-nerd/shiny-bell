@@ -11,7 +11,9 @@ import {
 
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 
-const Buttons = ({ dispatch, buttonTextTransform }) => {
+import Theme from "../../functions/Theme";
+
+const Buttons = ({ dispatch, buttonTextTransform, current, past }) => {
   const options = ["uppercase", "capitalize", "lowercase"];
 
   return (
@@ -20,8 +22,8 @@ const Buttons = ({ dispatch, buttonTextTransform }) => {
         <ListItemText
           primary="Text transform"
           secondary={`${
-            buttonTextTransform.charAt(0).toUpperCase() +
-            buttonTextTransform.substr(1)
+            current.buttonTextTransform.charAt(0).toUpperCase() +
+            current.buttonTextTransform.substr(1)
           }`}
         />
         <ListItemSecondaryAction>
@@ -59,7 +61,9 @@ const Buttons = ({ dispatch, buttonTextTransform }) => {
 };
 
 const mapStateToProps = (state) => ({
-  buttonTextTransform: state.buttonTextTransform,
+  buttonTextTransform: state.appState.current.buttonTextTransform,
+  current: state.appState.current,
+  past: state.appState.past,
 });
 
 export default connect(mapStateToProps)(Buttons);
