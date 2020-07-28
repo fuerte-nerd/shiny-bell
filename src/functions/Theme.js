@@ -155,10 +155,14 @@ class Theme {
     return new Promise((res, rej) => {
       const body = new FontFaceObserver(this.body.family);
       const header = new FontFaceObserver(this.header.family);
-
+      const runValidator = async () => {
+        body.load().then(
+          () => header.load().then(res, () => runValidator()),
+          () => runValidator()
+        );
+      };
+      runValidator();
       store.dispatch(setCurrentAppState(this));
-
-      body.load().then(() => header.load().then(() => res()));
     });
   }
 
