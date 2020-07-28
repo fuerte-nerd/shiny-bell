@@ -35,7 +35,7 @@ const Preview = ({
 
   return current ? (
     <>
-      <Box mb={2} bgcolor={`transparent`}>
+      <Box mb={2} bgcolor={current.backgrounds.box}>
         <>
           <Typography variant="h1">Welcome to your new theme!</Typography>
           <Typography variant="subtitle1" paragraph>

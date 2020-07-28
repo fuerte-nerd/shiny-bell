@@ -48,6 +48,12 @@ class Theme {
       : "uppercase";
 
     this.fontSelectionMode = "auto";
+    this.backgrounds = appState.current
+      ? appState.current.backgrounds
+      : {
+          page: "transparent",
+          box: "transparent",
+        };
 
     // overwrites
     const params = Object.entries(config);
