@@ -16,7 +16,8 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current }) => {
       <SketchPicker
         color={primary}
         onChange={(c) => {
-          dispatch(setCurrentAppState({ ...current, primary: c.hex }));
+          let theme = new Theme({ primary: c.hex });
+          theme.commit();
         }}
         style={{ fontFamily: "Roboto" }}
       />
