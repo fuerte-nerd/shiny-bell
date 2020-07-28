@@ -37,6 +37,7 @@ const FontPicker = (props) => {
     secondary,
     current,
     past,
+    twoFonts,
   } = props;
 
   const [initialState, setInitialState] = useState(current);
@@ -90,7 +91,12 @@ const FontPicker = (props) => {
   return (
     <Dialog open={isOpen} maxWidth="lg" onClose={handleClose}>
       <DialogTitle disableTypography>
-        <Typography variant="h5" style={{ fontFamily: "Roboto" }}></Typography>
+        <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
+          Select new{" "}
+          {twoFonts
+            ? section.charAt(0).toUpperCase() + section.substr(1) + "font"
+            : "font"}
+        </Typography>
       </DialogTitle>
       <DialogContent>
         <Snackbar
@@ -196,7 +202,7 @@ const mapStateToProps = (state) => ({
   filters: state.fontSelector.categoryFilters,
   error: state.fontSelector.error,
   fonts: state.library.fonts,
-  twoFonts: state.settings.twoFonts,
+  twoFonts: state.appState.current.twoFonts,
   body: state.appState.current.body,
   header: state.appState.current.header,
   primary: state.components.palette.primary,
