@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setColorPicker } from "../../state/display/actions";
-import { Dialog } from "@material-ui/core";
+import { Box, Dialog } from "@material-ui/core";
 import { PhotoshopPicker } from "react-color";
 import {
   setCurrentAppState,
