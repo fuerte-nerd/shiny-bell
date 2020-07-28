@@ -33,6 +33,7 @@ const ColorPicker = ({
       BackdropProps={{ style: { backgroundColor: "transparent" } }}
     >
       <PhotoshopPicker
+        header={`Set new ${section} color...`}
         color={current[section]}
         onChange={(c) => {
           let theme = new Theme({
@@ -48,7 +49,7 @@ const ColorPicker = ({
           }
           dispatch(setColorPicker(false));
         }}
-        style={{ fontFamily: "Roboto" }}
+        styles={{ fontFamily: "Roboto" }}
       />
     </Dialog>
   );
