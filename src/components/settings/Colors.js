@@ -51,6 +51,7 @@ const Colors = ({ dispatch, current, primary, secondaryMode }) => {
                 ...current,
                 secondaryColorMix: selection,
               });
+              console.log(theme);
               theme.commit();
             }}
           >
@@ -62,10 +63,10 @@ const Colors = ({ dispatch, current, primary, secondaryMode }) => {
             onClick={() => {
               const currentIndex = options.indexOf(secondaryMode);
               let selection;
-              if (currentIndex !== 0) {
-                selection = options[currentIndex - 1];
+              if (currentIndex !== options.length - 1) {
+                selection = options[currentIndex + 1];
               } else {
-                selection = options[options.length - 1];
+                selection = options[0];
               }
 
               const theme = new Theme({
