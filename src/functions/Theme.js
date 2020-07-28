@@ -54,7 +54,7 @@ class Theme {
     for (const [key, value] of params) {
       this[key] = value;
     }
-    if (config.hasOwnProperty("primary")) {
+    if (this.secondaryColorMix !== "manual") {
       this.secondary = this.getSecondaryColor(this.secondaryColorMix);
     }
   }
