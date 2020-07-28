@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setColorPicker } from "../../state/display/actions";
+import { setCurrentAppState } from "../../state/appState/actions";
 import Setting from "../Setting";
+import Theme from "../../functions/Theme";
 import {
   ListItem,
   ListItemText,
@@ -10,16 +12,23 @@ import {
 } from "@material-ui/core";
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 
-const Colors = ({ dispatch, primary, secondaryMode }) => {
-  const options = ["complement", "desaturate", "saturate", "darken", "lighten"];
+const Colors = ({ dispatch, current, primary, secondaryMode }) => {
+  const options = [
+    "complement",
+    "desaturate",
+    "saturate",
+    "darken",
+    "lighten",
+    "manual",
+  ];
 
   return (
     <Setting title="Colors">
       <ListItem button onClick={() => dispatch(setColorPicker(true))}>
         <ListItemText primary="Adjust primary color" secondary={primary} />
       </ListItem>
-      {/*  <ListItem>
-         <ListItemText
+      <ListItem>
+        <ListItemText
           primary="Secondary color mode"
           secondary={
             secondaryMode.charAt(0).toUpperCase() + secondaryMode.substr(1)
@@ -30,9 +39,18 @@ const Colors = ({ dispatch, primary, secondaryMode }) => {
             size="small"
             onClick={() => {
               const currentIndex = options.indexOf(secondaryMode);
-              currentIndex !== 0
-                ? dispatch(setSecondaryMode(options[currentIndex - 1]))
-                : dispatch(setSecondaryMode(options[options.length - 1]));
+              let selection;
+              if (currentIndex !== 0) {
+                selection = options[currentIndex - 1];
+              } else {
+                selection = options[options.length - 1];
+              }
+
+              const theme = new Theme({
+                ...current,
+                secondaryColorMix: selection,
+              });
+              theme.commit();
             }}
           >
             <ChevronLeft />
@@ -50,14 +68,15 @@ const Colors = ({ dispatch, primary, secondaryMode }) => {
             <ChevronRight />
           </IconButton>
         </ListItemSecondaryAction>
-          </ListItem>
-            */}
+      </ListItem>
     </Setting>
   );
 };
 
 const mapStateToProps = (state) => ({
   primary: state.appState.current.primary,
+  secondaryMode: state.appState.current.secondaryColorMix,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(Colors);
