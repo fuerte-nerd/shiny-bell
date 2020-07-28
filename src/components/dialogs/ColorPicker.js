@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setColorPicker } from "../../state/display/actions";
 import { Dialog } from "@material-ui/core";
-import { Photoshop } from "react-color";
+import { PhotoshopPicker } from "react-color";
 import {
   setCurrentAppState,
   setPastAppStates,
@@ -25,16 +25,19 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current, past }) => {
       PaperProps={{ style: { backgroundColor: "transparent" } }}
       BackdropProps={{ style: { backgroundColor: "transparent" } }}
     >
-      <Photoshop
+      <PhotoshopPicker
         color={primary}
         onChange={(c) => {
           let theme = new Theme({ ...current, primary: c.hex });
           theme.commit();
         }}
         onAccept={(c) => {
+          console.log(current);
+          console.log(initialState);
           if (current !== initialState) {
             setPastAppStates([...past, initialState]);
           }
+          dispatch(setColorPicker(false));
         }}
         style={{ fontFamily: "Roboto" }}
       />
