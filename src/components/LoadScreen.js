@@ -5,7 +5,7 @@ import { Dialog, Box, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
 import { setLoadScreenFeedback } from "../state/feedback/actions";
 
-const FontLoadScreen = ({ loadingScreen }) => {
+const FontLoadScreen = ({ loadingScreen, defFontLoaded }) => {
   return (
     <Dialog
       fullScreen
@@ -33,7 +33,7 @@ const FontLoadScreen = ({ loadingScreen }) => {
         zIndex={1}
       >
         <Box mt="15px">
-          <AppTypography>Loading...</AppTypography>
+          {defFontLoaded && <AppTypography>Loading...</AppTypography>}
         </Box>
       </Box>
     </Dialog>
