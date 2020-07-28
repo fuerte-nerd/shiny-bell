@@ -4,6 +4,7 @@ import { setColorPicker } from "../../state/display/actions";
 import { Dialog } from "@material-ui/core";
 import { SketchPicker } from "react-color";
 import { setCurrentAppState } from "../../state/appState/actions";
+import Theme from "../../functions/Theme";
 
 const ColorPicker = ({ dispatch, colorPicker, primary, current }) => {
   return (
@@ -16,7 +17,7 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current }) => {
       <SketchPicker
         color={primary}
         onChange={(c) => {
-          let theme = new Theme({ primary: c.hex });
+          let theme = new Theme({ ...current, primary: c.hex });
           theme.commit();
         }}
         style={{ fontFamily: "Roboto" }}
