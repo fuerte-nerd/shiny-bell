@@ -92,10 +92,7 @@ const FontPicker = (props) => {
     <Dialog open={isOpen} maxWidth="lg" onClose={handleClose}>
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
-          Select new{" "}
-          {twoFonts
-            ? section.charAt(0).toUpperCase() + section.substr(1) + "font"
-            : "font"}
+          Select new {twoFonts ? section + " font" : "font"}
         </Typography>
       </DialogTitle>
       <DialogContent>
