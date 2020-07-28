@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setColorPicker } from "../../state/display/actions";
 import { Dialog } from "@material-ui/core";
 import { SketchPicker } from "react-color";
-import { setCurrentAppState } from "../../state/appState/actions";
+import {
+  setCurrentAppState,
+  setPastAppStates,
+} from "../../state/appState/actions";
 import Theme from "../../functions/Theme";
 
 const ColorPicker = ({ dispatch, colorPicker, primary, current }) => {
+  const [initialState, setInitialState] = useState();
+
+  useEffect(() => {
+    if (colorPicker) {
+      setInitialState(current);
+    }
+  }, [colorPicker]);
+
   return (
     <Dialog
       open={colorPicker}
@@ -20,6 +31,11 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current }) => {
           let theme = new Theme({ ...current, primary: c.hex });
           theme.commit();
         }}
+        onChangeComplete={(c) => {
+          if (current !== initialState) {
+            setPastAppStates([...past, initialState]);
+          }
+        }}
         style={{ fontFamily: "Roboto" }}
       />
     </Dialog>
@@ -28,8 +44,9 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current }) => {
 
 const mapStateToProps = (state) => ({
   colorPicker: state.display.colorPicker,
-  primary: state.primary,
+  primary: state.appState.current.primary,
   current: state.appState.current,
+  past: state.appState.past,
 });
 
 export default connect(mapStateToProps)(ColorPicker);
