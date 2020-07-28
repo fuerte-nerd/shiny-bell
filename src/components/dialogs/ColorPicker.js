@@ -9,7 +9,14 @@ import {
 } from "../../state/appState/actions";
 import Theme from "../../functions/Theme";
 
-const ColorPicker = ({ dispatch, colorPicker, primary, current, past }) => {
+const ColorPicker = ({
+  dispatch,
+  colorPicker,
+  primary,
+  current,
+  past,
+  section,
+}) => {
   const [initialState, setInitialState] = useState();
 
   useEffect(() => {
@@ -26,11 +33,11 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current, past }) => {
       BackdropProps={{ style: { backgroundColor: "transparent" } }}
     >
       <PhotoshopPicker
-        color={primary}
+        color={current[section]}
         onChange={(c) => {
           let theme = new Theme({
             ...current,
-            primary: c.hex,
+            [section]: c.hex,
           });
           theme.commit();
         }}
