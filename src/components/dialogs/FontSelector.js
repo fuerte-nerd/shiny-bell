@@ -83,9 +83,11 @@ const FontPicker = (props) => {
   };
 
   const handleCancel = () => {
-    dispatch(setLoadingScreen(true));
-    const theme = new Theme(initialState);
-    theme.commit().then(() => dispatch(setLoadingScreen(false)));
+    if (current !== initialState) {
+      dispatch(setLoadingScreen(true));
+      const theme = new Theme(initialState);
+      theme.commit().then(() => dispatch(setLoadingScreen(false)));
+    }
     dispatch(setFontSelector(false));
   };
 
