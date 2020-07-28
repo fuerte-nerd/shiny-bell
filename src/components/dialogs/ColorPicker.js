@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setColorPicker } from "../../state/display/actions";
 import { Dialog } from "@material-ui/core";
-import { SketchPicker } from "react-color";
+import { Photoshop } from "react-color";
 import {
   setCurrentAppState,
   setPastAppStates,
 } from "../../state/appState/actions";
 import Theme from "../../functions/Theme";
 
-const ColorPicker = ({ dispatch, colorPicker, primary, current }) => {
+const ColorPicker = ({ dispatch, colorPicker, primary, current, past }) => {
   const [initialState, setInitialState] = useState();
 
   useEffect(() => {
@@ -25,13 +25,13 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current }) => {
       PaperProps={{ style: { backgroundColor: "transparent" } }}
       BackdropProps={{ style: { backgroundColor: "transparent" } }}
     >
-      <SketchPicker
+      <Photoshop
         color={primary}
         onChange={(c) => {
           let theme = new Theme({ ...current, primary: c.hex });
           theme.commit();
         }}
-        onChangeComplete={(c) => {
+        onAccept={(c) => {
           if (current !== initialState) {
             setPastAppStates([...past, initialState]);
           }
