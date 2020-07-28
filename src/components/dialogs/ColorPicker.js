@@ -31,7 +31,6 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current, past }) => {
           let theme = new Theme({
             ...current,
             primary: c.hex,
-            secondary: null,
           });
           theme.commit();
         }}

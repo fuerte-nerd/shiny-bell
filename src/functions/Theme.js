@@ -54,6 +54,9 @@ class Theme {
     for (const [key, value] of params) {
       this[key] = value;
     }
+    if (config.hasOwnProperty("primary")) {
+      config.secondary = this.getSecondaryColor(this.secondaryColorMix);
+    }
   }
 
   getProp(key) {
