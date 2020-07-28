@@ -11,8 +11,16 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
+import { setPastAppStates } from "../../state/appState/actions";
 
-const Colors = ({ dispatch, current, primary, secondary, secondaryMode }) => {
+const Colors = ({
+  dispatch,
+  current,
+  primary,
+  secondary,
+  secondaryMode,
+  past,
+}) => {
   const options = [
     "complement",
     "desaturate",
@@ -65,13 +73,12 @@ const Colors = ({ dispatch, current, primary, secondary, secondaryMode }) => {
               } else {
                 selection = options[options.length - 1];
               }
-              console.log(selection);
 
               const theme = new Theme({
                 ...current,
                 secondaryColorMix: selection,
               });
-              console.log(theme);
+              dispatch(setPastAppStates([...past, current]));
               theme.commit();
             }}
           >
@@ -93,6 +100,7 @@ const Colors = ({ dispatch, current, primary, secondary, secondaryMode }) => {
                 ...current,
                 secondaryColorMix: selection,
               });
+              dispatch(setPastAppStates([...past, current]));
               theme.commit();
             }}
           >
@@ -109,6 +117,7 @@ const mapStateToProps = (state) => ({
   secondary: state.appState.current.secondary,
   secondaryMode: state.appState.current.secondaryColorMix,
   current: state.appState.current,
+  past: state.appState.past,
 });
 
 export default connect(mapStateToProps)(Colors);
