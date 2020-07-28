@@ -1,7 +1,7 @@
 import { SET_SECTION } from "./types";
 
 const initialState = {
-  section: "body",
+  section: "primary",
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -9,7 +9,7 @@ export default (state = initialState, { type, payload }) => {
 
   switch (type) {
     case SET_SECTION:
-      newState.colorPicker.section = payload;
+      newState.section = payload;
       break;
     default:
       break;

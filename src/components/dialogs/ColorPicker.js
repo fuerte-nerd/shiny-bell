@@ -55,6 +55,7 @@ const ColorPicker = ({
 
 const mapStateToProps = (state) => ({
   colorPicker: state.display.colorPicker,
+  section: state.colorPicker.section,
   primary: state.appState.current.primary,
   current: state.appState.current,
   past: state.appState.past,
