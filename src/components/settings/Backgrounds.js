@@ -46,47 +46,24 @@ const Backgrounds = ({ dispatch, backgrounds, current }) => {
           backgrounds: { ...current.backgrounds, page: selection },
         }).commit();
         break;
-        return currentIndexPage === options.length - 1
-          ? dispatch(
-              setBackgrounds({
-                ...backgrounds,
-                page: options[0],
-              })
-            )
-          : dispatch(
-              setBackgrounds({
-                ...backgrounds,
-                page: options[currentIndexPage + 1],
-              })
-            );
       case "box-back":
-        return currentIndexBox === 0
-          ? dispatch(
-              setBackgrounds({
-                ...backgrounds,
-                box: options[options.length - 1],
-              })
-            )
-          : dispatch(
-              setBackgrounds({
-                ...backgrounds,
-                box: options[currentIndexBox - 1],
-              })
-            );
+        currentIndexBox === 0
+          ? (selection = options[options.length - 1])
+          : (selection = options[currentIndexBox - 1]);
+        new Theme({
+          ...current,
+          backgrounds: { ...current.backgrounds, box: selection },
+        }).commit();
+        break;
       case "box-forward":
-        return currentIndexBox === options.length - 1
-          ? dispatch(
-              setBackgrounds({
-                ...backgrounds,
-                box: options[0],
-              })
-            )
-          : dispatch(
-              setBackgrounds({
-                ...backgrounds,
-                box: options[currentIndexBox + 1],
-              })
-            );
+        currentIndexBox === options.length - 1
+          ? (selection = options[0])
+          : (selection = options[currentIndexBox + 1]);
+        new Theme({
+          ...current,
+          backgrounds: { ...current.backgrounds, box: selection },
+        }).commit();
+        break;
       default:
         return;
     }
@@ -131,7 +108,7 @@ const Backgrounds = ({ dispatch, backgrounds, current }) => {
 };
 
 const mapStateToProps = (state) => ({
-  backgrounds: state.backgrounds,
+  backgrounds: state.appState.current.backgrounds,
   current: state.appState.current,
 });
 
