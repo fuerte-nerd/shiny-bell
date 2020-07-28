@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setSecondaryMode, setColorPicker } from "../../state/actions";
+import { setColorPicker } from "../../state/display/actions";
 import Setting from "../Setting";
 import {
   ListItem,

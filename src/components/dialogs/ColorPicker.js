@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setPrimary, setColorPicker } from "../../state/actions";
+import { setColorPicker } from "../../state/display/actions";
 import { Dialog } from "@material-ui/core";
 import { SketchPicker } from "react-color";
 import { setCurrentAppState } from "../../state/appState/actions";
@@ -25,7 +25,7 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current }) => {
 };
 
 const mapStateToProps = (state) => ({
-  colorPicker: state.colorPicker,
+  colorPicker: state.display.colorPicker,
   primary: state.primary,
   current: state.appState.current,
 });
