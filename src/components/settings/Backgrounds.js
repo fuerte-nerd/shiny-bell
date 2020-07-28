@@ -9,8 +9,9 @@ import {
 } from "@material-ui/core";
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 import { setBackgrounds } from "../../state/actions";
+import Theme from "../../functions/Theme";
 
-const Backgrounds = ({ dispatch, backgrounds }) => {
+const Backgrounds = ({ dispatch, backgrounds, current }) => {
   const options = [
     "transparent",
     "primary.light",
@@ -22,21 +23,29 @@ const Backgrounds = ({ dispatch, backgrounds }) => {
   ];
 
   const handleClick = (e) => {
-    const currentIndexPage = options.indexOf(backgrounds.page);
-    const currentIndexBox = options.indexOf(backgrounds.box);
+    const currentIndexPage = options.indexOf(current.backgrounds.page);
+    const currentIndexBox = options.indexOf(current.backgrounds.box);
     let selection;
 
     switch (e.currentTarget.id) {
       case "page-back":
         currentIndexPage === 0
           ? (selection = options[options.length - 1])
-          : dispatch(
-              setBackgrounds({
-                ...backgrounds,
-                page: options[currentIndexPage - 1],
-              })
-            );
+          : (selection = options[currentIndexPage - 1]);
+        new Theme({
+          ...current,
+          backgrounds: { ...current.backgrounds, page: selection },
+        }).commit();
+        break;
       case "page-forward":
+        currentIndexPage === options.length - 1
+          ? (selection = options[0])
+          : (selection = options[currentIndexPage + 1]);
+        new Theme({
+          ...current,
+          backgrounds: { ...current.backgrounds, page: selection },
+        }).commit();
+        break;
         return currentIndexPage === options.length - 1
           ? dispatch(
               setBackgrounds({
@@ -123,6 +132,7 @@ const Backgrounds = ({ dispatch, backgrounds }) => {
 
 const mapStateToProps = (state) => ({
   backgrounds: state.backgrounds,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(Backgrounds);
