@@ -146,6 +146,7 @@ const ThemeWrapper = (props) => {
             main: current ? current.secondary : "#FFFFFF",
           },
         },
+        spacing: current ? current.spacing : null,
       })
     );
   }, [current]);

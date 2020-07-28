@@ -13,7 +13,7 @@ import { AddCircle, RemoveCircle } from "@material-ui/icons";
 
 import Theme from "../../functions/Theme";
 
-const Spacing = ({ dispatch, spacing, rounding }) => {
+const Spacing = ({ dispatch, spacing, rounding, current }) => {
   return (
     <Setting title="Appearance">
       <ListItem>
@@ -22,19 +22,17 @@ const Spacing = ({ dispatch, spacing, rounding }) => {
           <IconButton
             size="small"
             onClick={() => {
-              const theme = new Theme({
-                ...current,
-                spacing: current.spacing - 1,
-              }).commit();
+              if (current.spacing > 0) {
+                new Theme({
+                  ...current,
+                  spacing: current.spacing - 1,
+                }).commit();
+              }
             }}
           >
             <RemoveCircle />
           </IconButton>
-          <IconButton
-            size="small"
-            edge="end"
-            onClick={() => dispatch(setSpacing(spacing + 1))}
-          >
+          <IconButton size="small" edge="end">
             <AddCircle />
           </IconButton>
         </ListItemSecondaryAction>
@@ -42,17 +40,10 @@ const Spacing = ({ dispatch, spacing, rounding }) => {
       <ListItem>
         <ListItemText primary="Rounding" secondary={rounding} />
         <ListItemSecondaryAction>
-          <IconButton
-            size="small"
-            onClick={() => dispatch(setRounding(rounding - 1))}
-          >
+          <IconButton size="small">
             <RemoveCircle />
           </IconButton>
-          <IconButton
-            size="small"
-            edge="end"
-            onClick={() => dispatch(setRounding(rounding + 1))}
-          >
+          <IconButton size="small" edge="end">
             <AddCircle />
           </IconButton>
         </ListItemSecondaryAction>
