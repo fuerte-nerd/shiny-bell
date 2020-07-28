@@ -28,7 +28,11 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current, past }) => {
       <PhotoshopPicker
         color={primary}
         onChange={(c) => {
-          let theme = new Theme({ ...current, primary: c.hex });
+          let theme = new Theme({
+            ...current,
+            primary: c.hex,
+            secondary: null,
+          });
           theme.commit();
         }}
         onAccept={(c) => {
