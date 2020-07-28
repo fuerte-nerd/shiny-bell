@@ -31,11 +31,13 @@ const Buttons = ({ dispatch, buttonTextTransform, current, past }) => {
             size="small"
             onClick={() => {
               const currentIndex = options.indexOf(buttonTextTransform);
+              let selection;
               if (currentIndex !== 0) {
-                dispatch(setButtonTextTransform(options[currentIndex - 1]));
+                selection = options[currentIndex - 1];
               } else {
-                dispatch(setButtonTextTransform(options[options.length - 1]));
+                selection = options[options.length - 1];
               }
+              new Theme({ ...current, buttonTextTransform: selection });
             }}
           >
             <ChevronLeft />
