@@ -45,6 +45,7 @@ const Colors = ({ dispatch, current, primary, secondaryMode }) => {
               } else {
                 selection = options[options.length - 1];
               }
+              console.log(selection);
 
               const theme = new Theme({
                 ...current,
@@ -60,9 +61,18 @@ const Colors = ({ dispatch, current, primary, secondaryMode }) => {
             edge="end"
             onClick={() => {
               const currentIndex = options.indexOf(secondaryMode);
-              currentIndex !== options.length - 1
-                ? dispatch(setSecondaryMode(options[currentIndex + 1]))
-                : dispatch(setSecondaryMode(options[0]));
+              let selection;
+              if (currentIndex !== 0) {
+                selection = options[currentIndex - 1];
+              } else {
+                selection = options[options.length - 1];
+              }
+
+              const theme = new Theme({
+                ...current,
+                secondaryColorMix: selection,
+              });
+              theme.commit();
             }}
           >
             <ChevronRight />
