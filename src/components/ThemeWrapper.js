@@ -147,6 +147,9 @@ const ThemeWrapper = (props) => {
           },
         },
         spacing: current ? current.spacing : null,
+        shape: {
+          borderRadius: current ? current.rounding : null,
+        },
       })
     );
   }, [current]);

@@ -22,17 +22,26 @@ const Spacing = ({ dispatch, spacing, rounding, current }) => {
           <IconButton
             size="small"
             onClick={() => {
-              if (current.spacing > 0) {
+              if (spacing > 1) {
                 new Theme({
                   ...current,
-                  spacing: current.spacing - 1,
+                  spacing: spacing - 1,
                 }).commit();
               }
             }}
           >
             <RemoveCircle />
           </IconButton>
-          <IconButton size="small" edge="end">
+          <IconButton
+            size="small"
+            edge="end"
+            onClick={() => {
+              new Theme({
+                ...current,
+                spacing: spacing + 1,
+              }).commit();
+            }}
+          >
             <AddCircle />
           </IconButton>
         </ListItemSecondaryAction>
@@ -40,7 +49,17 @@ const Spacing = ({ dispatch, spacing, rounding, current }) => {
       <ListItem>
         <ListItemText primary="Rounding" secondary={rounding} />
         <ListItemSecondaryAction>
-          <IconButton size="small">
+          <IconButton
+            size="small"
+            onClick={() => {
+              if (rounding > 1) {
+                new Theme({
+                  ...current,
+                  rounding: rounding - 1,
+                }).commit();
+              }
+            }}
+          >
             <RemoveCircle />
           </IconButton>
           <IconButton size="small" edge="end">
