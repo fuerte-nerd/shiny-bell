@@ -32,25 +32,26 @@ const ColorPicker = ({
       PaperProps={{ style: { backgroundColor: "transparent" } }}
       BackdropProps={{ style: { backgroundColor: "transparent" } }}
     >
-      <PhotoshopPicker
-        header={`Set new ${section} color...`}
-        color={current[section]}
-        onChange={(c) => {
-          let theme = new Theme({
-            ...current,
-            [section]: c.hex,
-          });
-          console.log(theme);
-          theme.commit();
-        }}
-        onAccept={(c) => {
-          if (current !== initialState) {
-            dispatch(setPastAppStates([...past, initialState]));
-          }
-          dispatch(setColorPicker(false));
-        }}
-        styles={{ fontFamily: "Roboto" }}
-      />
+      <Box style={{ fontFamily: "Roboto" }}>
+        <PhotoshopPicker
+          header={`Set new ${section} color...`}
+          color={current[section]}
+          onChange={(c) => {
+            let theme = new Theme({
+              ...current,
+              [section]: c.hex,
+            });
+            console.log(theme);
+            theme.commit();
+          }}
+          onAccept={(c) => {
+            if (current !== initialState) {
+              dispatch(setPastAppStates([...past, initialState]));
+            }
+            dispatch(setColorPicker(false));
+          }}
+        />
+      </Box>
     </Dialog>
   );
 };
