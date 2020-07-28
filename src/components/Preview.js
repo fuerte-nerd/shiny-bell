@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Divider, Typography, Box } from "@material-ui/core";
@@ -18,6 +18,21 @@ const Preview = ({
   backgrounds,
   current,
 }) => {
+  const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.color.pizza/v1/${primary.substr(1)},${secondary.substr(1)}`
+      )
+      .then((res) => {
+        setColorNames({
+          primary: res.colors[0].name,
+          secondary: res.colors[1].name,
+        });
+      });
+  }, [primary, secondary]);
+
   return current ? (
     <>
       <Box mb={2} bgcolor={`transparent`}>
@@ -28,10 +43,8 @@ const Preview = ({
             {twoFonts
               ? `${current.header.family} and the body font is ${current.body.family}`
               : current.body.family}
-            {/*
-            . The primary color is {current.primary.name} and the
-            secondary color is {current.palette.secondary.name}.
-            */}
+            . The primary color is {colorNames.primary} and the secondary color
+            is {colorNames.secondary}.
           </Typography>
           <Typography paragraph>
             Consectetur officia assumenda magni cupiditate perspiciatis
@@ -59,8 +72,8 @@ const mapStateToProps = (state) => ({
   bodyFont: state.components.fonts.body.currentFont,
   headerFont: state.components.fonts.header.currentFont,
   twoFonts: state.appState.current.twoFonts,
-  primaryColorName: state.components.palette.primary.name,
-  secondaryColorName: state.components.palette.secondary.name,
+  primary: state.appState.current.primary,
+  secondary: state.appState.current.secondary,
   backgrounds: state.backgrounds,
 });
 
