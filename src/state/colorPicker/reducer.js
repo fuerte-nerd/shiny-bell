@@ -4,7 +4,8 @@ const initialState = {
   section: "primary",
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, action) => {
+  const { type, payload } = action;
   const newState = Object.assign({}, state);
 
   switch (type) {

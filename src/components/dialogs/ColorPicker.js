@@ -39,6 +39,7 @@ const ColorPicker = ({
             ...current,
             [section]: c.hex,
           });
+          console.log(theme);
           theme.commit();
         }}
         onAccept={(c) => {
