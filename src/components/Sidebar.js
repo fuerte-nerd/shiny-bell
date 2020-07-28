@@ -27,8 +27,8 @@ const Sidebar = ({ dispatch, isOpen, body, header }) => {
         <Locks />
         <Fonts />
         <Colors />
-        {/*  <Appearance />
-        <Buttons />
+        <Appearance />
+        {/*  <Buttons />
         <Backgrounds />*/}
       </List>
     </Drawer>

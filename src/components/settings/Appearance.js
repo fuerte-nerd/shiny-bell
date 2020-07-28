@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setSpacing, setRounding } from "../../state/actions";
+import {} from "../../state/appState/actions";
 import Setting from "../Setting";
+
 import {
   ListItem,
   ListItemText,
@@ -9,6 +10,8 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
+
+import Theme from "../../functions/Theme";
 
 const Spacing = ({ dispatch, spacing, rounding }) => {
   return (
@@ -18,7 +21,12 @@ const Spacing = ({ dispatch, spacing, rounding }) => {
         <ListItemSecondaryAction>
           <IconButton
             size="small"
-            onClick={() => dispatch(setSpacing(spacing - 1))}
+            onClick={() => {
+              const theme = new Theme({
+                ...current,
+                spacing: current.spacing - 1,
+              }).commit();
+            }}
           >
             <RemoveCircle />
           </IconButton>
@@ -54,8 +62,9 @@ const Spacing = ({ dispatch, spacing, rounding }) => {
 };
 
 const mapStateToProps = (state) => ({
-  spacing: state.spacing,
-  rounding: state.rounding,
+  spacing: state.appState.current.spacing,
+  rounding: state.appState.current.rounding,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(Spacing);
