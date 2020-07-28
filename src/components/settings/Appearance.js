@@ -13,7 +13,7 @@ import { AddCircle, RemoveCircle } from "@material-ui/icons";
 
 import Theme from "../../functions/Theme";
 
-const Spacing = ({ dispatch, spacing, rounding, current }) => {
+const Appearance = ({ dispatch, spacing, rounding, current }) => {
   return (
     <Setting title="Appearance">
       <ListItem>
@@ -52,7 +52,7 @@ const Spacing = ({ dispatch, spacing, rounding, current }) => {
           <IconButton
             size="small"
             onClick={() => {
-              if (rounding > 1) {
+              if (rounding > 0) {
                 new Theme({
                   ...current,
                   rounding: rounding - 1,
@@ -77,4 +77,4 @@ const mapStateToProps = (state) => ({
   current: state.appState.current,
 });
 
-export default connect(mapStateToProps)(Spacing);
+export default connect(mapStateToProps)(Appearance);

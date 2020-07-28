@@ -28,8 +28,8 @@ const Sidebar = ({ dispatch, isOpen, body, header }) => {
         <Fonts />
         <Colors />
         <Appearance />
-        {/*  <Buttons />
-        <Backgrounds />*/}
+        <Buttons />
+        {/* <Backgrounds />*/}
       </List>
     </Drawer>
   );
