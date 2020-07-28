@@ -32,10 +32,8 @@ const ColorPicker = ({ dispatch, colorPicker, primary, current, past }) => {
           theme.commit();
         }}
         onAccept={(c) => {
-          console.log(current);
-          console.log(initialState);
           if (current !== initialState) {
-            setPastAppStates([...past, initialState]);
+            dispatch(setPastAppStates([...past, initialState]));
           }
           dispatch(setColorPicker(false));
         }}
