@@ -16,7 +16,7 @@ const Colors = ({ dispatch, primary, secondaryMode }) => {
   return (
     <Setting title="Colors">
       <ListItem button onClick={() => dispatch(setColorPicker(true))}>
-        <ListItemText primary="Adjust color" secondary={primary} />
+        <ListItemText primary="Adjust primary color" secondary={primary} />
       </ListItem>
       {/*  <ListItem>
          <ListItemText
