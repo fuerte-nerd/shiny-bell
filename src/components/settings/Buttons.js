@@ -37,7 +37,10 @@ const Buttons = ({ dispatch, buttonTextTransform, current, past }) => {
               } else {
                 selection = options[options.length - 1];
               }
-              new Theme({ ...current, buttonTextTransform: selection });
+              new Theme({
+                ...current,
+                buttonTextTransform: selection,
+              }).commit();
             }}
           >
             <ChevronLeft />
@@ -47,11 +50,16 @@ const Buttons = ({ dispatch, buttonTextTransform, current, past }) => {
             edge="end"
             onClick={() => {
               const currentIndex = options.indexOf(buttonTextTransform);
+              let selection;
               if (currentIndex !== options.length - 1) {
-                dispatch(setButtonTextTransform(options[currentIndex + 1]));
+                selection = options[currentIndex + 1];
               } else {
-                dispatch(setButtonTextTransform(options[0]));
+                selection = options[0];
               }
+              new Theme({
+                ...current,
+                buttonTextTransform: selection,
+              }).commit();
             }}
           >
             <ChevronRight />

@@ -30,6 +30,9 @@ const ThemeWrapper = (props) => {
             primary: { fontFamily: "Roboto", fontSize: 14 },
             secondary: { fontFamily: "Roboto", fontSize: 14 },
           },
+          MuiButton: {
+            label: { textTransform: `"${current.buttonTextTransform}"` },
+          },
         },
         typography: {
           h1: {
