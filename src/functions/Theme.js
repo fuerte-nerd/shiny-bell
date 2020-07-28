@@ -118,7 +118,7 @@ class Theme {
           setValidationFont(this[target].family.replace(/ /g, "+"))
         );
         const f = new FontFaceObserver(this[target].family);
-        f.load(null, 10000).then(
+        f.load().then(
           async () => {
             await store.dispatch(setValidationFont(null));
             res();
@@ -142,10 +142,7 @@ class Theme {
     return new Promise((res, rej) => {
       this.validateFont("body")
         .then(() => {
-          this.validateFont("header");
-        })
-        .then(() => {
-          res();
+          this.validateFont("header").then(res);
         })
         .catch((err) => rej(err));
     });
@@ -156,8 +153,8 @@ class Theme {
       const body = new FontFaceObserver(this.body.family);
       const header = new FontFaceObserver(this.header.family);
       const runValidator = async () => {
-        body.load(null, 8000).then(
-          () => header.load(null, 8000).then(res, () => runValidator()),
+        body.load().then(
+          () => header.load().then(res, () => runValidator()),
           () => runValidator()
         );
       };
