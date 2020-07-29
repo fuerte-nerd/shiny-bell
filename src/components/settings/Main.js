@@ -61,7 +61,12 @@ const Main = ({ dispatch, past, current, future }) => {
       >
         <ListItemText primary="Undo" />
         <ListItemSecondaryAction>
-          <IconButton edge="end" id="undo-btn" onClick={handleClick}>
+          <IconButton
+            edge="end"
+            id="undo-btn"
+            onClick={handleClick}
+            disabled={past.length === 0}
+          >
             <Undo />
           </IconButton>
         </ListItemSecondaryAction>
@@ -74,7 +79,12 @@ const Main = ({ dispatch, past, current, future }) => {
       >
         <ListItemText primary="Redo" />
         <ListItemSecondaryAction>
-          <IconButton edge="end" id="redo-btn" onClick={handleClick}>
+          <IconButton
+            edge="end"
+            id="redo-btn"
+            onClick={handleClick}
+            disabled={future.length === 0}
+          >
             <Redo />
           </IconButton>
         </ListItemSecondaryAction>
