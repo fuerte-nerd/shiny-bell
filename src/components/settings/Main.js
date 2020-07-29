@@ -6,7 +6,7 @@ import {
   ListItemSecondaryAction,
   IconButton,
 } from "@material-ui/core";
-import { Undo, Redo, Code } from "@material-ui/icons";
+import { Undo, Redo, Code, SettingsBrightness } from "@material-ui/icons";
 import Setting from "../Setting";
 import { setThemeCode, setLoadingScreen } from "../../state/display/actions";
 import {
@@ -15,7 +15,7 @@ import {
 } from "../../state/appState/actions";
 import Theme from "../Theme";
 
-const Main = ({ dispatch, past, current, future }) => {
+const Main = ({ dispatch, past, current, future, mode }) => {
   const handleClick = (e) => {
     let theme;
     const { id } = e.currentTarget;
@@ -45,6 +45,13 @@ const Main = ({ dispatch, past, current, future }) => {
       case "code":
       case "code-btn":
         dispatch(setThemeCode(true));
+        break;
+      case "dark":
+      case "dark-btn":
+        new Theme({
+          ...current,
+          mode: current.mode === "light" ? "dark" : "light",
+        }).commit();
         break;
       default:
         break;
@@ -97,6 +104,17 @@ const Main = ({ dispatch, past, current, future }) => {
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
+      <ListItem id="dark" onClick={handleClick} button>
+        <ListItemText
+          primary="Dark mode"
+          secondary={mode === "light" ? "Off" : "On"}
+        />
+        <ListItemSecondaryAction>
+          <IconButton edge="end" id="dark-btn" onClick={handleClick}>
+            <SettingsBrightness />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
     </Setting>
   );
 };
@@ -105,6 +123,7 @@ const mapStateToProps = (state) => ({
   past: state.appState.past,
   current: state.appState.current,
   future: state.appState.future,
+  mode: state.appState.current.mode,
 });
 
 export default connect(mapStateToProps)(Main);
