@@ -4,7 +4,7 @@ import axios from "axios";
 import FontFaceObserver from "fontfaceobserver";
 import { Box, Container, Toolbar } from "@material-ui/core";
 
-import Theme from "./functions/Theme";
+import Theme from "./components/Theme";
 
 import Head from "./components/Head";
 import GoogleFontValidator from "./components/GoogleFontValidator";
@@ -50,6 +50,7 @@ function App({ dispatch, current }) {
     defFont.load().then(() => {
       dispatch(setDefFontLoaded(true));
     });
+    //eslint-disable-next-line
   }, []);
 
   return (

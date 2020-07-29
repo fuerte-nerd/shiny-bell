@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
   Dialog,
@@ -35,7 +35,12 @@ const FontPicker = (props) => {
     twoFonts,
   } = props;
 
-  const [initialState, setInitialState] = useState(current);
+  const [initialState, setInitialState] = useState();
+
+  useEffect(() => {
+    setInitialState(current);
+    //eslint-disable-next-line
+  }, []);
 
   const handleChange = (e) => {
     const { id, checked } = e.currentTarget;

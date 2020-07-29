@@ -2,15 +2,8 @@ import store from "../state/store";
 import uniqid from "uniqid";
 import FontFaceObserver from "fontfaceobserver";
 import tinycolor from "tinycolor2";
-import {
-  setComponentsLoading,
-  setValidationFont,
-} from "../state/components/actions";
-import {
-  setPastAppStates,
-  setCurrentAppState,
-  setFutureAppStates,
-} from "../state/appState/actions";
+import { setValidationFont } from "../state/components/actions";
+import { setCurrentAppState } from "../state/appState/actions";
 
 class Theme {
   constructor(config = {}) {
