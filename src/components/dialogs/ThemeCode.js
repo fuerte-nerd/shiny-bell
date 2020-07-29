@@ -32,7 +32,10 @@ const ThemeCode = ({
       ? `//react-helmet (to fetch Google Fonts)
 <Helmet>
   <link
-    href={\`https://fonts.googleapis.com/css2?family=${font.linkName}&family=${headerFont.linkName}&display=swap\`}
+    href={\`https://fonts.googleapis.com/css2?family=${font.family.replace(
+      / /g,
+      "+"
+    )}&family=${headerFont.family.replace(/ /g, "+")}&display=swap\`}
     rel="stylesheet"
   />
 </Helmet>
@@ -40,7 +43,10 @@ const ThemeCode = ({
       : `//react-helmet (to fetch Google Font)
 <Helmet>
   <link
-    href={\`https://fonts.googleapis.com/css2?family=${font.linkName}&display=swap\`}
+    href={\`https://fonts.googleapis.com/css2?family=${font.family.replace(
+      / /g,
+      "+"
+    )}&display=swap\`}
     rel="stylesheet"
   />
 </Helmet>
@@ -84,7 +90,7 @@ const ThemeCode = ({
 
 const mapStateToProps = (state) => ({
   themeCode: state.display.themeCode,
-  font: state.appState.current.font,
+  font: state.appState.current.body,
   twoFonts: state.appState.current.twoFonts,
   headerFont: state.appState.current.header,
   current: state.appState.current,
