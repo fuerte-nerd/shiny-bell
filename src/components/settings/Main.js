@@ -10,7 +10,7 @@ import { Code } from "@material-ui/icons";
 import Setting from "../Setting";
 import { setThemeCode } from "../../state/display/actions";
 
-const Main = ({ dispatch }) => {
+const Main = ({ dispatch, future }) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
     switch (id) {
@@ -25,6 +25,19 @@ const Main = ({ dispatch }) => {
 
   return (
     <Setting title="Utility">
+      <ListItem
+        id="redo"
+        onClick={handleClick}
+        button
+        disabled={future.length === 0}
+      >
+        <ListItemText primary="Redo" />
+        <ListItemSecondaryAction>
+          <IconButton edge="end" id="code-btn" onClick={handleClick}>
+            <Code />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
       <ListItem id="code" onClick={handleClick} button>
         <ListItemText primary="Get the code!" />
         <ListItemSecondaryAction>
@@ -37,4 +50,8 @@ const Main = ({ dispatch }) => {
   );
 };
 
-export default connect()(Main);
+const mapStateToProps = (state) => ({
+  future: state.appState.future,
+});
+
+export default connect(mapStateToProps)(Main);
