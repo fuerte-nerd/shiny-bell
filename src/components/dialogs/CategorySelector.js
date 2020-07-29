@@ -15,6 +15,7 @@ import {
   setBodyFontCategories,
   setHeaderFontCategories,
 } from "../../state/components/actions";
+import { setFontCategorySelectorOpen } from "../../state/display/actions";
 
 const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
   const handleChange = (e) => {
@@ -53,7 +54,9 @@ const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
 
   return (
     <Dialog open={isOpen} maxWidth="lg">
-      <DialogTitle>Set {twoFonts ? section : null} font filters</DialogTitle>
+      <DialogTitle>
+        Set {twoFonts ? section : null} font search categories
+      </DialogTitle>
       <DialogContent>
         <Box mb={2}>
           <FormGroup row>
@@ -77,7 +80,7 @@ const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
                   checked={filters[section].includes("sans-serif")}
                 />
               }
-              label="Sans Serif"
+              label="Sans-serif"
             />
             <FormControlLabel
               control={
@@ -118,8 +121,9 @@ const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button></Button>
-        <Button></Button>
+        <Button onClick={() => dispatch(setFontCategorySelectorOpen(false))}>
+          Close
+        </Button>
       </DialogActions>
     </Dialog>
   );
