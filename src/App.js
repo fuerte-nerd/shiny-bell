@@ -71,10 +71,7 @@ function App({ dispatch, current }) {
             <Menu />
             <RefreshButton />
             <Box bgcolor={current.backgrounds.page}>
-              <Toolbar />
-              <Container>
-                <Preview />
-              </Container>
+              <Preview />
             </Box>
           </ThemeWrapper>
         </>
