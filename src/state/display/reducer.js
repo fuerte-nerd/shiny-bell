@@ -5,6 +5,7 @@ import {
   SET_COLOR_PICKER_OPEN,
   SET_FONT_SELECTOR_SECTION,
   SET_FONT_SELECTOR_CATEGORIES,
+  SET_FONT_SELECTOR_ERROR,
   SET_COLOR_PICKER_SECTION,
   SET_FONT_CATEGORY_SELECTOR_OPEN,
   SET_FONT_CATEGORY_SELECTOR_SECTION,
@@ -55,6 +56,9 @@ export default (state = initialState, action) => {
       break;
     case SET_FONT_SELECTOR_CATEGORIES:
       newState.fontSelector.categoryFilters = payload;
+      break;
+    case SET_FONT_SELECTOR_ERROR:
+      newState.fontSelector.error = payload;
       break;
     case SET_COLOR_PICKER_OPEN:
       newState.colorPicker.isOpen = payload;

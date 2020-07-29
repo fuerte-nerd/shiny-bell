@@ -8,6 +8,7 @@ import {
   SET_COLOR_PICKER_SECTION,
   SET_FONT_CATEGORY_SELECTOR_OPEN,
   SET_FONT_CATEGORY_SELECTOR_SECTION,
+  SET_FONT_SELECTOR_ERROR,
 } from "./types";
 
 export const setLoadingScreen = (payload) => ({
@@ -32,6 +33,11 @@ export const setFontSelectorSection = (payload) => ({
 
 export const setFontSelectorCategories = (payload) => ({
   type: SET_FONT_SELECTOR_CATEGORIES,
+  payload,
+});
+
+export const setFontSelectorError = (payload) => ({
+  type: SET_FONT_SELECTOR_ERROR,
   payload,
 });
 
