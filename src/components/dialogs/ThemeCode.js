@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
-import getThemeCode from "../../functions/getThemeCode";
+import getThemeCode from "../../scripts/getThemeCode";
 
 import AppTypography from "../AppTypography";
 
@@ -76,10 +76,10 @@ const ThemeCode = ({ dispatch, themeCode, font, twoFonts, headerFont }) => {
 };
 
 const mapStateToProps = (state) => ({
-  themeCode: state.themeCode,
-  font: state.font,
-  twoFonts: state.twoFonts,
-  headerFont: state.headerFont,
+  themeCode: state.display.themeCode,
+  font: state.appState.current.font,
+  twoFonts: state.appState.current.twoFonts,
+  headerFont: state.appState.current.header,
 });
 
 export default connect(mapStateToProps)(ThemeCode);

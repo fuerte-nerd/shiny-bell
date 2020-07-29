@@ -1,7 +1,7 @@
 import store from "../state/store";
 
 export default () => {
-  const state = store.getState();
+  const state = store.getState().appState.current;
 
   const tab = `  `;
 

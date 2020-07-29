@@ -14,6 +14,7 @@ import {
 const initialState = {
   loadingScreen: true,
   sidebar: false,
+  themeCode: false,
   fontSelector: {
     isOpen: false,
     section: "body",
