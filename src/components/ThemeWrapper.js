@@ -173,9 +173,6 @@ const ThemeWrapper = (props) => {
 
 const mapStateToProps = (state) => ({
   current: state.appState.current,
-  twoFonts: state.settings.twoFonts,
-  responsive: state.settings.responsiveFontSizes,
-  fontSize: state.settings.fontSize,
 });
 
 export default connect(mapStateToProps)(ThemeWrapper);

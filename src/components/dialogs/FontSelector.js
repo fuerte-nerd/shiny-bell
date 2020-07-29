@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   Dialog,
@@ -17,11 +17,7 @@ import {
 import { Alert } from "@material-ui/lab";
 import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
 import { setFontSelector, setLoadingScreen } from "../../state/display/actions";
-import FontLoader from "../../functions/FontHelper";
-import {
-  setPastAppStates,
-  setCurrentAppState,
-} from "../../state/appState/actions";
+import { setPastAppStates } from "../../state/appState/actions";
 import Theme from "../../functions/Theme";
 
 const FontPicker = (props) => {

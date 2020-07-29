@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { setLoadingScreen } from "../state/display/actions";
 import { Dialog, Box, CircularProgress } from "@material-ui/core";
 import AppTypography from "./AppTypography";
-import { setLoadScreenFeedback } from "../state/feedback/actions";
 
 const FontLoadScreen = ({ loadingScreen, defFontLoaded }) => {
   return (
@@ -41,7 +39,6 @@ const FontLoadScreen = ({ loadingScreen, defFontLoaded }) => {
 };
 
 const mapStateToProps = (state) => ({
-  componentsLoading: state.components.loading,
   defFontLoaded: state.components.fonts.default.loaded,
   loadingScreen: state.display.loadingScreen,
 });
