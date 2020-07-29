@@ -18,6 +18,7 @@ import Preview from "./components/Preview";
 import FontSelector from "./components/dialogs/FontSelector";
 import CategorySelector from "./components/dialogs/CategorySelector";
 import ColorPicker from "./components/dialogs/ColorPicker";
+import ThemeCode from "./components/dialogs/ThemeCode";
 
 import { setFonts, setLibraryLoaded } from "./state/library/actions";
 import { setLoadingScreen } from "./state/display/actions";
@@ -65,6 +66,7 @@ function App({ dispatch, current }) {
             <FontSelector />
             <CategorySelector />
             <ColorPicker />
+            <ThemeCode />
             <Sidebar />
             <Menu />
             <RefreshButton />

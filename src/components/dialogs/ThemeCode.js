@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setThemeCode } from "../../state/actions";
+import { setThemeCode } from "../../state/display/actions";
 import {
   Dialog,
   DialogTitle,

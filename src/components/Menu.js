@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { SettingsBrightness, Settings, Code } from "@material-ui/icons";
 import UndoRedo from "./UndoRedo";
-import { setSidebar } from "../state/display/actions";
+import { setSidebar, setThemeCode } from "../state/display/actions";
 import Theme from "./Theme";
 
 const Menu = ({ dispatch, current }) => {
@@ -26,6 +26,8 @@ const Menu = ({ dispatch, current }) => {
         }).commit();
         break;
       case "code":
+        dispatch(setThemeCode(true));
+        break;
       default:
         return;
     }

@@ -9,6 +9,7 @@ import {
   SET_COLOR_PICKER_SECTION,
   SET_FONT_CATEGORY_SELECTOR_OPEN,
   SET_FONT_CATEGORY_SELECTOR_SECTION,
+  SET_THEME_CODE,
 } from "./types";
 
 const initialState = {
@@ -72,6 +73,9 @@ export default (state = initialState, action) => {
       break;
     case SET_FONT_CATEGORY_SELECTOR_SECTION:
       newState.fontCategorySelector.section = payload;
+      break;
+    case SET_THEME_CODE:
+      newState.themeCode = payload;
       break;
     default:
       break;
