@@ -11,7 +11,10 @@ import {
   DialogActions,
   Button,
 } from "@material-ui/core";
-import { setBodyFontCategories } from "../../state/components/actions";
+import {
+  setBodyFontCategories,
+  setHeaderFontCategories,
+} from "../../state/components/actions";
 
 const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
   const handleChange = (e) => {
@@ -29,6 +32,22 @@ const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
             )
           );
         }
+        break;
+      case "header":
+        if (filters[section].includes(id)) {
+          dispatch(setHeaderFontCategories([...filters[section], id]));
+        } else {
+          dispatch(
+            setHeaderFontCategories(
+              filters[section].filter((i) => {
+                return i !== id;
+              })
+            )
+          );
+        }
+        break;
+      default:
+        break;
     }
   };
 
@@ -44,7 +63,7 @@ const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
                   id="serif"
                   size="small"
                   onChange={handleChange}
-                  checked={isOpen && filters[section].includes("serif")}
+                  checked={filters[section].includes("serif")}
                 />
               }
               label="Serif"

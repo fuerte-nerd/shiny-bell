@@ -24,6 +24,8 @@ const Fonts = (props) => {
     fontSize,
     responsiveFontSizes,
     current,
+    bodyCats,
+    headerCats,
   } = props;
 
   const handleClick = (e) => {
@@ -74,6 +76,20 @@ const Fonts = (props) => {
           />
         </ListItem>
       )}
+      <ListItem
+        button
+        id="open-body-font-category-selector"
+        onClick={handleClick}
+      >
+        <ListItemText
+          primary={
+            twoFonts
+              ? "Select body font search categories"
+              : "Select font categories"
+          }
+          secondary={bodyCats.toString()}
+        />
+      </ListItem>
       <ListItem button id="open-body-font-picker" onClick={handleClick}>
         <ListItemText
           primary={twoFonts ? "Select body font" : "Select font"}
@@ -136,6 +152,8 @@ const mapStateToProps = (state) => ({
   fontSize: state.appState.current.fontSize,
   header: state.appState.current.header,
   body: state.appState.current.body,
+  bodyCats: state.components.fonts.body.searchCategories,
+  headerCats: state.components.fonts.header.searchCategories,
   responsiveFontSizes: state.appState.current.responsiveFontSizes,
   current: state.appState.current,
 });
