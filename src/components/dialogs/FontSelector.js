@@ -30,8 +30,6 @@ const FontPicker = (props) => {
     fonts,
     body,
     header,
-    primary,
-    secondary,
     current,
     past,
     twoFonts,
@@ -210,8 +208,6 @@ const mapStateToProps = (state) => ({
   twoFonts: state.appState.current.twoFonts,
   body: state.appState.current.body,
   header: state.appState.current.header,
-  primary: state.components.palette.primary,
-  secondary: state.components.palette.secondary,
   current: state.appState.current,
   past: state.appState.past,
 });
