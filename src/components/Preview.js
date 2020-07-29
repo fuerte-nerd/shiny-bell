@@ -2,22 +2,10 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Divider, Typography, Box } from "@material-ui/core";
-import { setPrimaryColorName, setSecondaryColorName } from "../state/actions";
 import Text from "./Text";
 import Buttons from "./Buttons";
 
-const Preview = ({
-  dispatch,
-  bodyFont,
-  headerFont,
-  twoFonts,
-  primary,
-  secondary,
-  primaryColorName,
-  secondaryColorName,
-  backgrounds,
-  current,
-}) => {
+const Preview = ({ twoFonts, primary, secondary, current }) => {
   const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
 
   useEffect(() => {
@@ -73,12 +61,9 @@ const Preview = ({
 
 const mapStateToProps = (state) => ({
   current: state.appState.current,
-  bodyFont: state.components.fonts.body.currentFont,
-  headerFont: state.components.fonts.header.currentFont,
   twoFonts: state.appState.current.twoFonts,
   primary: state.appState.current.primary,
   secondary: state.appState.current.secondary,
-  backgrounds: state.backgrounds,
 });
 
 export default connect(mapStateToProps)(Preview);
