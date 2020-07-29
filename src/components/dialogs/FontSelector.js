@@ -15,11 +15,11 @@ import {
   Box,
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
-import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
 import {
   setFontSelectorOpen,
   setFontSelectorCategories,
   setLoadingScreen,
+  setFontSelectorError,
 } from "../../state/display/actions";
 import { setPastAppStates } from "../../state/appState/actions";
 import Theme from "../Theme";
@@ -74,7 +74,7 @@ const FontPicker = (props) => {
       .then(() => theme.commit().then(() => dispatch(setLoadingScreen(false))))
       .catch((err) => {
         dispatch(setLoadingScreen(false));
-        dispatch(setError(true));
+        dispatch(setFontSelectorError(true));
       });
   };
 
@@ -105,7 +105,7 @@ const FontPicker = (props) => {
         <Snackbar
           open={error}
           autoHideDuration={6000}
-          onClose={() => dispatch(setError(null))}
+          onClose={() => dispatch(setFontSelectorError(null))}
         >
           <Alert style={{ fontFamily: "Roboto" }} severity="error">
             Sorry, but we were unable to load that font. Please select a

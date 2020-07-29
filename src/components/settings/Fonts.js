@@ -109,7 +109,7 @@ const Fonts = (props) => {
           primary={
             twoFonts
               ? "Select body font search categories"
-              : "Select font categories"
+              : "Select font search categories"
           }
           secondary={bodyCats
             .map((i) => i.charAt(0).toUpperCase() + i.substr(1))
