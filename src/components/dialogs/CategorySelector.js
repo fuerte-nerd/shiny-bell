@@ -9,6 +9,7 @@ import {
   Checkbox,
   DialogContent,
   DialogActions,
+  Typography,
   Button,
 } from "@material-ui/core";
 import {
@@ -53,9 +54,15 @@ const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
   };
 
   return (
-    <Dialog open={isOpen} maxWidth="lg">
-      <DialogTitle>
-        Set {twoFonts ? section : null} font search categories
+    <Dialog
+      open={isOpen}
+      onClose={() => dispatch(setFontCategorySelectorOpen(false))}
+      maxWidth="lg"
+    >
+      <DialogTitle disableTypography>
+        <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
+          Select {twoFonts ? section : null} font search categories
+        </Typography>
       </DialogTitle>
       <DialogContent>
         <Box mb={2}>
@@ -121,7 +128,10 @@ const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => dispatch(setFontCategorySelectorOpen(false))}>
+        <Button
+          style={{ fontFamily: "Roboto" }}
+          onClick={() => dispatch(setFontCategorySelectorOpen(false))}
+        >
           Close
         </Button>
       </DialogActions>
