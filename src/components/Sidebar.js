@@ -4,6 +4,7 @@ import { setSidebar } from "../state/display/actions";
 
 import { Drawer, List } from "@material-ui/core";
 
+import Main from "./settings/Main";
 import Locks from "./settings/Locks";
 import Fonts from "./settings/Fonts";
 import Colors from "./settings/Colors";
@@ -24,6 +25,7 @@ const Sidebar = ({ dispatch, isOpen }) => {
       BackdropProps={{ style: { backgroundColor: "transparent" } }}
     >
       <List dense disablePadding style={{ width: 250 }}>
+        <Main />
         <Locks />
         <Fonts />
         <Colors />
