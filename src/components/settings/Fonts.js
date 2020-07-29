@@ -9,14 +9,8 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
-import {
-  setResponsiveFontSizes,
-  setFontSize,
-} from "../../state/settings/actions";
-import { setFontSelector, setLoadingScreen } from "../../state/display/actions";
+import { setFontSelector } from "../../state/display/actions";
 import { setSection } from "../../state/fontSelector/actions";
-import { setCurrentAppState } from "../../state/appState/actions";
-import FontLoader from "../../functions/FontHelper";
 import Theme from "../../functions/Theme";
 
 const Fonts = (props) => {
