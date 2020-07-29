@@ -20,7 +20,10 @@ const initialState = {
     ],
     error: null,
   },
-  colorPicker: false,
+  colorPicker: {
+    isOpen: false,
+    section: "primary",
+  },
   fontCategorySelector: {
     isOpen: false,
     section: "body",
