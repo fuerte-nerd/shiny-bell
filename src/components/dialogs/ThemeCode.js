@@ -15,7 +15,14 @@ import getThemeCode from "../../scripts/getThemeCode";
 
 import AppTypography from "../AppTypography";
 
-const ThemeCode = ({ dispatch, themeCode, font, twoFonts, headerFont }) => {
+const ThemeCode = ({
+  dispatch,
+  themeCode,
+  current,
+  font,
+  twoFonts,
+  headerFont,
+}) => {
   const handleClose = () => {
     dispatch(setThemeCode(false));
   };
@@ -55,7 +62,7 @@ const ThemeCode = ({ dispatch, themeCode, font, twoFonts, headerFont }) => {
           wrapLines
           lineProps={{ style: { whiteSpace: "pre-wrap" } }}
         >
-          {font && headerFont ? getThemeCode() : ``}
+          {current ? getThemeCode() : ``}
         </SyntaxHighlighter>
         <SyntaxHighlighter
           language="javascript"
@@ -63,7 +70,7 @@ const ThemeCode = ({ dispatch, themeCode, font, twoFonts, headerFont }) => {
           wrapLines
           lineProps={{ style: { whiteSpace: "pre-wrap" } }}
         >
-          {font && headerFont ? helmetCodeString() : ``}
+          {current ? helmetCodeString() : ``}
         </SyntaxHighlighter>
       </DialogContent>
       <DialogActions>
@@ -80,6 +87,7 @@ const mapStateToProps = (state) => ({
   font: state.appState.current.font,
   twoFonts: state.appState.current.twoFonts,
   headerFont: state.appState.current.header,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(ThemeCode);
