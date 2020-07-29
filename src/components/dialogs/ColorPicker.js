@@ -7,7 +7,7 @@ import {
   setCurrentAppState,
   setPastAppStates,
 } from "../../state/appState/actions";
-import Theme from "../../functions/Theme";
+import Theme from "../Theme";
 
 const ColorPicker = ({ dispatch, colorPicker, current, past, section }) => {
   const [initialState, setInitialState] = useState();

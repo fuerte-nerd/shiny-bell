@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { setColorPicker } from "../../state/display/actions";
 import { setColorPickerSection } from "../../state/colorPicker/actions";
 import Setting from "../Setting";
-import Theme from "../../functions/Theme";
+import Theme from "../Theme";
 import {
   ListItem,
   ListItemText,

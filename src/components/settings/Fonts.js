@@ -11,7 +11,7 @@ import {
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
 import { setFontSelector } from "../../state/display/actions";
 import { setSection } from "../../state/fontSelector/actions";
-import Theme from "../../functions/Theme";
+import Theme from "../Theme";
 
 const Fonts = (props) => {
   const { dispatch } = props;

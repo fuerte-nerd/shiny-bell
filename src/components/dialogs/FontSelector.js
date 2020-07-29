@@ -18,7 +18,7 @@ import { Alert } from "@material-ui/lab";
 import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
 import { setFontSelector, setLoadingScreen } from "../../state/display/actions";
 import { setPastAppStates } from "../../state/appState/actions";
-import Theme from "../../functions/Theme";
+import Theme from "../Theme";
 
 const FontPicker = (props) => {
   const { dispatch } = props;

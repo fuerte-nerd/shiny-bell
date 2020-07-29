@@ -8,8 +8,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
-import { setBackgrounds } from "../../state/actions";
-import Theme from "../../functions/Theme";
+import Theme from "../Theme";
 
 const Backgrounds = ({ dispatch, backgrounds, current }) => {
   const options = [

@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import {} from "../../state/appState/actions";
 import Setting from "../Setting";
 
 import {
@@ -11,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
 
-import Theme from "../../functions/Theme";
+import Theme from "../Theme";
 
 const Appearance = ({ dispatch, spacing, rounding, current }) => {
   return (
