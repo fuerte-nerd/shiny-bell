@@ -1,8 +1,9 @@
 import {
   SET_LOADING_SCREEN,
   SET_SIDEBAR,
-  SET_FONT_SELECTOR,
   SET_COLOR_PICKER,
+  SET_FONT_SELECTOR_OPEN,
+  SET_FONT_SELECTOR_SECTION,
 } from "./types";
 
 export const setLoadingScreen = (payload) => ({
@@ -15,8 +16,13 @@ export const setSidebar = (payload) => ({
   payload,
 });
 
-export const setFontSelector = (payload) => ({
-  type: SET_FONT_SELECTOR,
+export const setFontSelectorOpen = (payload) => ({
+  type: SET_FONT_SELECTOR_OPEN,
+  payload,
+});
+
+export const setFontSelectorSection = (payload) => ({
+  type: SET_FONT_SELECTOR_SECTION,
   payload,
 });
 
