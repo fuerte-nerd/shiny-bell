@@ -8,13 +8,37 @@ import {
   ListItemSecondaryAction,
   IconButton,
 } from "@material-ui/core";
-import { AddCircle, RemoveCircle } from "@material-ui/icons";
+import {
+  SettingsBrightness,
+  AddCircle,
+  RemoveCircle,
+} from "@material-ui/icons";
 
 import Theme from "../Theme";
 
-const Appearance = ({ dispatch, spacing, rounding, current }) => {
+const Appearance = ({ dispatch, spacing, rounding, current, mode }) => {
   return (
     <Setting title="Appearance">
+      <ListItem
+        id="dark"
+        onClick={() => {
+          new Theme({
+            ...current,
+            mode: current.mode === "light" ? "dark" : "light",
+          }).commit();
+        }}
+        button
+      >
+        <ListItemText
+          primary="Dark mode"
+          secondary={mode === "light" ? "Off" : "On"}
+        />
+        <ListItemSecondaryAction>
+          <IconButton edge="end" id="dark-btn" onClick={handleClick}>
+            <SettingsBrightness />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
       <ListItem>
         <ListItemText primary="Spacing" secondary={spacing} />
         <ListItemSecondaryAction>
@@ -74,6 +98,7 @@ const mapStateToProps = (state) => ({
   spacing: state.appState.current.spacing,
   rounding: state.appState.current.rounding,
   current: state.appState.current,
+  mode: state.appState.current.mode,
 });
 
 export default connect(mapStateToProps)(Appearance);
