@@ -99,7 +99,7 @@ class Theme {
     const fontSearchList = store.getState().library.fonts.filter((i) => {
       return store
         .getState()
-        .settings.fontCategoryFilters[target].includes(i.category);
+        .components.fonts[target].searchCategories.includes(i.category);
     });
     return fontSearchList[Math.floor(Math.random() * fontSearchList.length)];
   }

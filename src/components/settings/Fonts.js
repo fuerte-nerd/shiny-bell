@@ -13,6 +13,7 @@ import {
   setFontSelectorOpen,
   setFontSelectorSection,
   setFontCategorySelectorOpen,
+  setFontCategorySelectorSection,
 } from "../../state/display/actions";
 import Theme from "../Theme";
 
@@ -63,6 +64,11 @@ const Fonts = (props) => {
         new Theme({ ...current, fontSize: fontSize - 1 }).commit();
         break;
       case "open-body-font-category-selector":
+        dispatch(setFontCategorySelectorSection("body"));
+        dispatch(setFontCategorySelectorOpen(true));
+        break;
+      case "open-header-font-category-selector":
+        dispatch(setFontCategorySelectorSection("header"));
         dispatch(setFontCategorySelectorOpen(true));
         break;
       default:
@@ -73,12 +79,26 @@ const Fonts = (props) => {
   return (
     <Setting title="Fonts">
       {twoFonts && (
-        <ListItem button id="open-header-font-picker" onClick={handleClick}>
-          <ListItemText
-            primary="Select header font"
-            secondary={header.family}
-          />
-        </ListItem>
+        <>
+          <ListItem
+            button
+            id="open-header-font-category-selector"
+            onClick={handleClick}
+          >
+            <ListItemText
+              primary="Select header font search categories"
+              secondary={headerCats
+                .map((i) => i.charAt(0).toUpperCase() + i.substr(1))
+                .join(", ")}
+            />
+          </ListItem>
+          <ListItem button id="open-header-font-picker" onClick={handleClick}>
+            <ListItemText
+              primary="Select header font"
+              secondary={header.family}
+            />
+          </ListItem>
+        </>
       )}
       <ListItem
         button
