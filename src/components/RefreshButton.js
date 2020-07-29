@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Tooltip, Fab } from "@material-ui/core";
 import { Refresh, Lock } from "@material-ui/icons";
 
-import Theme from "../functions/Theme";
+import Theme from "./Theme";
 
 import { setLoadingScreen } from "../state/display/actions";
 import {

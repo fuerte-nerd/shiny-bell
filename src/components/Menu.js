@@ -10,7 +10,7 @@ import {
 import { SettingsBrightness, Settings, Code } from "@material-ui/icons";
 import UndoRedo from "./UndoRedo";
 import { setSidebar } from "../state/display/actions";
-import { setCurrentAppState } from "../state/appState/actions";
+import Theme from "./Theme";
 
 const Menu = ({ dispatch, current }) => {
   const handleClick = async (e) => {
@@ -20,12 +20,9 @@ const Menu = ({ dispatch, current }) => {
         dispatch(setSidebar(true));
         break;
       case "mode":
-        dispatch(
-          setCurrentAppState({
-            ...current,
-            mode: current.mode === "light" ? "dark" : "light",
-          })
-        );
+        new Theme({
+          mode: current.mode === "light" ? "dark" : "light",
+        }).commit();
         break;
       case "code":
       default:

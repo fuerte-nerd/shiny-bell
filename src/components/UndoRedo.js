@@ -7,7 +7,7 @@ import {
   setFutureAppStates,
 } from "../state/appState/actions";
 import { setLoadingScreen } from "../state/display/actions";
-import Theme from "../functions/Theme";
+import Theme from "./Theme";
 
 const UndoRedo = (props) => {
   const { dispatch } = props;

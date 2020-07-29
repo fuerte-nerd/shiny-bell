@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setButtonTextTransform } from "../../state/actions";
 import Setting from "../Setting";
 import {
   ListItem,
@@ -11,7 +10,7 @@ import {
 
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 
-import Theme from "../../functions/Theme";
+import Theme from "../Theme";
 
 const Buttons = ({ dispatch, buttonTextTransform, current, past }) => {
   const options = ["uppercase", "capitalize", "lowercase"];
