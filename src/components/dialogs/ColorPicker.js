@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { setColorPicker } from "../../state/display/actions";
+import { setColorPickerOpen } from "../../state/display/actions";
 import { Box, Dialog } from "@material-ui/core";
 import { PhotoshopPicker } from "react-color";
 import {
@@ -22,7 +22,7 @@ const ColorPicker = ({ dispatch, colorPicker, current, past, section }) => {
   return (
     <Dialog
       open={colorPicker}
-      onClose={() => dispatch(setColorPicker(false))}
+      onClose={() => dispatch(setColorPickerOpen(false))}
       PaperProps={{ style: { backgroundColor: "transparent" } }}
       BackdropProps={{ style: { backgroundColor: "transparent" } }}
     >
@@ -42,13 +42,13 @@ const ColorPicker = ({ dispatch, colorPicker, current, past, section }) => {
             if (current !== initialState) {
               dispatch(setPastAppStates([...past, initialState]));
             }
-            dispatch(setColorPicker(false));
+            dispatch(setColorPickerOpen(false));
           }}
           onCancel={() => {
             if (current !== initialState) {
               dispatch(setCurrentAppState(initialState));
             }
-            dispatch(setColorPicker(false));
+            dispatch(setColorPickerOpen(false));
           }}
         />
       </Box>
@@ -57,8 +57,8 @@ const ColorPicker = ({ dispatch, colorPicker, current, past, section }) => {
 };
 
 const mapStateToProps = (state) => ({
-  colorPicker: state.display.colorPicker,
-  section: state.colorPicker.section,
+  isOpen: state.display.colorPicker.isOpen,
+  section: state.display.colorPicker.section,
   current: state.appState.current,
   past: state.appState.past,
 });
