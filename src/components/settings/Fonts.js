@@ -91,7 +91,9 @@ const Fonts = (props) => {
               ? "Select body font search categories"
               : "Select font categories"
           }
-          secondary={bodyCats.toString()}
+          secondary={bodyCats
+            .map((i) => i.charAt(0).toUpperCase() + i.substr(1))
+            .join(", ")}
         />
       </ListItem>
       <ListItem button id="open-body-font-picker" onClick={handleClick}>

@@ -21,7 +21,7 @@ const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
     const { id } = e.currentTarget;
     switch (section) {
       case "body":
-        if (filters[section].includes(id)) {
+        if (!filters[section].includes(id)) {
           dispatch(setBodyFontCategories([...filters[section], id]));
         } else {
           dispatch(
@@ -34,7 +34,7 @@ const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
         }
         break;
       case "header":
-        if (filters[section].includes(id)) {
+        if (!filters[section].includes(id)) {
           dispatch(setHeaderFontCategories([...filters[section], id]));
         } else {
           dispatch(
