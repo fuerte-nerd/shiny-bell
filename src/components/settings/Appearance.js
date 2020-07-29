@@ -17,18 +17,23 @@ import {
 import Theme from "../Theme";
 
 const Appearance = ({ dispatch, spacing, rounding, current, mode }) => {
+  const handleClick = (e) => {
+    const { id } = e.currentTarget;
+    switch (id) {
+      case "dark":
+      case "dark-btn":
+        new Theme({
+          ...current,
+          mode: current.mode === "light" ? "dark" : "light",
+        }).commit();
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <Setting title="Appearance">
-      <ListItem
-        id="dark"
-        onClick={() => {
-          new Theme({
-            ...current,
-            mode: current.mode === "light" ? "dark" : "light",
-          }).commit();
-        }}
-        button
-      >
+      <ListItem id="dark" onClick={handleClick} button>
         <ListItemText
           primary="Dark mode"
           secondary={mode === "light" ? "Off" : "On"}
