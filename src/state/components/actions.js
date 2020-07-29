@@ -1,42 +1,15 @@
 import {
-  SET_LOADING,
-  SET_DEF_FONT_LOADING,
   SET_DEF_FONT_LOADED,
-  SET_NEXT_BODY_FONT,
-  SET_BODY_FONT_LOADING,
-  SET_BODY_FONT_LOADED,
   SET_BODY_FONT_LOCK,
-  SET_NEXT_HEADER_FONT,
-  SET_HEADER_FONT_LOADING,
-  SET_HEADER_FONT_LOADED,
   SET_HEADER_FONT_LOCK,
   SET_PALETTE_LOCK,
-  SET_PRIMARY_HEX,
-  SET_PRIMARY_NAME,
-  SET_SECONDARY_HEX,
-  SET_SECONDARY_NAME,
-  SET_FONTS_LOADING,
-  SET_PALETTE_LOADING,
   SET_VALIDATION_FONT,
+  SET_BODY_FONT_CATEGORIES,
+  SET_HEADER_FONT_CATEGORIES,
 } from "./types";
 
 export const setValidationFont = (payload) => ({
   type: SET_VALIDATION_FONT,
-  payload,
-});
-
-export const setComponentsLoading = (payload) => ({
-  type: SET_LOADING,
-  payload,
-});
-
-export const setFontsLoading = (payload) => ({
-  type: SET_FONTS_LOADING,
-  payload,
-});
-
-export const setDefFontLoading = (payload) => ({
-  type: SET_DEF_FONT_LOADING,
   payload,
 });
 
@@ -45,38 +18,13 @@ export const setDefFontLoaded = (payload) => ({
   payload,
 });
 
-export const setNextBodyFont = (payload) => ({
-  type: SET_NEXT_BODY_FONT,
-  payload,
-});
-
-export const setBodyFontLoading = (payload) => ({
-  type: SET_BODY_FONT_LOADING,
-  payload,
-});
-
-export const setBodyFontLoaded = (payload) => ({
-  type: SET_BODY_FONT_LOADED,
-  payload,
-});
-
 export const setBodyFontLock = (payload) => ({
   type: SET_BODY_FONT_LOCK,
   payload,
 });
 
-export const setNextHeaderFont = (payload) => ({
-  type: SET_NEXT_HEADER_FONT,
-  payload,
-});
-
-export const setHeaderFontLoading = (payload) => ({
-  type: SET_HEADER_FONT_LOADING,
-  payload,
-});
-
-export const setHeaderFontLoaded = (payload) => ({
-  type: SET_HEADER_FONT_LOADED,
+export const setBodyFontCategories = (payload) => ({
+  type: SET_BODY_FONT_CATEGORIES,
   payload,
 });
 
@@ -85,32 +33,12 @@ export const setHeaderFontLock = (payload) => ({
   payload,
 });
 
-export const setPaletteLoading = (payload) => ({
-  type: SET_PALETTE_LOADING,
+export const setHeaderFontCategories = (payload) => ({
+  type: SET_HEADER_FONT_CATEGORIES,
   payload,
 });
 
 export const setPaletteLock = (payload) => ({
   type: SET_PALETTE_LOCK,
-  payload,
-});
-
-export const setPrimaryHex = (payload) => ({
-  type: SET_PRIMARY_HEX,
-  payload,
-});
-
-export const setPrimaryName = (payload) => ({
-  type: SET_PRIMARY_NAME,
-  payload,
-});
-
-export const setSecondaryHex = (payload) => ({
-  type: SET_SECONDARY_HEX,
-  payload,
-});
-
-export const setSecondaryName = (payload) => ({
-  type: SET_SECONDARY_NAME,
   payload,
 });
