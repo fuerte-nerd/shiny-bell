@@ -9,19 +9,19 @@ import {
 } from "../../state/appState/actions";
 import Theme from "../Theme";
 
-const ColorPicker = ({ dispatch, colorPicker, current, past, section }) => {
+const ColorPicker = ({ dispatch, isOpen, current, past, section }) => {
   const [initialState, setInitialState] = useState();
 
   useEffect(() => {
-    if (colorPicker) {
+    if (isOpen) {
       setInitialState(current);
     }
     //eslint-disable-next-line
-  }, [colorPicker]);
+  }, [isOpen]);
 
   return (
     <Dialog
-      open={colorPicker}
+      open={isOpen}
       onClose={() => dispatch(setColorPickerOpen(false))}
       PaperProps={{ style: { backgroundColor: "transparent" } }}
       BackdropProps={{ style: { backgroundColor: "transparent" } }}

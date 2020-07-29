@@ -21,6 +21,7 @@ const Menu = ({ dispatch, current }) => {
         break;
       case "mode":
         new Theme({
+          ...current,
           mode: current.mode === "light" ? "dark" : "light",
         }).commit();
         break;
