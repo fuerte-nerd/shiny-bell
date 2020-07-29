@@ -1,8 +1,13 @@
 import {
   SET_LOADING_SCREEN,
   SET_SIDEBAR,
-  SET_FONT_SELECTOR,
-  SET_COLOR_PICKER,
+  SET_FONT_SELECTOR_OPEN,
+  SET_COLOR_PICKER_OPEN,
+  SET_FONT_SELECTOR_SECTION,
+  SET_FONT_SELECTOR_CATEGORIES,
+  SET_COLOR_PICKER_SECTION,
+  SET_FONT_CATEGORY_SELECTOR_OPEN,
+  SET_FONT_CATEGORY_SELECTOR_SECTION,
 } from "./types";
 
 const initialState = {
@@ -42,11 +47,26 @@ export default (state = initialState, action) => {
     case SET_SIDEBAR:
       newState.sidebar = payload;
       break;
-    case SET_FONT_SELECTOR:
-      newState.fontSelector = payload;
+    case SET_FONT_SELECTOR_OPEN:
+      newState.fontSelector.isOpen = payload;
       break;
-    case SET_COLOR_PICKER:
-      newState.colorPicker = payload;
+    case SET_FONT_SELECTOR_SECTION:
+      newState.fontSelector.section = payload;
+      break;
+    case SET_FONT_SELECTOR_CATEGORIES:
+      newState.fontSelector.categoryFilters = payload;
+      break;
+    case SET_COLOR_PICKER_OPEN:
+      newState.colorPicker.isOpen = payload;
+      break;
+    case SET_COLOR_PICKER_SECTION:
+      newState.colorPicker.section = payload;
+      break;
+    case SET_FONT_CATEGORY_SELECTOR_OPEN:
+      newState.fontCategorySelector.isOpen = payload;
+      break;
+    case SET_FONT_CATEGORY_SELECTOR_SECTION:
+      newState.fontCategorySelector.section = payload;
       break;
     default:
       break;
