@@ -26,11 +26,10 @@ const Fonts = (props) => {
 
   const handleClick = (e) => {
     const { id } = e.currentTarget;
-    let theme;
     switch (id) {
       case "two-font-mode":
       case "two-font-mode-switch":
-        theme = new Theme({ ...current, twoFonts: !twoFonts }).commit();
+        new Theme({ ...current, twoFonts: !twoFonts }).commit();
         break;
       case "open-body-font-picker":
         dispatch(setSection("body"));
@@ -43,22 +42,21 @@ const Fonts = (props) => {
       case "swap-fonts":
         const b = body;
         const h = header;
-        theme = new Theme({ ...current, body: h, header: b }).commit();
+        new Theme({ ...current, body: h, header: b }).commit();
         break;
       case "toggle-responsive-font-sizes-btn":
       case "toggle-responsive-font-sizes-switch":
-        theme = new Theme({
+        new Theme({
           ...current,
           responsiveFontSizes: !responsiveFontSizes,
         }).commit();
         break;
       case "inc-font-size":
-        theme = new Theme({ ...current, fontSize: fontSize + 1 }).commit();
+        new Theme({ ...current, fontSize: fontSize + 1 }).commit();
         break;
       case "dec-font-size":
-        theme = new Theme({ ...current, fontSize: fontSize - 1 }).commit();
+        new Theme({ ...current, fontSize: fontSize - 1 }).commit();
         break;
-
       default:
         return;
     }
@@ -137,7 +135,6 @@ const mapStateToProps = (state) => ({
   header: state.appState.current.header,
   body: state.appState.current.body,
   responsiveFontSizes: state.appState.current.responsiveFontSizes,
-  fontPicker: state.fontPicker,
   current: state.appState.current,
 });
 
