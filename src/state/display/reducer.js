@@ -8,8 +8,23 @@ import {
 const initialState = {
   loadingScreen: true,
   sidebar: false,
-  fontSelector: false,
+  fontSelector: {
+    isOpen: false,
+    section: "body",
+    categoryFilters: [
+      "serif",
+      "sans-serif",
+      "display",
+      "handwriting",
+      "monospace",
+    ],
+    error: null,
+  },
   colorPicker: false,
+  fontCategorySelector: {
+    isOpen: false,
+    section: "body",
+  },
 };
 
 export default (state = initialState, action) => {
