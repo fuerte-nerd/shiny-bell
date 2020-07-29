@@ -35,7 +35,7 @@ const Menu = ({ dispatch, current }) => {
   return (
     <AppBar>
       <Toolbar>
-        <Typography variant="h6">Site name</Typography>
+        <Typography variant="h6">{current.name}</Typography>
         <div style={{ flexGrow: 1 }} />
         <UndoRedo />
         <Tooltip title="Toggle dark mode">

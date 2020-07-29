@@ -1,6 +1,7 @@
 import store from "../state/store";
 import uniqid from "uniqid";
 import FontFaceObserver from "fontfaceobserver";
+import nameGenerator from "project-name-generator";
 import tinycolor from "tinycolor2";
 import { setValidationFont } from "../state/components/actions";
 import { setCurrentAppState } from "../state/appState/actions";
@@ -11,7 +12,9 @@ class Theme {
     const { appState, components } = state;
 
     this.id = uniqid();
-    this.name = `Untitled`;
+    this.name = nameGenerator()
+      .raw.map((i) => i.charAt(0).toUpperCase() + i.substr(1))
+      .join(" ");
     this.createDate = new Date();
     this.primary = components.palette.locked
       ? appState.current.primary
