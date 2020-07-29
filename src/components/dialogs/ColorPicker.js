@@ -9,20 +9,14 @@ import {
 } from "../../state/appState/actions";
 import Theme from "../../functions/Theme";
 
-const ColorPicker = ({
-  dispatch,
-  colorPicker,
-  primary,
-  current,
-  past,
-  section,
-}) => {
+const ColorPicker = ({ dispatch, colorPicker, current, past, section }) => {
   const [initialState, setInitialState] = useState();
 
   useEffect(() => {
     if (colorPicker) {
       setInitialState(current);
     }
+    //eslint-disable-next-line
   }, [colorPicker]);
 
   return (
@@ -65,7 +59,6 @@ const ColorPicker = ({
 const mapStateToProps = (state) => ({
   colorPicker: state.display.colorPicker,
   section: state.colorPicker.section,
-  primary: state.appState.current.primary,
   current: state.appState.current,
   past: state.appState.past,
 });

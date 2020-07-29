@@ -5,7 +5,6 @@ import { Refresh, Lock } from "@material-ui/icons";
 
 import Theme from "../functions/Theme";
 
-import { setComponentsLoading } from "../state/components/actions";
 import { setLoadingScreen } from "../state/display/actions";
 import {
   setPastAppStates,

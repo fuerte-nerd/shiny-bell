@@ -11,7 +11,7 @@ import Appearance from "./settings/Appearance";
 import Buttons from "./settings/Buttons";
 import Backgrounds from "./settings/Backgrounds";
 
-const Sidebar = ({ dispatch, isOpen, body, header }) => {
+const Sidebar = ({ dispatch, isOpen }) => {
   const handleClose = () => {
     dispatch(setSidebar(false));
   };
@@ -37,8 +37,6 @@ const Sidebar = ({ dispatch, isOpen, body, header }) => {
 
 const mapStateToProps = (state) => ({
   isOpen: state.display.sidebar,
-  body: state.components.fonts.body.currentFont,
-  header: state.components.fonts.header.currentFont,
 });
 
 export default connect(mapStateToProps)(Sidebar);

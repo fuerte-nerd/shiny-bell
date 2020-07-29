@@ -7,26 +7,12 @@ import {
   IconButton,
   Tooltip,
 } from "@material-ui/core";
-import {
-  Undo,
-  Redo,
-  SettingsBrightness,
-  Settings,
-  Code,
-} from "@material-ui/icons";
+import { SettingsBrightness, Settings, Code } from "@material-ui/icons";
 import UndoRedo from "./UndoRedo";
 import { setSidebar } from "../state/display/actions";
 import { setCurrentAppState } from "../state/appState/actions";
 
-const Menu = ({
-  dispatch,
-  current,
-  mode,
-  changeHistory,
-  font,
-  headerFont,
-  primary,
-}) => {
+const Menu = ({ dispatch, current }) => {
   const handleClick = async (e) => {
     const { id } = e.currentTarget;
     switch (id) {
