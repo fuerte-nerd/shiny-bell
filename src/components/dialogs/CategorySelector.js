@@ -10,10 +10,10 @@ import {
   Button,
 } from "@material-ui/core";
 
-const Categories = () => {
+const Categories = ({ dispatch, twoFonts, isOpen, section }) => {
   return (
-    <Dialog>
-      <DialogTitle></DialogTitle>
+    <Dialog open={isOpen} maxWidth="lg">
+      <DialogTitle>Set {twoFonts ? section : null} font filters</DialogTitle>
       <DialogContent></DialogContent>
       <DialogActions>
         <Button></Button>
@@ -23,6 +23,10 @@ const Categories = () => {
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  twoFonts: state.appState.current.twoFonts,
+  isOpen: state.display.fontCategorySelector.isOpen,
+  section: state.display.fontCategorySelector.section,
+});
 
 export default connect(mapStateToProps)(Categories);
