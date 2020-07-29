@@ -12,6 +12,7 @@ import { AddCircle, RemoveCircle } from "@material-ui/icons";
 import {
   setFontSelectorOpen,
   setFontSelectorSection,
+  setFontCategorySelectorOpen,
 } from "../../state/display/actions";
 import Theme from "../Theme";
 
@@ -60,6 +61,9 @@ const Fonts = (props) => {
         break;
       case "dec-font-size":
         new Theme({ ...current, fontSize: fontSize - 1 }).commit();
+        break;
+      case "open-body-font-category-selector":
+        dispatch(setFontCategorySelectorOpen(true));
         break;
       default:
         return;
