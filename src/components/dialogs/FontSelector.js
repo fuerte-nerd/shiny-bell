@@ -16,7 +16,11 @@ import {
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
 import { setError, setCategoryFilters } from "../../state/fontSelector/actions";
-import { setFontSelector, setLoadingScreen } from "../../state/display/actions";
+import {
+  setFontSelectorOpen,
+  setFontSelectorCategories,
+  setLoadingScreen,
+} from "../../state/display/actions";
 import { setPastAppStates } from "../../state/appState/actions";
 import Theme from "../Theme";
 
@@ -45,10 +49,10 @@ const FontPicker = (props) => {
   const handleChange = (e) => {
     const { id, checked } = e.currentTarget;
     if (checked) {
-      dispatch(setCategoryFilters([...filters, id]));
+      dispatch(setFontSelectorCategories([...filters, id]));
     } else {
       dispatch(
-        setCategoryFilters(
+        setFontSelectorCategories(
           filters.filter((i) => {
             return i === id ? null : i;
           })
@@ -205,9 +209,9 @@ const FontPicker = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  isOpen: state.display.fontSelector,
-  section: state.fontSelector.section,
-  filters: state.fontSelector.categoryFilters,
+  isOpen: state.display.fontSelector.isOpen,
+  section: state.display.fontSelector.section,
+  filters: state.display.fontSelector.categoryFilters,
   error: state.fontSelector.error,
   fonts: state.library.fonts,
   twoFonts: state.appState.current.twoFonts,

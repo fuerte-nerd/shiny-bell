@@ -9,8 +9,10 @@ import {
   IconButton,
 } from "@material-ui/core";
 import { AddCircle, RemoveCircle } from "@material-ui/icons";
-import { setFontSelector } from "../../state/display/actions";
-import { setSection } from "../../state/fontSelector/actions";
+import {
+  setFontSelectorOpen,
+  setFontSelectorSection,
+} from "../../state/display/actions";
 import Theme from "../Theme";
 
 const Fonts = (props) => {
@@ -32,12 +34,12 @@ const Fonts = (props) => {
         new Theme({ ...current, twoFonts: !twoFonts }).commit();
         break;
       case "open-body-font-picker":
-        dispatch(setSection("body"));
-        dispatch(setFontSelector(true));
+        dispatch(setFontSelectorSection("body"));
+        dispatch(setFontSelectorOpen(true));
         break;
       case "open-header-font-picker":
-        dispatch(setSection("header"));
-        dispatch(setFontSelector(true));
+        dispatch(setFontSelectorSection("header"));
+        dispatch(setFontSelectorOpen(true));
         break;
       case "swap-fonts":
         const b = body;

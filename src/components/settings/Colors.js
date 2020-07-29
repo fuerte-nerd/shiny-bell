@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setColorPicker } from "../../state/display/actions";
-import { setColorPickerSection } from "../../state/colorPicker/actions";
+import {
+  setColorPickerOpen,
+  setColorPickerSection,
+} from "../../state/display/actions";
 import Setting from "../Setting";
 import Theme from "../Theme";
 import {
@@ -36,7 +38,7 @@ const Colors = ({
         button
         onClick={() => {
           dispatch(setColorPickerSection("primary"));
-          dispatch(setColorPicker(true));
+          dispatch(setColorPickerOpen(true));
         }}
       >
         <ListItemText primary="Adjust primary color" secondary={primary} />
@@ -46,7 +48,7 @@ const Colors = ({
           button
           onClick={() => {
             dispatch(setColorPickerSection("secondary"));
-            dispatch(setColorPicker(true));
+            dispatch(setColorPickerOpen(true));
           }}
         >
           <ListItemText
