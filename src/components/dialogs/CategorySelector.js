@@ -11,8 +11,27 @@ import {
   DialogActions,
   Button,
 } from "@material-ui/core";
+import { setBodyFontCategories } from "../../state/components/actions";
 
-const Categories = ({ dispatch, twoFonts, isOpen, section }) => {
+const Categories = ({ dispatch, filters, twoFonts, isOpen, section }) => {
+  const handleChange = (e) => {
+    const { id } = e.currentTarget;
+    switch (section) {
+      case "body":
+        if (filters[section].includes(id)) {
+          dispatch(setBodyFontCategories([...filters[section], id]));
+        } else {
+          dispatch(
+            setBodyFontCategories(
+              filters[section].filter((i) => {
+                return i !== id;
+              })
+            )
+          );
+        }
+    }
+  };
+
   return (
     <Dialog open={isOpen} maxWidth="lg">
       <DialogTitle>Set {twoFonts ? section : null} font filters</DialogTitle>
@@ -25,7 +44,7 @@ const Categories = ({ dispatch, twoFonts, isOpen, section }) => {
                   id="serif"
                   size="small"
                   onChange={handleChange}
-                  checked={isOpen && filters.includes("serif")}
+                  checked={isOpen && filters[section].includes("serif")}
                 />
               }
               label="Serif"
@@ -36,7 +55,7 @@ const Categories = ({ dispatch, twoFonts, isOpen, section }) => {
                   id="sans-serif"
                   size="small"
                   onChange={handleChange}
-                  checked={filters.includes("sans-serif")}
+                  checked={filters[section].includes("sans-serif")}
                 />
               }
               label="Sans Serif"
@@ -47,7 +66,7 @@ const Categories = ({ dispatch, twoFonts, isOpen, section }) => {
                   id="display"
                   size="small"
                   onChange={handleChange}
-                  checked={filters.includes("display")}
+                  checked={filters[section].includes("display")}
                 />
               }
               label="Display"
@@ -60,7 +79,7 @@ const Categories = ({ dispatch, twoFonts, isOpen, section }) => {
                   id="handwriting"
                   size="small"
                   onChange={handleChange}
-                  checked={filters.includes("handwriting")}
+                  checked={filters[section].includes("handwriting")}
                 />
               }
               label="Handwriting"
@@ -71,7 +90,7 @@ const Categories = ({ dispatch, twoFonts, isOpen, section }) => {
                   id="monospace"
                   size="small"
                   onChange={handleChange}
-                  checked={filters.includes("monospace")}
+                  checked={filters[section].includes("monospace")}
                 />
               }
               label="Monospace"
@@ -91,6 +110,10 @@ const mapStateToProps = (state) => ({
   twoFonts: state.appState.current.twoFonts,
   isOpen: state.display.fontCategorySelector.isOpen,
   section: state.display.fontCategorySelector.section,
+  filters: {
+    body: state.components.fonts.body.searchCategories,
+    header: state.components.fonts.header.searchCategories,
+  },
 });
 
 export default connect(mapStateToProps)(Categories);
