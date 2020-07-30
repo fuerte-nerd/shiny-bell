@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import {
   Dialog,
@@ -10,9 +10,13 @@ import {
   TextField,
 } from "@material-ui/core";
 import { setSave } from "../../state/display/actions";
+import Theme from "../Theme";
 
 const Save = ({ dispatch, filename, isOpen, current }) => {
-  const handleChange = (e) => {};
+  const [newFilename, setNewFilename] = useState(filename);
+  const handleChange = (e) => {
+    setNewFilename(e.currentTarget.value);
+  };
 
   const handleClick = (e) => {
     const { id } = e.currentTarget;
@@ -31,12 +35,14 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
           if (filenames.includes(newFilename)) {
             //set an error
           } else {
+            new Theme({ ...current, filename: newFilename }).commit();
             localStorage.setItem(
               "savedThemes",
               JSON.stringify([...previousSavedThemes, current])
             );
           }
         } else {
+          new Theme({ ...current, filename: newFilename }).commit();
           localStorage.setItem("savedThemes", JSON.stringify([current]));
         }
 
@@ -60,7 +66,8 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
       <DialogContent>
         <TextField
           label="Name"
-          defaultValue={filename}
+          defaultValue={newFilename}
+          value={newFilename}
           onChange={handleChange}
           InputProps={{ style: { fontFamily: "Roboto" } }}
           InputLabelProps={{ style: { fontFamily: "Roboto" } }}
