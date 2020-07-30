@@ -10,6 +10,8 @@ import {
   SET_FONT_CATEGORY_SELECTOR_SECTION,
   SET_FONT_SELECTOR_ERROR,
   SET_THEME_CODE,
+  SET_SAVE,
+  SET_LOAD,
 } from "./types";
 
 export const setLoadingScreen = (payload) => ({
@@ -64,5 +66,15 @@ export const setFontCategorySelectorSection = (payload) => ({
 
 export const setThemeCode = (payload) => ({
   type: SET_THEME_CODE,
+  payload,
+});
+
+export const setSave = (payload) => ({
+  type: SET_SAVE,
+  payload,
+});
+
+export const setLoad = (payload) => ({
+  type: SET_LOAD,
   payload,
 });

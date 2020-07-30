@@ -20,11 +20,17 @@ const Save = ({ dispatch, name }) => {
         </Typography>
       </DialogTitle>
       <DialogContent>
-        <TextField label="Name" defaultValue={name} onChange={handleChange} />
+        <TextField
+          label="Name"
+          defaultValue={name}
+          onChange={handleChange}
+          InputProps={{ style: { fontFamily: "Roboto" } }}
+          InputLabelProps={{ style: { fontFamily: "Roboto" } }}
+        />
       </DialogContent>
       <DialogActions>
-        <Button></Button>
-        <Button></Button>
+        <Button>Cancel</Button>
+        <Button>Save</Button>
       </DialogActions>
     </Dialog>
   );
