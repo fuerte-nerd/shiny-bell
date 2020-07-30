@@ -29,9 +29,11 @@ const Save = ({ dispatch, name, isOpen, current }) => {
             "savedThemes",
             JSON.stringify([...previousSavedThemes, current])
           );
-          break;
+        } else {
+          localStorage.setItem("savedThemes", JSON.stringify([current]));
         }
 
+        break;
       default:
         break;
     }
