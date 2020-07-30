@@ -10,11 +10,12 @@ class Theme {
   constructor(config = {}) {
     const state = store.getState();
     const { appState, components } = state;
-
+    const name = nameGenerator().raw;
     this.id = uniqid();
-    this.name = nameGenerator()
-      .raw.map((i) => i.charAt(0).toUpperCase() + i.substr(1))
+    this.name = name
+      .map((i) => i.charAt(0).toUpperCase() + i.substr(1))
       .join(" ");
+    this.filename = name.join("_");
     this.createDate = new Date();
     this.primary = components.palette.locked
       ? appState.current.primary
@@ -59,6 +60,7 @@ class Theme {
     if (this.secondaryColorMix !== "manual") {
       this.secondary = this.getSecondaryColor(this.secondaryColorMix);
     }
+    this.lastModified = new Date();
   }
 
   getProp(key) {
