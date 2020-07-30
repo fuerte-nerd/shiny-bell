@@ -25,31 +25,28 @@ const Save = ({ dispatch, filename, isOpen, err, success, current }) => {
     setNewFilename(e.currentTarget.value);
   };
 
-  const save = () => {
-    const theme = new Theme({ ...current, filename: newFilename });
-    theme
-      .save()
-      .then(() => {
-        dispatch(setSaveOpen(false));
-        dispatch(setSaveSuccess(true));
-        theme.commit();
-      })
-      .catch(() => {
-        dispatch(setSaveError(true));
-      });
-  };
-
   const handleClick = (e) => {
+    let theme;
     const { id } = e.currentTarget;
     switch (id) {
       case "cancel":
         dispatch(setSaveOpen(false));
         break;
       case "save":
-        save();
+        theme = new Theme({ ...current, filename: newFilename });
+        theme
+          .save()
+          .then(() => {
+            dispatch(setSaveOpen(false));
+            dispatch(setSaveSuccess(true));
+            theme.commit();
+          })
+          .catch(() => {
+            dispatch(setSaveError(true));
+          });
         break;
       case "save-replace":
-        const theme = new Theme({ ...current, filename: newFilename });
+        theme = new Theme({ ...current, filename: newFilename });
         theme.save(true).then(() => {
           dispatch(setSaveOpen(false));
           dispatch(setSaveSuccess(true));
@@ -94,15 +91,13 @@ const Save = ({ dispatch, filename, isOpen, err, success, current }) => {
         <DialogContent>
           <TextField
             label="Name"
+            autoFocus
             fullWidth
             defaultValue={newFilename}
             value={newFilename}
             onChange={handleChange}
             InputProps={{ style: { fontFamily: "Roboto" } }}
             InputLabelProps={{ style: { fontFamily: "Roboto" } }}
-            onKeyDown={(e) =>
-              e.key === "enter" && newFilename.length > 0 ? save() : null
-            }
           />
           {err && (
             <Alert
