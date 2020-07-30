@@ -7,8 +7,12 @@ import {
   DialogContent,
   DialogActions,
   Button,
+  List,
+  ListItem,
+  ListItemText,
 } from "@material-ui/core";
 import { setLoad } from "../../state/display/actions";
+import moment from "moment";
 
 const Load = ({ dispatch, isOpen }) => {
   const [savedThemes, setSavedThemes] = useState(null);
@@ -29,7 +33,25 @@ const Load = ({ dispatch, isOpen }) => {
       <DialogTitle>
         <Typography style={{ fontFamily: "Roboto" }}>Load theme</Typography>
       </DialogTitle>
-      <DialogContent>{savedThemes && savedThemes.map((i) => {})}</DialogContent>
+
+      <DialogContent>
+        <List>
+          {savedThemes
+            ? savedThemes.map((i) => {
+                return (
+                  <ListItem button>
+                    <ListItemText
+                      primary={i.name}
+                      secondary={`Last modified ${moment(
+                        i.lastModified
+                      ).fromNow()}`}
+                    />
+                  </ListItem>
+                );
+              })
+            : null}
+        </List>
+      </DialogContent>
       <DialogActions>
         <Button></Button>
       </DialogActions>
