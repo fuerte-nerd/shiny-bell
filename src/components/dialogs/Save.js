@@ -31,17 +31,20 @@ const Save = ({ dispatch, filename, isOpen, err, current }) => {
         theme = new Theme({ ...current, filename: newFilename });
         theme
           .save()
-          .then(() => theme.commit())
+          .then(() => {
+            dispatch(setSaveOpen(false));
+            theme.commit();
+          })
           .catch(() => {
             dispatch(setSaveError(true));
           });
         break;
       case "save-replace":
         theme = new Theme({ ...current, filename: newFilename });
-        theme
-          .save(true)
-          .then(() => theme.commit())
-          .catch(() => {});
+        theme.save(true).then(() => {
+          dispatch(setSaveOpen(false));
+          theme.commit();
+        });
         break;
 
       default:
@@ -55,11 +58,13 @@ const Save = ({ dispatch, filename, isOpen, err, current }) => {
     } else {
       dispatch(setSaveError(false));
     }
+    //eslint-disable-next-line
   }, [isOpen]);
 
   return (
     <Dialog
-      maxWidth="lg"
+      fullWidth
+      maxWidth="sm"
       open={isOpen}
       onClose={() => dispatch(setSaveOpen(false))}
     >
@@ -71,6 +76,7 @@ const Save = ({ dispatch, filename, isOpen, err, current }) => {
       <DialogContent>
         <TextField
           label="Name"
+          fullWidth
           defaultValue={newFilename}
           value={newFilename}
           onChange={handleChange}
@@ -80,6 +86,7 @@ const Save = ({ dispatch, filename, isOpen, err, current }) => {
         {err && (
           <Alert
             severity="error"
+            style={{ fontFamily: "Roboto" }}
             action={
               <Button id="save-replace" onClick={handleClick}>
                 Yes
