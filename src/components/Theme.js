@@ -147,8 +147,8 @@ class Theme {
   }
 
   commit() {
-    return new Promise((res, rej) => {
-      store.dispatch(setCurrentAppState(this));
+    return new Promise(async (res, rej) => {
+      await store.dispatch(setCurrentAppState(this));
       const body = new FontFaceObserver(this.body.family);
       const header = new FontFaceObserver(this.header.family);
       const runValidator = async () => {
@@ -162,12 +162,14 @@ class Theme {
   }
 
   save() {
-    const savedThemes = JSON.parse(localStorage.getItem("saved"));
-    if (savedThemes) {
-      localStorage.setItem("saved", JSON.stringify([...savedThemes, this]));
-    } else {
-      localStorage.setItem("saved", JSON.stringify([this]));
-    }
+    return new Promise((res, rej) => {
+      const savedThemes = JSON.parse(localStorage.getItem("saved"));
+      if (savedThemes) {
+        localStorage.setItem("saved", JSON.stringify([...savedThemes, this]));
+      } else {
+        localStorage.setItem("saved", JSON.stringify([this]));
+      }
+    });
   }
 }
 
