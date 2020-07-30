@@ -176,6 +176,7 @@ class Theme {
       } else {
         localStorage.setItem("saved", JSON.stringify([this]));
       }
+      res();
     });
   }
 }

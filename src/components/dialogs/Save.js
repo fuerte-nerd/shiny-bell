@@ -26,7 +26,8 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
         dispatch(setSave(false));
         break;
       case "save":
-        new Theme({ ...current, filename: newFilename }).commit().save();
+        const theme = new Theme({ ...current, filename: newFilename });
+        theme.save().then(() => theme.commit());
         break;
       default:
         break;
