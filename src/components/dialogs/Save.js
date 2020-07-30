@@ -8,12 +8,17 @@ import {
   Button,
   Typography,
   TextField,
+  Snackbar,
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
-import { setSaveOpen, setSaveError } from "../../state/display/actions";
+import {
+  setSaveOpen,
+  setSaveError,
+  setSaveSuccess,
+} from "../../state/display/actions";
 import Theme from "../Theme";
 
-const Save = ({ dispatch, filename, isOpen, err, current }) => {
+const Save = ({ dispatch, filename, isOpen, err, success, current }) => {
   const [newFilename, setNewFilename] = useState(filename);
   const handleChange = (e) => {
     console.log(e.currentTarget.value);
@@ -33,6 +38,7 @@ const Save = ({ dispatch, filename, isOpen, err, current }) => {
           .save()
           .then(() => {
             dispatch(setSaveOpen(false));
+            dispatch(setSaveSuccess(true));
             theme.commit();
           })
           .catch(() => {
@@ -43,6 +49,7 @@ const Save = ({ dispatch, filename, isOpen, err, current }) => {
         theme = new Theme({ ...current, filename: newFilename });
         theme.save(true).then(() => {
           dispatch(setSaveOpen(false));
+          dispatch(setSaveSuccess(true));
           theme.commit();
         });
         break;
@@ -62,62 +69,71 @@ const Save = ({ dispatch, filename, isOpen, err, current }) => {
   }, [isOpen]);
 
   return (
-    <Dialog
-      fullWidth
-      maxWidth="sm"
-      open={isOpen}
-      onClose={() => dispatch(setSaveOpen(false))}
-    >
-      <DialogTitle disableTypography>
-        <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
-          Save current theme
-        </Typography>
-      </DialogTitle>
-      <DialogContent>
-        <TextField
-          label="Name"
-          fullWidth
-          defaultValue={newFilename}
-          value={newFilename}
-          onChange={handleChange}
-          InputProps={{ style: { fontFamily: "Roboto" } }}
-          InputLabelProps={{ style: { fontFamily: "Roboto" } }}
-        />
-        {err && (
-          <Alert
-            severity="error"
-            style={{ fontFamily: "Roboto", marginTop: 5 }}
-            action={
-              <Button
-                style={{ fontFamily: "Roboto" }}
-                id="save-replace"
-                onClick={handleClick}
-              >
-                Yes
-              </Button>
-            }
+    <>
+      <Snackbar
+        open={success}
+        autoHideDuration={4000}
+        onClose={() => dispatch(setSaveSuccess(false))}
+      >
+        <Alert>Successfully saved!</Alert>
+      </Snackbar>
+      <Dialog
+        fullWidth
+        maxWidth="sm"
+        open={isOpen}
+        onClose={() => dispatch(setSaveOpen(false))}
+      >
+        <DialogTitle disableTypography>
+          <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
+            Save current theme
+          </Typography>
+        </DialogTitle>
+        <DialogContent>
+          <TextField
+            label="Name"
+            fullWidth
+            defaultValue={newFilename}
+            value={newFilename}
+            onChange={handleChange}
+            InputProps={{ style: { fontFamily: "Roboto" } }}
+            InputLabelProps={{ style: { fontFamily: "Roboto" } }}
+          />
+          {err && (
+            <Alert
+              severity="error"
+              style={{ fontFamily: "Roboto", marginTop: 5 }}
+              action={
+                <Button
+                  style={{ fontFamily: "Roboto" }}
+                  id="save-replace"
+                  onClick={handleClick}
+                >
+                  Yes
+                </Button>
+              }
+            >
+              File name already exists. Replace?
+            </Alert>
+          )}
+        </DialogContent>
+        <DialogActions>
+          <Button
+            id="cancel"
+            onClick={handleClick}
+            style={{ fontFamily: "Roboto" }}
           >
-            File name already exists. Replace?
-          </Alert>
-        )}
-      </DialogContent>
-      <DialogActions>
-        <Button
-          id="cancel"
-          onClick={handleClick}
-          style={{ fontFamily: "Roboto" }}
-        >
-          Cancel
-        </Button>
-        <Button
-          id="save"
-          onClick={handleClick}
-          style={{ fontFamily: "Roboto" }}
-        >
-          Save
-        </Button>
-      </DialogActions>
-    </Dialog>
+            Cancel
+          </Button>
+          <Button
+            id="save"
+            onClick={handleClick}
+            style={{ fontFamily: "Roboto" }}
+          >
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
   );
 };
 
@@ -125,6 +141,7 @@ const mapStateToProps = (state) => ({
   filename: state.appState.current.filename,
   isOpen: state.display.save.isOpen,
   err: state.display.save.error,
+  success: state.display.save.success,
   current: state.appState.current,
 });
 
