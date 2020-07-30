@@ -35,13 +35,13 @@ const Load = ({ dispatch, isOpen }) => {
       </DialogTitle>
 
       <DialogContent>
-        <List>
+        <List dense>
           {savedThemes
             ? savedThemes.map((i) => {
                 return (
                   <ListItem button>
                     <ListItemText
-                      primary={i.name}
+                      primary={i.filename}
                       secondary={`Last modified ${moment(
                         i.lastModified
                       ).fromNow()}`}
@@ -53,7 +53,7 @@ const Load = ({ dispatch, isOpen }) => {
         </List>
       </DialogContent>
       <DialogActions>
-        <Button></Button>
+        <Button style={{ fontFamily: "Roboto" }}>Close</Button>
       </DialogActions>
     </Dialog>
   );
