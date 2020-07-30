@@ -128,6 +128,7 @@ const Save = ({ dispatch, filename, isOpen, err, success, current }) => {
             id="save"
             onClick={handleClick}
             style={{ fontFamily: "Roboto" }}
+            disabled={newFilename.length === 0}
           >
             Save
           </Button>
