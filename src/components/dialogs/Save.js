@@ -10,10 +10,10 @@ import {
   TextField,
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
-import { setSave } from "../../state/display/actions";
+import { setSaveOpen, setSaveError } from "../../state/display/actions";
 import Theme from "../Theme";
 
-const Save = ({ dispatch, filename, isOpen, current }) => {
+const Save = ({ dispatch, filename, isOpen, err, current }) => {
   const [newFilename, setNewFilename] = useState(filename);
   const handleChange = (e) => {
     console.log(e.currentTarget.value);
@@ -25,14 +25,16 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "cancel":
-        dispatch(setSave(false));
+        dispatch(setSaveOpen(false));
         break;
       case "save":
         theme = new Theme({ ...current, filename: newFilename });
         theme
           .save()
           .then(() => theme.commit())
-          .catch(() => {});
+          .catch(() => {
+            dispatch(setSaveError(true));
+          });
         break;
       case "save-replace":
         theme = new Theme({ ...current, filename: newFilename });
@@ -50,6 +52,8 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
   useEffect(() => {
     if (isOpen) {
       setNewFilename(filename);
+    } else {
+      dispatch(setSaveError(false));
     }
   }, [isOpen]);
 
@@ -57,7 +61,7 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
     <Dialog
       maxWidth="lg"
       open={isOpen}
-      onClose={() => dispatch(setSave(false))}
+      onClose={() => dispatch(setSaveOpen(false))}
     >
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
@@ -73,16 +77,18 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
           InputProps={{ style: { fontFamily: "Roboto" } }}
           InputLabelProps={{ style: { fontFamily: "Roboto" } }}
         />
-        <Alert
-          severity="error"
-          action={
-            <Button id="save-replace" onClick={handleClick}>
-              Yes
-            </Button>
-          }
-        >
-          File name already exists. Replace?
-        </Alert>
+        {err && (
+          <Alert
+            severity="error"
+            action={
+              <Button id="save-replace" onClick={handleClick}>
+                Yes
+              </Button>
+            }
+          >
+            File name already exists. Replace?
+          </Alert>
+        )}
       </DialogContent>
       <DialogActions>
         <Button
@@ -106,7 +112,8 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
 
 const mapStateToProps = (state) => ({
   filename: state.appState.current.filename,
-  isOpen: state.display.save,
+  isOpen: state.display.save.isOpen,
+  err: state.display.save.error,
   current: state.appState.current,
 });
 

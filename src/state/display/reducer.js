@@ -1,5 +1,6 @@
 import {
-  SET_SAVE,
+  SET_SAVE_OPEN,
+  SET_SAVE_ERROR,
   SET_LOAD,
   SET_LOADING_SCREEN,
   SET_SIDEBAR,
@@ -84,8 +85,11 @@ export default (state = initialState, action) => {
     case SET_THEME_CODE:
       newState.themeCode = payload;
       break;
-    case SET_SAVE:
-      newState.save = payload;
+    case SET_SAVE_OPEN:
+      newState.save.isOpen = payload;
+      break;
+    case SET_SAVE_ERROR:
+      newState.save.error = payload;
       break;
     case SET_LOAD:
       newState.load = payload;
