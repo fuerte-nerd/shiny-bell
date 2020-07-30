@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
 import { setSave } from "../../state/display/actions";
 
-const Save = ({ dispatch, name, isOpen, current }) => {
+const Save = ({ dispatch, filename, isOpen, current }) => {
   const handleChange = (e) => {};
 
   const handleClick = (e) => {
@@ -53,7 +53,7 @@ const Save = ({ dispatch, name, isOpen, current }) => {
       <DialogContent>
         <TextField
           label="Name"
-          defaultValue={name}
+          defaultValue={filename}
           onChange={handleChange}
           InputProps={{ style: { fontFamily: "Roboto" } }}
           InputLabelProps={{ style: { fontFamily: "Roboto" } }}
@@ -80,7 +80,7 @@ const Save = ({ dispatch, name, isOpen, current }) => {
 };
 
 const mapStateToProps = (state) => ({
-  name: state.appState.current.name,
+  filename: state.appState.current.filename,
   isOpen: state.display.save,
   current: state.appState.current,
 });
