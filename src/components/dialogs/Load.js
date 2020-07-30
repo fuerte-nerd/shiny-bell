@@ -53,7 +53,12 @@ const Load = ({ dispatch, isOpen }) => {
         </List>
       </DialogContent>
       <DialogActions>
-        <Button style={{ fontFamily: "Roboto" }}>Close</Button>
+        <Button
+          onClick={() => dispatch(setLoad(false))}
+          style={{ fontFamily: "Roboto" }}
+        >
+          Close
+        </Button>
       </DialogActions>
     </Dialog>
   );
