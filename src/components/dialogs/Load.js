@@ -42,54 +42,59 @@ const Load = ({ dispatch, isOpen, past, current }) => {
 
       <DialogContent>
         <List dense>
-          {savedThemes
-            ? savedThemes.map((i) => {
-                return (
-                  <ListItem
-                    button
-                    id={i.id}
-                    onClick={() => {
-                      dispatch(setLoadingScreen(true));
-                      const theme = new Theme(i);
-                      theme.validateFonts().then(() => {
-                        dispatch(setPastAppStates([...past, current]));
-                        theme.commit().then(() => {
-                          dispatch(setLoadingScreen(false));
-                          dispatch(setLoad(false));
-                        });
+          {savedThemes ? (
+            savedThemes.map((i) => {
+              return (
+                <ListItem
+                  button
+                  id={i.id}
+                  onClick={() => {
+                    dispatch(setLoadingScreen(true));
+                    const theme = new Theme(i);
+                    theme.validateFonts().then(() => {
+                      dispatch(setPastAppStates([...past, current]));
+                      theme.commit().then(() => {
+                        dispatch(setLoadingScreen(false));
+                        dispatch(setLoad(false));
                       });
-                    }}
-                  >
-                    <ListItemText
-                      primary={i.filename}
-                      secondary={`Last modified ${moment(
-                        i.lastModified
-                      ).fromNow()}`}
-                    />
-                    <ListItemSecondaryAction>
-                      <IconButton
-                        edge="end"
-                        onClick={() => {
-                          const newSavedThemes = JSON.parse(
-                            localStorage.getItem("saved")
-                          ).filter((st) => {
-                            return st.filename !== i.filename;
-                          });
-                          localStorage.setItem(
-                            "saved",
-                            JSON.stringify(newSavedThemes)
-                          );
-                          dispatch(setLoad(false));
-                          dispatch(setLoad(true));
-                        }}
-                      >
-                        <Delete />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
-                );
-              })
-            : null}
+                    });
+                  }}
+                >
+                  <ListItemText
+                    primary={i.filename}
+                    secondary={`Last modified ${moment(
+                      i.lastModified
+                    ).fromNow()}`}
+                  />
+                  <ListItemSecondaryAction>
+                    <IconButton
+                      edge="end"
+                      onClick={() => {
+                        const newSavedThemes = JSON.parse(
+                          localStorage.getItem("saved")
+                        ).filter((st) => {
+                          return st.filename !== i.filename;
+                        });
+                        localStorage.setItem(
+                          "saved",
+                          JSON.stringify(newSavedThemes)
+                        );
+                        setSavedThemes(
+                          JSON.parse(localStorage.getItem("saved"))
+                        );
+                      }}
+                    >
+                      <Delete />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
+              );
+            })
+          ) : (
+            <Typography>
+              You don't have any saved themes on this device
+            </Typography>
+          )}
         </List>
       </DialogContent>
       <DialogActions>
