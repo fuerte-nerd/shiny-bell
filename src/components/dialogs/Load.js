@@ -20,7 +20,7 @@ import Theme from "../Theme";
 import { setPastAppStates } from "../../state/appState/actions";
 
 const Load = ({ dispatch, isOpen, past, current }) => {
-  const [savedThemes, setSavedThemes] = useState(null);
+  const [savedThemes, setSavedThemes] = useState([]);
 
   useEffect(() => {
     const localStorageThemes = localStorage.getItem("saved");
@@ -42,7 +42,7 @@ const Load = ({ dispatch, isOpen, past, current }) => {
 
       <DialogContent>
         <List dense>
-          {savedThemes ? (
+          {savedThemes.length > 0 ? (
             savedThemes.map((i) => {
               return (
                 <ListItem
@@ -91,7 +91,7 @@ const Load = ({ dispatch, isOpen, past, current }) => {
               );
             })
           ) : (
-            <Typography>
+            <Typography style={{ fontFamily: "Roboto" }}>
               You don't have any saved themes on this device
             </Typography>
           )}
