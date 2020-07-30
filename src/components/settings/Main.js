@@ -12,6 +12,7 @@ import {
   setThemeCode,
   setLoadingScreen,
   setSaveOpen,
+  setLoad,
 } from "../../state/display/actions";
 import {
   setPastAppStates,
@@ -24,6 +25,10 @@ const Main = ({ dispatch, past, current, future }) => {
     let theme;
     const { id } = e.currentTarget;
     switch (id) {
+      case "load":
+      case "load-btn":
+        dispatch(setLoad(true));
+        break;
       case "save":
       case "save-btn":
         dispatch(setSaveOpen(true));
