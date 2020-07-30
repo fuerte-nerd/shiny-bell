@@ -35,15 +35,19 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
           if (filenames.includes(newFilename)) {
             //set an error
           } else {
-            new Theme({ ...current, filename: newFilename }).commit();
-            localStorage.setItem(
-              "savedThemes",
-              JSON.stringify([...previousSavedThemes, current])
-            );
+            new Theme({ ...current, filename: newFilename })
+              .commit()
+              .then(() => {
+                localStorage.setItem(
+                  "savedThemes",
+                  JSON.stringify([...previousSavedThemes, current])
+                );
+              });
           }
         } else {
-          new Theme({ ...current, filename: newFilename }).commit();
-          localStorage.setItem("savedThemes", JSON.stringify([current]));
+          new Theme({ ...current, filename: newFilename }).commit().then(() => {
+            localStorage.setItem("savedThemes", JSON.stringify([current]));
+          });
         }
 
         break;
