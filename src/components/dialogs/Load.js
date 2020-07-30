@@ -13,9 +13,11 @@ import {
 } from "@material-ui/core";
 import { setLoad } from "../../state/display/actions";
 import moment from "moment";
+import Theme from "../Theme";
 
 const Load = ({ dispatch, isOpen }) => {
   const [savedThemes, setSavedThemes] = useState(null);
+
   useEffect(() => {
     const localStorageThemes = localStorage.getItem("saved");
     if (localStorageThemes) {
@@ -39,7 +41,18 @@ const Load = ({ dispatch, isOpen }) => {
           {savedThemes
             ? savedThemes.map((i) => {
                 return (
-                  <ListItem button>
+                  <ListItem
+                    button
+                    id={i.id}
+                    onClick={() => {
+                      const theme = new Theme(i);
+                      theme.validateFonts().then(() => {
+                        theme.commit().then(() => {
+                          dispatch(setLoad(false));
+                        });
+                      });
+                    }}
+                  >
                     <ListItemText
                       primary={i.filename}
                       secondary={`Last modified ${moment(
