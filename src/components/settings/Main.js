@@ -11,7 +11,7 @@ import Setting from "../Setting";
 import {
   setThemeCode,
   setLoadingScreen,
-  setSave,
+  setSaveOpen,
 } from "../../state/display/actions";
 import {
   setPastAppStates,
@@ -25,7 +25,8 @@ const Main = ({ dispatch, past, current, future }) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "save":
-        dispatch(setSave(true));
+      case "save-btn":
+        dispatch(setSaveOpen(true));
         break;
       case "undo":
       case "undo-btn":
