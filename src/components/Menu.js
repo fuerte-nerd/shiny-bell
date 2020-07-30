@@ -6,6 +6,7 @@ import {
   Typography,
   IconButton,
   Tooltip,
+  Hidden,
 } from "@material-ui/core";
 import { SettingsBrightness, Settings, Code } from "@material-ui/icons";
 import UndoRedo from "./UndoRedo";
@@ -37,17 +38,19 @@ const Menu = ({ dispatch, current }) => {
       <Toolbar>
         <Typography variant="h6">{current.name}</Typography>
         <div style={{ flexGrow: 1 }} />
-        <UndoRedo />
-        <Tooltip title="Toggle dark mode">
-          <IconButton id="mode" onClick={handleClick} color="inherit">
-            <SettingsBrightness />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Get the code!">
-          <IconButton id="code" onClick={handleClick} color="inherit">
-            <Code />
-          </IconButton>
-        </Tooltip>
+        <Hidden smDown>
+          <UndoRedo />
+          <Tooltip title="Toggle dark mode">
+            <IconButton id="mode" onClick={handleClick} color="inherit">
+              <SettingsBrightness />
+            </IconButton>
+          </Tooltip>
+          <Tooltip title="Get the code!">
+            <IconButton id="code" onClick={handleClick} color="inherit">
+              <Code />
+            </IconButton>
+          </Tooltip>
+        </Hidden>
         <Tooltip title="Open settings">
           <IconButton
             id="settings"
