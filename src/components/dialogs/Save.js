@@ -75,7 +75,7 @@ const Save = ({ dispatch, filename, isOpen, err, success, current }) => {
         autoHideDuration={4000}
         onClose={() => dispatch(setSaveSuccess(false))}
       >
-        <Alert>Successfully saved!</Alert>
+        <Alert style={{ fontFamily: "Roboto" }}>Successfully saved!</Alert>
       </Snackbar>
       <Dialog
         fullWidth
