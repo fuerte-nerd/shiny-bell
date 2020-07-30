@@ -8,6 +8,7 @@ import {
   DialogActions,
   Button,
 } from "@material-ui/core";
+import { setLoad } from "../../state/display/actions";
 
 const Load = ({ dispatch, isOpen }) => {
   const [savedThemes, setSavedThemes] = useState(null);
@@ -19,7 +20,12 @@ const Load = ({ dispatch, isOpen }) => {
   }, [isOpen]);
 
   return (
-    <Dialog open={isOpen}>
+    <Dialog
+      open={isOpen}
+      onClose={() => dispatch(setLoad(false))}
+      fullWidth
+      maxWidth="sm"
+    >
       <DialogTitle>
         <Typography style={{ fontFamily: "Roboto" }}>Load theme</Typography>
       </DialogTitle>
