@@ -8,7 +8,11 @@ import {
 } from "@material-ui/core";
 import { Undo, Redo, Code, Save } from "@material-ui/icons";
 import Setting from "../Setting";
-import { setThemeCode, setLoadingScreen } from "../../state/display/actions";
+import {
+  setThemeCode,
+  setLoadingScreen,
+  setSave,
+} from "../../state/display/actions";
 import {
   setPastAppStates,
   setFutureAppStates,
@@ -20,6 +24,9 @@ const Main = ({ dispatch, past, current, future }) => {
     let theme;
     const { id } = e.currentTarget;
     switch (id) {
+      case "save":
+        dispatch(setSave(true));
+        break;
       case "undo":
       case "undo-btn":
         dispatch(setLoadingScreen(true));

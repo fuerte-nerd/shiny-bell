@@ -9,11 +9,16 @@ import {
   Typography,
   TextField,
 } from "@material-ui/core";
+import { setSave } from "../../state/display/actions";
 
-const Save = ({ dispatch, name }) => {
+const Save = ({ dispatch, name, isOpen }) => {
   const handleChange = (e) => {};
   return (
-    <Dialog maxWidth="lg" open={true}>
+    <Dialog
+      maxWidth="lg"
+      open={isOpen}
+      onClose={() => dispatch(setSave(false))}
+    >
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
           Save current theme
@@ -29,8 +34,8 @@ const Save = ({ dispatch, name }) => {
         />
       </DialogContent>
       <DialogActions>
-        <Button>Cancel</Button>
-        <Button>Save</Button>
+        <Button style={{ fontFamily: "Roboto" }}>Cancel</Button>
+        <Button style={{ fontFamily: "Roboto" }}>Save</Button>
       </DialogActions>
     </Dialog>
   );
@@ -38,6 +43,7 @@ const Save = ({ dispatch, name }) => {
 
 const mapStateToProps = (state) => ({
   name: state.appState.current.name,
+  isOpen: state.display.save,
 });
 
 export default connect(mapStateToProps)(Save);
