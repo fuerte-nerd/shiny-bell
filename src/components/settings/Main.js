@@ -6,7 +6,7 @@ import {
   ListItemSecondaryAction,
   IconButton,
 } from "@material-ui/core";
-import { Undo, Redo, Code, Save } from "@material-ui/icons";
+import { Undo, Redo, Code, Save, OpenInBrowser } from "@material-ui/icons";
 import Setting from "../Setting";
 import {
   setThemeCode,
@@ -68,6 +68,14 @@ const Main = ({ dispatch, past, current, future }) => {
 
   return (
     <Setting title="Utility">
+      <ListItem id="load" onClick={handleClick} button>
+        <ListItemText primary="Load theme" />
+        <ListItemSecondaryAction>
+          <IconButton edge="end" id="load-btn" onClick={handleClick}>
+            <OpenInBrowser />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
       <ListItem id="save" onClick={handleClick} button>
         <ListItemText primary="Save theme" />
         <ListItemSecondaryAction>

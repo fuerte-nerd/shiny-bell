@@ -21,7 +21,6 @@ import Theme from "../Theme";
 const Save = ({ dispatch, filename, isOpen, err, success, current }) => {
   const [newFilename, setNewFilename] = useState(filename);
   const handleChange = (e) => {
-    console.log(e.currentTarget.value);
     setNewFilename(e.currentTarget.value);
   };
 
