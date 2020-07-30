@@ -9,6 +9,7 @@ import {
   Typography,
   TextField,
 } from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 import { setSave } from "../../state/display/actions";
 import Theme from "../Theme";
 
@@ -20,15 +21,27 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
   };
 
   const handleClick = (e) => {
+    let theme;
     const { id } = e.currentTarget;
     switch (id) {
       case "cancel":
         dispatch(setSave(false));
         break;
       case "save":
-        const theme = new Theme({ ...current, filename: newFilename });
-        theme.save().then(() => theme.commit());
+        theme = new Theme({ ...current, filename: newFilename });
+        theme
+          .save()
+          .then(() => theme.commit())
+          .catch(() => {});
         break;
+      case "save-replace":
+        theme = new Theme({ ...current, filename: newFilename });
+        theme
+          .save(true)
+          .then(() => theme.commit())
+          .catch(() => {});
+        break;
+
       default:
         break;
     }
@@ -60,6 +73,16 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
           InputProps={{ style: { fontFamily: "Roboto" } }}
           InputLabelProps={{ style: { fontFamily: "Roboto" } }}
         />
+        <Alert
+          severity="error"
+          action={
+            <Button id="save-replace" onClick={handleClick}>
+              Yes
+            </Button>
+          }
+        >
+          File name already exists. Replace?
+        </Alert>
       </DialogContent>
       <DialogActions>
         <Button
