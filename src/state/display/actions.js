@@ -10,7 +10,8 @@ import {
   SET_FONT_CATEGORY_SELECTOR_SECTION,
   SET_FONT_SELECTOR_ERROR,
   SET_THEME_CODE,
-  SET_SAVE,
+  SET_SAVE_OPEN,
+  SET_SAVE_ERROR,
   SET_LOAD,
 } from "./types";
 
@@ -69,10 +70,12 @@ export const setThemeCode = (payload) => ({
   payload,
 });
 
-export const setSave = (payload) => ({
-  type: SET_SAVE,
+export const setSaveOpen = (payload) => ({
+  type: SET_SAVE_OPEN,
   payload,
 });
+
+export const setSaveError = (payload) => ({ type: SET_SAVE_ERROR, payload });
 
 export const setLoad = (payload) => ({
   type: SET_LOAD,

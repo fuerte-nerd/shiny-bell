@@ -17,7 +17,10 @@ import {
 const initialState = {
   loadingScreen: true,
   sidebar: false,
-  save: false,
+  save: {
+    isOpen: false,
+    error: false,
+  },
   load: false,
   themeCode: false,
   fontSelector: {

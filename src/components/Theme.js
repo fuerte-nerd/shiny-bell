@@ -173,6 +173,7 @@ class Theme {
           if (filenames.includes(this.filename)) {
             console.log("reached");
             rej("already exists");
+            return;
           }
         }
         if (overwrite) {
