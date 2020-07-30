@@ -25,10 +25,17 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
           const previousSavedThemes = JSON.parse(
             localStorage.getItem("savedThemes")
           );
-          localStorage.setItem(
-            "savedThemes",
-            JSON.stringify([...previousSavedThemes, current])
-          );
+          const filenames = previousSavedThemes.map((i) => {
+            return i.filename;
+          });
+          if (filenames.includes(newFilename)) {
+            //set an error
+          } else {
+            localStorage.setItem(
+              "savedThemes",
+              JSON.stringify([...previousSavedThemes, current])
+            );
+          }
         } else {
           localStorage.setItem("savedThemes", JSON.stringify([current]));
         }
