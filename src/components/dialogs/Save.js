@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
   Dialog,
@@ -15,6 +15,7 @@ import Theme from "../Theme";
 const Save = ({ dispatch, filename, isOpen, current }) => {
   const [newFilename, setNewFilename] = useState(filename);
   const handleChange = (e) => {
+    console.log(e.currentTarget.value);
     setNewFilename(e.currentTarget.value);
   };
 
@@ -55,6 +56,12 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
         break;
     }
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      setNewFilename(filename);
+    }
+  }, [isOpen]);
 
   return (
     <Dialog
