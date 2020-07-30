@@ -1,6 +1,7 @@
 import {
   SET_SAVE_OPEN,
   SET_SAVE_ERROR,
+  SET_SAVE_SUCCESS,
   SET_LOAD,
   SET_LOADING_SCREEN,
   SET_SIDEBAR,
@@ -21,6 +22,7 @@ const initialState = {
   save: {
     isOpen: false,
     error: false,
+    success: false,
   },
   load: false,
   themeCode: false,
@@ -90,6 +92,9 @@ export default (state = initialState, action) => {
       break;
     case SET_SAVE_ERROR:
       newState.save.error = payload;
+      break;
+    case SET_SAVE_SUCCESS:
+      newState.save.success = payload;
       break;
     case SET_LOAD:
       newState.load = payload;

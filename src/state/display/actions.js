@@ -12,6 +12,7 @@ import {
   SET_THEME_CODE,
   SET_SAVE_OPEN,
   SET_SAVE_ERROR,
+  SET_SAVE_SUCCESS,
   SET_LOAD,
 } from "./types";
 
@@ -76,6 +77,11 @@ export const setSaveOpen = (payload) => ({
 });
 
 export const setSaveError = (payload) => ({ type: SET_SAVE_ERROR, payload });
+
+export const setSaveSuccess = (payload) => ({
+  type: SET_SAVE_SUCCESS,
+  payload,
+});
 
 export const setLoad = (payload) => ({
   type: SET_LOAD,

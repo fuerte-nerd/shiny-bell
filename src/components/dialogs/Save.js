@@ -86,9 +86,13 @@ const Save = ({ dispatch, filename, isOpen, err, current }) => {
         {err && (
           <Alert
             severity="error"
-            style={{ fontFamily: "Roboto" }}
+            style={{ fontFamily: "Roboto", marginTop: 5 }}
             action={
-              <Button id="save-replace" onClick={handleClick}>
+              <Button
+                style={{ fontFamily: "Roboto" }}
+                id="save-replace"
+                onClick={handleClick}
+              >
                 Yes
               </Button>
             }

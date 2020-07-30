@@ -14,3 +14,4 @@ export const SET_THEME_CODE = "SET_THEME_CODE";
 export const SET_LOAD = "SET_LOAD";
 export const SET_SAVE_OPEN = "SET_SAVE_OPEN";
 export const SET_SAVE_ERROR = "SET_SAVE_ERROR";
+export const SET_SAVE_SUCCESS = "SET_SAVE_SUCCESS";
