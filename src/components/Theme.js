@@ -165,7 +165,7 @@ class Theme {
     return new Promise((res, rej) => {
       const savedThemes = localStorage.getItem("saved");
       if (savedThemes) {
-        const parsedSavedThemes = JSON.parse(savedThemes);
+        let parsedSavedThemes = JSON.parse(savedThemes);
         if (!overwrite) {
           const filenames = parsedSavedThemes.map((i) => {
             return i.filename;
@@ -173,6 +173,11 @@ class Theme {
           if (filenames.includes(this.filename)) {
             rej("already exists");
           }
+        }
+        if (overwrite) {
+          parsedSavedThemes = parsedSavedThemes.filter((i) => {
+            return i.filename !== this.filename;
+          });
         }
         localStorage.setItem(
           "saved",
