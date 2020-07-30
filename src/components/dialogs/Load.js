@@ -10,7 +10,10 @@ import {
   List,
   ListItem,
   ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
 } from "@material-ui/core";
+import { Delete } from "@material-ui/icons";
 import { setLoad, setLoadingScreen } from "../../state/display/actions";
 import moment from "moment";
 import Theme from "../Theme";
@@ -63,6 +66,26 @@ const Load = ({ dispatch, isOpen, past, current }) => {
                         i.lastModified
                       ).fromNow()}`}
                     />
+                    <ListItemSecondaryAction>
+                      <IconButton
+                        edge="end"
+                        onClick={() => {
+                          const newSavedThemes = JSON.parse(
+                            localStorage.getItem("saved")
+                          ).filter((st) => {
+                            return st.filename !== i.filename;
+                          });
+                          localStorage.setItem(
+                            "saved",
+                            JSON.stringify(newSavedThemes)
+                          );
+                          dispatch(setLoad(false));
+                          dispatch(setLoad(true));
+                        }}
+                      >
+                        <Delete />
+                      </IconButton>
+                    </ListItemSecondaryAction>
                   </ListItem>
                 );
               })
