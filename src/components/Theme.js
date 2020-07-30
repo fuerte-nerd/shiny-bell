@@ -171,6 +171,7 @@ class Theme {
             return i.filename;
           });
           if (filenames.includes(this.filename)) {
+            console.log("reached");
             rej("already exists");
           }
         }
