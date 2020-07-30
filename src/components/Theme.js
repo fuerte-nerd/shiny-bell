@@ -161,16 +161,18 @@ class Theme {
     });
   }
 
-  save() {
+  save(overwrite = false) {
     return new Promise((res, rej) => {
       const savedThemes = localStorage.getItem("saved");
       if (savedThemes) {
         const parsedSavedThemes = JSON.parse(savedThemes);
-        const filenames = parsedSavedThemes.map((i) => {
-          return i.filename;
-        });
-        if (filenames.includes(this.filename)) {
-          rej("already exists");
+        if (!overwrite) {
+          const filenames = parsedSavedThemes.map((i) => {
+            return i.filename;
+          });
+          if (filenames.includes(this.filename)) {
+            rej("already exists");
+          }
         }
         localStorage.setItem(
           "saved",
