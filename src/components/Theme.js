@@ -148,6 +148,7 @@ class Theme {
 
   commit() {
     return new Promise((res, rej) => {
+      store.dispatch(setCurrentAppState(this));
       const body = new FontFaceObserver(this.body.family);
       const header = new FontFaceObserver(this.header.family);
       const runValidator = async () => {
@@ -157,7 +158,6 @@ class Theme {
         );
       };
       runValidator();
-      store.dispatch(setCurrentAppState(this));
     });
   }
 

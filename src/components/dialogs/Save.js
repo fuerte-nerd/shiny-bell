@@ -39,6 +39,7 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
             new Theme({ ...current, filename: newFilename })
               .commit()
               .then(() => {
+                console.log(current);
                 localStorage.setItem(
                   "savedThemes",
                   JSON.stringify([...previousSavedThemes, current])
