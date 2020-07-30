@@ -166,10 +166,10 @@ class Theme {
       const savedThemes = localStorage.getItem("saved");
       if (savedThemes) {
         const parsedSavedThemes = JSON.parse(savedThemes);
-        const filenames = parsedSavedThemes((i) => {
+        const filenames = parsedSavedThemes.map((i) => {
           return i.filename;
         });
-        if (filenames.include(this.filename)) {
+        if (filenames.includes(this.filename)) {
           rej("already exists");
         }
         localStorage.setItem("saved", JSON.stringify([...savedThemes, this]));
