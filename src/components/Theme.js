@@ -172,7 +172,10 @@ class Theme {
         if (filenames.includes(this.filename)) {
           rej("already exists");
         }
-        localStorage.setItem("saved", JSON.stringify([...savedThemes, this]));
+        localStorage.setItem(
+          "saved",
+          JSON.stringify([...parsedSavedThemes, this])
+        );
       } else {
         localStorage.setItem("saved", JSON.stringify([this]));
       }
