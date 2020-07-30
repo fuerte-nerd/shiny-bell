@@ -25,28 +25,31 @@ const Save = ({ dispatch, filename, isOpen, err, success, current }) => {
     setNewFilename(e.currentTarget.value);
   };
 
+  const save = () => {
+    const theme = new Theme({ ...current, filename: newFilename });
+    theme
+      .save()
+      .then(() => {
+        dispatch(setSaveOpen(false));
+        dispatch(setSaveSuccess(true));
+        theme.commit();
+      })
+      .catch(() => {
+        dispatch(setSaveError(true));
+      });
+  };
+
   const handleClick = (e) => {
-    let theme;
     const { id } = e.currentTarget;
     switch (id) {
       case "cancel":
         dispatch(setSaveOpen(false));
         break;
       case "save":
-        theme = new Theme({ ...current, filename: newFilename });
-        theme
-          .save()
-          .then(() => {
-            dispatch(setSaveOpen(false));
-            dispatch(setSaveSuccess(true));
-            theme.commit();
-          })
-          .catch(() => {
-            dispatch(setSaveError(true));
-          });
+        save();
         break;
       case "save-replace":
-        theme = new Theme({ ...current, filename: newFilename });
+        const theme = new Theme({ ...current, filename: newFilename });
         theme.save(true).then(() => {
           dispatch(setSaveOpen(false));
           dispatch(setSaveSuccess(true));
@@ -97,6 +100,9 @@ const Save = ({ dispatch, filename, isOpen, err, success, current }) => {
             onChange={handleChange}
             InputProps={{ style: { fontFamily: "Roboto" } }}
             InputLabelProps={{ style: { fontFamily: "Roboto" } }}
+            onKeyDown={(e) =>
+              e.key === "enter" && newFilename.length > 0 ? save() : null
+            }
           />
           {err && (
             <Alert
