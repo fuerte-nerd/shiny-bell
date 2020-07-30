@@ -26,34 +26,7 @@ const Save = ({ dispatch, filename, isOpen, current }) => {
         dispatch(setSave(false));
         break;
       case "save":
-        let theme;
-        if (localStorage.getItem("savedThemes")) {
-          const previousSavedThemes = JSON.parse(
-            localStorage.getItem("savedThemes")
-          );
-          const filenames = previousSavedThemes.map((i) => {
-            return i.filename;
-          });
-          if (filenames.includes(newFilename)) {
-            //set an error
-          } else {
-            theme = new Theme({ ...current, filename: newFilename });
-            theme.commit().then(() => {
-              console.log(current);
-              localStorage.setItem(
-                "savedThemes",
-                JSON.stringify([...previousSavedThemes, current])
-              );
-            });
-          }
-        } else {
-          theme = new Theme({ ...current, filename: newFilename });
-          theme.commit().then(() => {
-            console.log(current);
-            localStorage.setItem("savedThemes", JSON.stringify([current]));
-          });
-        }
-
+        new Theme({ ...current, filename: newFilename }).commit().save();
         break;
       default:
         break;
