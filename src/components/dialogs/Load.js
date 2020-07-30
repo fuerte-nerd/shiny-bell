@@ -11,11 +11,12 @@ import {
   ListItem,
   ListItemText,
 } from "@material-ui/core";
-import { setLoad } from "../../state/display/actions";
+import { setLoad, setLoadingScreen } from "../../state/display/actions";
 import moment from "moment";
 import Theme from "../Theme";
+import { setPastAppStates } from "../../state/appState/actions";
 
-const Load = ({ dispatch, isOpen }) => {
+const Load = ({ dispatch, isOpen, past, current }) => {
   const [savedThemes, setSavedThemes] = useState(null);
 
   useEffect(() => {
@@ -45,9 +46,12 @@ const Load = ({ dispatch, isOpen }) => {
                     button
                     id={i.id}
                     onClick={() => {
+                      dispatch(setLoadingScreen(true));
                       const theme = new Theme(i);
                       theme.validateFonts().then(() => {
+                        dispatch(setPastAppStates([...past, current]));
                         theme.commit().then(() => {
+                          dispatch(setLoadingScreen(false));
                           dispatch(setLoad(false));
                         });
                       });
@@ -79,6 +83,8 @@ const Load = ({ dispatch, isOpen }) => {
 
 const mapStateToProps = (state) => ({
   isOpen: state.display.load,
+  past: state.appState.past,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(Load);
