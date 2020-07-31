@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { Button, Container, Divider, Typography, Box } from "@material-ui/core";
+import {
+  Grid,
+  Button,
+  Container,
+  Divider,
+  Typography,
+  Box,
+} from "@material-ui/core";
 import Text from "./Text";
 import Buttons from "./Buttons";
 
@@ -42,8 +49,18 @@ const Preview = ({ twoFonts, primary, secondary, current }) => {
             is {colorNames.secondary}.
           </Typography>
           <Box mt={2}>
-            <Button>See more</Button>
-            <Button>No thanks</Button>
+            <Grid container spacing={2}>
+              <Grid item>
+                <Button variant="outlined" color="primary">
+                  See more
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button variant="outlined" color="secondary">
+                  No thanks
+                </Button>
+              </Grid>
+            </Grid>
           </Box>
         </Container>
       </Box>
