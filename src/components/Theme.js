@@ -80,6 +80,10 @@ class Theme {
     return this[key];
   }
 
+  setImage(img){
+    this.hero.img = img
+  }
+
   getImage(query) {
     return new Promise((res, rej) => {
       axios
@@ -173,6 +177,8 @@ class Theme {
 
   commit() {
     return new Promise(async (res, rej) => {
+      const img = new Image(this.hero.img)
+      img.onload = ()=>{
       await store.dispatch(setCurrentAppState(this));
       const body = new FontFaceObserver(this.body.family);
       const header = new FontFaceObserver(this.header.family);
@@ -183,6 +189,8 @@ class Theme {
         );
       };
       runValidator();
+
+      }
     });
   }
 
