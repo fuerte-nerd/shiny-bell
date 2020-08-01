@@ -38,6 +38,9 @@ const initialState = {
   palette: {
     locked: false,
   },
+  heroImage: {
+    locked: false,
+  },
 };
 
 export default (state = initialState, action) => {

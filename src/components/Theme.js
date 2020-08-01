@@ -54,9 +54,7 @@ class Theme {
         };
 
     this.hero = {
-      img: components.heroImage.locked
-        ? appState.current.hero.img
-        : this.getImage(this.name),
+      img: components.heroImage.locked ? appState.current.hero.img : null,
       position: appState.current ? appState.current.hero.position : "flex-end",
       overlay: appState.current ? appState.current.hero.overlay : true,
       overlayDirection: appState.current
@@ -83,9 +81,15 @@ class Theme {
   }
 
   getImage(query) {
-    axios
-      .get(`https://source.unsplash.com/1901x968/?${query}`)
-      .then((res) => res.request.responseURL);
+    return new Promise((res, rej) => {
+      axios
+        .get(`https://source.unsplash.com/1901x968/?${query}`)
+        .then((res) => {
+          this.setImage(res.request.responseURL);
+          res();
+        })
+        .catch(rej);
+    });
   }
 
   getRandomColor() {
