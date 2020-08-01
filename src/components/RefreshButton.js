@@ -17,8 +17,10 @@ const RefreshButton = ({ dispatch, twoFonts, locked, past, current }) => {
 
     const theme = new Theme();
     dispatch(setPastAppStates([...past, current]));
-    theme.validateFonts().then(() => {
-      theme.commit().then(() => dispatch(setLoadingScreen(false)));
+    theme.getImage().then(() => {
+      theme.validateFonts().then(() => {
+        theme.commit().then(() => dispatch(setLoadingScreen(false)));
+      });
     });
     dispatch(setFutureAppStates([]));
   };

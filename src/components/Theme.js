@@ -178,7 +178,8 @@ class Theme {
   commit() {
     return new Promise(async (res, rej) => {
       store.dispatch(setCurrentAppState(this));
-      const img = new Image(this.hero.img);
+      const img = new Image();
+      img.src = this.hero.img;
       img.onload = () => {
         const body = new FontFaceObserver(this.body.family);
         const header = new FontFaceObserver(this.header.family);
