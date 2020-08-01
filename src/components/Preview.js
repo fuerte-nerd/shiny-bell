@@ -32,7 +32,7 @@ const Preview = ({ twoFonts, primary, secondary, current }) => {
   useEffect(() => {
     axios
       .get(`https://source.unsplash.com/1600x900/?nature`)
-      .then((res) => setHeroImage(res.data));
+      .then((res) => console.log(res));
   }, []);
 
   return current ? (
@@ -44,7 +44,7 @@ const Preview = ({ twoFonts, primary, secondary, current }) => {
         alignItems="center"
         p={current.backgrounds.box !== "transparent" ? 4 : 0}
         bgcolor={current.backgrounds.box}
-        style={{ background: `url${heroImage}` }}
+        style={{ background: `url(${heroImage})` }}
       >
         <Container>
           <Typography variant="h1">Welcome to your new theme!</Typography>
