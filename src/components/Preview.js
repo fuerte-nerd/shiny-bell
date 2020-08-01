@@ -51,6 +51,7 @@ const Preview = ({ name, twoFonts, primary, secondary, current }) => {
         style={{
           backgroundImage: `url(${heroImage})`,
           backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         <Container>
