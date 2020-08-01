@@ -13,6 +13,7 @@ import Text from "./Text";
 import Buttons from "./Buttons";
 
 const Preview = ({ twoFonts, primary, secondary, current }) => {
+  const [heroImage, setHeroImage] = useState();
   const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
 
   useEffect(() => {
@@ -28,6 +29,12 @@ const Preview = ({ twoFonts, primary, secondary, current }) => {
       });
   }, [primary, secondary]);
 
+  useEffect(() => {
+    axios
+      .get(`https://source.unsplash.com/1600x900/?nature`)
+      .then((res) => setHeroImage(res.data));
+  }, []);
+
   return current ? (
     <>
       <Box
@@ -37,6 +44,7 @@ const Preview = ({ twoFonts, primary, secondary, current }) => {
         alignItems="center"
         p={current.backgrounds.box !== "transparent" ? 4 : 0}
         bgcolor={current.backgrounds.box}
+        style={{ background: `url${heroImage}` }}
       >
         <Container>
           <Typography variant="h1">Welcome to your new theme!</Typography>
