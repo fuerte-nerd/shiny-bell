@@ -1,4 +1,5 @@
 import store from "../state/store";
+import axios from "axios";
 import uniqid from "uniqid";
 import FontFaceObserver from "fontfaceobserver";
 import nameGenerator from "project-name-generator";
@@ -51,6 +52,20 @@ class Theme {
           page: "transparent",
           box: "transparent",
         };
+
+    this.hero = {
+      img: components.heroImage.locked
+        ? appState.current.hero.img
+        : axios.get(`https://source.unsplash.com/1901x968/?${this.name}`),
+      position: appState.current ? appState.current.hero.position : "flex-end",
+      overlay: appState.current ? appState.current.hero.overlay : true,
+      overlayDirection: appState.current
+        ? appState.current.hero.overlayDirection
+        : "top",
+      overlayColor: appState.current
+        ? appState.current.hero.overlayColor
+        : "dark",
+    };
 
     // overwrites
     const params = Object.entries(config);
