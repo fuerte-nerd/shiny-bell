@@ -82,8 +82,10 @@ class Theme {
     return this[key];
   }
 
-  getImage(query){
-    axios.get(`https://source.unsplash.com/1901x968/?${query}`).then((res)=> return res.request.responseURL)
+  getImage(query) {
+    axios
+      .get(`https://source.unsplash.com/1901x968/?${query}`)
+      .then((res) => res.request.responseURL);
   }
 
   getRandomColor() {
