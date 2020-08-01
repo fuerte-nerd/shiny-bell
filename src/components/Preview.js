@@ -32,7 +32,7 @@ const Preview = ({ twoFonts, primary, secondary, current }) => {
   useEffect(() => {
     axios
       .get(`https://source.unsplash.com/1600x900/?nature`)
-      .then((res) => console.log(res));
+      .then((res) => console.log(res.request.responseURL));
   }, []);
 
   return current ? (
