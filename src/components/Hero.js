@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import { Box, Container, Typography, Button, Grid } from "@material-ui/core";
 
-const Hero = ({ current }) => {
+const Hero = ({ current, heroImg, primary, secondary, twoFonts }) => {
   const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const Hero = ({ current }) => {
       pb={10}
       bgcolor={current.backgrounds.box}
       style={{
-        backgroundImage: `url(${heroImage})`,
+        backgroundImage: `url(${heroImg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -53,18 +54,14 @@ const Hero = ({ current }) => {
                 </Button>
               </Grid>
               <Grid item>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => getImage(name.replace(/ /g, "+"))}
-                >
+                <Button variant="contained" color="secondary">
                   No thanks
                 </Button>
               </Grid>
             </Grid>
           </Box>
-        </Container>
-      </Box>
+        </Box>
+      </Container>
     </Box>
   );
 };
@@ -72,6 +69,9 @@ const Hero = ({ current }) => {
 const mapStateToProps = (state) => ({
   current: state.appState.current,
   twoFonts: state.appState.current.twoFonts,
+  heroImg: state.appState.current.hero.img,
+  primary: state.appState.current.primary,
+  secondary: state.appState.current.secondary,
 });
 
 export default connect(mapStateToProps)(Hero);
