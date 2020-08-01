@@ -56,7 +56,7 @@ class Theme {
     this.hero = {
       img: components.heroImage.locked
         ? appState.current.hero.img
-        : axios.get(`https://source.unsplash.com/1901x968/?${this.name}`),
+        : this.getImage(this.name),
       position: appState.current ? appState.current.hero.position : "flex-end",
       overlay: appState.current ? appState.current.hero.overlay : true,
       overlayDirection: appState.current
@@ -80,6 +80,10 @@ class Theme {
 
   getProp(key) {
     return this[key];
+  }
+
+  getImage(query){
+    axios.get(`https://source.unsplash.com/1901x968/?${query}`).then((res)=> return res.request.responseURL)
   }
 
   getRandomColor() {
