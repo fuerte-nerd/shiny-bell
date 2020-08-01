@@ -88,6 +88,23 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
+      <ListItem id="lock-hero-img" onClick={handleChange} button>
+        <ListItemText primary="Hero Image" />
+        <ListItemSecondaryAction>
+          <IconButton
+            size="small"
+            onClick={handleChange}
+            id="lock-hero-img-btn"
+            edge="end"
+          >
+            {locked.heroImg ? (
+              <Lock style={{ fontSize: "1.5rem" }} />
+            ) : (
+              <LockOpen style={{ fontSize: "1.5rem" }} />
+            )}
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
     </Setting>
   );
 };
@@ -97,6 +114,7 @@ const mapStateToProps = (state) => ({
     body: state.components.fonts.body.locked,
     header: state.components.fonts.header.locked,
     palette: state.components.palette.locked,
+    heroImg: state.components.heroImage.locked,
   },
   twoFonts: state.appState.current.twoFonts,
 });

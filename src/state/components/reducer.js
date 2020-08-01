@@ -6,6 +6,7 @@ import {
   SET_VALIDATION_FONT,
   SET_BODY_FONT_CATEGORIES,
   SET_HEADER_FONT_CATEGORIES,
+  SET_HERO_IMG_LOCK,
 } from "./types";
 
 const initialState = {
@@ -70,6 +71,9 @@ export default (state = initialState, action) => {
       break;
     case SET_PALETTE_LOCK:
       newState.palette.locked = payload;
+      break;
+    case SET_HERO_IMG_LOCK:
+      newState.heroImage.locked = payload;
       break;
     default:
       break;
