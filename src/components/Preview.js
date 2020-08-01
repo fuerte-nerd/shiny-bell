@@ -45,8 +45,9 @@ const Preview = ({ name, twoFonts, primary, secondary, current }) => {
         minHeight="100vh"
         display="flex"
         justifyContent="center"
-        alignItems="center"
+        alignItems="flex-end"
         p={current.backgrounds.box !== "transparent" ? 4 : 0}
+        pb={10}
         bgcolor={current.backgrounds.box}
         style={{
           backgroundImage: `url(${heroImage})`,
