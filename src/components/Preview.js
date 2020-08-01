@@ -12,7 +12,7 @@ import {
 import Text from "./Text";
 import Buttons from "./Buttons";
 
-const Preview = ({ twoFonts, primary, secondary, current }) => {
+const Preview = ({ name, twoFonts, primary, secondary, current }) => {
   const [heroImage, setHeroImage] = useState();
   const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
 
@@ -31,9 +31,9 @@ const Preview = ({ twoFonts, primary, secondary, current }) => {
 
   useEffect(() => {
     axios
-      .get(`https://source.unsplash.com/1600x900/?nature`)
+      .get(`https://source.unsplash.com/1600x900/?${name.replace(/ /g, "+")}`)
       .then((res) => setHeroImage(res.request.responseURL));
-  }, []);
+  }, [name]);
 
   return current ? (
     <>
@@ -87,6 +87,7 @@ const Preview = ({ twoFonts, primary, secondary, current }) => {
 const mapStateToProps = (state) => ({
   current: state.appState.current,
   twoFonts: state.appState.current.twoFonts,
+  name: state.appState.current.name,
   primary: state.appState.current.primary,
   secondary: state.appState.current.secondary,
 });
