@@ -44,7 +44,10 @@ const Preview = ({ twoFonts, primary, secondary, current }) => {
         alignItems="center"
         p={current.backgrounds.box !== "transparent" ? 4 : 0}
         bgcolor={current.backgrounds.box}
-        style={{ background: `url(${heroImage})`, backgroundSize: "cover" }}
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: "cover",
+        }}
       >
         <Container>
           <Typography variant="h1">Welcome to your new theme!</Typography>
@@ -59,12 +62,12 @@ const Preview = ({ twoFonts, primary, secondary, current }) => {
           <Box mt={2}>
             <Grid container spacing={2}>
               <Grid item>
-                <Button variant="outlined" color="primary">
+                <Button variant="contained" color="primary">
                   See more
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" color="secondary">
+                <Button variant="contained" color="secondary">
                   No thanks
                 </Button>
               </Grid>
