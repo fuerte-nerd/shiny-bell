@@ -13,6 +13,7 @@ import LoadScreen from "./components/LoadScreen";
 import Sidebar from "./components/Sidebar";
 import Menu from "./components/Menu";
 import RefreshButton from "./components/RefreshButton";
+import Hero from "./components/Hero";
 import Preview from "./components/Preview";
 
 import FontSelector from "./components/dialogs/FontSelector";
@@ -44,9 +45,11 @@ function App({ dispatch, current }) {
         dispatch(setLibraryLoaded(true));
         const theme = new Theme();
         theme
-          .validateFonts()
+          .getImage()
           .then(() => {
-            theme.commit().then(() => dispatch(setLoadingScreen(false)));
+            theme.validateFonts().then(() => {
+              theme.commit().then(() => dispatch(setLoadingScreen(false)));
+            });
           })
           .catch((err) => console.log(err));
       });
@@ -75,7 +78,9 @@ function App({ dispatch, current }) {
             <Menu />
             <RefreshButton />
             <Box bgcolor={current.backgrounds.page}>
-              <Preview />
+              <Hero />
+              {/*              <Preview />
+               */}
             </Box>
           </ThemeWrapper>
         </>

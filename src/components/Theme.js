@@ -84,12 +84,12 @@ class Theme {
     this.hero.img = img;
   }
 
-  getImage(query) {
+  getImage(query = this.name) {
     return new Promise((res, rej) => {
       axios
         .get(`https://source.unsplash.com/1901x968/?${query}`)
-        .then((res) => {
-          this.setImage(res.request.responseURL);
+        .then((response) => {
+          this.setImage(response.request.responseURL);
           res();
         })
         .catch(rej);
