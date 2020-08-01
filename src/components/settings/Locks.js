@@ -4,6 +4,7 @@ import {
   setBodyFontLock,
   setHeaderFontLock,
   setPaletteLock,
+  setHeroImgLock,
 } from "../../state/components/actions";
 import Setting from "../Setting";
 import {
@@ -27,6 +28,9 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
       case "lock-palette":
       case "lock-palette-btn":
         return dispatch(setPaletteLock(!locked.palette));
+      case "lock-hero-img":
+      case "lock-hero-img-btn":
+        return dispatch(setHeroImgLock(!locked.heroImg));
 
       default:
         return;

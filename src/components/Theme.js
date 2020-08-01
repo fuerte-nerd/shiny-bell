@@ -54,7 +54,7 @@ class Theme {
         };
 
     this.hero = {
-      img: components.heroImage.locked ? appState.current.hero.img : null,
+      img: null,
       position: appState.current ? appState.current.hero.position : "flex-end",
       overlay: appState.current ? appState.current.hero.overlay : true,
       overlayDirection: appState.current
@@ -86,6 +86,10 @@ class Theme {
 
   getImage(query = this.name) {
     return new Promise((res, rej) => {
+      if (components.heroImage.locked) {
+        setImage(appState.current.hero.img);
+        res();
+      }
       axios
         .get(`https://source.unsplash.com/1901x968/?${query}`)
         .then((response) => {
