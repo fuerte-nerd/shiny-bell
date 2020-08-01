@@ -86,17 +86,19 @@ class Theme {
 
   getImage(query = this.name) {
     return new Promise((res, rej) => {
-      if (components.heroImage.locked) {
-        setImage(appState.current.hero.img);
+      if (store.getState().components.heroImage.locked) {
+        console.log("reached");
+        this.setImage(store.getState().appState.current.hero.img);
         res();
+      } else {
+        axios
+          .get(`https://source.unsplash.com/1901x968/?${query}`)
+          .then((response) => {
+            this.setImage(response.request.responseURL);
+            res();
+          })
+          .catch(rej);
       }
-      axios
-        .get(`https://source.unsplash.com/1901x968/?${query}`)
-        .then((response) => {
-          this.setImage(response.request.responseURL);
-          res();
-        })
-        .catch(rej);
     });
   }
 
