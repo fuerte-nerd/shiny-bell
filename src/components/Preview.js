@@ -16,6 +16,12 @@ const Preview = ({ name, twoFonts, primary, secondary, current }) => {
   const [heroImage, setHeroImage] = useState();
   const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
 
+  const getImage = (query) => {
+    axios
+      .get(`https://source.unsplash.com/1901x968/?${query}`)
+      .then((res) => setHeroImage(res.request.responseURL));
+  };
+
   useEffect(() => {
     axios
       .get(
@@ -30,9 +36,7 @@ const Preview = ({ name, twoFonts, primary, secondary, current }) => {
   }, [primary, secondary]);
 
   useEffect(() => {
-    axios
-      .get(`https://source.unsplash.com/1600x900/?${name.replace(/ /g, "+")}`)
-      .then((res) => setHeroImage(res.request.responseURL));
+    getImage(name.replace(/ /g, "+"));
   }, [name]);
 
   return current ? (
@@ -67,7 +71,11 @@ const Preview = ({ name, twoFonts, primary, secondary, current }) => {
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="contained" color="secondary">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => getImage(name.replace(/ /g, "+"))}
+                >
                   No thanks
                 </Button>
               </Grid>
