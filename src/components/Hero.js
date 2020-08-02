@@ -8,6 +8,7 @@ import {
   Typography,
   Button,
   Grid,
+  Link,
 } from "@material-ui/core";
 
 const Hero = ({
@@ -71,7 +72,11 @@ const Hero = ({
               ? `${current.header.family} and the body font is ${current.body.family}`
               : current.body.family}
             . The primary color is {colorNames.primary} and the secondary color
-            is {colorNames.secondary}.
+            is {colorNames.secondary}. The image is provided by{" "}
+            <Link href="https://www.unsplash.com" target="_blank">
+              Unsplash
+            </Link>
+            .
           </Typography>
           <Box mt={2} align="inherit">
             <Button
