@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { setRename, setLoadingScreen } from "../../state/display/actions";
 import Theme from "../Theme";
+import { setSiteTitleLock } from "../../state/components/actions";
 
 const Rename = ({ dispatch, isOpen, title, current }) => {
   const [siteTitle, setSiteTitle] = useState(title);
@@ -28,11 +29,12 @@ const Rename = ({ dispatch, isOpen, title, current }) => {
       case "update":
         dispatch(setLoadingScreen(true));
         const theme = new Theme({ ...current, name: siteTitle });
-        theme
-          .getImage()
-          .then(() =>
-            theme.commit().then(() => dispatch(setLoadingScreen(false)))
-          );
+        theme.getImage().then(() =>
+          theme.commit().then(() => {
+            dispatch(setSiteTitleLock(true));
+            dispatch(setLoadingScreen(false));
+          })
+        );
         break;
       default:
         break;

@@ -13,9 +13,9 @@ class Theme {
     const { appState, components } = state;
     const name = nameGenerator().raw;
     this.id = uniqid();
-    this.name = name
-      .map((i) => i.charAt(0).toUpperCase() + i.substr(1))
-      .join(" ");
+    this.name = components.siteTitle.locked
+      ? appState.current.name
+      : name.map((i) => i.charAt(0).toUpperCase() + i.substr(1)).join(" ");
     this.filename = name.join("_");
     this.createDate = new Date();
     this.primary = components.palette.locked

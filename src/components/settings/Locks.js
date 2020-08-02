@@ -5,6 +5,7 @@ import {
   setHeaderFontLock,
   setPaletteLock,
   setHeroImgLock,
+  setSiteTitleLock,
 } from "../../state/components/actions";
 import Setting from "../Setting";
 import {
@@ -31,7 +32,9 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
       case "lock-hero-img":
       case "lock-hero-img-btn":
         return dispatch(setHeroImgLock(!locked.heroImg));
-
+      case "lock-site-title":
+      case "lock-site-title-btn":
+        return dispatch(setSiteTitleLock(!locked.siteTitle));
       default:
         return;
     }
@@ -92,6 +95,23 @@ const Locks = ({ dispatch, locked, twoFonts }) => {
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
+      <ListItem id="lock-site-title" onClick={handleChange} button>
+        <ListItemText primary="Site Title" />
+        <ListItemSecondaryAction>
+          <IconButton
+            size="small"
+            onClick={handleChange}
+            id="lock-site-title-btn"
+            edge="end"
+          >
+            {locked.siteTitle ? (
+              <Lock style={{ fontSize: "1.5rem" }} />
+            ) : (
+              <LockOpen style={{ fontSize: "1.5rem" }} />
+            )}
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
       <ListItem id="lock-hero-img" onClick={handleChange} button>
         <ListItemText primary="Hero Image" />
         <ListItemSecondaryAction>
@@ -119,6 +139,7 @@ const mapStateToProps = (state) => ({
     header: state.components.fonts.header.locked,
     palette: state.components.palette.locked,
     heroImg: state.components.heroImage.locked,
+    siteTitle: state.components.siteTitle.locked,
   },
   twoFonts: state.appState.current.twoFonts,
 });
