@@ -9,8 +9,9 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
+import { setRename } from "../../state/display/actions";
 
-const Rename = ({ dispatch, title }) => {
+const Rename = ({ dispatch, isOpen, title }) => {
   const [siteTitle, setSiteTitle] = useState(title);
 
   const handleChange = (e) => {
@@ -31,8 +32,12 @@ const Rename = ({ dispatch, title }) => {
     }
   };
 
+  const handleClose = () => {
+    dispatch(setRename(false));
+  };
+
   return (
-    <Dialog fullWidth maxWidth="xs" open={true}>
+    <Dialog fullWidth maxWidth="xs" open={isOpen} onClose={handleClose}>
       <DialogTitle>
         <Typography variant="h6" style={{ fontFamily: "Roboto" }}>
           Edit site title
@@ -57,6 +62,7 @@ const Rename = ({ dispatch, title }) => {
 };
 
 const mapStateToProps = (state) => ({
+  isOpen: state.display.rename,
   title: state.appState.current.name,
 });
 

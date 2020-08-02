@@ -14,6 +14,7 @@ import {
   SET_FONT_CATEGORY_SELECTOR_OPEN,
   SET_FONT_CATEGORY_SELECTOR_SECTION,
   SET_THEME_CODE,
+  SET_RENAME,
 } from "./types";
 
 const initialState = {
@@ -46,7 +47,7 @@ const initialState = {
     isOpen: false,
     section: "body",
   },
-  siteRename: false,
+  rename: false,
 };
 
 export default (state = initialState, action) => {
@@ -99,6 +100,9 @@ export default (state = initialState, action) => {
       break;
     case SET_LOAD:
       newState.load = payload;
+      break;
+    case SET_RENAME:
+      newState.rename = payload;
       break;
     default:
       break;
