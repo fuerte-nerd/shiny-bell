@@ -17,6 +17,7 @@ const Hero = ({
   secondary,
   twoFonts,
   textPosition,
+  overlayColor,
 }) => {
   const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
 
@@ -50,7 +51,7 @@ const Hero = ({
           position="absolute"
           width="100%"
           height="100%"
-          bgcolor="primary.light"
+          bgcolor={overlayColor}
           style={{ opacity: 0.5 }}
         />
       )}
@@ -98,6 +99,7 @@ const mapStateToProps = (state) => ({
   primary: state.appState.current.primary,
   secondary: state.appState.current.secondary,
   textPosition: state.appState.current.hero.position,
+  overlayColor: state.appState.current.hero.overlayColor,
 });
 
 export default connect(mapStateToProps)(Hero);

@@ -17,6 +17,19 @@ const Hero = ({ dispatch, current, boxPosition, overlayColor }) => {
     let theme;
     const { id } = e.currentTarget;
     switch (id) {
+      case "overlay-color-previous":
+        theme = Object.assign({}, current);
+        if (options.overlayColor.indexOf(overlayColor) === 0) {
+          theme.hero.overlayColor =
+            options.overlayColor[options.overlayColor.length - 1];
+        } else {
+          theme.hero.overlayColor =
+            options.overlayColor[
+              options.overlayColor.indexOf(overlayColor) + 1
+            ];
+        }
+        new Theme(theme).commit();
+        break;
       case "box-position-previous":
         theme = Object.assign({}, current);
         if (options.boxPosition.indexOf(boxPosition) === 0) {
