@@ -30,6 +30,22 @@ const Hero = ({ dispatch, current, boxPosition, overlayColor }) => {
         }
         new Theme(theme).commit();
         break;
+      case "overlay-color-next":
+        theme = Object.assign({}, current);
+        if (
+          options.overlayColor.indexOf(overlayColor) ===
+          options.overlayColor.length - 1
+        ) {
+          theme.hero.overlayColor = options.overlayColor[0];
+        } else {
+          theme.hero.overlayColor =
+            options.overlayColor[
+              options.overlayColor.indexOf(overlayColor) + 1
+            ];
+        }
+        new Theme(theme).commit();
+        break;
+
       case "box-position-previous":
         theme = Object.assign({}, current);
         if (options.boxPosition.indexOf(boxPosition) === 0) {
