@@ -73,19 +73,13 @@ const Hero = ({
             . The primary color is {colorNames.primary} and the secondary color
             is {colorNames.secondary}.
           </Typography>
-          <Box mt={2}>
-            <Grid container spacing={2}>
-              <Grid item>
-                <Button variant="contained" color="primary">
-                  See more
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button variant="contained" color="secondary">
-                  No thanks
-                </Button>
-              </Grid>
-            </Grid>
+          <Box mt={2} display="flex">
+            <Button variant="contained" color="primary">
+              See more
+            </Button>
+            <Button variant="contained" color="secondary">
+              No thanks
+            </Button>
           </Box>
         </Box>
       </Container>
