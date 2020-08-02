@@ -94,6 +94,7 @@ class Theme {
         axios
           .get(`https://source.unsplash.com/1901x968/?${query}`)
           .then((response) => {
+            console.log(response);
             this.setImage(response.request.responseURL);
             res();
           })
