@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { SettingsBrightness, Settings, Code } from "@material-ui/icons";
 import UndoRedo from "./UndoRedo";
-import { setSidebar, setThemeCode } from "../state/display/actions";
+import { setSidebar, setThemeCode, setRename } from "../state/display/actions";
 import Theme from "./Theme";
 
 const Menu = ({ dispatch, current }) => {
@@ -36,7 +36,9 @@ const Menu = ({ dispatch, current }) => {
   return (
     <AppBar>
       <Toolbar>
-        <Typography variant="h6">{current.name}</Typography>
+        <Typography variant="h6" onClick={() => dispatch(setRename(true))}>
+          {current.name}
+        </Typography>
         <div style={{ flexGrow: 1 }} />
         <Hidden smDown>
           <UndoRedo />

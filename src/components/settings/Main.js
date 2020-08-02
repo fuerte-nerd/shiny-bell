@@ -20,6 +20,7 @@ import {
   setLoadingScreen,
   setSaveOpen,
   setLoad,
+  setRename,
 } from "../../state/display/actions";
 import {
   setPastAppStates,
@@ -75,7 +76,7 @@ const Main = ({ dispatch, past, current, future }) => {
         break;
       case "rename":
       case "rename-btn":
-        //dialog
+        dispatch(setRename(true));
         break;
       default:
         break;
