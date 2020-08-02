@@ -48,15 +48,13 @@ const Hero = ({
         backgroundPosition: "center",
       }}
     >
-      {current.hero.overlay && (
-        <Box
-          position="absolute"
-          width="100%"
-          height="100%"
-          bgcolor={overlayColor}
-          style={{ opacity: overlayOpacity }}
-        />
-      )}
+      <Box
+        position="absolute"
+        width="100%"
+        height="100%"
+        bgcolor={overlayColor}
+        style={{ opacity: overlayOpacity }}
+      />
       <Container style={{ zIndex: current.hero.overlay ? 5 : 0 }}>
         {current.hero.position === "flex-start" ? <Toolbar /> : null}
         <Box
