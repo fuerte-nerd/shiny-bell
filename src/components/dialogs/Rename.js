@@ -21,7 +21,7 @@ const Rename = ({ dispatch, title }) => {
         <TextField label="Site Title" value={siteTitle} autoFocus />
       </DialogContent>
       <DialogActions>
-        <Button></Button> <Button></Button>
+        <Button>Cancel</Button> <Button>Update</Button>
       </DialogActions>
     </Dialog>
   );

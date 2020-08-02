@@ -1,14 +1,20 @@
 import React from "react";
 import ColorPicker from "./dialogs/ColorPicker";
-import FontPicker from "./dialogs/FontPicker";
+import FontSelector from "./dialogs/FontSelector";
+import CategorySelector from "./dialogs/CategorySelector";
 import ThemeCode from "./dialogs/ThemeCode";
+import Save from "./dialogs/Save";
+import Load from "./dialogs/Load";
 
 const Dialogs = () => {
   return (
     <>
-      <ThemeCode />
-      <FontPicker />
       <ColorPicker />
+      <FontSelector />
+      <CategorySelector />
+      <ThemeCode />
+      <Save />
+      <Load />
     </>
   );
 };

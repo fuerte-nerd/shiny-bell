@@ -16,12 +16,7 @@ import RefreshButton from "./components/RefreshButton";
 import Hero from "./components/Hero";
 import Preview from "./components/Preview";
 
-import FontSelector from "./components/dialogs/FontSelector";
-import CategorySelector from "./components/dialogs/CategorySelector";
-import ColorPicker from "./components/dialogs/ColorPicker";
-import ThemeCode from "./components/dialogs/ThemeCode";
-import Save from "./components/dialogs/Save";
-import Load from "./components/dialogs/Load";
+import Dialogs from "./components/Dialogs";
 
 import { setFonts, setLibraryLoaded } from "./state/library/actions";
 import { setLoadingScreen } from "./state/display/actions";
@@ -68,12 +63,7 @@ function App({ dispatch, current }) {
           <Head />
           <ThemeWrapper>
             <LoadScreen />
-            <FontSelector />
-            <CategorySelector />
-            <ColorPicker />
-            <ThemeCode />
-            <Load />
-            <Save />
+            <Dialogs />
             <Sidebar />
             <Menu />
             <RefreshButton />
