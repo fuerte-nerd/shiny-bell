@@ -10,12 +10,20 @@ import {
 } from "@material-ui/core";
 
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
+import Theme from "../Theme";
 
 const Hero = ({ dispatch, current, boxPosition }) => {
   const handleClick = (e) => {
+    let theme;
     const { id } = e.currentTarget;
     switch (id) {
       case "box-position-previous":
+        if (options.boxPosition.indexOf(boxPosition) === 0) {
+          theme = Object.assign({}, current);
+          theme.hero.position =
+            options.boxPosition[options.boxPosition.length - 1];
+          new Theme(theme).commit();
+        }
         break;
       case "box-position-next":
         break;
@@ -25,8 +33,9 @@ const Hero = ({ dispatch, current, boxPosition }) => {
   };
 
   const options = {
-    boxPosition: ["flex-end", "flex-start", "center"],
+    boxPosition: ["flex-end", "center", "flex-start"],
   };
+
   return (
     <Setting title="Hero">
       <ListItem>
