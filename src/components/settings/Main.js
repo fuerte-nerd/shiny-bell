@@ -6,7 +6,14 @@ import {
   ListItemSecondaryAction,
   IconButton,
 } from "@material-ui/core";
-import { Undo, Redo, Code, Save, OpenInBrowser } from "@material-ui/icons";
+import {
+  Undo,
+  Redo,
+  Code,
+  Save,
+  OpenInBrowser,
+  Title,
+} from "@material-ui/icons";
 import Setting from "../Setting";
 import {
   setThemeCode,
@@ -66,6 +73,10 @@ const Main = ({ dispatch, past, current, future }) => {
           mode: current.mode === "light" ? "dark" : "light",
         }).commit();
         break;
+      case "rename":
+      case "rename-btn":
+        //dialog
+        break;
       default:
         break;
     }
@@ -122,6 +133,14 @@ const Main = ({ dispatch, past, current, future }) => {
             disabled={future.length === 0}
           >
             <Redo />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <ListItem id="rename" onClick={handleClick} button>
+        <ListItemText primary="Edit site name" secondary={current.name} />
+        <ListItemSecondaryAction>
+          <IconButton edge="end" id="rename-btn" onClick={handleClick}>
+            <Title />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
