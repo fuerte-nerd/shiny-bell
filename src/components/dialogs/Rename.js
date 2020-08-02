@@ -12,6 +12,12 @@ import {
 
 const Rename = ({ dispatch, title }) => {
   const [siteTitle, setSiteTitle] = useState(title);
+
+  const handleChange = (e) => {
+    setSiteTitle(e.currentTarget.value);
+    console.log(siteTitle);
+  };
+
   return (
     <Dialog fullWidth maxWidth="xs" open={true}>
       <DialogTitle>
@@ -24,6 +30,7 @@ const Rename = ({ dispatch, title }) => {
           label="Site Title"
           fullWidth
           defaultValue={siteTitle}
+          onChange={handleChange}
           autoFocus
           style={{ fontFamily: "Roboto" }}
         />
