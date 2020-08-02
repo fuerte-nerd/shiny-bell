@@ -63,6 +63,7 @@ const Hero = ({
           p={current.backgrounds.box !== "transparent" ? 4 : 0}
           mt={current.hero.position === "flex-start" ? 5 : 0}
           mb={current.hero.position === "flex-end" ? 10 : 0}
+          align="center"
         >
           <Typography variant="h1">Welcome to your new theme!</Typography>
           <Typography variant="subtitle1" paragraph>
@@ -73,7 +74,7 @@ const Hero = ({
             . The primary color is {colorNames.primary} and the secondary color
             is {colorNames.secondary}.
           </Typography>
-          <Box mt={2}>
+          <Box mt={2} align="inherit">
             <Button
               variant="contained"
               color="primary"
