@@ -36,8 +36,8 @@ const Hero = ({
     <Box
       minHeight="100vh"
       display="flex"
-      justifyContent="center"
-      alignItems={textPosition}
+      flexDirection="column"
+      justifyContent={textPosition}
       pb={current.hero.position === "flex-end" ? 10 : 0}
       bgcolor={current.backgrounds.box}
       style={{
@@ -46,7 +46,7 @@ const Hero = ({
         backgroundPosition: "center",
       }}
     >
-      {current.hero.position === "flex-start" && <Toolbar />}
+      {current.hero.position === "flex-start" ? <Toolbar /> : null}
       <Container>
         <Box
           bgcolor={current.backgrounds.box}
