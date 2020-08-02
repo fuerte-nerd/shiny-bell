@@ -36,7 +36,7 @@ const Hero = ({
   }, [primary, secondary]);
   return (
     <Box
-      minHeight="100vh"
+      height="100vh"
       display="flex"
       flexDirection="column"
       justifyContent={textPosition}
@@ -56,8 +56,8 @@ const Hero = ({
           style={{ opacity: overlayOpacity }}
         />
       )}
-      {current.hero.position === "flex-start" ? <Toolbar /> : null}
       <Container style={{ zIndex: current.hero.overlay ? 5 : 0 }}>
+        {current.hero.position === "flex-start" ? <Toolbar /> : null}
         <Box
           bgcolor={current.backgrounds.box}
           p={current.backgrounds.box !== "transparent" ? 4 : 0}
