@@ -21,6 +21,7 @@ const Hero = ({
 }) => {
   const handleClick = (e) => {
     const theme = Object.assign({}, current);
+    console.log(overlayOpacity);
     const { id } = e.currentTarget;
     switch (id) {
       case "overlay-opacity-dec":
@@ -30,6 +31,10 @@ const Hero = ({
         }
         break;
       case "overlay-opacity-inc":
+        if (overlayOpacity < 1) {
+          theme.hero.overlayOpacity = overlayOpacity + 0.1;
+          new Theme(theme).commit();
+        }
         break;
       case "overlay-color-previous":
         if (options.overlayColor.indexOf(overlayColor) === 0) {
