@@ -3,7 +3,14 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { Box, Container, Typography, Button, Grid } from "@material-ui/core";
 
-const Hero = ({ current, heroImg, primary, secondary, twoFonts }) => {
+const Hero = ({
+  current,
+  heroImg,
+  primary,
+  secondary,
+  twoFonts,
+  textPosition,
+}) => {
   const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
 
   useEffect(() => {
@@ -23,7 +30,7 @@ const Hero = ({ current, heroImg, primary, secondary, twoFonts }) => {
       minHeight="100vh"
       display="flex"
       justifyContent="center"
-      alignItems="flex-end"
+      alignItems={textPosition}
       pb={10}
       bgcolor={current.backgrounds.box}
       style={{
@@ -72,6 +79,7 @@ const mapStateToProps = (state) => ({
   heroImg: state.appState.current.hero.img,
   primary: state.appState.current.primary,
   secondary: state.appState.current.secondary,
+  textPosition: state.appState.current.hero.position,
 });
 
 export default connect(mapStateToProps)(Hero);

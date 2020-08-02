@@ -10,6 +10,7 @@ import Fonts from "./settings/Fonts";
 import Colors from "./settings/Colors";
 import Appearance from "./settings/Appearance";
 import Buttons from "./settings/Buttons";
+import Hero from "./settings/Hero";
 import Backgrounds from "./settings/Backgrounds";
 
 const Sidebar = ({ dispatch, isOpen }) => {
@@ -31,6 +32,7 @@ const Sidebar = ({ dispatch, isOpen }) => {
         <Colors />
         <Appearance />
         <Buttons />
+        <Hero />
         <Backgrounds />
       </List>
     </Drawer>
