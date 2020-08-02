@@ -35,6 +35,9 @@ const ThemeWrapper = (props) => {
               textTransform: current ? current.buttonTextTransform : null,
             },
           },
+          MuiInputBase: {
+            root: { fontFamily: "Roboto" },
+          },
         },
         typography: {
           h1: {

@@ -5,6 +5,7 @@ import CategorySelector from "./dialogs/CategorySelector";
 import ThemeCode from "./dialogs/ThemeCode";
 import Save from "./dialogs/Save";
 import Load from "./dialogs/Load";
+import Rename from "./dialogs/Rename";
 
 const Dialogs = () => {
   return (
@@ -15,6 +16,7 @@ const Dialogs = () => {
       <ThemeCode />
       <Save />
       <Load />
+      <Rename />
     </>
   );
 };
