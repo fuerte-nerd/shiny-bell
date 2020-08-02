@@ -12,7 +12,7 @@ import {
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 import Theme from "../Theme";
 
-const Hero = ({ dispatch, current, boxPosition }) => {
+const Hero = ({ dispatch, current, boxPosition, overlayColor }) => {
   const handleClick = (e) => {
     let theme;
     const { id } = e.currentTarget;
@@ -47,18 +47,58 @@ const Hero = ({ dispatch, current, boxPosition }) => {
   };
 
   const options = {
+    overlayColor: [
+      "none",
+      "dark",
+      "light",
+      "primary.light",
+      "primary.main",
+      "primary.dark",
+      "secondary.light",
+      "secondary.main",
+      "secondary.dark",
+    ],
     boxPosition: ["flex-end", "center", "flex-start"],
   };
 
   return (
     <Setting title="Hero">
       <ListItem>
-        <ListItemText primary="Box position" secondary={boxPosition} />
+        <ListItemText primary="Overlay color" secondary={overlayColor} />
         <ListItemSecondaryAction>
-          <IconButton onClick={handleClick} id="box-position-previous">
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="overlay-color-previous"
+          >
             <ChevronLeft />
           </IconButton>
-          <IconButton onClick={handleClick} id="box-position-next" edge="end">
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="overlay-color-next"
+            edge="end"
+          >
+            <ChevronRight />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <ListItem>
+        <ListItemText primary="Box position" secondary={boxPosition} />
+        <ListItemSecondaryAction>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="box-position-previous"
+          >
+            <ChevronLeft />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="box-position-next"
+            edge="end"
+          >
             <ChevronRight />
           </IconButton>
         </ListItemSecondaryAction>
@@ -70,6 +110,7 @@ const Hero = ({ dispatch, current, boxPosition }) => {
 const mapStateToProps = (state) => ({
   current: state.appState.current,
   boxPosition: state.appState.current.hero.position,
+  overlayColor: state.appState.current.hero.overlayColor,
 });
 
 export default connect(mapStateToProps)(Hero);

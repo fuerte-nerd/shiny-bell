@@ -69,8 +69,6 @@ function App({ dispatch, current }) {
             <Box bgcolor={current.backgrounds.page}>
               <Hero />
               <RefreshButton />
-              {/*              <Preview />
-               */}
             </Box>
           </ThemeWrapper>
         </>
