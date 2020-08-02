@@ -37,7 +37,11 @@ const RefreshButton = ({ dispatch, twoFonts, locked, past, current }) => {
         color="secondary"
         disabled={
           twoFonts
-            ? locked.body && locked.header && locked.palette
+            ? locked.body &&
+              locked.header &&
+              locked.palette &&
+              locked.siteTitle &&
+              locked.heroImage
               ? true
               : false
             : locked.body && locked.palette
@@ -67,6 +71,8 @@ const mapStateToProps = (state) => ({
     body: state.components.fonts.body.locked,
     header: state.components.fonts.header.locked,
     palette: state.components.palette.locked,
+    siteTitle: state.components.siteTitle.locked,
+    heroImage: state.components.heroImage.locked,
   },
   twoFonts: state.appState.current.twoFonts,
   past: state.appState.past,

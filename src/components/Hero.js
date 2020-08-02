@@ -77,11 +77,12 @@ const Hero = ({
             <Button
               variant="contained"
               color="primary"
+              size="large"
               style={{ marginRight: 10 }}
             >
               See more
             </Button>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" size="large">
               No thanks
             </Button>
           </Box>
