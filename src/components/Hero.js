@@ -38,8 +38,6 @@ const Hero = ({
       display="flex"
       flexDirection="column"
       justifyContent={textPosition}
-      pt={current.hero.position === "flex-start" ? 5 : 0}
-      pb={current.hero.position === "flex-end" ? 10 : 0}
       bgcolor={current.backgrounds.box}
       style={{
         backgroundImage: `url(${heroImg})`,
@@ -56,10 +54,12 @@ const Hero = ({
         />
       )}
       {current.hero.position === "flex-start" ? <Toolbar /> : null}
-      <Container>
+      <Container style={{ zIndex: current.hero.overlay ? 5 : 0 }}>
         <Box
           bgcolor={current.backgrounds.box}
           p={current.backgrounds.box !== "transparent" ? 4 : 0}
+          mt={current.hero.position === "flex-start" ? 5 : 0}
+          mb={current.hero.position === "flex-end" ? 10 : 0}
         >
           <Typography variant="h1">Welcome to your new theme!</Typography>
           <Typography variant="subtitle1" paragraph>
