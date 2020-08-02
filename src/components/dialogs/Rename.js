@@ -13,21 +13,24 @@ import {
 const Rename = ({ dispatch, title }) => {
   const [siteTitle, setSiteTitle] = useState(title);
   return (
-    <Dialog fullWidth maxWidth="sm" open={true}>
+    <Dialog fullWidth maxWidth="xs" open={true}>
       <DialogTitle>
-        <Typography variant="h6">Edit site title</Typography>
+        <Typography variant="h6" style={{ fontFamily: "Roboto" }}>
+          Edit site title
+        </Typography>
       </DialogTitle>
       <DialogContent>
         <TextField
           label="Site Title"
           fullWidth
-          value={siteTitle}
+          defaultValue={siteTitle}
           autoFocus
           style={{ fontFamily: "Roboto" }}
         />
       </DialogContent>
       <DialogActions>
-        <Button>Cancel</Button> <Button>Update</Button>
+        <Button style={{ fontFamily: "Roboto" }}>Cancel</Button>{" "}
+        <Button style={{ fontFamily: "Roboto" }}>Update</Button>
       </DialogActions>
     </Dialog>
   );
