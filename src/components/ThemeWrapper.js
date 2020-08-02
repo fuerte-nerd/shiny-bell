@@ -23,6 +23,7 @@ const ThemeWrapper = (props) => {
             label: { fontFamily: "Roboto" },
           },
           MuiSelect: { root: { fontFamily: "Roboto" } },
+          MuiDialogTitle: { root: { fontFamily: "Roboto" } },
           MuiDialogContentText: {
             root: { fontFamily: "Roboto" },
           },
@@ -34,6 +35,9 @@ const ThemeWrapper = (props) => {
             root: {
               textTransform: current ? current.buttonTextTransform : null,
             },
+          },
+          MuiFormLabel: {
+            root: { fontFamily: "Roboto" },
           },
           MuiInputBase: {
             root: { fontFamily: "Roboto" },
