@@ -49,13 +49,13 @@ const Hero = ({
         break;
       case "overlay-opacity-dec":
         if (overlayOpacity > 0) {
-          theme.hero.overlayOpacity = overlayOpacity - 0.1;
+          theme.hero.overlayOpacity = overlayOpacity - (0.1).toFixed(1);
           new Theme(theme).commit();
         }
         break;
       case "overlay-opacity-inc":
         if (overlayOpacity < 1) {
-          theme.hero.overlayOpacity = overlayOpacity + 0.1;
+          theme.hero.overlayOpacity = overlayOpacity + (0.1).toFixed(1);
           new Theme(theme).commit();
         }
         break;
