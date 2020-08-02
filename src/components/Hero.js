@@ -18,7 +18,7 @@ const Hero = ({
   twoFonts,
   textPosition,
   overlayColor,
-  overlayTransparency,
+  overlayOpacity,
 }) => {
   const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
 
@@ -53,7 +53,7 @@ const Hero = ({
           width="100%"
           height="100%"
           bgcolor={overlayColor}
-          style={{ opacity: overlayTransparency }}
+          style={{ opacity: overlayOpacity }}
         />
       )}
       {current.hero.position === "flex-start" ? <Toolbar /> : null}
@@ -101,7 +101,7 @@ const mapStateToProps = (state) => ({
   secondary: state.appState.current.secondary,
   textPosition: state.appState.current.hero.position,
   overlayColor: state.appState.current.hero.overlayColor,
-  overlayTransparency: state.appState.current.hero.ooverlayTransparency,
+  overlayOpacity: state.appState.current.hero.overlayOpacity,
 });
 
 export default connect(mapStateToProps)(Hero);
