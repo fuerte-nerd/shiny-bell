@@ -12,15 +12,30 @@ import {
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 
 const Hero = ({ dispatch, current, boxPosition }) => {
+  const handleClick = (e) => {
+    const { id } = e.currentTarget;
+    switch (id) {
+      case "box-position-previous":
+        break;
+      case "box-position-next":
+        break;
+      default:
+        break;
+    }
+  };
+
+  const options = {
+    boxPosition: ["flex-end", "flex-start", "center"],
+  };
   return (
     <Setting title="Hero">
       <ListItem>
         <ListItemText primary="Box position" secondary={boxPosition} />
         <ListItemSecondaryAction>
-          <IconButton>
+          <IconButton onClick={handleClick} id="box-position-previous">
             <ChevronLeft />
           </IconButton>
-          <IconButton edge="end">
+          <IconButton onClick={handleClick} id="box-position-next" edge="end">
             <ChevronRight />
           </IconButton>
         </ListItemSecondaryAction>
