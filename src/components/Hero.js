@@ -49,8 +49,9 @@ const Hero = ({
         <Box
           position="absolute"
           width="100%"
-          height="100vh"
+          height="100%"
           bgcolor="primary.light"
+          style={{ opacity: 0.5 }}
         />
       )}
       {current.hero.position === "flex-start" ? <Toolbar /> : null}
