@@ -9,7 +9,7 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import { setRename } from "../../state/display/actions";
+import { setRename, setLoadingScreen } from "../../state/display/actions";
 import Theme from "../Theme";
 
 const Rename = ({ dispatch, isOpen, title, current }) => {
@@ -23,12 +23,16 @@ const Rename = ({ dispatch, isOpen, title, current }) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "cancel":
-        //handle cancel
+        handleClose();
         break;
       case "update":
+        dispatch(setLoadingScreen(true));
         const theme = new Theme({ ...current, name: siteTitle });
-        theme.getImage().then(() => theme.commit());
-        //handle update
+        theme
+          .getImage()
+          .then(() =>
+            theme.commit().then(() => dispatch(setLoadingScreen(false)))
+          );
         break;
       default:
         break;
