@@ -68,6 +68,7 @@ function App({ dispatch, current }) {
             <Menu />
             <Box bgcolor={current.backgrounds.page}>
               <Hero />
+              <Preview />
               <RefreshButton />
             </Box>
           </ThemeWrapper>
