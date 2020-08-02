@@ -25,7 +25,7 @@ const Hero = ({ dispatch, current, boxPosition, overlayColor }) => {
         } else {
           theme.hero.overlayColor =
             options.overlayColor[
-              options.overlayColor.indexOf(overlayColor) + 1
+              options.overlayColor.indexOf(overlayColor) - 1
             ];
         }
         new Theme(theme).commit();
@@ -62,8 +62,8 @@ const Hero = ({ dispatch, current, boxPosition, overlayColor }) => {
   const options = {
     overlayColor: [
       "none",
-      "dark",
-      "light",
+      "common.black",
+      "common.white",
       "primary.light",
       "primary.main",
       "primary.dark",

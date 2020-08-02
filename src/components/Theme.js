@@ -62,7 +62,7 @@ class Theme {
         : "top",
       overlayColor: appState.current
         ? appState.current.hero.overlayColor
-        : "dark",
+        : "none",
     };
 
     // overwrites
