@@ -47,6 +47,14 @@ const Hero = ({
         backgroundPosition: "center",
       }}
     >
+      {current.hero.overlay && (
+        <Box
+          position="absolute"
+          width="100%"
+          height="100vh"
+          bgcolor="primary.light"
+        />
+      )}
       {current.hero.position === "flex-start" ? <Toolbar /> : null}
       <Container>
         <Box
