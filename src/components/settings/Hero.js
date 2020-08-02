@@ -18,15 +18,34 @@ const Hero = ({
   boxPosition,
   overlayColor,
   overlayOpacity,
+  alignment,
 }) => {
   const handleClick = (e) => {
     const theme = Object.assign({}, current);
     console.log(current);
     const { id } = e.currentTarget;
     switch (id) {
-      case "alignment-previous":
+      case "box-alignment-previous":
+        if (options.alignment.indexOf(alignment) === 0) {
+          theme.hero.alignment =
+            options.alignment[options.alignment.length - 1];
+        } else {
+          theme.hero.alignment =
+            options.alignment[options.alignment.indexOf(alignment) - 1];
+        }
+        new Theme(theme).commit();
         break;
-      case "alignment-next":
+      case "box-alignment-next":
+        if (
+          options.alignment.indexOf(alignment) ===
+          options.alignment.length - 1
+        ) {
+          theme.hero.alignment = options.alignment[0];
+        } else {
+          theme.hero.alignment =
+            options.alignment[options.alignment.indexOf(alignment) + 1];
+        }
+        new Theme(theme).commit();
         break;
       case "overlay-opacity-dec":
         if (overlayOpacity > 0) {
@@ -153,6 +172,26 @@ const Hero = ({
         </ListItemSecondaryAction>
       </ListItem>
       <ListItem>
+        <ListItemText primary="Box alignment" secondary={alignment} />
+        <ListItemSecondaryAction>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="box-alignment-previous"
+          >
+            <ChevronLeft />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="box-alignment-next"
+            edge="end"
+          >
+            <ChevronRight />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <ListItem>
         <ListItemText primary="Box position" secondary={boxPosition} />
         <ListItemSecondaryAction>
           <IconButton
@@ -181,6 +220,7 @@ const mapStateToProps = (state) => ({
   boxPosition: state.appState.current.hero.position,
   overlayColor: state.appState.current.hero.overlayColor,
   overlayOpacity: state.appState.current.hero.overlayOpacity,
+  alignment: state.appState.current.hero.alignment,
 });
 
 export default connect(mapStateToProps)(Hero);
