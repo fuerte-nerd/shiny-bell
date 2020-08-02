@@ -73,8 +73,12 @@ const Hero = ({
             . The primary color is {colorNames.primary} and the secondary color
             is {colorNames.secondary}.
           </Typography>
-          <Box mt={2} display="flex">
-            <Button variant="contained" color="primary">
+          <Box mt={2}>
+            <Button
+              variant="contained"
+              color="primary"
+              style={{ marginRight: 10 }}
+            >
               See more
             </Button>
             <Button variant="contained" color="secondary">
