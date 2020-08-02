@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import { Box, Container, Typography, Button, Grid } from "@material-ui/core";
+import {
+  Toolbar,
+  Box,
+  Container,
+  Typography,
+  Button,
+  Grid,
+} from "@material-ui/core";
 
 const Hero = ({
   current,
@@ -31,7 +38,7 @@ const Hero = ({
       display="flex"
       justifyContent="center"
       alignItems={textPosition}
-      pb={10}
+      pb={current.hero.position === "flex-end" ? 10 : 0}
       bgcolor={current.backgrounds.box}
       style={{
         backgroundImage: `url(${heroImg})`,
@@ -39,6 +46,7 @@ const Hero = ({
         backgroundPosition: "center",
       }}
     >
+      {current.hero.position === "flex-start" && <Toolbar />}
       <Container>
         <Box
           bgcolor={current.backgrounds.box}

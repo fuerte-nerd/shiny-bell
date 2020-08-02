@@ -18,14 +18,28 @@ const Hero = ({ dispatch, current, boxPosition }) => {
     const { id } = e.currentTarget;
     switch (id) {
       case "box-position-previous":
+        theme = Object.assign({}, current);
         if (options.boxPosition.indexOf(boxPosition) === 0) {
-          theme = Object.assign({}, current);
           theme.hero.position =
             options.boxPosition[options.boxPosition.length - 1];
-          new Theme(theme).commit();
+        } else {
+          theme.hero.position =
+            options.boxPosition[options.boxPosition.indexOf(boxPosition) - 1];
         }
+        new Theme(theme).commit();
         break;
       case "box-position-next":
+        theme = Object.assign({}, current);
+        if (
+          options.boxPosition.indexOf(boxPosition) ===
+          options.boxPosition.length - 1
+        ) {
+          theme.hero.position = options.boxPosition[0];
+        } else {
+          theme.hero.position =
+            options.boxPosition[options.boxPosition.indexOf(boxPosition) + 1];
+        }
+        new Theme(theme).commit();
         break;
       default:
         break;
