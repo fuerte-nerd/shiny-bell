@@ -21,7 +21,7 @@ const Hero = ({
 }) => {
   const handleClick = (e) => {
     const theme = Object.assign({}, current);
-    console.log(overlayOpacity);
+    console.log(current);
     const { id } = e.currentTarget;
     switch (id) {
       case "overlay-opacity-dec":
