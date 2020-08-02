@@ -46,6 +46,7 @@ const initialState = {
     isOpen: false,
     section: "body",
   },
+  siteRename: false,
 };
 
 export default (state = initialState, action) => {

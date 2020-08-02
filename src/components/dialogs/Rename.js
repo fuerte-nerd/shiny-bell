@@ -15,7 +15,20 @@ const Rename = ({ dispatch, title }) => {
 
   const handleChange = (e) => {
     setSiteTitle(e.currentTarget.value);
-    console.log(siteTitle);
+  };
+
+  const handleClick = (e) => {
+    const { id } = e.currentTarget;
+    switch (id) {
+      case "cancel":
+        //handle cancel
+        break;
+      case "update":
+        //handle update
+        break;
+      default:
+        break;
+    }
   };
 
   return (

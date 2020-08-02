@@ -14,6 +14,7 @@ import {
   SET_SAVE_ERROR,
   SET_SAVE_SUCCESS,
   SET_LOAD,
+  SET_RENAME,
 } from "./types";
 
 export const setLoadingScreen = (payload) => ({
@@ -85,5 +86,10 @@ export const setSaveSuccess = (payload) => ({
 
 export const setLoad = (payload) => ({
   type: SET_LOAD,
+  payload,
+});
+
+export const setRename = (payload) => ({
+  type: SET_RENAME,
   payload,
 });
