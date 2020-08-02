@@ -38,6 +38,7 @@ const Hero = ({
       display="flex"
       flexDirection="column"
       justifyContent={textPosition}
+      pt={current.hero.position === "flex-start" ? 5 : 0}
       pb={current.hero.position === "flex-end" ? 10 : 0}
       bgcolor={current.backgrounds.box}
       style={{
