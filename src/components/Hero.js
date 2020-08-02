@@ -19,6 +19,7 @@ const Hero = ({
   textPosition,
   overlayColor,
   overlayOpacity,
+  alignment,
 }) => {
   const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
 
@@ -63,7 +64,7 @@ const Hero = ({
           p={current.backgrounds.box !== "transparent" ? 4 : 0}
           mt={current.hero.position === "flex-start" ? 5 : 0}
           mb={current.hero.position === "flex-end" ? 10 : 0}
-          align="center"
+          align={alignment}
         >
           <Typography variant="h1">Welcome to your new theme!</Typography>
           <Typography variant="subtitle1" paragraph>
@@ -101,6 +102,7 @@ const mapStateToProps = (state) => ({
   textPosition: state.appState.current.hero.position,
   overlayColor: state.appState.current.hero.overlayColor,
   overlayOpacity: state.appState.current.hero.overlayOpacity,
+  alignment: state.appState.current.hero.alignment,
 });
 
 export default connect(mapStateToProps)(Hero);

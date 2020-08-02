@@ -24,6 +24,10 @@ const Hero = ({
     console.log(current);
     const { id } = e.currentTarget;
     switch (id) {
+      case "alignment-previous":
+        break;
+      case "alignment-next":
+        break;
       case "overlay-opacity-dec":
         if (overlayOpacity > 0) {
           theme.hero.overlayOpacity = overlayOpacity - 0.1;
@@ -91,6 +95,7 @@ const Hero = ({
   };
 
   const options = {
+    alignment: ["left", "center", "right"],
     overlayColor: [
       "none",
       "common.black",

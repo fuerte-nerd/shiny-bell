@@ -56,7 +56,7 @@ class Theme {
     this.hero = {
       img: null,
       position: appState.current ? appState.current.hero.position : "flex-end",
-      overlay: appState.current ? appState.current.hero.overlay : true,
+      alignment: appState.current ? appState.current.hero.alignment : "left",
       overlayOpacity: appState.current
         ? appState.current.hero.overlayOpacity
         : 0.7,
