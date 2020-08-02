@@ -10,8 +10,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import { setRename } from "../../state/display/actions";
+import Theme from "../Theme";
 
-const Rename = ({ dispatch, isOpen, title }) => {
+const Rename = ({ dispatch, isOpen, title, current }) => {
   const [siteTitle, setSiteTitle] = useState(title);
 
   const handleChange = (e) => {
@@ -25,6 +26,8 @@ const Rename = ({ dispatch, isOpen, title }) => {
         //handle cancel
         break;
       case "update":
+        const theme = new Theme({ ...current, name: siteTitle });
+        theme.getImage().then(() => theme.commit());
         //handle update
         break;
       default:
@@ -55,7 +58,13 @@ const Rename = ({ dispatch, isOpen, title }) => {
       </DialogContent>
       <DialogActions>
         <Button style={{ fontFamily: "Roboto" }}>Cancel</Button>{" "}
-        <Button style={{ fontFamily: "Roboto" }}>Update</Button>
+        <Button
+          onClick={handleClick}
+          id="update"
+          style={{ fontFamily: "Roboto" }}
+        >
+          Update
+        </Button>
       </DialogActions>
     </Dialog>
   );
@@ -64,6 +73,7 @@ const Rename = ({ dispatch, isOpen, title }) => {
 const mapStateToProps = (state) => ({
   isOpen: state.display.rename,
   title: state.appState.current.name,
+  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(Rename);
