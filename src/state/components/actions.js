@@ -7,6 +7,7 @@ import {
   SET_BODY_FONT_CATEGORIES,
   SET_HEADER_FONT_CATEGORIES,
   SET_HERO_IMG_LOCK,
+  SET_SITE_TITLE_LOCK,
 } from "./types";
 
 export const setValidationFont = (payload) => ({
@@ -46,5 +47,10 @@ export const setPaletteLock = (payload) => ({
 
 export const setHeroImgLock = (payload) => ({
   type: SET_HERO_IMG_LOCK,
+  payload,
+});
+
+export const setSiteTitleLock = (payload) => ({
+  type: SET_SITE_TITLE_LOCK,
   payload,
 });

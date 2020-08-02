@@ -7,10 +7,12 @@ import {
   SET_BODY_FONT_CATEGORIES,
   SET_HEADER_FONT_CATEGORIES,
   SET_HERO_IMG_LOCK,
+  SET_SITE_TITLE_LOCK,
 } from "./types";
 
 const initialState = {
   validationFont: null,
+  siteTitle: { locked: false },
   fonts: {
     default: {
       loaded: false,
@@ -74,6 +76,9 @@ export default (state = initialState, action) => {
       break;
     case SET_HERO_IMG_LOCK:
       newState.heroImage.locked = payload;
+      break;
+    case SET_SITE_TITLE_LOCK:
+      newState.siteTitle.locked = payload;
       break;
     default:
       break;
