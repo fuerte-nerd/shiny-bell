@@ -90,7 +90,16 @@ const Appearance = ({ dispatch, spacing, rounding, current, mode }) => {
           >
             <RemoveCircle />
           </IconButton>
-          <IconButton size="small" edge="end">
+          <IconButton
+            size="small"
+            edge="end"
+            onClick={() => {
+              new Theme({
+                ...current,
+                rounding: rounding + 1,
+              }).commit();
+            }}
+          >
             <AddCircle />
           </IconButton>
         </ListItemSecondaryAction>
