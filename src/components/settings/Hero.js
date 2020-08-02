@@ -12,13 +12,26 @@ import {
 import { ChevronLeft, ChevronRight } from "@material-ui/icons";
 import Theme from "../Theme";
 
-const Hero = ({ dispatch, current, boxPosition, overlayColor }) => {
+const Hero = ({
+  dispatch,
+  current,
+  boxPosition,
+  overlayColor,
+  overlayOpacity,
+}) => {
   const handleClick = (e) => {
-    let theme;
+    const theme = Object.assign({}, current);
     const { id } = e.currentTarget;
     switch (id) {
+      case "overlay-opacity-dec":
+        if (overlayOpacity > 0) {
+          theme.hero.overlayOpacity = overlayOpacity - 0.1;
+          new Theme(theme).commit();
+        }
+        break;
+      case "overlay-opacity-inc":
+        break;
       case "overlay-color-previous":
-        theme = Object.assign({}, current);
         if (options.overlayColor.indexOf(overlayColor) === 0) {
           theme.hero.overlayColor =
             options.overlayColor[options.overlayColor.length - 1];
@@ -31,7 +44,6 @@ const Hero = ({ dispatch, current, boxPosition, overlayColor }) => {
         new Theme(theme).commit();
         break;
       case "overlay-color-next":
-        theme = Object.assign({}, current);
         if (
           options.overlayColor.indexOf(overlayColor) ===
           options.overlayColor.length - 1
@@ -47,7 +59,6 @@ const Hero = ({ dispatch, current, boxPosition, overlayColor }) => {
         break;
 
       case "box-position-previous":
-        theme = Object.assign({}, current);
         if (options.boxPosition.indexOf(boxPosition) === 0) {
           theme.hero.position =
             options.boxPosition[options.boxPosition.length - 1];
@@ -58,7 +69,6 @@ const Hero = ({ dispatch, current, boxPosition, overlayColor }) => {
         new Theme(theme).commit();
         break;
       case "box-position-next":
-        theme = Object.assign({}, current);
         if (
           options.boxPosition.indexOf(boxPosition) ===
           options.boxPosition.length - 1
@@ -113,6 +123,26 @@ const Hero = ({ dispatch, current, boxPosition, overlayColor }) => {
         </ListItemSecondaryAction>
       </ListItem>
       <ListItem>
+        <ListItemText primary="Overlay opacity" secondary={overlayOpacity} />
+        <ListItemSecondaryAction>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="overlay-opacity-dec"
+          >
+            <ChevronLeft />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="overlay-opacity-inc"
+            edge="end"
+          >
+            <ChevronRight />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <ListItem>
         <ListItemText primary="Box position" secondary={boxPosition} />
         <ListItemSecondaryAction>
           <IconButton
@@ -140,6 +170,7 @@ const mapStateToProps = (state) => ({
   current: state.appState.current,
   boxPosition: state.appState.current.hero.position,
   overlayColor: state.appState.current.hero.overlayColor,
+  overlayOpacity: state.appState.current.hero.overlayOpacity,
 });
 
 export default connect(mapStateToProps)(Hero);
