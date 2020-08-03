@@ -28,7 +28,6 @@ const Hero = ({
       case "see-more":
         scroller.scrollTo("preview", {
           smooth: true,
-          offset: 50,
         });
         break;
       default:

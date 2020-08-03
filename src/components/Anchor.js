@@ -4,8 +4,9 @@ import { Box, useTheme, useMediaQuery, withStyles } from "@material-ui/core";
 const styles = {
   root: {
     top: -56,
-    ["@media (min-width:0px) and (orientation: landscape)"]: { top: -48 },
-    ["@media (min-width:600px)"]: { top: -64 },
+    position: "relative",
+    "@media (min-width:0px) and (orientation: landscape)": { top: -48 },
+    "@media (min-width:600px)": { top: -64 },
   },
 };
 
