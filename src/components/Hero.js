@@ -9,7 +9,6 @@ import {
   Typography,
   Button,
   Link,
-  useTheme,
 } from "@material-ui/core";
 
 const Hero = ({
@@ -51,11 +50,6 @@ const Hero = ({
         });
       });
   }, [primary, secondary]);
-
-  useEffect(() => {
-    console.log(theme);
-  }, []);
-  const theme = useTheme();
 
   return (
     <Box
