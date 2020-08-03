@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useTheme, useMediaQuery } from "@material-ui/core";
+import { Box, useTheme, useMediaQuery, withStyles } from "@material-ui/core";
 
-const Anchor = ({ id }) => {
-  const [offset, setOffset] = useState(null);
-
-  const theme = useTheme();
-  const toolbarClass = theme.mixins.toolbar;
-
-  const queries = Object.keys(toolbarClass);
-
-  console.log(queries);
-
-  return <div id={id} style={{ top: -50 }} />;
+const styles = {
+  root: {
+    top: -56,
+    ["@media (min-width:0px) and (orientation: landscape)"]: { top: -48 },
+    ["@media (min-width:600px)"]: { top: -64 },
+  },
 };
 
-export default Anchor;
+const Anchor = (props) => {
+  return <div id={props.id} className={props.classes.root} />;
+};
+
+export default withStyles(styles)(Anchor);
