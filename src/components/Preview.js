@@ -3,15 +3,17 @@ import { connect } from "react-redux";
 import { Box, Container } from "@material-ui/core";
 import Text from "./Text";
 import Buttons from "./Buttons";
+import Anchor from "./Anchor";
 
 const Preview = ({ current }) => {
   return current ? (
-    <Box id="preview">
+    <>
+      <Anchor id="preview" />
       <Container>
         <Text />
         <Buttons />
       </Container>
-    </Box>
+    </>
   ) : null;
 };
 
