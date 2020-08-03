@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import { scroller } from "react-scroll";
 import {
   Toolbar,
   Box,
@@ -22,6 +23,20 @@ const Hero = ({
   overlayOpacity,
   alignment,
 }) => {
+  const handleClick = (e) => {
+    const { id } = e.currentTarget;
+    switch (id) {
+      case "see-more":
+        scroller.scrollTo("preview", {
+          smooth: true,
+          offset: 50,
+        });
+        break;
+      default:
+        break;
+    }
+  };
+
   const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
 
   useEffect(() => {
@@ -80,6 +95,8 @@ const Hero = ({
           </Typography>
           <Box mt={2} align="inherit">
             <Button
+              id="see-more"
+              onClick={handleClick}
               variant="contained"
               color="primary"
               size="large"
