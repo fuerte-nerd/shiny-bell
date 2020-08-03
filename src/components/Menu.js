@@ -7,6 +7,7 @@ import {
   IconButton,
   Tooltip,
   Hidden,
+  useTheme,
 } from "@material-ui/core";
 import { SettingsBrightness, Settings, Code } from "@material-ui/icons";
 import UndoRedo from "./UndoRedo";
@@ -14,6 +15,9 @@ import { setSidebar, setThemeCode, setRename } from "../state/display/actions";
 import Theme from "./Theme";
 
 const Menu = ({ dispatch, current }) => {
+  const theme = useTheme();
+
+  console.log(theme.mixins.toolbar);
   const handleClick = async (e) => {
     const { id } = e.currentTarget;
     switch (id) {
