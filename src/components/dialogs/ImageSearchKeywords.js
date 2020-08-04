@@ -38,7 +38,9 @@ const ImageSearchKeywords = ({
     }
   }, [isOpen]);
 
-  const handleClick = async (e) => {
+  const handleClick = (e) => {
+    const backup = Object.assign({}, current);
+    console.log(backup);
     const { id } = e.currentTarget;
     console.log(current);
     const theme = Object.assign({}, current);
@@ -47,7 +49,7 @@ const ImageSearchKeywords = ({
         handleClose();
         break;
       case "update":
-        await dispatch(setPastAppStates([...past, current]));
+        dispatch(setPastAppStates([...past, current]));
         dispatch(setLoadingScreen(true));
         if (tfValue.length === 0) {
           theme.hero.searchKeywords = current.name;
