@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
   Dialog,
@@ -11,9 +11,15 @@ import {
   Typography,
   InputAdornment,
 } from "@material-ui/core";
-import { setImageSearchKeywords } from "../../state/display/actions";
+import { setImageSearchKeywords } from "../../state/components/actions";
 
 const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
+  const [tfValue, setTfValue] = useState("");
+
+  const handleChange = (e) => {
+    setTfValue(e.currentTarget.value);
+  };
+
   const handleClose = () => {
     dispatch(setImageSearchKeywords(false));
   };
@@ -23,6 +29,8 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
       if (searchKeywords.length === 0) {
         dispatch(setImageSearchKeywords(current.name));
       }
+    } else {
+      setTfValue(searchKeywords);
     }
   }, [isOpen]);
 
@@ -36,6 +44,8 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
       <DialogContent>
         <TextField
           fullWidth
+          value={tfValue}
+          onChange={handleChange}
           autoFocus
           InputProps={{
             style: { fontFamily: "Roboto" },
