@@ -67,7 +67,7 @@ class Theme {
         : 0.8,
       overlayColor: appState.current
         ? appState.current.hero.overlayColor
-        : "primary.light",
+        : "secondary.light",
     };
 
     // overwrites
