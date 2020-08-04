@@ -6,6 +6,7 @@ import ThemeCode from "./dialogs/ThemeCode";
 import Save from "./dialogs/Save";
 import Load from "./dialogs/Load";
 import Rename from "./dialogs/Rename";
+import ImageSearch from "./dialogs/ImageSearch";
 
 const Dialogs = () => {
   return (
@@ -17,6 +18,7 @@ const Dialogs = () => {
       <Save />
       <Load />
       <Rename />
+      <ImageSearch />
     </>
   );
 };
