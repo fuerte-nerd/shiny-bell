@@ -13,8 +13,15 @@ import {
 } from "@material-ui/core";
 import { setImageSearch, setLoadingScreen } from "../../state/display/actions";
 import Theme from "../Theme";
+import { setPastAppStates } from "../../state/appState/actions";
 
-const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
+const ImageSearchKeywords = ({
+  dispatch,
+  isOpen,
+  past,
+  current,
+  searchKeywords,
+}) => {
   const [tfValue, setTfValue] = useState("");
 
   const handleChange = (e) => {
@@ -45,6 +52,7 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
         } else {
           theme.hero.searchKeywords = tfValue;
         }
+        dispatch(setPastAppStates({ ...past, current }));
         const newTheme = new Theme(theme);
         newTheme.getImage().then(() =>
           newTheme.commit().then(() => {
@@ -94,6 +102,7 @@ const mapStateToProps = (state) => ({
   isOpen: state.display.imageSearch,
   current: state.appState.current,
   searchKeywords: state.appState.current.hero.searchKeywords,
+  past: state.appState.past,
 });
 
 export default connect(mapStateToProps)(ImageSearchKeywords);

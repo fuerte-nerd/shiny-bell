@@ -12,11 +12,19 @@ class Theme {
     const state = store.getState();
     const { appState, components } = state;
     const name = nameGenerator().raw;
+    const lsItems = JSON.parse(localStorage.getItem("saved"));
+
     this.id = uniqid();
     this.name = components.siteTitle.locked
       ? appState.current.name
       : name.map((i) => i.charAt(0).toUpperCase() + i.substr(1)).join(" ");
-    this.filename = name.join("_");
+    this.filename = appState.current
+      ? appState.current.filename
+      : lsItems
+      ? `Untitled-${
+          lsItems.filter((i) => i.filename.match(/Untitled\-/)).length + 1
+        }`
+      : "Untitled-1";
     this.createDate = new Date();
     this.primary = components.palette.locked
       ? appState.current.primary
