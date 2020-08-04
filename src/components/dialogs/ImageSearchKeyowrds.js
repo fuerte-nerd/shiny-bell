@@ -12,11 +12,11 @@ import {
   InputAdornment,
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
-import { setImageSearch } from "../../state/display/actions";
+import { setImageSearchKeywords } from "../../state/display/actions";
 
-const ImageSearch = ({ dispatch, isOpen, current }) => {
+const ImageSearchKeywords = ({ dispatch, isOpen, current }) => {
   const handleClose = () => {
-    dispatch(setImageSearch(false));
+    dispatch(setImageSearchKeywords(false));
   };
 
   return (
@@ -55,4 +55,4 @@ const mapStateToProps = (state) => ({
   current: state.appState.current,
 });
 
-export default connect(mapStateToProps)(ImageSearch);
+export default connect(mapStateToProps)(ImageSearchKeywords);
