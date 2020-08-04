@@ -11,7 +11,8 @@ import {
   Typography,
   InputAdornment,
 } from "@material-ui/core";
-import { setImageSearchKeywords } from "../../state/components/actions";
+import { setImageSearch } from "../../state/display/actions";
+import { setHeroImgSearchKeywords } from "../../state/components/actions";
 
 const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
   const [tfValue, setTfValue] = useState("");
@@ -21,13 +22,13 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
   };
 
   const handleClose = () => {
-    dispatch(setImageSearchKeywords(false));
+    dispatch(setImageSearch(false));
   };
 
   useEffect(() => {
     if (!isOpen) {
       if (searchKeywords.length === 0) {
-        dispatch(setImageSearchKeywords(current.name));
+        dispatch(setHeroImgSearchKeywords(current.name));
       }
     } else {
       setTfValue(searchKeywords);
