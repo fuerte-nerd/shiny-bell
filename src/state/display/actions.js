@@ -15,6 +15,7 @@ import {
   SET_SAVE_SUCCESS,
   SET_LOAD,
   SET_RENAME,
+  SET_IMAGE_SEARCH,
 } from "./types";
 
 export const setLoadingScreen = (payload) => ({
@@ -91,5 +92,10 @@ export const setLoad = (payload) => ({
 
 export const setRename = (payload) => ({
   type: SET_RENAME,
+  payload,
+});
+
+export const setImageSearch = (payload) => ({
+  type: SET_IMAGE_SEARCH,
   payload,
 });

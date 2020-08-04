@@ -15,6 +15,7 @@ import {
   SET_FONT_CATEGORY_SELECTOR_SECTION,
   SET_THEME_CODE,
   SET_RENAME,
+  SET_IMAGE_SEARCH,
 } from "./types";
 
 const initialState = {
@@ -48,6 +49,7 @@ const initialState = {
     section: "body",
   },
   rename: false,
+  imageSearch: false,
 };
 
 export default (state = initialState, action) => {
@@ -103,6 +105,9 @@ export default (state = initialState, action) => {
       break;
     case SET_RENAME:
       newState.rename = payload;
+      break;
+    case SET_IMAGE_SEARCH:
+      newState.imageSearch = payload;
       break;
     default:
       break;
