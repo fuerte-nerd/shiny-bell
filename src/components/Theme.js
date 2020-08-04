@@ -55,6 +55,9 @@ class Theme {
 
     this.hero = {
       img: null,
+      searchKeywords: appState.current
+        ? appState.current.hero.searchKeywords
+        : this.name.replace(/ /g, "+"),
       position: appState.current ? appState.current.hero.position : "flex-end",
       alignment: appState.current ? appState.current.hero.alignment : "left",
       overlayOpacity: appState.current
