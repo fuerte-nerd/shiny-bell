@@ -46,11 +46,12 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
           theme.hero.searchKeywords = tfValue;
         }
         const newTheme = new Theme(theme);
-        newTheme
-          .getImage()
-          .then(() =>
-            newTheme.commit().then(() => dispatch(setLoadingScreen(false)))
-          );
+        newTheme.getImage().then(() =>
+          newTheme.commit().then(() => {
+            handleClose();
+            dispatch(setLoadingScreen(false));
+          })
+        );
         break;
       default:
         break;
