@@ -40,6 +40,7 @@ const ImageSearchKeywords = ({
 
   const handleClick = async (e) => {
     const { id } = e.currentTarget;
+    console.log(current);
     const theme = Object.assign({}, current);
     switch (id) {
       case "cancel":
@@ -47,8 +48,6 @@ const ImageSearchKeywords = ({
         break;
       case "update":
         await dispatch(setPastAppStates([...past, current]));
-        console.log(past);
-        console.log(current);
         dispatch(setLoadingScreen(true));
         if (tfValue.length === 0) {
           theme.hero.searchKeywords = current.name;
