@@ -27,7 +27,7 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
 
   useEffect(() => {
     if (isOpen) {
-      setTfValue(searchKeywords.replace(/\+/g, " "));
+      setTfValue(searchKeywords);
     }
   }, [isOpen]);
 
@@ -41,15 +41,9 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
       case "update":
         dispatch(setLoadingScreen(true));
         if (tfValue.length === 0) {
-          theme.components.heroImage.searchKeywords = current.name.replace(
-            / /g,
-            "+"
-          );
+          theme.components.heroImage.searchKeywords = current.name;
         } else {
-          theme.components.heroImage.searchKeywords = tfValue.replace(
-            / /g,
-            "+"
-          );
+          theme.components.heroImage.searchKeywords = tfValue;
         }
         const newTheme = new Theme(theme);
         newTheme
@@ -57,6 +51,8 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
           .then(() =>
             newTheme.commit().then(() => dispatch(setLoadingScreen(false)))
           );
+        break;
+      default:
         break;
     }
   };
@@ -81,7 +77,13 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
       </DialogContent>
       <DialogActions>
         <Button style={{ fontFamily: "Roboto" }}>Cancel</Button>
-        <Button style={{ fontFamily: "Roboto" }}>Update</Button>
+        <Button
+          id="update"
+          onClick={handleClick}
+          style={{ fontFamily: "Roboto" }}
+        >
+          Update
+        </Button>
       </DialogActions>
     </Dialog>
   );

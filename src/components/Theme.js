@@ -87,14 +87,16 @@ class Theme {
     this.hero.img = img;
   }
 
-  getImage(query = this.name) {
+  getImage(query = this.hero.searchKeywords) {
     return new Promise((res, rej) => {
       if (store.getState().components.heroImage.locked) {
         this.setImage(store.getState().appState.current.hero.img);
         res();
       } else {
         axios
-          .get(`https://source.unsplash.com/1901x968/?${query}`)
+          .get(
+            `https://source.unsplash.com/1901x968/?${query.replace(/ /g, "+")}`
+          )
           .then((response) => {
             this.setImage(response.request.responseURL);
             res();
