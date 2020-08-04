@@ -59,10 +59,10 @@ class Theme {
       alignment: appState.current ? appState.current.hero.alignment : "left",
       overlayOpacity: appState.current
         ? appState.current.hero.overlayOpacity
-        : 0.7,
+        : 0.9,
       overlayColor: appState.current
         ? appState.current.hero.overlayColor
-        : "none",
+        : "primary.light",
     };
 
     // overwrites

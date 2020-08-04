@@ -48,6 +48,7 @@ const Hero = ({
                 theme.commit().then(() => dispatch(setLoadingScreen(false)))
               )
           );
+        break;
       default:
         break;
     }
