@@ -41,9 +41,9 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
       case "update":
         dispatch(setLoadingScreen(true));
         if (tfValue.length === 0) {
-          theme.components.heroImage.searchKeywords = current.name;
+          theme.hero.searchKeywords = current.name;
         } else {
-          theme.components.heroImage.searchKeywords = tfValue;
+          theme.hero.searchKeywords = tfValue;
         }
         const newTheme = new Theme(theme);
         newTheme
