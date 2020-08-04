@@ -56,7 +56,9 @@ class Theme {
     this.hero = {
       img: null,
       searchKeywords: appState.current
-        ? appState.current.hero.searchKeywords
+        ? appState.current.hero.searchKeywords === appState.current.name
+          ? this.name
+          : appState.current.hero.searchKeywords
         : this.name,
       position: appState.current ? appState.current.hero.position : "flex-end",
       alignment: appState.current ? appState.current.hero.alignment : "left",

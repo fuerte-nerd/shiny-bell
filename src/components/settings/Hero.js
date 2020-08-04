@@ -20,6 +20,7 @@ const Hero = ({
   overlayColor,
   overlayOpacity,
   alignment,
+  searchKeywords,
 }) => {
   const handleClick = (e) => {
     const theme = Object.assign({}, current);
@@ -141,7 +142,7 @@ const Hero = ({
   return (
     <Setting title="Hero">
       <ListItem button id="image-search" onClick={handleClick}>
-        <ListItemText primary="Image search" />
+        <ListItemText primary="Image search" secondary={searchKeywords} />
         <ListItemSecondaryAction>
           <IconButton edge="end" onClick={handleClick} id="image-search-btn">
             <Search />
@@ -238,6 +239,7 @@ const mapStateToProps = (state) => ({
   overlayColor: state.appState.current.hero.overlayColor,
   overlayOpacity: state.appState.current.hero.overlayOpacity,
   alignment: state.appState.current.hero.alignment,
+  searchKeywords: state.appState.current.hero.searchKeywords,
 });
 
 export default connect(mapStateToProps)(Hero);
