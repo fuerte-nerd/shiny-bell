@@ -11,6 +11,7 @@ import {
 
 import { ChevronLeft, ChevronRight, Search } from "@material-ui/icons";
 import Theme from "../Theme";
+import { setImageSearch } from "../../state/display/actions";
 
 const Hero = ({
   dispatch,
@@ -25,6 +26,10 @@ const Hero = ({
     console.log(current);
     const { id } = e.currentTarget;
     switch (id) {
+      case "image-search":
+      case "image-search-btn":
+        dispatch(setImageSearch(true));
+        break;
       case "box-alignment-previous":
         if (options.alignment.indexOf(alignment) === 0) {
           theme.hero.alignment =
@@ -135,10 +140,10 @@ const Hero = ({
 
   return (
     <Setting title="Hero">
-      <ListItem>
+      <ListItem button id="image-search" onClick={handleClick}>
         <ListItemText primary="Image search" />
         <ListItemSecondaryAction>
-          <IconButton onClick={handleClick} id="image-search">
+          <IconButton edge="end" onClick={handleClick} id="image-search-btn">
             <Search />
           </IconButton>
         </ListItemSecondaryAction>
