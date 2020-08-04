@@ -92,7 +92,7 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
 const mapStateToProps = (state) => ({
   isOpen: state.display.imageSearch,
   current: state.appState.current,
-  searchKeywords: state.appState.hero.searchKeywords,
+  searchKeywords: state.appState.current.hero.searchKeywords,
 });
 
 export default connect(mapStateToProps)(ImageSearchKeywords);
