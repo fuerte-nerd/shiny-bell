@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { setLoadingScreen } from "../state/display/actions";
+import { setPastAppStates } from "../state/appState/actions";
+import Theme from "./Theme";
 import axios from "axios";
 import { scroller } from "react-scroll";
 import {
@@ -12,7 +15,9 @@ import {
 } from "@material-ui/core";
 
 const Hero = ({
+  dispatch,
   current,
+  past,
   heroImg,
   primary,
   secondary,
@@ -30,6 +35,19 @@ const Hero = ({
           smooth: true,
         });
         break;
+      case "refresh":
+        dispatch(setLoadingScreen(true));
+        dispatch(setPastAppStates([...past, current]));
+        const theme = new Theme();
+        theme
+          .getImage()
+          .then(() =>
+            theme
+              .validateFonts()
+              .then(() =>
+                theme.commit().then(() => dispatch(setLoadingScreen(false)))
+              )
+          );
       default:
         break;
     }
@@ -101,10 +119,16 @@ const Hero = ({
               size="large"
               style={{ marginRight: 10 }}
             >
-              See more
+              View typography and buttons
             </Button>
-            <Button variant="contained" color="secondary" size="large">
-              No thanks
+            <Button
+              id="refresh"
+              onClick={handleClick}
+              variant="contained"
+              color="secondary"
+              size="large"
+            >
+              Refresh theme
             </Button>
           </Box>
         </Box>
@@ -123,6 +147,7 @@ const mapStateToProps = (state) => ({
   overlayColor: state.appState.current.hero.overlayColor,
   overlayOpacity: state.appState.current.hero.overlayOpacity,
   alignment: state.appState.current.hero.alignment,
+  past: state.appState.past,
 });
 
 export default connect(mapStateToProps)(Hero);
