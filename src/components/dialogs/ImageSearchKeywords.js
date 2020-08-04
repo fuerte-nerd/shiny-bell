@@ -38,7 +38,7 @@ const ImageSearchKeywords = ({
     }
   }, [isOpen]);
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     const { id } = e.currentTarget;
     const theme = Object.assign({}, current);
     switch (id) {
@@ -52,7 +52,7 @@ const ImageSearchKeywords = ({
         } else {
           theme.hero.searchKeywords = tfValue;
         }
-        dispatch(setPastAppStates({ ...past, current }));
+        await dispatch(setPastAppStates([...past, current]));
         const newTheme = new Theme(theme);
         newTheme.getImage().then(() =>
           newTheme.commit().then(() => {
