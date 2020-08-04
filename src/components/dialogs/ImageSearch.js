@@ -9,6 +9,7 @@ import {
   Button,
   TextField,
   Typography,
+  InputAdornment,
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
 import { setImageSearch } from "../../state/display/actions";
@@ -26,14 +27,24 @@ const ImageSearch = ({ dispatch, isOpen, current }) => {
         </Typography>
       </DialogTitle>
       <DialogContent>
-        <TextField autoFocus InputProps={{ style: { fontFamily: "Roboto" } }} />
-        <IconButton>
-          <Search />
-        </IconButton>
+        <TextField
+          fullWidth
+          autoFocus
+          InputProps={{
+            endAdornment: (
+              <InputAdornment>
+                <IconButton>
+                  <Search />
+                </IconButton>
+              </InputAdornment>
+            ),
+            style: { fontFamily: "Roboto" },
+          }}
+        />
       </DialogContent>
       <DialogActions>
-        <Button>Cancel</Button>
-        <Button>Update</Button>
+        <Button style={{ fontFamily: "Roboto" }}>Cancel</Button>
+        <Button style={{ fontFamily: "Roboto" }}>Update</Button>
       </DialogActions>
     </Dialog>
   );
