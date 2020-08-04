@@ -46,13 +46,15 @@ const ImageSearchKeywords = ({
         handleClose();
         break;
       case "update":
+        await dispatch(setPastAppStates([...past, current]));
+        console.log(past);
+        console.log(current);
         dispatch(setLoadingScreen(true));
         if (tfValue.length === 0) {
           theme.hero.searchKeywords = current.name;
         } else {
           theme.hero.searchKeywords = tfValue;
         }
-        await dispatch(setPastAppStates([...past, current]));
         const newTheme = new Theme(theme);
         newTheme.getImage().then(() =>
           newTheme.commit().then(() => {
