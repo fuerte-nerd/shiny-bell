@@ -11,8 +11,8 @@ import {
   Typography,
   InputAdornment,
 } from "@material-ui/core";
-import { setImageSearch } from "../../state/display/actions";
-import { setHeroImgSearchKeywords } from "../../state/components/actions";
+import { setImageSearch, setLoadingScreen } from "../../state/display/actions";
+import Theme from "../Theme";
 
 const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
   const [tfValue, setTfValue] = useState("");
@@ -26,14 +26,40 @@ const ImageSearchKeywords = ({ dispatch, isOpen, current, searchKeywords }) => {
   };
 
   useEffect(() => {
-    if (!isOpen) {
-      if (searchKeywords.length === 0) {
-        dispatch(setHeroImgSearchKeywords(current.name));
-      }
-    } else {
-      setTfValue(searchKeywords);
+    if (isOpen) {
+      setTfValue(searchKeywords.replace(/\+/g, " "));
     }
   }, [isOpen]);
+
+  const handleClick = (e) => {
+    const { id } = e.currentTarget;
+    const theme = Object.assign({}, current);
+    switch (id) {
+      case "cancel":
+        handleClose();
+        break;
+      case "update":
+        dispatch(setLoadingScreen(true));
+        if (tfValue.length === 0) {
+          theme.components.heroImage.searchKeywords = current.name.replace(
+            / /g,
+            "+"
+          );
+        } else {
+          theme.components.heroImage.searchKeywords = tfValue.replace(
+            / /g,
+            "+"
+          );
+        }
+        const newTheme = new Theme(theme);
+        newTheme
+          .getImage()
+          .then(() =>
+            newTheme.commit().then(() => dispatch(setLoadingScreen(false)))
+          );
+        break;
+    }
+  };
 
   return (
     <Dialog open={isOpen} onClose={handleClose} fullWidth maxWidth="xs">
