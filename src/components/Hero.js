@@ -120,7 +120,7 @@ const Hero = ({
               size="large"
               style={{ marginRight: 10 }}
             >
-              View typography and buttons
+              View typography
             </Button>
             <Button
               id="refresh"

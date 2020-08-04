@@ -33,7 +33,7 @@ class Theme {
     this.header = components.fonts.header.locked
       ? appState.current.header
       : this.fetchRandomFont("header");
-    this.twoFonts = appState.current ? appState.current.twoFonts : false;
+    this.twoFonts = appState.current ? appState.current.twoFonts : true;
     this.fontSize = appState.current ? appState.current.fontSize : 14;
     this.responsiveFontSizes = appState.current
       ? appState.current.responsiveFontSizes
