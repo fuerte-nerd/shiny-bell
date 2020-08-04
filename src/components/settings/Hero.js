@@ -9,7 +9,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 
-import { ChevronLeft, ChevronRight } from "@material-ui/icons";
+import { ChevronLeft, ChevronRight, Search } from "@material-ui/icons";
 import Theme from "../Theme";
 
 const Hero = ({
@@ -135,6 +135,14 @@ const Hero = ({
 
   return (
     <Setting title="Hero">
+      <ListItem>
+        <ListItemText primary="Image search" />
+        <ListItemSecondaryAction>
+          <IconButton onClick={handleClick} id="image-search">
+            <Search />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
       <ListItem>
         <ListItemText primary="Overlay color" secondary={overlayColor} />
         <ListItemSecondaryAction>
