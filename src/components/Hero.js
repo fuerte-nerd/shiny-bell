@@ -113,7 +113,17 @@ const Hero = ({
             .
           </Typography>
           <Box mt={2} align="inherit">
-            <Grid container spacing={1}>
+            <Grid
+              container
+              spacing={1}
+              justify={
+                alignment === "left"
+                  ? "flex-start"
+                  : alignment === "right"
+                  ? "flex-end"
+                  : "center"
+              }
+            >
               <Grid item>
                 <Button
                   id="see-more"
