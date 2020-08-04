@@ -12,6 +12,7 @@ import {
   Typography,
   Button,
   Link,
+  Grid,
 } from "@material-ui/core";
 
 const Hero = ({
@@ -112,25 +113,30 @@ const Hero = ({
             .
           </Typography>
           <Box mt={2} align="inherit">
-            <Button
-              id="see-more"
-              onClick={handleClick}
-              variant="contained"
-              color="primary"
-              size="large"
-              style={{ marginRight: 10 }}
-            >
-              View typography
-            </Button>
-            <Button
-              id="refresh"
-              onClick={handleClick}
-              variant="contained"
-              color="secondary"
-              size="large"
-            >
-              Refresh theme
-            </Button>
+            <Grid container spacing={1}>
+              <Grid item>
+                <Button
+                  id="see-more"
+                  onClick={handleClick}
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                >
+                  View typography
+                </Button>
+              </Grid>
+              <Grid item>
+                <Button
+                  id="refresh"
+                  onClick={handleClick}
+                  variant="contained"
+                  color="secondary"
+                  size="large"
+                >
+                  Refresh theme
+                </Button>
+              </Grid>
+            </Grid>
           </Box>
         </Box>
       </Container>

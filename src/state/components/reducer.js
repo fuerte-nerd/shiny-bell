@@ -18,23 +18,11 @@ const initialState = {
       loaded: false,
     },
     body: {
-      searchCategories: [
-        "serif",
-        "sans-serif",
-        "display",
-        "handwriting",
-        "monospace",
-      ],
+      searchCategories: ["serif", "sans-serif"],
       locked: false,
     },
     header: {
-      searchCategories: [
-        "serif",
-        "sans-serif",
-        "display",
-        "handwriting",
-        "monospace",
-      ],
+      searchCategories: ["serif", "sans-serif", "display", "handwriting"],
       locked: false,
     },
   },
