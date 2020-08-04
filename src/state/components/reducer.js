@@ -30,6 +30,7 @@ const initialState = {
     locked: false,
   },
   heroImage: {
+    searchKeywords: "",
     locked: false,
   },
 };
