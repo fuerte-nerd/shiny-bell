@@ -8,7 +8,6 @@ import {
   SET_HEADER_FONT_CATEGORIES,
   SET_HERO_IMG_LOCK,
   SET_SITE_TITLE_LOCK,
-  SET_HERO_IMG_SEARCH_KEYWORDS,
 } from "./types";
 
 export const setValidationFont = (payload) => ({
@@ -48,11 +47,6 @@ export const setPaletteLock = (payload) => ({
 
 export const setHeroImgLock = (payload) => ({
   type: SET_HERO_IMG_LOCK,
-  payload,
-});
-
-export const setHeroImgSearchKeywords = (payload) => ({
-  type: SET_HERO_IMG_SEARCH_KEYWORDS,
   payload,
 });
 

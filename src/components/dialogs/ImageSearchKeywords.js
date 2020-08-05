@@ -5,15 +5,12 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  IconButton,
   Button,
   TextField,
   Typography,
-  InputAdornment,
 } from "@material-ui/core";
 import { setImageSearch, setLoadingScreen } from "../../state/display/actions";
 import Theme from "../Theme";
-import { setPastAppStates } from "../../state/appState/actions";
 
 const ImageSearchKeywords = ({
   dispatch,
@@ -36,6 +33,7 @@ const ImageSearchKeywords = ({
     if (isOpen) {
       setTfValue(searchKeywords);
     }
+    //eslint-disable-next-line
   }, [isOpen]);
 
   const handleClick = (e) => {
@@ -67,10 +65,6 @@ const ImageSearchKeywords = ({
         break;
     }
   };
-
-  useEffect(() => {
-    console.log(current);
-  }, [current]);
 
   return (
     <Dialog open={isOpen} onClose={handleClose} fullWidth maxWidth="xs">

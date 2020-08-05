@@ -26,7 +26,7 @@ class Theme {
       ? appState.current.filename
       : lsItems
       ? `Untitled-${
-          lsItems.filter((i) => i.filename.match(/Untitled\-/)).length + 1
+          lsItems.filter((i) => i.filename.match(/Untitled-/)).length + 1
         }`
       : "Untitled-1";
     this.createDate = new Date();
@@ -58,12 +58,9 @@ class Theme {
       : "uppercase";
 
     this.fontSelectionMode = "auto";
-    this.backgrounds = appState.current
-      ? appState.current.backgrounds
-      : {
-          page: "transparent",
-          box: "transparent",
-        };
+    this.pageBackground = appState.current
+      ? appState.current.pageBackground
+      : "transparent";
 
     this.hero = {
       img: null,

@@ -32,7 +32,6 @@ const Hero = ({
 }) => {
   const handleClick = (e) => {
     const theme = Object.assign({}, current);
-    console.log(current);
     const { id } = e.currentTarget;
     switch (id) {
       case "image-search":
@@ -176,7 +175,7 @@ const Hero = ({
   const options = {
     alignment: ["left", "center", "right"],
     overlayColor: [
-      "none",
+      "transparent",
       "common.black",
       "common.white",
       "primary.light",

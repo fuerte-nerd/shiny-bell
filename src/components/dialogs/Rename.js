@@ -31,6 +31,7 @@ const Rename = ({ dispatch, isOpen, title, current }) => {
         const theme = new Theme({ ...current, name: siteTitle });
         theme.getImage().then(() =>
           theme.commit().then(() => {
+            handleClose();
             dispatch(setSiteTitleLock(true));
             dispatch(setLoadingScreen(false));
           })
@@ -47,7 +48,7 @@ const Rename = ({ dispatch, isOpen, title, current }) => {
 
   return (
     <Dialog fullWidth maxWidth="xs" open={isOpen} onClose={handleClose}>
-      <DialogTitle>
+      <DialogTitle disableTypography>
         <Typography variant="h6" style={{ fontFamily: "Roboto" }}>
           Edit site title
         </Typography>

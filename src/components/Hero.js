@@ -74,11 +74,11 @@ const Hero = ({
 
   return (
     <Box
-      height="100vh"
+      minHeight="100vh"
       display="flex"
       flexDirection="column"
       justifyContent={textPosition}
-      bgcolor={current.backgrounds.box}
+      position="relative"
       style={{
         backgroundImage: `url(${heroImg})`,
         backgroundSize: "cover",
@@ -87,17 +87,19 @@ const Hero = ({
     >
       <Box
         position="absolute"
-        width="100%"
-        height="100%"
+        top={0}
+        right={0}
+        bottom={0}
+        left={0}
         bgcolor={overlayColor}
         style={{ opacity: overlayOpacity }}
       />
       <Container style={{ zIndex: current.hero.overlay ? 5 : 0 }}>
         {current.hero.position === "flex-start" ? <Toolbar /> : null}
         <Box
-          p={boxOverlayColor !== "transparent" ? 4 : 0}
-          mt={current.hero.position === "flex-start" ? 5 : 0}
-          mb={current.hero.position === "flex-end" ? 10 : 0}
+          p={boxOverlayColor !== "transparent" ? 2 : 0}
+          mt={current.hero.position === "flex-start" ? 2 : 0}
+          mb={current.hero.position === "flex-end" ? 8 : 0}
           align={alignment}
           position="relative"
           borderRadius="borderRadius"
@@ -115,7 +117,7 @@ const Hero = ({
               opacity: boxOverlayOpacity,
             }}
           />
-          <Typography variant="h1">Welcome to your new theme!</Typography>
+          <Typography variant="h2">Welcome to your new theme!</Typography>
           <Typography variant="subtitle1" paragraph>
             The {twoFonts ? `header font ` : `font `} is{" "}
             {twoFonts

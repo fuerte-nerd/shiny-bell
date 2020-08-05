@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import FontFaceObserver from "fontfaceobserver";
-import { Box, Container, Toolbar } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 
 import Theme from "./components/Theme";
 
@@ -66,7 +66,7 @@ function App({ dispatch, current }) {
             <Dialogs />
             <Sidebar />
             <Menu />
-            <Box bgcolor={current.backgrounds.page}>
+            <Box bgcolor={current.pageBackground}>
               <Hero />
               <Preview />
               <RefreshButton />

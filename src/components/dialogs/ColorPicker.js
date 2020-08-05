@@ -35,7 +35,6 @@ const ColorPicker = ({ dispatch, isOpen, current, past, section }) => {
               ...current,
               [section]: c.hex,
             });
-            console.log(theme);
             theme.commit();
           }}
           onAccept={(c) => {

@@ -8,7 +8,6 @@ import {
   SET_HEADER_FONT_CATEGORIES,
   SET_HERO_IMG_LOCK,
   SET_SITE_TITLE_LOCK,
-  SET_HERO_IMG_SEARCH_KEYWORDS,
 } from "./types";
 
 const initialState = {
@@ -31,14 +30,12 @@ const initialState = {
     locked: false,
   },
   heroImage: {
-    searchKeywords: "",
     locked: false,
   },
 };
 
 export default (state = initialState, action) => {
   const { type, payload } = action;
-  console.log(action);
 
   const newState = Object.assign({}, state);
 
@@ -69,9 +66,6 @@ export default (state = initialState, action) => {
       break;
     case SET_SITE_TITLE_LOCK:
       newState.siteTitle.locked = payload;
-      break;
-    case SET_HERO_IMG_SEARCH_KEYWORDS:
-      newState.heroImage.searchKeywords = payload;
       break;
     default:
       break;
