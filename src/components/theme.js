@@ -33,6 +33,7 @@ export default createMuiTheme({
       label: { fontFamily: "Roboto" },
     },
     MuiSelect: { root: { fontFamily: "Roboto" } },
+    MuiAppBar: { colorTransparent: { boxShadow: "none" } },
   },
   palette: {
     type: mode,
