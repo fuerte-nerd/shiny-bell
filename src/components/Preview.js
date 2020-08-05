@@ -9,10 +9,18 @@ const Preview = ({ current }) => {
   return current ? (
     <>
       <Anchor id="preview" />
-      <Container>
-        <Text />
-        <Buttons />
-      </Container>
+      <Box
+        minHeight="90vh"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        py={2}
+      >
+        <Container>
+          <Text />
+          <Buttons />
+        </Container>
+      </Box>
     </>
   ) : null;
 };
