@@ -10,8 +10,8 @@ import {
 } from "@material-ui/core";
 
 import {
-  Add,
-  Remove,
+  AddCircle,
+  RemoveCircle,
   ChevronLeft,
   ChevronRight,
   Search,
@@ -230,7 +230,7 @@ const Hero = ({
             onClick={handleClick}
             id="overlay-opacity-dec"
           >
-            <ChevronLeft />
+            <RemoveCircle />
           </IconButton>
           <IconButton
             size="small"
@@ -238,7 +238,7 @@ const Hero = ({
             id="overlay-opacity-inc"
             edge="end"
           >
-            <ChevronRight />
+            <AddCircle />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
@@ -313,7 +313,7 @@ const Hero = ({
             onClick={handleClick}
             id="box-overlay-opacity-dec"
           >
-            <Remove />
+            <RemoveCircle />
           </IconButton>
           <IconButton
             size="small"
@@ -321,7 +321,7 @@ const Hero = ({
             id="box-overlay-opacity-inc"
             edge="end"
           >
-            <Add />
+            <AddCircle />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
