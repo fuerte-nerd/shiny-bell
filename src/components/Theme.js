@@ -79,7 +79,7 @@ class Theme {
         : 0.8,
       overlayColor: appState.current
         ? appState.current.hero.overlayColor
-        : "primary.light",
+        : "common.white",
       boxOverlayOpacity: appState.current
         ? appState.current.hero.boxOverlayOpacity
         : 0.5,

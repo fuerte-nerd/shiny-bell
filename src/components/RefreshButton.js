@@ -45,12 +45,19 @@ const RefreshButton = ({ dispatch, twoFonts, locked }) => {
         onClick={handleClick}
       >
         {twoFonts ? (
-          locked.body && locked.header && locked.palette ? (
+          locked.body &&
+          locked.header &&
+          locked.palette &&
+          locked.siteTitle &&
+          locked.heroImage ? (
             <Lock />
           ) : (
             <Refresh />
           )
-        ) : locked.body && locked.palette ? (
+        ) : locked.body &&
+          locked.palette &&
+          locked.siteTitle &&
+          locked.heroImage ? (
           <Lock />
         ) : (
           <Refresh />
