@@ -27,6 +27,8 @@ const Hero = ({
   overlayColor,
   overlayOpacity,
   alignment,
+  boxOverlayOpacity,
+  boxOverlayColor,
 }) => {
   const handleClick = (e) => {
     const { id } = e.currentTarget;
@@ -93,12 +95,23 @@ const Hero = ({
       <Container style={{ zIndex: current.hero.overlay ? 5 : 0 }}>
         {current.hero.position === "flex-start" ? <Toolbar /> : null}
         <Box
-          bgcolor={current.backgrounds.box}
           p={current.backgrounds.box !== "transparent" ? 4 : 0}
           mt={current.hero.position === "flex-start" ? 5 : 0}
           mb={current.hero.position === "flex-end" ? 10 : 0}
           align={alignment}
+          position="relative"
         >
+          <Box
+            bgcolor={boxOverlayColor}
+            position="absolute"
+            style={{
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              opacity: boxOverlayOpacity,
+            }}
+          />
           <Typography variant="h1">Welcome to your new theme!</Typography>
           <Typography variant="subtitle1" paragraph>
             The {twoFonts ? `header font ` : `font `} is{" "}
@@ -165,6 +178,8 @@ const mapStateToProps = (state) => ({
   overlayOpacity: state.appState.current.hero.overlayOpacity,
   alignment: state.appState.current.hero.alignment,
   past: state.appState.past,
+  boxOverlayColor: state.appState.current.hero.boxOverlayColor,
+  boxOverlayOpacity: state.appState.current.hero.boxOverlayOpacity,
 });
 
 export default connect(mapStateToProps)(Hero);
