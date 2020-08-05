@@ -44,7 +44,10 @@ const Menu = ({ dispatch, current }) => {
 
   return (
     <AppBar color={atTop ? "transparent" : "primary"}>
-      <Toolbar variant={atTop ? "regular" : "dense"}>
+      <Toolbar
+        variant={atTop ? "regular" : "dense"}
+        style={{ transition: "all .3s" }}
+      >
         <Typography variant="h6" onClick={() => dispatch(setRename(true))}>
           {current.name}
         </Typography>
