@@ -9,7 +9,13 @@ import {
   IconButton,
 } from "@material-ui/core";
 
-import { ChevronLeft, ChevronRight, Search } from "@material-ui/icons";
+import {
+  Add,
+  Remove,
+  ChevronLeft,
+  ChevronRight,
+  Search,
+} from "@material-ui/icons";
 import Theme from "../Theme";
 import { setImageSearch } from "../../state/display/actions";
 
@@ -146,6 +152,22 @@ const Hero = ({
         }
         new Theme(theme).commit();
         break;
+      case "box-overlay-opacity-dec":
+        if (boxOverlayOpacity > 0) {
+          theme.hero.boxOverlayOpacity = parseFloat(
+            (boxOverlayOpacity - 0.1).toFixed(1)
+          );
+          new Theme(theme).commit();
+        }
+        break;
+      case "box-overlay-opacity-inc":
+        if (boxOverlayOpacity < 1) {
+          theme.hero.boxOverlayOpacity = parseFloat(
+            (boxOverlayOpacity + 0.1).toFixed(1)
+          );
+          new Theme(theme).commit();
+        }
+        break;
       default:
         break;
     }
@@ -277,6 +299,29 @@ const Hero = ({
             edge="end"
           >
             <ChevronRight />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <ListItem>
+        <ListItemText
+          primary="Box overlay opacity"
+          secondary={boxOverlayOpacity}
+        />
+        <ListItemSecondaryAction>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="box-overlay-opacity-dec"
+          >
+            <Remove />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="box-overlay-opacity-inc"
+            edge="end"
+          >
+            <Add />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
