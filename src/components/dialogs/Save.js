@@ -92,7 +92,6 @@ const Save = ({ dispatch, filename, isOpen, err, success, current }) => {
             label="Name"
             autoFocus
             fullWidth
-            defaultValue={newFilename}
             value={newFilename}
             onChange={handleChange}
             InputProps={{ style: { fontFamily: "Roboto" } }}
