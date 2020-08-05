@@ -142,7 +142,10 @@ const Hero = ({
   return (
     <Setting title="Hero">
       <ListItem button id="image-search" onClick={handleClick}>
-        <ListItemText primary="Image search" secondary={searchKeywords} />
+        <ListItemText
+          primary="Image search keyword(s)"
+          secondary={searchKeywords}
+        />
         <ListItemSecondaryAction>
           <IconButton edge="end" onClick={handleClick} id="image-search-btn">
             <Search />
