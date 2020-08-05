@@ -80,6 +80,12 @@ class Theme {
       overlayColor: appState.current
         ? appState.current.hero.overlayColor
         : "primary.light",
+      boxOverlayOpacity: appState.current
+        ? appState.current.hero.boxOverlayOpacity
+        : 0.6,
+      boxOverlayColor: appState.current
+        ? appState.current.hero.boxOverlayColor
+        : "secondary.light",
     };
 
     // overwrites
