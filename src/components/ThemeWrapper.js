@@ -42,6 +42,9 @@ const ThemeWrapper = (props) => {
           MuiInputBase: {
             root: { fontFamily: "Roboto" },
           },
+          MuiAppBar: {
+            colorTransparent: { boxShadow: "none" },
+          },
         },
         typography: {
           h1: {
