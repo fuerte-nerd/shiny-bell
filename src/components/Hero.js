@@ -100,11 +100,13 @@ const Hero = ({
           mb={current.hero.position === "flex-end" ? 10 : 0}
           align={alignment}
           position="relative"
+          borderRadius="borderRadius"
         >
           <Box
             bgcolor={boxOverlayColor}
             position="absolute"
             zIndex={-5}
+            borderRadius="borderRadius"
             style={{
               top: 0,
               right: 0,
