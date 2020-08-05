@@ -21,6 +21,8 @@ const Hero = ({
   overlayOpacity,
   alignment,
   searchKeywords,
+  boxOverlayColor,
+  boxOverlayOpacity,
 }) => {
   const handleClick = (e) => {
     const theme = Object.assign({}, current);
@@ -115,6 +117,32 @@ const Hero = ({
         } else {
           theme.hero.position =
             options.boxPosition[options.boxPosition.indexOf(boxPosition) + 1];
+        }
+        new Theme(theme).commit();
+        break;
+      case "box-overlay-color-previous":
+        if (options.overlayColor.indexOf(boxOverlayColor) === 0) {
+          theme.hero.boxOverlayColor =
+            options.overlayColor[options.overlayColor.length - 1];
+        } else {
+          theme.hero.boxOverlayColor =
+            options.overlayColor[
+              options.overlayColor.indexOf(boxOverlayColor) - 1
+            ];
+        }
+        new Theme(theme).commit();
+        break;
+      case "box-overlay-color-next":
+        if (
+          options.overlayColor.indexOf(boxOverlayColor) ===
+          options.overlayColor.length - 1
+        ) {
+          theme.hero.boxOverlayColor = options.overlayColor[0];
+        } else {
+          theme.hero.boxOverlayColor =
+            options.overlayColor[
+              options.overlayColor.indexOf(boxOverlayColor) + 1
+            ];
         }
         new Theme(theme).commit();
         break;
@@ -232,6 +260,26 @@ const Hero = ({
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
+      <ListItem>
+        <ListItemText primary="Box overlay color" secondary={boxOverlayColor} />
+        <ListItemSecondaryAction>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="box-overlay-color-previous"
+          >
+            <ChevronLeft />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="box-overlay-color-next"
+            edge="end"
+          >
+            <ChevronRight />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
     </Setting>
   );
 };
@@ -243,6 +291,8 @@ const mapStateToProps = (state) => ({
   overlayOpacity: state.appState.current.hero.overlayOpacity,
   alignment: state.appState.current.hero.alignment,
   searchKeywords: state.appState.current.hero.searchKeywords,
+  boxOverlayColor: state.appState.current.hero.boxOverlayColor,
+  boxOverlayOpacity: state.appState.current.hero.boxOverlayOpacity,
 });
 
 export default connect(mapStateToProps)(Hero);
