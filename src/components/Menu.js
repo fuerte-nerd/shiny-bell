@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import {
   AppBar,
@@ -14,6 +14,8 @@ import { setSidebar, setThemeCode, setRename } from "../state/display/actions";
 import Theme from "./Theme";
 
 const Menu = ({ dispatch, current }) => {
+  const [atTop, setAtTop] = useState(true);
+
   const handleClick = async (e) => {
     const { id } = e.currentTarget;
     switch (id) {
@@ -33,8 +35,15 @@ const Menu = ({ dispatch, current }) => {
         return;
     }
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      window.scrollY > 0 ? setAtTop(false) : setAtTop(true);
+    });
+  }, []);
+
   return (
-    <AppBar>
+    <AppBar color={atTop ? "transparent" : "primary"}>
       <Toolbar>
         <Typography variant="h6" onClick={() => dispatch(setRename(true))}>
           {current.name}
