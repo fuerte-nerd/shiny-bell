@@ -43,11 +43,12 @@ const Load = ({ dispatch, isOpen, past, current }) => {
       <DialogContent>
         <List dense>
           {savedThemes.length > 0 ? (
-            savedThemes.map((i) => {
+            savedThemes.map((i, ind) => {
               return (
                 <ListItem
                   button
                   id={i.id}
+                  key={ind}
                   onClick={() => {
                     dispatch(setLoadingScreen(true));
                     const theme = new Theme(i);

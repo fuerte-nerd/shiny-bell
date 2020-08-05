@@ -5,7 +5,11 @@ import FontFaceObserver from "fontfaceobserver";
 import nameGenerator from "project-name-generator";
 import tinycolor from "tinycolor2";
 import { setValidationFont } from "../state/components/actions";
-import { setCurrentAppState } from "../state/appState/actions";
+import {
+  setCurrentAppState,
+  setPastAppStates,
+  setFutureAppStates,
+} from "../state/appState/actions";
 
 class Theme {
   constructor(config = {}) {
@@ -172,6 +176,7 @@ class Theme {
           },
           () => {
             if (this.fontSelectionMode === "manual") {
+              console.log("reached");
               rej(target);
             } else {
               console.log("failed");
@@ -189,14 +194,23 @@ class Theme {
     return new Promise((res, rej) => {
       this.validateFont("body")
         .then(() => {
-          this.validateFont("header").then(res);
+          this.validateFont("header").then(res).catch(rej);
         })
-        .catch((err) => rej(err));
+        .catch(rej);
     });
   }
 
-  commit() {
+  commit(undo = false) {
     return new Promise(async (res, rej) => {
+      if (undo) {
+        await store.dispatch(
+          setPastAppStates([
+            ...store.getState().appState.past,
+            store.getState().appState.current,
+          ])
+        );
+        await store.dispatch(setFutureAppStates([]));
+      }
       store.dispatch(setCurrentAppState(this));
       const img = new Image();
       img.src = this.hero.img;

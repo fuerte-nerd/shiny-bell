@@ -39,35 +39,38 @@ const ImageSearchKeywords = ({
   }, [isOpen]);
 
   const handleClick = (e) => {
-    const backup = Object.assign({}, current);
-    console.log(backup);
     const { id } = e.currentTarget;
-    console.log(current);
-    const theme = Object.assign({}, current);
     switch (id) {
       case "cancel":
         handleClose();
         break;
       case "update":
-        dispatch(setPastAppStates([...past, current]));
         dispatch(setLoadingScreen(true));
-        if (tfValue.length === 0) {
-          theme.hero.searchKeywords = current.name;
-        } else {
-          theme.hero.searchKeywords = tfValue;
-        }
-        const newTheme = new Theme(theme);
+        const newTheme = new Theme({
+          ...current,
+          hero: {
+            ...current.hero,
+            img: null,
+            searchKeywords: tfValue.length === 0 ? current.name : tfValue,
+          },
+        });
         newTheme.getImage().then(() =>
-          newTheme.commit().then(() => {
-            handleClose();
-            dispatch(setLoadingScreen(false));
-          })
+          newTheme.validateFonts().then(() =>
+            newTheme.commit(true).then(() => {
+              handleClose();
+              dispatch(setLoadingScreen(false));
+            })
+          )
         );
         break;
       default:
         break;
     }
   };
+
+  useEffect(() => {
+    console.log(current);
+  }, [current]);
 
   return (
     <Dialog open={isOpen} onClose={handleClose} fullWidth maxWidth="xs">

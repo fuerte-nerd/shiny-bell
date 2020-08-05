@@ -73,6 +73,7 @@ const FontPicker = (props) => {
       .validateFonts()
       .then(() => theme.commit().then(() => dispatch(setLoadingScreen(false))))
       .catch((err) => {
+        console.log("also reached");
         dispatch(setLoadingScreen(false));
         dispatch(setFontSelectorError(true));
       });
@@ -212,7 +213,7 @@ const mapStateToProps = (state) => ({
   isOpen: state.display.fontSelector.isOpen,
   section: state.display.fontSelector.section,
   filters: state.display.fontSelector.categoryFilters,
-  error: state.fontSelector.error,
+  error: state.display.fontSelector.error,
   fonts: state.library.fonts,
   twoFonts: state.appState.current.twoFonts,
   body: state.appState.current.body,

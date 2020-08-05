@@ -6,23 +6,17 @@ import { Refresh, Lock } from "@material-ui/icons";
 import Theme from "./Theme";
 
 import { setLoadingScreen } from "../state/display/actions";
-import {
-  setPastAppStates,
-  setFutureAppStates,
-} from "../state/appState/actions";
 
-const RefreshButton = ({ dispatch, twoFonts, locked, past, current }) => {
+const RefreshButton = ({ dispatch, twoFonts, locked }) => {
   const handleClick = () => {
     dispatch(setLoadingScreen(true));
 
     const theme = new Theme();
-    dispatch(setPastAppStates([...past, current]));
     theme.getImage().then(() => {
       theme.validateFonts().then(() => {
-        theme.commit().then(() => dispatch(setLoadingScreen(false)));
+        theme.commit(true).then(() => dispatch(setLoadingScreen(false)));
       });
     });
-    dispatch(setFutureAppStates([]));
   };
 
   return (
@@ -75,8 +69,6 @@ const mapStateToProps = (state) => ({
     heroImage: state.components.heroImage.locked,
   },
   twoFonts: state.appState.current.twoFonts,
-  past: state.appState.past,
-  current: state.appState.current,
 });
 
 export default connect(mapStateToProps)(RefreshButton);
