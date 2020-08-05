@@ -95,7 +95,7 @@ const Hero = ({
       <Container style={{ zIndex: current.hero.overlay ? 5 : 0 }}>
         {current.hero.position === "flex-start" ? <Toolbar /> : null}
         <Box
-          p={current.backgrounds.box !== "transparent" ? 4 : 0}
+          p={boxOverlayColor !== "transparent" ? 4 : 0}
           mt={current.hero.position === "flex-start" ? 5 : 0}
           mb={current.hero.position === "flex-end" ? 10 : 0}
           align={alignment}
@@ -104,6 +104,7 @@ const Hero = ({
           <Box
             bgcolor={boxOverlayColor}
             position="absolute"
+            zIndex={-5}
             style={{
               top: 0,
               right: 0,
