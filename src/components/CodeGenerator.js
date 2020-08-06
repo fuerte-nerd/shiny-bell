@@ -54,6 +54,9 @@ export default class CodeGenerator {
         ins(`display="flex"`);
         ins(`flexDirection="column"`);
         ins(`justifyContent="${state.hero.position}"`);
+        ins(`position="relative"`);
+        ins(`style={{`);
+        ins(`backgroundImage: url(${state.hero.img})`);
         ins(`>`, { tabs: 2 });
         return str;
       default:
