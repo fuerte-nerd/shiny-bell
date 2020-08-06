@@ -98,6 +98,10 @@ export default class CodeGenerator {
         ins(`position="relative"`, { tabs: 5 });
         ins(`borderRadius="borderRadius"`);
         ins(`>`, { tabs: 4 });
+        if (state.hero.boxOverlayColor !== "transparent") {
+          ins(`<Box`, { tabs: 5 });
+          ins(`bgcolor="${state.hero.boxOverlayColor}"}`, { tabs: 6 });
+        }
         return str;
       default:
         break;
