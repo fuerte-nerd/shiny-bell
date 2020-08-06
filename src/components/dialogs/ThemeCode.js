@@ -71,7 +71,7 @@ const ThemeCode = ({
           wrapLines
           lineProps={{ style: { whiteSpace: "pre-wrap" } }}
         >
-          {current ? new CodeGenerator({ section: "hero" }) : ``}
+          {current ? new CodeGenerator({ section: "hero" }).getCode() : ``}
         </SyntaxHighlighter>
         <SyntaxHighlighter
           language="javascript"

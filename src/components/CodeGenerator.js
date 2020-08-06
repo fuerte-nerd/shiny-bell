@@ -2,6 +2,7 @@ export default class CodeGenerator {
   constructor({ section }) {
     this.section = section;
     this.code = this.generateCode(this.section);
+    console.log("hellooooo");
   }
 
   getCode() {
