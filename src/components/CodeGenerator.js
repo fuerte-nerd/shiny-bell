@@ -34,11 +34,11 @@ export default class CodeGenerator {
       }
 
       str += text;
-      console.log(str);
     };
 
     switch (section) {
       case "hero":
+        console.log(this);
         ins(`import React from "react"`, { noNewLine: true });
         ins(`import {`);
         ins(`Toolbar,`, { tabs: 1 });
@@ -54,7 +54,9 @@ export default class CodeGenerator {
         ins(`minHeight="100vh"`, { tabs: 3 });
         ins(`display="flex"`);
         ins(`flexDirection="column"`);
-        ins(`justifyContent=${this.appState.hero.position}`);
+        ins(
+          `justifyContent=${this.appState ? this.appState.hero.position : null}`
+        );
         ins(`>`, { tabs: 2 });
         return str;
       default:
