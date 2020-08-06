@@ -94,7 +94,7 @@ const Hero = ({
         bgcolor={overlayColor}
         style={{ opacity: overlayOpacity }}
       />
-      <Container maxWidth="md">
+      <Container>
         {current.hero.position === "flex-start" ? <Toolbar /> : null}
         <Box
           p={boxOverlayColor !== "transparent" ? 2 : 0}

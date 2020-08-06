@@ -77,6 +77,13 @@ export default class CodeGenerator {
           ins(`style={{ opacity: ${state.hero.overlayOpacity} }}`);
           ins(`/>`, { tabs: 3 });
         }
+        ins(`<Container>`);
+        if (state.hero.position === "flex-start") {
+          ins(`<Toolbar />`, { tabs: 4 });
+        }
+        ins(`<Box`, { tabs: 4 });
+        ins(`p={${state.hero.boxOverlayColor !== "transparent" ? 2 : 0}}`);
+
         return str;
       default:
         break;
