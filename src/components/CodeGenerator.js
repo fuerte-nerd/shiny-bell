@@ -11,9 +11,10 @@ export default class CodeGenerator {
 
   generateCode(section) {
     let str = "";
-    const tab = "   ";
     const ins = (text, { doubleLine = false, tabs = 0, noNewLine = false }) => {
-      str += tab * tabs;
+      for (let x = 0; x < tabs; x++) {
+        str += "   ";
+      }
       str += doubleLine ? `\n\n${text}` : noNewLine ? text : `\n${text}`;
       console.log(str);
     };
