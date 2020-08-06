@@ -2,7 +2,6 @@ export default class CodeGenerator {
   constructor({ section }) {
     this.section = section;
     this.code = this.generateCode(this.section);
-    console.log("hellooooo");
   }
 
   getCode() {
@@ -11,7 +10,7 @@ export default class CodeGenerator {
 
   generateCode(section) {
     let str = "";
-    const ins = (text, { doubleLine = false, tabs = 0, noNewLine = false }) => {
+    const ins = (text, { doubleLine: false, tabs: 0, noNewLine: false }) => {
       for (let x = 0; x < tabs; x++) {
         str += `   `;
       }
@@ -23,8 +22,7 @@ export default class CodeGenerator {
       case "hero":
         ins(`import React from "react"`, { noNewLine: true });
         ins(
-          `import { Toolbar, Box, Container, Typography, Button, Link, Grid } from "@material-ui/core"`,
-          {}
+          `import { Toolbar, Box, Container, Typography, Button, Link, Grid } from "@material-ui/core"`
         );
         ins(`const Hero = () => {`, { doubleLine: true });
         ins(`return (`, { tabs: 1, doubleLine: true });
