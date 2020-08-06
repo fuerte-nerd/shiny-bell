@@ -62,6 +62,8 @@ export default class CodeGenerator {
         ins(`backgroundPosition: "center",`);
         ins(`}}`, { tabs: 3 });
         ins(`>`, { tabs: 2 });
+        ins(`{/* Overlay */}`, { tabs: 3 });
+        ins(`<Box>`);
         return str;
       default:
         break;
