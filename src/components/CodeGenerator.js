@@ -1,7 +1,10 @@
+import store from "../state/store";
+
 export default class CodeGenerator {
   constructor({ section }) {
     this.section = section;
     this.code = this.generateCode(this.section);
+    this.appState = store.getState().appState.current;
   }
 
   getCode() {
@@ -51,6 +54,7 @@ export default class CodeGenerator {
         ins(`minHeight="100vh"`, { tabs: 3 });
         ins(`display="flex"`);
         ins(`flexDirection="column"`);
+        ins(`justifyContent=${this.appState.hero.position}`);
         ins(`>`, { tabs: 2 });
         return str;
       default:
