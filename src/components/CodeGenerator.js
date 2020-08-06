@@ -10,13 +10,15 @@ export default class CodeGenerator {
 
   generateCode(section) {
     let str = "";
-    const ins = (
-      text,
-      { doubleLine = false, tabs = 0, noNewLine = false } = {}
-    ) => {
-      for (let x = 0; x < tabs; x++) {
-        str += `   `;
+    const ins = (text, options = {}) => {
+      const { doubleLine, tabs, noNewLine } = options;
+
+      if (tabs) {
+        for (let x = 0; x < tabs; x++) {
+          str += `&nbsp;`;
+        }
       }
+
       str += doubleLine ? `\n\n${text}` : noNewLine ? text : `\n${text}`;
       console.log(str);
     };
@@ -32,8 +34,7 @@ export default class CodeGenerator {
         ins(`<Box`, { tabs: 2 });
         ins(`minHeight="100vh"`, { tabs: 3 });
         ins(`display="flex"`, { tabs: 3 });
-
-        break;
+        return str;
       default:
         break;
     }
