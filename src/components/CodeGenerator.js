@@ -6,13 +6,16 @@ class CodeGenerator {
 
   getCode(section) {
     let str = "";
-    const insert = (text, double = false) =>
-      (str += double ? `\n\n${text}` : `\n${text}`);
     const tab = "   ";
+    const ins = (text,{doubleLine = false, tabs = 0, noNewLine = false }) => {
+      str += tab * tabs;
+      str += doubleLine ? `\n\n${text}` : noNewLine ? text : `\n${text}`;
+    };
 
     switch (section) {
       case "hero":
-        return ``;
+        ins({text:});
+        break;
     }
   }
 }
