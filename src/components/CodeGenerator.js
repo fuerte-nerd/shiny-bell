@@ -10,6 +10,7 @@ export default class CodeGenerator {
 
   generateCode(section) {
     let str = "";
+    var t = 0;
     const ins = (text, options = {}) => {
       const { doubleLine, tabs, noNewLine } = options;
 
@@ -22,7 +23,8 @@ export default class CodeGenerator {
       }
 
       if (tabs) {
-        for (let x = 0; x < tabs; x++) {
+        t = tabs;
+        for (let x = 0; x < t; x++) {
           str += `  `;
         }
       }
@@ -36,17 +38,18 @@ export default class CodeGenerator {
         ins(`import React from "react"`, { noNewLine: true });
         ins(`import {`);
         ins(`Toolbar,`, { tabs: 1 });
-        ins(`Box,`, { tabs: 1 });
-        ins(`Typography,`, { tabs: 1 });
-        ins(`Button,`, { tabs: 1 });
-        ins(`Link,`, { tabs: 1 });
-        ins(`Grid,`, { tabs: 1 });
-        ins(`} from "@material-ui/core"`);
+        ins(`Box,`);
+        ins(`Typography,`);
+        ins(`Button,`);
+        ins(`Link,`);
+        ins(`Grid,`);
+        ins(`} from "@material-ui/core"`, { tabs: 0 });
         ins(`const Hero = () => {`, { doubleLine: true });
         ins(`return (`, { tabs: 1, doubleLine: true });
         ins(`<Box`, { tabs: 2 });
         ins(`minHeight="100vh"`, { tabs: 3 });
-        ins(`display="flex"`, { tabs: 3 });
+        ins(`display="flex"`);
+        ins(`flexDirection="column"`);
         return str;
       default:
         break;
