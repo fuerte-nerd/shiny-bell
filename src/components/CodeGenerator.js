@@ -38,7 +38,8 @@ export default class CodeGenerator {
     switch (section) {
       case "hero":
         const state = store.getState().appState.current;
-        ins(`import React from "react"`, { noNewLine: true });
+        ins(`// Hero.js`, { noNewLine: true });
+        ins(`import React from "react"`);
         ins(`import {`);
         ins(`Toolbar,`, { tabs: 1 });
         ins(`Box,`);
@@ -56,7 +57,10 @@ export default class CodeGenerator {
         ins(`justifyContent="${state.hero.position}"`);
         ins(`position="relative"`);
         ins(`style={{`);
-        ins(`backgroundImage: url(${state.hero.img})`);
+        ins(`backgroundImage: url("${state.hero.img}"),`, { tabs: 4 });
+        ins(`backgroundSize: "cover",`);
+        ins(`backgroundPosition: "center",`);
+        ins(`}}`, { tabs: 3 });
         ins(`>`, { tabs: 2 });
         return str;
       default:
