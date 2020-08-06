@@ -13,22 +13,35 @@ export default class CodeGenerator {
     const ins = (text, options = {}) => {
       const { doubleLine, tabs, noNewLine } = options;
 
+      if (doubleLine) {
+        str += `\n\n`;
+      } else if (noNewLine) {
+        //do nothing
+      } else {
+        str += `\n`;
+      }
+
       if (tabs) {
         for (let x = 0; x < tabs; x++) {
-          str += `   `;
+          str += `  `;
         }
       }
 
-      str += doubleLine ? `\n\n${text}` : noNewLine ? text : `\n${text}`;
+      str += text;
       console.log(str);
     };
 
     switch (section) {
       case "hero":
         ins(`import React from "react"`, { noNewLine: true });
-        ins(
-          `import { Toolbar, Box, Container, Typography, Button, Link, Grid } from "@material-ui/core"`
-        );
+        ins(`import {`);
+        ins(`Toolbar,`, { tabs: 1 });
+        ins(`Box,`, { tabs: 1 });
+        ins(`Typography,`, { tabs: 1 });
+        ins(`Button,`, { tabs: 1 });
+        ins(`Link,`, { tabs: 1 });
+        ins(`Grid,`, { tabs: 1 });
+        ins(`from "@material-ui/core"`);
         ins(`const Hero = () => {`, { doubleLine: true });
         ins(`return (`, { tabs: 1, doubleLine: true });
         ins(`<Box`, { tabs: 2 });
