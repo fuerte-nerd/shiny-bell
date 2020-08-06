@@ -120,6 +120,9 @@ export default class CodeGenerator {
             ins(`style={{ opacity: ${state.hero.boxOverlayOpacity} }}`);
           }
           ins(`/>`, { tab: -1 });
+          ins(
+            `<Typography variant="h2">Welcome to your new theme!</Typography>`
+          );
         }
         return str;
       default:
