@@ -10,7 +10,10 @@ export default class CodeGenerator {
 
   generateCode(section) {
     let str = "";
-    const ins = (text, { doubleLine: false, tabs: 0, noNewLine: false }) => {
+    const ins = (
+      text,
+      { doubleLine = false, tabs = 0, noNewLine = false } = {}
+    ) => {
       for (let x = 0; x < tabs; x++) {
         str += `   `;
       }
