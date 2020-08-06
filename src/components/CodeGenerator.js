@@ -24,9 +24,10 @@ export default class CodeGenerator {
 
       if (tabs) {
         t = tabs;
-        for (let x = 0; x < t; x++) {
-          str += `  `;
-        }
+      }
+
+      for (let x = 0; x < t; x++) {
+        str += `  `;
       }
 
       str += text;
@@ -50,6 +51,7 @@ export default class CodeGenerator {
         ins(`minHeight="100vh"`, { tabs: 3 });
         ins(`display="flex"`);
         ins(`flexDirection="column"`);
+        ins(`>`, { tabs: 2 });
         return str;
       default:
         break;
