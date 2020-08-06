@@ -82,7 +82,18 @@ export default class CodeGenerator {
           ins(`<Toolbar />`, { tabs: 4 });
         }
         ins(`<Box`, { tabs: 4 });
-        ins(`p={${state.hero.boxOverlayColor !== "transparent" ? 2 : 0}}`);
+        if (state.hero.boxOverlayColor !== "transparent") {
+          ins(`p={2}`, { tabs: 5 });
+        }
+        if (state.hero.position === "flex-start") {
+          ins(`mt={2}`, { tabs: 5 });
+        }
+        if (state.hero.position === "flex-end") {
+          ins(`mb={8}`, { tabs: 5 });
+        }
+        if (state.hero.alignment !== "left") {
+          ins(`align="${state.hero.alignment}"`);
+        }
 
         return str;
       default:
