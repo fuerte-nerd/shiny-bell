@@ -123,6 +123,14 @@ export default class CodeGenerator {
           ins(
             `<Typography variant="h2">Welcome to your new theme!</Typography>`
           );
+          ins(`<Typography variant="subtitle1" paragraph>`);
+          ins(
+            `The ${state.twoFonts ? `header font ` : `font `} is ${
+              state.twoFonts
+                ? `${state.header.family} and the body font is ${state.body.family}`
+                : state.body.family
+            }`
+          );
         }
         return str;
       default:
