@@ -13,7 +13,7 @@ export default class CodeGenerator {
     let str = "";
     const ins = (text, { doubleLine = false, tabs = 0, noNewLine = false }) => {
       for (let x = 0; x < tabs; x++) {
-        str += "   ";
+        str += `   `;
       }
       str += doubleLine ? `\n\n${text}` : noNewLine ? text : `\n${text}`;
       console.log(str);
