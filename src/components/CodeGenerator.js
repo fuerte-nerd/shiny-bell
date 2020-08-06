@@ -41,7 +41,10 @@ export default class CodeGenerator {
         ins(`// Hero.js`, { noNewLine: true });
         ins(`import React from "react"`);
         ins(`import {`);
-        ins(`Toolbar,`, { tabs: 1 });
+        ins(`Box,`, { tabs: 1 });
+        if (state.hero.position === "flex-start") {
+          ins(`Toolbar,`);
+        }
         ins(`Box,`);
         ins(`Typography,`);
         ins(`Button,`);
@@ -62,8 +65,18 @@ export default class CodeGenerator {
         ins(`backgroundPosition: "center",`);
         ins(`}}`, { tabs: 3 });
         ins(`>`, { tabs: 2 });
-        ins(`{/* Overlay */}`, { tabs: 3 });
-        ins(`<Box>`);
+        if (state.hero.overlayColor !== "transparent") {
+          ins(`{/* Overlay */}`, { tabs: 3 });
+          ins(`<Box`);
+          ins(`position="absolute"`, { tabs: 4 });
+          ins(`top={0}`);
+          ins(`right={0}`);
+          ins(`bottom={0}`);
+          ins(`left={0}`);
+          ins(`bgcolor="${state.hero.overlayColor}"`);
+          ins(`style={{ opacity: ${state.hero.overlayOpacity} }}`);
+          ins(`/>`, { tabs: 3 });
+        }
         return str;
       default:
         break;
