@@ -15,12 +15,17 @@ class CodeGenerator {
 
     switch (section) {
       case "hero":
-        ins(`import React from "React"`, { noNewLine });
+        ins(`import React from "react"`, { noNewLine: true });
         ins(
           `import { Toolbar, Box, Container, Typography, Button, Link, Grid } from "@material-ui/core"`,
           {}
         );
         ins(`const Hero = () => {`, { doubleLine: true });
+        ins(`return (`, { tabs: 1, doubleLine: true });
+        ins(`<Box`, { tabs: 2 });
+        ins(`minHeight="100vh"`, { tabs: 3 });
+        ins(`display="flex"`, { tabs: 3 });
+
         break;
       default:
         break;
