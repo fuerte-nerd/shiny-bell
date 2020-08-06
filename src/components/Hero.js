@@ -94,7 +94,7 @@ const Hero = ({
         bgcolor={overlayColor}
         style={{ opacity: overlayOpacity }}
       />
-      <Container style={{ zIndex: current.hero.overlay ? 5 : 0 }}>
+      <Container maxWidth="md">
         {current.hero.position === "flex-start" ? <Toolbar /> : null}
         <Box
           p={boxOverlayColor !== "transparent" ? 2 : 0}
@@ -103,6 +103,7 @@ const Hero = ({
           align={alignment}
           position="relative"
           borderRadius="borderRadius"
+          zIndex={5}
         >
           <Box
             bgcolor={boxOverlayColor}
