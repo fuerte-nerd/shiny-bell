@@ -19,7 +19,7 @@ export default class CodeGenerator {
     };
 
     const ins = (text, options = {}) => {
-      const { doubleLine, tabs, noNewLine } = options;
+      const { doubleLine, tab, noNewLine } = options;
 
       if (doubleLine) {
         str += `\n\n`;
@@ -30,7 +30,7 @@ export default class CodeGenerator {
       }
 
       if (options.hasOwnProperty("tab")) {
-        addTabs(tabs);
+        addTabs(tab);
       }
 
       for (let x = 0; x < t; x++) {
@@ -42,7 +42,6 @@ export default class CodeGenerator {
 
     switch (section) {
       case "hero":
-        let tabAdjustments = 0;
         const state = store.getState().appState.current;
         ins(`// Hero.js`, { noNewLine: true });
         ins(`import React from "react"`);
@@ -51,7 +50,6 @@ export default class CodeGenerator {
         if (state.hero.position === "flex-start") {
           ins(`Toolbar,`);
         }
-        ins(`Box,`);
         ins(`Typography,`);
         ins(`Button,`);
         ins(`Link,`);
