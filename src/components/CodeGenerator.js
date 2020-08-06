@@ -1,10 +1,14 @@
-class CodeGenerator {
+export default class CodeGenerator {
   constructor({ section }) {
     this.section = section;
-    this.code = this.getCode(this.section);
+    this.code = this.generateCode(this.section);
   }
 
-  getCode(section) {
+  getCode() {
+    return this.code;
+  }
+
+  generateCode(section) {
     let str = "";
     const tab = "   ";
     const ins = (text, { doubleLine = false, tabs = 0, noNewLine = false }) => {

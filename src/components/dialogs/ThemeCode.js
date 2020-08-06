@@ -15,6 +15,8 @@ import getThemeCode from "../../scripts/getThemeCode";
 
 import AppTypography from "../AppTypography";
 
+import CodeGenerator from "../CodeGenerator";
+
 const ThemeCode = ({
   dispatch,
   themeCode,
@@ -62,6 +64,15 @@ const ThemeCode = ({
         <DialogContentText>
           Here is the code you'll need to use the current theme in your project!
         </DialogContentText>
+
+        <SyntaxHighlighter
+          language="javascript"
+          style={tomorrow}
+          wrapLines
+          lineProps={{ style: { whiteSpace: "pre-wrap" } }}
+        >
+          {current ? new CodeGenerator({ section: "hero" }) : ``}
+        </SyntaxHighlighter>
         <SyntaxHighlighter
           language="javascript"
           style={tomorrow}
