@@ -4,7 +4,6 @@ export default class CodeGenerator {
   constructor({ section }) {
     this.section = section;
     this.code = this.generateCode(this.section);
-    this.appState = store.getState().appState.current;
   }
 
   getCode() {
@@ -25,7 +24,7 @@ export default class CodeGenerator {
         str += `\n`;
       }
 
-      if (tabs) {
+      if (options.hasOwnProperty("tabs")) {
         t = tabs;
       }
 
@@ -38,7 +37,7 @@ export default class CodeGenerator {
 
     switch (section) {
       case "hero":
-        console.log(this);
+        const state = store.getState().appState.current;
         ins(`import React from "react"`, { noNewLine: true });
         ins(`import {`);
         ins(`Toolbar,`, { tabs: 1 });
@@ -54,9 +53,7 @@ export default class CodeGenerator {
         ins(`minHeight="100vh"`, { tabs: 3 });
         ins(`display="flex"`);
         ins(`flexDirection="column"`);
-        ins(
-          `justifyContent=${this.appState ? this.appState.hero.position : null}`
-        );
+        ins(`justifyContent="${state.hero.position}"`);
         ins(`>`, { tabs: 2 });
         return str;
       default:
