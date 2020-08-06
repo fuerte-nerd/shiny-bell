@@ -41,7 +41,7 @@ export default class CodeGenerator {
         ins(`Button,`, { tabs: 1 });
         ins(`Link,`, { tabs: 1 });
         ins(`Grid,`, { tabs: 1 });
-        ins(`from "@material-ui/core"`);
+        ins(`} from "@material-ui/core"`);
         ins(`const Hero = () => {`, { doubleLine: true });
         ins(`return (`, { tabs: 1, doubleLine: true });
         ins(`<Box`, { tabs: 2 });
