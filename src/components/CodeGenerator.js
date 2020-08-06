@@ -83,7 +83,8 @@ export default class CodeGenerator {
         }
         ins(`<Box`, { tabs: 4 });
         if (state.hero.boxOverlayColor !== "transparent") {
-          ins(`p={2}`, { tabs: 5 });
+          ins(`zIndex={5}`, { tabs: 5 });
+          ins(`p={2}`);
         }
         if (state.hero.position === "flex-start") {
           ins(`mt={2}`, { tabs: 5 });
@@ -92,9 +93,11 @@ export default class CodeGenerator {
           ins(`mb={8}`, { tabs: 5 });
         }
         if (state.hero.alignment !== "left") {
-          ins(`align="${state.hero.alignment}"`);
+          ins(`align="${state.hero.alignment}"`, { tabs: 5 });
         }
-
+        ins(`position="relative"`, { tabs: 5 });
+        ins(`borderRadius="borderRadius"`);
+        ins(`>`, { tabs: 4 });
         return str;
       default:
         break;
