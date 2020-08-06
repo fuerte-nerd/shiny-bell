@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setThemeCode } from "../../state/display/actions";
 import {
@@ -25,6 +25,16 @@ const ThemeCode = ({
   twoFonts,
   headerFont,
 }) => {
+  const [codeSnippets, setCodeSnippets] = useState({
+    hero: ``,
+    theme: ``,
+    helmet: ``,
+  });
+
+  useEffect(() => {
+    const heroCode = new CodeGenerator({ section: "hero" });
+    setCodeSnippets({ ...codeSnippets, hero: heroCode.getCode() });
+  }, [themeCode]);
   const handleClose = () => {
     dispatch(setThemeCode(false));
   };
@@ -71,7 +81,7 @@ const ThemeCode = ({
           wrapLines
           lineProps={{ style: { whiteSpace: "pre-wrap" } }}
         >
-          {current ? new CodeGenerator({ section: "hero" }).getCode() : ``}
+          {current ? codeSnippets.hero : ``}
         </SyntaxHighlighter>
         <SyntaxHighlighter
           language="javascript"
