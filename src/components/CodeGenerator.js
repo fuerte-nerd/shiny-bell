@@ -15,7 +15,7 @@ export default class CodeGenerator {
 
       if (tabs) {
         for (let x = 0; x < tabs; x++) {
-          str += `&nbsp;`;
+          str += `   `;
         }
       }
 
