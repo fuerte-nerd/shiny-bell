@@ -13,6 +13,11 @@ export default class CodeGenerator {
   generateCode(section) {
     let str = "";
     var t = 0;
+
+    const addTabs = (num) => {
+      t = t + num;
+    };
+
     const ins = (text, options = {}) => {
       const { doubleLine, tabs, noNewLine } = options;
 
@@ -24,8 +29,8 @@ export default class CodeGenerator {
         str += `\n`;
       }
 
-      if (options.hasOwnProperty("tabs")) {
-        t = tabs;
+      if (options.hasOwnProperty("tab")) {
+        addTabs(tabs);
       }
 
       for (let x = 0; x < t; x++) {
@@ -37,11 +42,12 @@ export default class CodeGenerator {
 
     switch (section) {
       case "hero":
+        let tabAdjustments = 0;
         const state = store.getState().appState.current;
         ins(`// Hero.js`, { noNewLine: true });
         ins(`import React from "react"`);
         ins(`import {`);
-        ins(`Box,`, { tabs: 1 });
+        ins(`Box,`, { tab: 1 });
         if (state.hero.position === "flex-start") {
           ins(`Toolbar,`);
         }
@@ -50,57 +56,61 @@ export default class CodeGenerator {
         ins(`Button,`);
         ins(`Link,`);
         ins(`Grid,`);
-        ins(`} from "@material-ui/core"`, { tabs: 0 });
+        ins(`} from "@material-ui/core"`, { tab: -1 });
         ins(`const Hero = () => {`, { doubleLine: true });
-        ins(`return (`, { tabs: 1, doubleLine: true });
-        ins(`<Box`, { tabs: 2 });
-        ins(`minHeight="100vh"`, { tabs: 3 });
+        ins(`return (`, { tab: 1, doubleLine: true });
+        ins(`<Box`, { tab: 1 });
+        ins(`minHeight="100vh"`, { tab: 1 });
         ins(`display="flex"`);
         ins(`flexDirection="column"`);
         ins(`justifyContent="${state.hero.position}"`);
         ins(`position="relative"`);
         ins(`style={{`);
-        ins(`backgroundImage: url("${state.hero.img}"),`, { tabs: 4 });
+        ins(`backgroundImage: url("${state.hero.img}"),`, { tab: 1 });
         ins(`backgroundSize: "cover",`);
         ins(`backgroundPosition: "center",`);
-        ins(`}}`, { tabs: 3 });
-        ins(`>`, { tabs: 2 });
+        ins(`}}`, { tab: -1 });
+        ins(`>`, { tab: -1 });
+        addTabs(1);
         if (state.hero.overlayColor !== "transparent") {
-          ins(`{/* Overlay */}`, { tabs: 3 });
+          ins(`{/* Overlay */}`);
           ins(`<Box`);
-          ins(`position="absolute"`, { tabs: 4 });
+          ins(`position="absolute"`, { tab: 1 });
           ins(`top={0}`);
           ins(`right={0}`);
           ins(`bottom={0}`);
           ins(`left={0}`);
           ins(`bgcolor="${state.hero.overlayColor}"`);
           ins(`style={{ opacity: ${state.hero.overlayOpacity} }}`);
-          ins(`/>`, { tabs: 3 });
+          ins(`/>`, { tab: -1 });
         }
         ins(`<Container>`);
+        addTabs(1);
         if (state.hero.position === "flex-start") {
-          ins(`<Toolbar />`, { tabs: 4 });
+          ins(`<Toolbar />`);
         }
-        ins(`<Box`, { tabs: 4 });
+        ins(`<Box`);
+        addTabs(1);
         if (state.hero.boxOverlayColor !== "transparent") {
-          ins(`zIndex={5}`, { tabs: 5 });
+          ins(`zIndex={5}`);
           ins(`p={2}`);
         }
         if (state.hero.position === "flex-start") {
-          ins(`mt={2}`, { tabs: 5 });
+          ins(`mt={2}`);
         }
         if (state.hero.position === "flex-end") {
-          ins(`mb={8}`, { tabs: 5 });
+          ins(`mb={8}`);
         }
         if (state.hero.alignment !== "left") {
-          ins(`align="${state.hero.alignment}"`, { tabs: 5 });
+          ins(`align="${state.hero.alignment}"`);
         }
-        ins(`position="relative"`, { tabs: 5 });
+        ins(`position="relative"`);
         ins(`borderRadius="borderRadius"`);
-        ins(`>`, { tabs: 4 });
+        ins(`>`, { tab: -1 });
+        addTabs(1);
         if (state.hero.boxOverlayColor !== "transparent") {
-          ins(`<Box`, { tabs: 5 });
-          ins(`bgcolor="${state.hero.boxOverlayColor}"}`, { tabs: 6 });
+          ins(`<Box`);
+          ins(`bgcolor="${state.hero.boxOverlayColor}"`, { tab: 1 });
         }
         return str;
       default:
