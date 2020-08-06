@@ -108,6 +108,7 @@ const Hero = ({
           <Box
             bgcolor={boxOverlayColor}
             position="absolute"
+            zIndex={-5}
             borderRadius="borderRadius"
             style={{
               top: 0,

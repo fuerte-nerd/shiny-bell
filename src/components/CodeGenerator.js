@@ -109,6 +109,10 @@ export default class CodeGenerator {
         if (state.hero.boxOverlayColor !== "transparent") {
           ins(`<Box`);
           ins(`bgcolor="${state.hero.boxOverlayColor}"`, { tab: 1 });
+          ins(`zIndex={-5}`);
+          ins(`borderRadius="borderRadius"`);
+          ins(`style={{`);
+          ins(`top: 0,`, { tab: 1 });
         }
         return str;
       default:
