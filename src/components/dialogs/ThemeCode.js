@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setThemeCode } from "../../state/display/actions";
 import {
+  Box,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -76,17 +77,18 @@ const ThemeCode = ({
         <DialogContentText>
           Here is the code you'll need to use the current theme in your project!
         </DialogContentText>
-
-        <SyntaxHighlighter
-          language="jsx"
-          style={tomorrow}
-          customStyle={{ height: "20rem" }}
-        >
+        <Box position="relative">
           <IconButton style={{ position: "absolute", top: 25, right: 25 }}>
             <FileCopy />
           </IconButton>
-          {current ? codeSnippets.hero : ``}
-        </SyntaxHighlighter>
+          <SyntaxHighlighter
+            language="jsx"
+            style={tomorrow}
+            customStyle={{ height: "20rem" }}
+          >
+            {current ? codeSnippets.hero : ``}
+          </SyntaxHighlighter>
+        </Box>
         <SyntaxHighlighter
           language="javascript"
           style={tomorrow}
