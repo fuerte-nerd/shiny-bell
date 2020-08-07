@@ -97,6 +97,7 @@ const ThemeCode = ({
           <Tooltip title="Copy to clipboard">
             <IconButton
               id="hero"
+              onClick={handleClick}
               style={{
                 position: "absolute",
                 top: 10,
