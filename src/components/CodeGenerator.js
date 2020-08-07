@@ -100,6 +100,14 @@ export default class CodeGenerator {
           { doubleLine: true }
         );
         break;
+      case "helmet":
+        ins(
+          `// react-helmet (to fetch Google ${
+            state.twoFonts ? "fonts" : "font"
+          })`,
+          { noNewLine: true }
+        );
+        break;
       case "hero":
         ins(`// Hero.js`, { noNewLine: true });
         ins(`import React from "react"`);
