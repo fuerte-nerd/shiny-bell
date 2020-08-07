@@ -16,7 +16,7 @@ import { FileCopy } from "@material-ui/icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import getThemeCode from "../../scripts/getThemeCode";
-import { CopyToClipboard } from "react-copy-to-clipboard"
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import AppTypography from "../AppTypography";
 
@@ -94,23 +94,21 @@ const ThemeCode = ({
         <DialogContentText>
           Here is the code you'll need to use the current theme in your project!
         </DialogContentText>
-          <Box position="relative">
-            <CopyToClipboard text={{codeSnippets.hero}}>
-          <Tooltip title="Copy to clipboard">
-            <IconButton
-              id="hero"
-              onClick={handleClick}
-              style={{
-                position: "absolute",
-                top: 10,
-                right: 20,
-                color: "white",
-              }}
-            >
-              <FileCopy />
-            </IconButton>
-              </Tooltip>
-                </CopyToClipboard>
+        <Box position="relative">
+          <CopyToClipboard text={codeSnippets.hero}>
+            <Tooltip title="Copy to clipboard">
+              <IconButton
+                style={{
+                  position: "absolute",
+                  top: 10,
+                  right: 20,
+                  color: "white",
+                }}
+              >
+                <FileCopy />
+              </IconButton>
+            </Tooltip>
+          </CopyToClipboard>
           <SyntaxHighlighter
             language="jsx"
             style={tomorrow}
@@ -141,11 +139,6 @@ const ThemeCode = ({
           Close
         </Button>
       </DialogActions>
-      <textarea
-        ref={textAreaRef}
-        value={copyTextArea.text}
-        style={{ visibility: "hidden" }}
-      />
     </Dialog>
   );
 };
