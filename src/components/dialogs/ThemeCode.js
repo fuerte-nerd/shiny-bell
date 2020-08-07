@@ -13,6 +13,7 @@ import {
   Tooltip,
   Snackbar,
 } from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 import { FileCopy } from "@material-ui/icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -36,6 +37,8 @@ const ThemeCode = ({
     theme: ``,
     helmet: ``,
   });
+
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const heroCode = new CodeGenerator({ section: "hero" });
@@ -81,7 +84,10 @@ const ThemeCode = ({
           Here is the code you'll need to use the current theme in your project!
         </DialogContentText>
         <Box position="relative">
-          <CopyToClipboard text={codeSnippets.hero}>
+          <CopyToClipboard
+            text={codeSnippets.hero}
+            onCopy={() => setCopied(true)}
+          >
             <Tooltip title="Copy to clipboard">
               <IconButton
                 style={{
@@ -125,6 +131,15 @@ const ThemeCode = ({
           Close
         </Button>
       </DialogActions>
+      <Snackbar
+        open={copied}
+        autoHideDuration={5000}
+        onClose={() => setCopied(false)}
+      >
+        <Alert severity="success" style={{ fontFamily: "Roboto" }}>
+          Copied to clipboard!
+        </Alert>
+      </Snackbar>
     </Dialog>
   );
 };
