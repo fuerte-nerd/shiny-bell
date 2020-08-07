@@ -77,9 +77,7 @@ const ThemeCode = ({
 
         <SyntaxHighlighter
           language="jsx"
-          style={tomorrow}
-          wrapLines
-          lineProps={{ style: { whiteSpace: "pre-wrap" } }}
+          style={{ ...tomorrow, overFlow: "auto", height: "20rem" }}
         >
           {current ? codeSnippets.hero : ``}
         </SyntaxHighlighter>
