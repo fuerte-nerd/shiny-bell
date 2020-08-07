@@ -44,7 +44,11 @@ export default class CodeGenerator {
     switch (section) {
       case "theme":
         ins(`// theme.js`, { noNewLine: true });
-        ins(`import { createMuiTheme } from "@material-ui/core"`);
+        ins(
+          `import { createMuiTheme${
+            state.responsiveFontSizes ? ", responsiveFontSizes" : ""
+          } } from "@material-ui/core"`
+        );
         ins(`const theme = createMuiTheme({`, {
           doubleLine: true,
         });
@@ -80,7 +84,7 @@ export default class CodeGenerator {
         if (state.rounding !== 4) {
           ins(`shape: { borderRadius: ${state.rounding} },`);
         }
-        if (state.buttonTextTransform !== "lowercase") {
+        if (state.buttonTextTransform !== "uppercase") {
           ins(`overrides: {`);
           ins(
             `MuiButton: { root: { textTransform: "${state.buttonTextTransform}" } },`,
@@ -88,6 +92,13 @@ export default class CodeGenerator {
           );
           ins(`}`, { tab: -1 });
         }
+        ins(`}`, { tab: -1 });
+        ins(
+          `export default ${
+            state.responsiveFontSizes ? "responsiveFontSizes(theme)" : "theme"
+          }`,
+          { doubleLine: true }
+        );
         break;
       case "hero":
         ins(`// Hero.js`, { noNewLine: true });
