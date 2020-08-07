@@ -70,10 +70,24 @@ export default class CodeGenerator {
         } else {
           ins(`fontFamily: '${state.body.family}',`);
         }
-        if (state.fontSize !== 13) {
+        if (state.fontSize !== 14) {
           ins(`fontSize: ${state.fontSize},`);
         }
         ins(`},`, { tab: -1 });
+        if (state.spacing !== 8) {
+          ins(`spacing: ${state.spacing},`);
+        }
+        if (state.rounding !== 4) {
+          ins(`shape: { borderRadius: ${state.rounding} },`);
+        }
+        if (state.buttonTextTransform !== "lowercase") {
+          ins(`overrides: {`);
+          ins(
+            `MuiButton: { root: { textTransform: "${state.buttonTextTransform}" } },`,
+            { tab: 1 }
+          );
+          ins(`}`, { tab: -1 });
+        }
         break;
       case "hero":
         ins(`// Hero.js`, { noNewLine: true });
