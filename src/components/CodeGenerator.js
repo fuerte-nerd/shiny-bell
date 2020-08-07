@@ -107,6 +107,23 @@ export default class CodeGenerator {
           })`,
           { noNewLine: true }
         );
+        ins(`import { Helmet } from "react-helmet"`, { doubleLine: true });
+        ins(`<Helmet>`, { doubleLine: true });
+        ins(`<link`, { tab: 1 });
+        ins(
+          `href="https://fonts.googleapis.com/css2?family=${state.body.family.replace(
+            / /g,
+            "+"
+          )}${
+            state.twoFonts
+              ? `&family=${state.header.family.replace(/ /g, "+")}`
+              : ``
+          }&display=swap"`,
+          { tab: 1 }
+        );
+        ins(`rel="stylesheet"`);
+        ins(`/>`, { tab: -1 });
+        ins(`</Helmet>`, { tab: -1 });
         break;
       case "hero":
         ins(`// Hero.js`, { noNewLine: true });
