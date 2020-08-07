@@ -125,11 +125,7 @@ export default class CodeGenerator {
           );
           ins(`<Typography variant="subtitle1" paragraph>`);
           ins(
-            `The ${state.twoFonts ? `header font ` : `font `} is ${
-              state.twoFonts
-                ? `${state.header.family} and the body font is ${state.body.family}`
-                : state.body.family
-            }`
+            `Amet quam quod ducimus earum alias, vero Ipsam expedita excepturi nemo minima soluta quas est eaque Alias nostrum commodi deserunt`
           );
         }
         return str;
