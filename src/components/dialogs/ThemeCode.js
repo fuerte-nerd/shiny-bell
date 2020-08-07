@@ -77,7 +77,8 @@ const ThemeCode = ({
 
         <SyntaxHighlighter
           language="jsx"
-          style={{ ...tomorrow, overFlow: "auto", height: "20rem" }}
+          style={tomorrow}
+          customStyle={{ height: "20rem" }}
         >
           {current ? codeSnippets.hero : ``}
         </SyntaxHighlighter>
