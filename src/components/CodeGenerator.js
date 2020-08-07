@@ -92,7 +92,7 @@ export default class CodeGenerator {
           );
           ins(`}`, { tab: -1 });
         }
-        ins(`}`, { tab: -1 });
+        ins(`})`, { tab: -1 });
         ins(
           `export default ${
             state.responsiveFontSizes ? "responsiveFontSizes(theme)" : "theme"
