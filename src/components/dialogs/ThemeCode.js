@@ -8,7 +8,9 @@ import {
   DialogContentText,
   DialogActions,
   Button,
+  IconButton,
 } from "@material-ui/core";
+import { FileCopy } from "@material-ui/icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import getThemeCode from "../../scripts/getThemeCode";
@@ -80,6 +82,9 @@ const ThemeCode = ({
           style={tomorrow}
           customStyle={{ height: "20rem" }}
         >
+          <IconButton style={{ position: "absolute", top: 25, right: 25 }}>
+            <FileCopy />
+          </IconButton>
           {current ? codeSnippets.hero : ``}
         </SyntaxHighlighter>
         <SyntaxHighlighter
