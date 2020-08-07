@@ -76,7 +76,7 @@ const ThemeCode = ({
         </DialogContentText>
 
         <SyntaxHighlighter
-          language="javascript"
+          language="jsx"
           style={tomorrow}
           wrapLines
           lineProps={{ style: { whiteSpace: "pre-wrap" } }}

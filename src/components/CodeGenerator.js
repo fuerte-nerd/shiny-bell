@@ -149,7 +149,7 @@ export default class CodeGenerator {
           ins(`color="primary"`);
           ins(`size="large"`);
           ins(`>`, { tab: -1 });
-          ins(`More info`, { tab: 1 });
+          ins(`Primary action`, { tab: 1 });
           ins(`</Button>`, { tab: -1 });
           ins(`</Grid>`, { tab: -1 });
           ins(`<Grid item>`);
@@ -158,9 +158,16 @@ export default class CodeGenerator {
           ins(`color="secondary"`);
           ins(`size="large"`);
           ins(`>`, { tab: -1 });
-          ins(`Do something else`, { tab: 1 });
+          ins(`Secondary action`, { tab: 1 });
           ins(`</Button>`, { tab: -1 });
           ins(`</Grid>`, { tab: -1 });
+          ins(`</Grid>`, { tab: -1 });
+          ins(`</Box>`, { tab: -1 });
+          ins(`</Box>`, { tab: -1 });
+          ins(`</Container>`, { tab: -1 });
+          ins(`</Box>`, { tab: -1 });
+          ins(`)`, { tab: -1 });
+          ins(`}`, { tab: -1 });
         }
         return str;
       default:
