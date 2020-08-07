@@ -67,7 +67,13 @@ export default class CodeGenerator {
           ins(`button: { fontFamily: '${state.body.family}' },`);
           ins(`overline: { fontFamily: '${state.body.family}' },`);
           ins(`caption: { fontFamily: '${state.body.family}' },`);
+        } else {
+          ins(`fontFamily: '${state.body.family}',`);
         }
+        if (state.fontSize !== 13) {
+          ins(`fontSize: ${state.fontSize},`);
+        }
+        ins(`},`, { tab: -1 });
         break;
       case "hero":
         ins(`// Hero.js`, { noNewLine: true });
