@@ -71,7 +71,6 @@ export default class CodeGenerator {
         ins(`>`, { tab: -1 });
         addTabs(1);
         if (state.hero.overlayColor !== "transparent") {
-          ins(`{/* Overlay */}`);
           ins(`<Box`);
           ins(`position="absolute"`, { tab: 1 });
           ins(`top={0}`);
@@ -168,6 +167,7 @@ export default class CodeGenerator {
           ins(`</Box>`, { tab: -1 });
           ins(`)`, { tab: -1 });
           ins(`}`, { tab: -1 });
+          ins(`export default Hero`, { doubleLine: true });
         }
         return str;
       default:
