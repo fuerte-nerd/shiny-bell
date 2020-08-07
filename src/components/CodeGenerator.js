@@ -41,6 +41,9 @@ export default class CodeGenerator {
     };
 
     switch (section) {
+      case "theme":
+        ins(`// theme.js`, { noNewLine: true });
+        break;
       case "hero":
         const state = store.getState().appState.current;
         ins(`// Hero.js`, { noNewLine: true });

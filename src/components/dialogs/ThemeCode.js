@@ -42,7 +42,12 @@ const ThemeCode = ({
 
   useEffect(() => {
     const heroCode = new CodeGenerator({ section: "hero" });
-    setCodeSnippets({ ...codeSnippets, hero: heroCode.getCode() });
+    const themeCode = new CodeGenerator({ section: "theme" });
+    setCodeSnippets({
+      ...codeSnippets,
+      hero: heroCode.getCode(),
+      theme: themeCode.getCode(),
+    });
   }, [themeCode]);
   const handleClose = () => {
     dispatch(setThemeCode(false));
@@ -83,6 +88,32 @@ const ThemeCode = ({
         <DialogContentText>
           Here is the code you'll need to use the current theme in your project!
         </DialogContentText>
+        <Box position="relative">
+          <CopyToClipboard
+            text={codeSnippets.theme}
+            onCopy={() => setCopied(true)}
+          >
+            <Tooltip title="Copy to clipboard">
+              <IconButton
+                style={{
+                  position: "absolute",
+                  top: 10,
+                  right: 20,
+                  color: "white",
+                }}
+              >
+                <FileCopy />
+              </IconButton>
+            </Tooltip>
+          </CopyToClipboard>
+          <SyntaxHighlighter
+            language="javascript"
+            style={tomorrow}
+            customStyle={{ height: "20rem" }}
+          >
+            {current ? codeSnippets.theme : ``}
+          </SyntaxHighlighter>
+        </Box>
         <Box position="relative">
           <CopyToClipboard
             text={codeSnippets.hero}
