@@ -54,12 +54,19 @@ export default class CodeGenerator {
         ins(`},`, { tab: -1 });
         ins(`typography: {`);
         if (state.twoFonts) {
-          ins(`h1: { fontFamily: '${state.header.family}' }`, { tab: 1 });
-          ins(`h2: { fontFamily: '${state.header.family}' }`);
-          ins(`h3: { fontFamily: '${state.header.family}' }`);
-          ins(`h4: { fontFamily: '${state.header.family}' }`);
-          ins(`h5: { fontFamily: '${state.header.family}' }`);
-          ins(`h6: { fontFamily: '${state.header.family}' }`);
+          ins(`h1: { fontFamily: '${state.header.family}' },`, { tab: 1 });
+          ins(`h2: { fontFamily: '${state.header.family}' },`);
+          ins(`h3: { fontFamily: '${state.header.family}' },`);
+          ins(`h4: { fontFamily: '${state.header.family}' },`);
+          ins(`h5: { fontFamily: '${state.header.family}' },`);
+          ins(`h6: { fontFamily: '${state.header.family}' },`);
+          ins(`subtitle1: { fontFamily: '${state.body.family}' },`);
+          ins(`subtitle2: { fontFamily: '${state.body.family}' },`);
+          ins(`body1: { fontFamily: '${state.body.family}' },`);
+          ins(`body2: { fontFamily: '${state.body.family}' },`);
+          ins(`button: { fontFamily: '${state.body.family}' },`);
+          ins(`overline: { fontFamily: '${state.body.family}' },`);
+          ins(`caption: { fontFamily: '${state.body.family}' },`);
         }
         break;
       case "hero":
