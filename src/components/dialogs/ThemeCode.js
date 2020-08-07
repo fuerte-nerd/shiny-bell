@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setThemeCode } from "../../state/display/actions";
 import {
@@ -69,6 +69,21 @@ const ThemeCode = ({
 `;
   };
 
+  const [copyTextArea, setCopyTextArea] = useState({
+    isCopying: false,
+    text: "",
+  });
+
+  const textAreaRef = useRef(null);
+
+  const handleClick = (e) => {
+    const { id } = e.currentTarget;
+    setCopyTextArea({ isCopying: true, text: codeSnippets[id] });
+    textAreaRef.current.select();
+    document.execCommand("copy");
+    setCopyTextArea({ isCopying: false, text: "" });
+  };
+
   return (
     <Dialog maxWidth="sm" fullWidth open={true} onClose={handleClose}>
       <DialogTitle disableTypography>
@@ -81,6 +96,7 @@ const ThemeCode = ({
         <Box position="relative">
           <Tooltip title="Copy to clipboard">
             <IconButton
+              id="hero"
               style={{
                 position: "absolute",
                 top: 10,
@@ -121,6 +137,9 @@ const ThemeCode = ({
           Close
         </Button>
       </DialogActions>
+      {copyTextArea.isCopying ? (
+        <textarea ref={textAreaRef} value={copyTextArea.text} />
+      ) : null}
     </Dialog>
   );
 };
