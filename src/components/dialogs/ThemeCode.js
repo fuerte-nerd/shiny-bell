@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setThemeCode } from "../../state/display/actions";
 import {
@@ -11,6 +11,7 @@ import {
   Button,
   IconButton,
   Tooltip,
+  Snackbar,
 } from "@material-ui/core";
 import { FileCopy } from "@material-ui/icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -68,21 +69,6 @@ const ThemeCode = ({
   />
 </Helmet>
 `;
-  };
-
-  const [copyTextArea, setCopyTextArea] = useState({
-    isCopying: false,
-    text: "",
-  });
-
-  const textAreaRef = useRef(null);
-
-  const handleClick = (e) => {
-    const { id } = e.currentTarget;
-    setCopyTextArea({ isCopying: true, text: codeSnippets[id] });
-    textAreaRef.current.select();
-    document.execCommand("copy");
-    setCopyTextArea({ isCopying: false, text: "" });
   };
 
   return (
