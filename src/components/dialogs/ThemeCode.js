@@ -41,14 +41,16 @@ const ThemeCode = ({
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    const heroCode = new CodeGenerator({ section: "hero" });
-    const themeCode = new CodeGenerator({ section: "theme" });
+    const hero = new CodeGenerator({ section: "hero" });
+    const theme = new CodeGenerator({ section: "theme" });
     setCodeSnippets({
       ...codeSnippets,
-      hero: heroCode.getCode(),
-      theme: themeCode.getCode(),
+      hero: hero.getCode(),
+      theme: theme.getCode(),
     });
+    //eslint-disable-next-line
   }, [themeCode]);
+
   const handleClose = () => {
     dispatch(setThemeCode(false));
   };

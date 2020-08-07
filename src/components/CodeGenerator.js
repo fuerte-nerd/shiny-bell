@@ -122,59 +122,60 @@ export default class CodeGenerator {
             ins(`style={{ opacity: ${state.hero.boxOverlayOpacity} }}`);
           }
           ins(`/>`, { tab: -1 });
-          ins(`<Typography variant="h2">`);
-          ins(`Welcome to your new theme!`, { tab: 1 });
-          ins(`</Typography>`, { tab: -1 });
-          ins(`<Typography variant="subtitle1" paragraph>`);
-          ins(
-            `Amet quam quod ducimus earum alias, vero Ipsam expedita excepturi nemo minima soluta quas est eaque Alias nostrum commodi deserunt`,
-            { tab: 1 }
-          );
-          ins(`</Typography>`, { tab: -1 });
-          ins(`<Box mt={2} align="inherit">`);
-          ins(`<Grid`, { tab: 1 });
-          ins(`container`, { tab: 1 });
-          ins(`spacing={1}`);
-          ins(
-            `justify="${
-              state.hero.alignment === "left"
-                ? "flex-start"
-                : state.hero.alignment === "right"
-                ? "flex-end"
-                : "center"
-            }"`
-          );
-          ins(`>`, { tab: -1 });
-          ins(`<Grid item>`, { tab: 1 });
-          ins(`<Button`, { tab: 1 });
-          ins(`variant="contained"`, { tab: 1 });
-          ins(`color="primary"`);
-          ins(`size="large"`);
-          ins(`>`, { tab: -1 });
-          ins(`Primary action`, { tab: 1 });
-          ins(`</Button>`, { tab: -1 });
-          ins(`</Grid>`, { tab: -1 });
-          ins(`<Grid item>`);
-          ins(`<Button`, { tab: 1 });
-          ins(`variant="contained"`, { tab: 1 });
-          ins(`color="secondary"`);
-          ins(`size="large"`);
-          ins(`>`, { tab: -1 });
-          ins(`Secondary action`, { tab: 1 });
-          ins(`</Button>`, { tab: -1 });
-          ins(`</Grid>`, { tab: -1 });
-          ins(`</Grid>`, { tab: -1 });
-          ins(`</Box>`, { tab: -1 });
-          ins(`</Box>`, { tab: -1 });
-          ins(`</Container>`, { tab: -1 });
-          ins(`</Box>`, { tab: -1 });
-          ins(`)`, { tab: -1 });
-          ins(`}`, { tab: -1 });
-          ins(`export default Hero`, { doubleLine: true });
         }
-        return str;
+        ins(`<Typography variant="h2">`);
+        ins(`Welcome to your new theme!`, { tab: 1 });
+        ins(`</Typography>`, { tab: -1 });
+        ins(`<Typography variant="subtitle1" paragraph>`);
+        ins(
+          `Amet quam quod ducimus earum alias, vero Ipsam expedita excepturi nemo minima soluta quas est eaque Alias nostrum commodi deserunt`,
+          { tab: 1 }
+        );
+        ins(`</Typography>`, { tab: -1 });
+        ins(`<Box mt={2} align="inherit">`);
+        ins(`<Grid`, { tab: 1 });
+        ins(`container`, { tab: 1 });
+        ins(`spacing={1}`);
+        ins(
+          `justify="${
+            state.hero.alignment === "left"
+              ? "flex-start"
+              : state.hero.alignment === "right"
+              ? "flex-end"
+              : "center"
+          }"`
+        );
+        ins(`>`, { tab: -1 });
+        ins(`<Grid item>`, { tab: 1 });
+        ins(`<Button`, { tab: 1 });
+        ins(`variant="contained"`, { tab: 1 });
+        ins(`color="primary"`);
+        ins(`size="large"`);
+        ins(`>`, { tab: -1 });
+        ins(`Primary action`, { tab: 1 });
+        ins(`</Button>`, { tab: -1 });
+        ins(`</Grid>`, { tab: -1 });
+        ins(`<Grid item>`);
+        ins(`<Button`, { tab: 1 });
+        ins(`variant="contained"`, { tab: 1 });
+        ins(`color="secondary"`);
+        ins(`size="large"`);
+        ins(`>`, { tab: -1 });
+        ins(`Secondary action`, { tab: 1 });
+        ins(`</Button>`, { tab: -1 });
+        ins(`</Grid>`, { tab: -1 });
+        ins(`</Grid>`, { tab: -1 });
+        ins(`</Box>`, { tab: -1 });
+        ins(`</Box>`, { tab: -1 });
+        ins(`</Container>`, { tab: -1 });
+        ins(`</Box>`, { tab: -1 });
+        ins(`)`, { tab: -1 });
+        ins(`}`, { tab: -1 });
+        ins(`export default Hero`, { doubleLine: true });
+        break;
       default:
         break;
     }
+    return str;
   }
 }
