@@ -143,6 +143,24 @@ export default class CodeGenerator {
             }"`
           );
           ins(`>`, { tab: -1 });
+          ins(`<Grid item>`, { tab: 1 });
+          ins(`<Button`, { tab: 1 });
+          ins(`variant="contained"`, { tab: 1 });
+          ins(`color="primary"`);
+          ins(`size="large"`);
+          ins(`>`, { tab: -1 });
+          ins(`More info`, { tab: 1 });
+          ins(`</Button>`, { tab: -1 });
+          ins(`</Grid>`, { tab: -1 });
+          ins(`<Grid item>`);
+          ins(`<Button`, { tab: 1 });
+          ins(`variant="contained"`, { tab: 1 });
+          ins(`color="secondary"`);
+          ins(`size="large"`);
+          ins(`>`, { tab: -1 });
+          ins(`Do something else`, { tab: 1 });
+          ins(`</Button>`, { tab: -1 });
+          ins(`</Grid>`, { tab: -1 });
         }
         return str;
       default:
