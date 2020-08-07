@@ -10,6 +10,7 @@ import {
   DialogActions,
   Button,
   IconButton,
+  Tooltip,
 } from "@material-ui/core";
 import { FileCopy } from "@material-ui/icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -78,11 +79,18 @@ const ThemeCode = ({
           Here is the code you'll need to use the current theme in your project!
         </DialogContentText>
         <Box position="relative">
-          <IconButton
-            style={{ position: "absolute", top: 15, right: 20, color: "white" }}
-          >
-            <FileCopy />
-          </IconButton>
+          <Tooltip title="Copy to clipboard">
+            <IconButton
+              style={{
+                position: "absolute",
+                top: 10,
+                right: 20,
+                color: "white",
+              }}
+            >
+              <FileCopy />
+            </IconButton>
+          </Tooltip>
           <SyntaxHighlighter
             language="jsx"
             style={tomorrow}
