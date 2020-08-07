@@ -78,7 +78,9 @@ const ThemeCode = ({
           Here is the code you'll need to use the current theme in your project!
         </DialogContentText>
         <Box position="relative">
-          <IconButton style={{ position: "absolute", top: 25, right: 25 }}>
+          <IconButton
+            style={{ position: "absolute", top: 15, right: 20, color: "white" }}
+          >
             <FileCopy />
           </IconButton>
           <SyntaxHighlighter
