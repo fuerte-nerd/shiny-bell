@@ -129,6 +129,19 @@ export default class CodeGenerator {
             { tab: 1 }
           );
           ins(`</Typography>`, { tab: -1 });
+          ins(`<Box mt={2} align="inherit">`);
+          ins(`<Grid`, { tab: 1 });
+          ins(`container`, { tab: 1 });
+          ins(`spacing={1}`);
+          ins(
+            `justify="${
+              state.hero.alignment === "left"
+                ? "flex-start"
+                : state.hero.alignment === "right"
+                ? "flex-end"
+                : "center"
+            }"`
+          );
         }
         return str;
       default:
