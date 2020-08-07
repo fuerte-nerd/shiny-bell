@@ -39,13 +39,21 @@ export default class CodeGenerator {
 
       str += text;
     };
+    const state = store.getState().appState.current;
 
     switch (section) {
       case "theme":
         ins(`// theme.js`, { noNewLine: true });
+        ins(`import { createMuiTheme } from "@material-ui/core"`);
+        ins(`const theme = createMuiTheme({`, {
+          doubleLine: true,
+        });
+        ins(`palette: {`, { tab: 1 });
+        ins(`primary: { main: '${state.primary}' }`, { tab: 1 });
+        ins(`secondary: { main: '${state.secondary}' }`);
+        ins(`},`, { tab: -1 });
         break;
       case "hero":
-        const state = store.getState().appState.current;
         ins(`// Hero.js`, { noNewLine: true });
         ins(`import React from "react"`);
         ins(`import {`);
