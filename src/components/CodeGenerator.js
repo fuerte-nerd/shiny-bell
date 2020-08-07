@@ -120,13 +120,15 @@ export default class CodeGenerator {
             ins(`style={{ opacity: ${state.hero.boxOverlayOpacity} }}`);
           }
           ins(`/>`, { tab: -1 });
-          ins(
-            `<Typography variant="h2">Welcome to your new theme!</Typography>`
-          );
+          ins(`<Typography variant="h2">`);
+          ins(`Welcome to your new theme!`, { tab: 1 });
+          ins(`</Typography>`, { tab: -1 });
           ins(`<Typography variant="subtitle1" paragraph>`);
           ins(
-            `Amet quam quod ducimus earum alias, vero Ipsam expedita excepturi nemo minima soluta quas est eaque Alias nostrum commodi deserunt`
+            `Amet quam quod ducimus earum alias, vero Ipsam expedita excepturi nemo minima soluta quas est eaque Alias nostrum commodi deserunt`,
+            { tab: 1 }
           );
+          ins(`</Typography>`, { tab: -1 });
         }
         return str;
       default:
