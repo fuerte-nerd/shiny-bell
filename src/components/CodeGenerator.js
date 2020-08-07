@@ -52,6 +52,15 @@ export default class CodeGenerator {
         ins(`primary: { main: '${state.primary}' }`, { tab: 1 });
         ins(`secondary: { main: '${state.secondary}' }`);
         ins(`},`, { tab: -1 });
+        ins(`typography: {`);
+        if (state.twoFonts) {
+          ins(`h1: { fontFamily: '${state.header.family}' }`, { tab: 1 });
+          ins(`h2: { fontFamily: '${state.header.family}' }`);
+          ins(`h3: { fontFamily: '${state.header.family}' }`);
+          ins(`h4: { fontFamily: '${state.header.family}' }`);
+          ins(`h5: { fontFamily: '${state.header.family}' }`);
+          ins(`h6: { fontFamily: '${state.header.family}' }`);
+        }
         break;
       case "hero":
         ins(`// Hero.js`, { noNewLine: true });
