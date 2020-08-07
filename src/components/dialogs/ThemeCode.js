@@ -138,9 +138,11 @@ const ThemeCode = ({
           Close
         </Button>
       </DialogActions>
-      {copyTextArea.isCopying ? (
-        <textarea ref={textAreaRef} value={copyTextArea.text} />
-      ) : null}
+      <textarea
+        ref={textAreaRef}
+        value={copyTextArea.text}
+        style={{ visibility: "hidden" }}
+      />
     </Dialog>
   );
 };
