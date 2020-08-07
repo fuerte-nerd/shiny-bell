@@ -42,9 +42,10 @@ const ThemeCode = ({
 
   useEffect(() => {
     const hero = new CodeGenerator({ section: "hero" });
+    const helmet = new CodeGenerator({ section: "helmet" });
     const theme = new CodeGenerator({ section: "theme" });
     setCodeSnippets({
-      ...codeSnippets,
+      helmet: helmet.getCode(),
       hero: hero.getCode(),
       theme: theme.getCode(),
     });
@@ -118,6 +119,32 @@ const ThemeCode = ({
         </Box>
         <Box position="relative">
           <CopyToClipboard
+            text={codeSnippets.helmet}
+            onCopy={() => setCopied(true)}
+          >
+            <Tooltip title="Copy to clipboard">
+              <IconButton
+                style={{
+                  position: "absolute",
+                  top: 10,
+                  right: 20,
+                  color: "white",
+                }}
+              >
+                <FileCopy />
+              </IconButton>
+            </Tooltip>
+          </CopyToClipboard>
+          <SyntaxHighlighter
+            language="javascript"
+            style={tomorrow}
+            customStyle={{ height: "20rem" }}
+          >
+            {current ? codeSnippets.helmet : ``}
+          </SyntaxHighlighter>
+        </Box>
+        <Box position="relative">
+          <CopyToClipboard
             text={codeSnippets.hero}
             onCopy={() => setCopied(true)}
           >
@@ -142,22 +169,6 @@ const ThemeCode = ({
             {current ? codeSnippets.hero : ``}
           </SyntaxHighlighter>
         </Box>
-        <SyntaxHighlighter
-          language="javascript"
-          style={tomorrow}
-          wrapLines
-          lineProps={{ style: { whiteSpace: "pre-wrap" } }}
-        >
-          {current ? getThemeCode() : ``}
-        </SyntaxHighlighter>
-        <SyntaxHighlighter
-          language="javascript"
-          style={tomorrow}
-          wrapLines
-          lineProps={{ style: { whiteSpace: "pre-wrap" } }}
-        >
-          {current ? helmetCodeString() : ``}
-        </SyntaxHighlighter>
       </DialogContent>
       <DialogActions>
         <Button style={{ fontFamily: "Roboto" }} onClick={handleClose}>

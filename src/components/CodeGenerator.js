@@ -53,7 +53,7 @@ export default class CodeGenerator {
           doubleLine: true,
         });
         ins(`palette: {`, { tab: 1 });
-        ins(`primary: { main: '${state.primary}' }`, { tab: 1 });
+        ins(`primary: { main: '${state.primary}' },`, { tab: 1 });
         ins(`secondary: { main: '${state.secondary}' }`);
         ins(`},`, { tab: -1 });
         ins(`typography: {`);
@@ -107,7 +107,7 @@ export default class CodeGenerator {
           })`,
           { noNewLine: true }
         );
-        ins(`import { Helmet } from "react-helmet"`, { doubleLine: true });
+        ins(`import { Helmet } from "react-helmet"`);
         ins(`<Helmet>`, { doubleLine: true });
         ins(`<link`, { tab: 1 });
         ins(
