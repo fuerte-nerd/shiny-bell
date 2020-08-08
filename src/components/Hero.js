@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { setLoadingScreen } from "../state/display/actions";
 import { setPastAppStates } from "../state/appState/actions";
 import Theme from "./Theme";
-import axios from "axios";
 import { scroller } from "react-scroll";
 import {
   Toolbar,
@@ -57,21 +56,6 @@ const Hero = ({
     }
   };
 
-  const [colorNames, setColorNames] = useState({ primary: "", secondary: "" });
-
-  useEffect(() => {
-    axios
-      .get(
-        `https://api.color.pizza/v1/${primary.substr(1)},${secondary.substr(1)}`
-      )
-      .then((res) => {
-        setColorNames({
-          primary: res.data.colors[0].name,
-          secondary: res.data.colors[1].name,
-        });
-      });
-  }, [primary, secondary]);
-
   return (
     <Box
       minHeight="100vh"
@@ -118,18 +102,9 @@ const Hero = ({
               opacity: boxOverlayOpacity,
             }}
           />
-          <Typography variant="h2">Welcome to your new theme!</Typography>
+          <Typography variant="h2">{current.hero.text.heading}</Typography>
           <Typography variant="subtitle1" paragraph>
-            The {twoFonts ? `header font ` : `font `} is{" "}
-            {twoFonts
-              ? `${current.header.family} and the body font is ${current.body.family}`
-              : current.body.family}
-            . The primary color is {colorNames.primary} and the secondary color
-            is {colorNames.secondary}. The image is provided by{" "}
-            <Link href="https://www.unsplash.com" target="_blank">
-              Unsplash
-            </Link>
-            .
+            {current.hero.text.body}
           </Typography>
           <Box mt={2} align="inherit">
             <Grid
@@ -147,7 +122,7 @@ const Hero = ({
                 <Button
                   id="see-more"
                   onClick={handleClick}
-                  variant="contained"
+                  variant={current.hero.buttonVariant}
                   color="primary"
                   size="large"
                 >
@@ -158,7 +133,7 @@ const Hero = ({
                 <Button
                   id="refresh"
                   onClick={handleClick}
-                  variant="contained"
+                  variant={current.hero.buttonVariant}
                   color="secondary"
                   size="large"
                 >

@@ -64,6 +64,11 @@ class Theme {
 
     this.hero = {
       img: null,
+      text: {
+        heading: "Welcome to your new theme!",
+        body: `Dolor esse ipsum officiis est laudantium Tempore autem et vitae ratione tempore! Libero vitae inventore dolor fugiat laboriosam. Laudantium nam explicabo sapiente?`,
+      },
+      buttonVariant: "contained",
       searchKeywords: appState.current
         ? appState.current.hero.searchKeywords === appState.current.name
           ? this.name
