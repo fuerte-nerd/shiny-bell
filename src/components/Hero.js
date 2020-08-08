@@ -76,7 +76,6 @@ const Hero = ({
           position="relative"
           borderRadius="borderRadius"
           zIndex={5}
-          onClick={() => dispatch(setHeroText(true))}
         >
           <Box
             bgcolor={boxOverlayColor}
