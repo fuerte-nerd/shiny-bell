@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setLoadingScreen, setHeroText } from "../state/display/actions";
-import { setPastAppStates } from "../state/appState/actions";
+import { setHeroText } from "../state/display/actions";
 import Theme from "./Theme";
 import { scroller } from "react-scroll";
 import {

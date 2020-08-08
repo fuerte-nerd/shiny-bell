@@ -65,8 +65,12 @@ const Welcome = ({ dispatch, isOpen }) => {
           menu and they will remain upon subsequent refreshes. You can narrow
           the random search parameters via the settings menu. When you are happy
           with everything, you can copy the code and paste it directly into your
-          project. The images are provided by the Unsplash API and even though
-          they are royalty-free, they are meant as more of a guide.
+          project. The images are provided by the{" "}
+          <Link href="https://www.unsplash.com" target="_blank">
+            Unsplash
+          </Link>{" "}
+          API and even though they are royalty-free, they are meant as more of a
+          guide.
         </Typography>
         <Divide />
         <Typography variant="h4" style={{ fontFamily: "Roboto" }}>
@@ -94,7 +98,10 @@ const Welcome = ({ dispatch, isOpen }) => {
           If you would like to report a bug, donate to the project, help develop
           MUITA, hire me, or get in touch with me for any other reason, my email
           address is{" "}
-          <Link href="mailto:fuertenerd@gmail.com.">fuertenerd@gmail.com</Link>.
+          <Link href="mailto:fuertenerd@gmail.com" target="_blank">
+            fuertenerd@gmail.com
+          </Link>
+          .
         </Typography>
       </DialogContent>
       <DialogActions>
@@ -105,7 +112,7 @@ const Welcome = ({ dispatch, isOpen }) => {
         />
         <Button
           id="github"
-          style={{ fontFamily: "roboto" }}
+          style={{ fontFamily: "Roboto" }}
           endIcon={<GitHub />}
         >
           View on GitHub
@@ -113,7 +120,7 @@ const Welcome = ({ dispatch, isOpen }) => {
         <Button
           id="play"
           onClick={handleClick}
-          style={{ fontFamily: "roboto" }}
+          style={{ fontFamily: "Roboto" }}
           endIcon={<PlayArrow />}
         >
           Start playing

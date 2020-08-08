@@ -25,6 +25,7 @@ const HeroText = ({ dispatch, isOpen, current }) => {
         body: current.hero.text.body,
       });
     }
+    //eslint-disable-next-line
   }, [isOpen]);
 
   const handleChange = (e) => {
@@ -70,20 +71,20 @@ const HeroText = ({ dispatch, isOpen, current }) => {
       <DialogContent>
         <TextField
           label="Heading"
-          margin="normal"
           value={textFields.heading}
           onChange={handleChange}
           id="heading"
           fullWidth
+          margin="normal"
         />
         <TextField
           label="Body"
-          margin="normal"
           multiline
           value={textFields.body}
           onChange={handleChange}
           id="body"
           fullWidth
+          margin="normal"
         />
       </DialogContent>
       <DialogActions>

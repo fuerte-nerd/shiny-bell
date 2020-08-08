@@ -86,13 +86,13 @@ class Theme {
         : 0.8,
       overlayColor: appState.current
         ? appState.current.hero.overlayColor
-        : "common.black",
+        : "primary.dark",
       boxOverlayOpacity: appState.current
         ? appState.current.hero.boxOverlayOpacity
         : 0.5,
       boxOverlayColor: appState.current
         ? appState.current.hero.boxOverlayColor
-        : "primary.light",
+        : "common.black",
     };
 
     // overwrites
