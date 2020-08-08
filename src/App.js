@@ -67,8 +67,8 @@ function App({ dispatch, current }) {
       {current && (
         <>
           <Head />
-          <Welcome />
           <ThemeWrapper>
+            <Welcome />
             <LoadScreen />
             <Dialogs />
             <Sidebar />

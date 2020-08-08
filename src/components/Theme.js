@@ -64,12 +64,13 @@ class Theme {
 
     this.hero = {
       img: null,
-      text: appState.current
-        ? typeof appState.current.hero.text !== "undefined" ? appState.current.hero.text
-        : {
-            heading: "Welcome to your new theme!",
-            body: `Dolor esse ipsum officiis est laudantium Tempore autem et vitae ratione tempore! Libero vitae inventore dolor fugiat laboriosam. Laudantium nam explicabo sapiente?`,
-          },
+      text:
+        appState.current && typeof appState.current.hero.text !== "undefined"
+          ? appState.current.hero.text
+          : {
+              heading: "Welcome to your new theme!",
+              body: `Dolor esse ipsum officiis est laudantium Tempore autem et vitae ratione tempore! Libero vitae inventore dolor fugiat laboriosam. Laudantium nam explicabo sapiente?`,
+            },
       buttonVariant: appState.current
         ? appState.current.hero.buttonVariant
         : "contained",
