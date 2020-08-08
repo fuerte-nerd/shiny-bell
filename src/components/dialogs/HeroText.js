@@ -39,14 +39,15 @@ const HeroText = ({ dispatch, isOpen, current }) => {
         handleClose();
         break;
       case "update":
-        new Theme({
+        const theme = new Theme({
           ...current,
           hero: {
             ...current.hero,
             heading: textFields.heading,
             body: textFields.body,
           },
-        }).commit();
+        });
+        theme.commit();
         handleClose();
         break;
       default:
