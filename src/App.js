@@ -7,6 +7,7 @@ import { Box } from "@material-ui/core";
 import Theme from "./components/Theme";
 
 import Head from "./components/Head";
+import Welcome from "./components/Welcome";
 import GoogleFontValidator from "./components/GoogleFontValidator";
 import ThemeWrapper from "./components/ThemeWrapper";
 import LoadScreen from "./components/LoadScreen";
@@ -61,6 +62,7 @@ function App({ dispatch, current }) {
       {current && (
         <>
           <Head />
+          <Welcome />
           <ThemeWrapper>
             <LoadScreen />
             <Dialogs />
