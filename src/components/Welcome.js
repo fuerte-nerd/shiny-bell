@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import {
   Box,
   Link,
@@ -76,7 +77,10 @@ const Welcome = () => {
         </Typography>
       </DialogContent>
       <DialogActions>
-        <FormControlLabel control={<Checkbox checked={true} />} />
+        <FormControlLabel
+          control={<Checkbox checked={true} />}
+          label="Don't show this again"
+        />
         <Button
           id="github"
           style={{ fontFamily: "roboto" }}
@@ -104,4 +108,8 @@ const Divide = () => {
   );
 };
 
-export default Welcome;
+const mapStateToProps = (state) => ({
+  isOpen: state.display.welcome,
+});
+
+export default connect(mapStateToProps)(Welcome);

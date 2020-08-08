@@ -17,9 +17,11 @@ import {
   SET_RENAME,
   SET_IMAGE_SEARCH,
   SET_HERO_TEXT,
+  SET_WELCOME,
 } from "./types";
 
 const initialState = {
+  welcome: false,
   loadingScreen: true,
   sidebar: false,
   heroText: false,
@@ -113,6 +115,9 @@ export default (state = initialState, action) => {
       break;
     case SET_HERO_TEXT:
       newState.heroText = payload;
+      break;
+    case SET_WELCOME:
+      newState.welcome = payload;
       break;
     default:
       break;

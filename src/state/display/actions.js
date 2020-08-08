@@ -17,6 +17,7 @@ import {
   SET_RENAME,
   SET_IMAGE_SEARCH,
   SET_HERO_TEXT,
+  SET_WELCOME,
 } from "./types";
 
 export const setLoadingScreen = (payload) => ({
@@ -103,5 +104,10 @@ export const setImageSearch = (payload) => ({
 
 export const setHeroText = (payload) => ({
   type: SET_HERO_TEXT,
+  payload,
+});
+
+export const setWelcome = (payload) => ({
+  type: SET_WELCOME,
   payload,
 });
