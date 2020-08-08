@@ -10,7 +10,7 @@ import {
   Divider,
 } from "@material-ui/core";
 
-import { GitHub } from "@material-ui/icons";
+import { PlayArrow, GitHub } from "@material-ui/icons";
 
 const Welcome = () => {
   return (
@@ -57,15 +57,15 @@ const Welcome = () => {
         <Typography style={{ fontFamily: "Roboto" }} paragraph>
           Great! Please feel free to fork the repo on GitHub and play with it!
           There is a lot more functionality that could be built into the app,
-          but it would be a lot for just one developer!
+          but time is my enemy! ;)
         </Typography>
       </DialogContent>
       <DialogActions>
         <Button style={{ fontFamily: "roboto" }} endIcon={<GitHub />}>
           View on GitHub
         </Button>
-        <Button style={{ fontFamily: "roboto" }} endIcon={<GitHub />}>
-          View on GitHub
+        <Button style={{ fontFamily: "roboto" }} endIcon={<PlayArrow />}>
+          Start playing
         </Button>
       </DialogActions>
     </Dialog>
