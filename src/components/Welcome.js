@@ -9,6 +9,8 @@ import {
   DialogActions,
   Button,
   Divider,
+  Checkbox,
+  FormControlLabel,
 } from "@material-ui/core";
 
 import { PlayArrow, GitHub } from "@material-ui/icons";
@@ -74,6 +76,7 @@ const Welcome = () => {
         </Typography>
       </DialogContent>
       <DialogActions>
+        <FormControlLabel control={<Checkbox checked={true} />} />
         <Button
           id="github"
           style={{ fontFamily: "roboto" }}
