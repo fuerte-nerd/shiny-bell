@@ -28,9 +28,7 @@ const Welcome = () => {
           MUITA (Material UI Theme Assistant) is a tool to help you quickly and
           intuitively find a Material UI theme for your next poject!
         </Typography>
-        <Box my={2}>
-          <Divider />
-        </Box>
+        <Divide />
         <Typography variant="h4" style={{ fontFamily: "Roboto" }}>
           How does it work?
         </Typography>
@@ -42,7 +40,15 @@ const Welcome = () => {
           subsequent refreshes. The images are provided by the Unsplash API and
           even though they are royalty-free, they are meant as more of a guide.
         </Typography>
-        <Divider />
+        <Divide />
+        <Typography variant="h4" style={{ fontFamily: "Roboto" }}>
+          Can I save my theme?
+        </Typography>
+        <Typography style={{ fontFamily: "Roboto" }} paragraph>
+          Absolutely! For now, you can save (and of course load!) them to the
+          storage built into your browser. In the future, there are plans to
+          offer online storage/sharing of themes.
+        </Typography>
       </DialogContent>
       <DialogActions>
         <Button style={{ fontFamily: "roboto" }} endIcon={<GitHub />}>
@@ -50,6 +56,14 @@ const Welcome = () => {
         </Button>
       </DialogActions>
     </Dialog>
+  );
+};
+
+const Divide = () => {
+  return (
+    <Box my={2}>
+      <Divider />
+    </Box>
   );
 };
 
