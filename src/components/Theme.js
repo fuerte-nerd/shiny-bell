@@ -64,11 +64,15 @@ class Theme {
 
     this.hero = {
       img: null,
-      text: {
-        heading: "Welcome to your new theme!",
-        body: `Dolor esse ipsum officiis est laudantium Tempore autem et vitae ratione tempore! Libero vitae inventore dolor fugiat laboriosam. Laudantium nam explicabo sapiente?`,
-      },
-      buttonVariant: "contained",
+      text: appState.current
+        ? appState.current.hero.text
+        : {
+            heading: "Welcome to your new theme!",
+            body: `Dolor esse ipsum officiis est laudantium Tempore autem et vitae ratione tempore! Libero vitae inventore dolor fugiat laboriosam. Laudantium nam explicabo sapiente?`,
+          },
+      buttonVariant: appState.current
+        ? appState.current.hero.buttonVariant
+        : "contained",
       searchKeywords: appState.current
         ? appState.current.hero.searchKeywords === appState.current.name
           ? this.name
@@ -81,7 +85,7 @@ class Theme {
         : 0.8,
       overlayColor: appState.current
         ? appState.current.hero.overlayColor
-        : "common.white",
+        : "transparent",
       boxOverlayOpacity: appState.current
         ? appState.current.hero.boxOverlayOpacity
         : 0.5,
