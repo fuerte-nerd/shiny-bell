@@ -65,7 +65,7 @@ class Theme {
     this.hero = {
       img: null,
       text: appState.current
-        ? appState.current.hero.text
+        ? typeof appState.current.hero.text !== "undefined" ? appState.current.hero.text
         : {
             heading: "Welcome to your new theme!",
             body: `Dolor esse ipsum officiis est laudantium Tempore autem et vitae ratione tempore! Libero vitae inventore dolor fugiat laboriosam. Laudantium nam explicabo sapiente?`,
