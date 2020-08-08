@@ -50,7 +50,7 @@ class Theme {
     this.responsiveFontSizes = appState.current
       ? appState.current.responsiveFontSizes
       : true;
-    this.mode = appState.current ? appState.current.mode : "light";
+    this.mode = appState.current ? appState.current.mode : "dark";
     this.rounding = appState.current ? appState.current.rounding : 4;
     this.spacing = appState.current ? appState.current.spacing : 8;
     this.buttonTextTransform = appState.current
@@ -85,7 +85,7 @@ class Theme {
         : 0.8,
       overlayColor: appState.current
         ? appState.current.hero.overlayColor
-        : "transparent",
+        : "common.black",
       boxOverlayOpacity: appState.current
         ? appState.current.hero.boxOverlayOpacity
         : 0.5,
