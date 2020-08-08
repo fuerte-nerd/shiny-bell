@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
   Dialog,
@@ -11,6 +11,19 @@ import {
 } from "@material-ui/core";
 
 const HeroText = () => {
+  const [textFields, setTextFields] = useState({
+    heading: "",
+    body: "",
+  });
+
+  useEffect(() => {
+    if (isOpen) {
+      setTextFields({
+        heading: current.hero.text.heading,
+        body: current.hero.text.body,
+      });
+    }
+  }, [isOpen]);
   return (
     <Dialog>
       <DialogTitle disableTypography>
@@ -18,7 +31,9 @@ const HeroText = () => {
           Edit hero text
         </Typography>
       </DialogTitle>
-      <DialogContent></DialogContent>
+      <DialogContent>
+        <TextField label="Heading" />
+      </DialogContent>
       <DialogActions>
         <Button></Button>
         <Button></Button>
