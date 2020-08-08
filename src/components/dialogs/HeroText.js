@@ -70,6 +70,7 @@ const HeroText = ({ dispatch, isOpen, current }) => {
       <DialogContent>
         <TextField
           label="Heading"
+          margin="normal"
           value={textFields.heading}
           onChange={handleChange}
           id="heading"
@@ -77,6 +78,7 @@ const HeroText = ({ dispatch, isOpen, current }) => {
         />
         <TextField
           label="Body"
+          margin="normal"
           multiline
           value={textFields.body}
           onChange={handleChange}

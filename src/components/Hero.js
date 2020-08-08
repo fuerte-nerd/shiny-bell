@@ -10,7 +10,6 @@ import {
   Container,
   Typography,
   Button,
-  Link,
   Grid,
 } from "@material-ui/core";
 
@@ -37,19 +36,8 @@ const Hero = ({
           smooth: true,
         });
         break;
-      case "refresh":
-        dispatch(setLoadingScreen(true));
-        dispatch(setPastAppStates([...past, current]));
-        const theme = new Theme();
-        theme
-          .getImage()
-          .then(() =>
-            theme
-              .validateFonts()
-              .then(() =>
-                theme.commit().then(() => dispatch(setLoadingScreen(false)))
-              )
-          );
+      case "edit-text":
+        dispatch(setHeroText(true));
         break;
       default:
         break;
@@ -132,13 +120,13 @@ const Hero = ({
               </Grid>
               <Grid item>
                 <Button
-                  id="refresh"
+                  id="edit-text"
                   onClick={handleClick}
                   variant={current.hero.buttonVariant}
                   color="secondary"
                   size="large"
                 >
-                  Refresh theme
+                  Edit text
                 </Button>
               </Grid>
             </Grid>
