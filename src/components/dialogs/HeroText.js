@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { setHeroText } from "../../state/display/actions";
 import {
   Dialog,
   DialogTitle,
@@ -9,6 +10,7 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
+import Theme from "../Theme";
 
 const HeroText = ({ dispatch, isOpen, current }) => {
   const [textFields, setTextFields] = useState({
@@ -37,15 +39,16 @@ const HeroText = ({ dispatch, isOpen, current }) => {
         handleClose();
         break;
       case "update":
-        new Theme(
+        new Theme({
           ...current,
-          (hero: {
+          hero: {
             ...current.hero,
             heading: textFields.heading,
             body: textFields.body,
-          })
-        ).commit();
-        handleClose;
+          },
+        }).commit();
+        handleClose();
+        break;
       default:
         break;
     }

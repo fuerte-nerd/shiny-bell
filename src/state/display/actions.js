@@ -16,6 +16,7 @@ import {
   SET_LOAD,
   SET_RENAME,
   SET_IMAGE_SEARCH,
+  SET_HERO_TEXT,
 } from "./types";
 
 export const setLoadingScreen = (payload) => ({

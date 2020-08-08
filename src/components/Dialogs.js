@@ -7,6 +7,7 @@ import Save from "./dialogs/Save";
 import Load from "./dialogs/Load";
 import Rename from "./dialogs/Rename";
 import ImageSearchKeywords from "./dialogs/ImageSearchKeywords";
+import HeroText from "./dialogs/HeroText";
 
 const Dialogs = () => {
   return (
@@ -19,6 +20,7 @@ const Dialogs = () => {
       <Load />
       <Rename />
       <ImageSearchKeywords />
+      <HeroText />
     </>
   );
 };
