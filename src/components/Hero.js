@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setLoadingScreen } from "../state/display/actions";
+import { setLoadingScreen, setHeroText } from "../state/display/actions";
 import { setPastAppStates } from "../state/appState/actions";
 import Theme from "./Theme";
 import { scroller } from "react-scroll";
@@ -88,6 +88,7 @@ const Hero = ({
           position="relative"
           borderRadius="borderRadius"
           zIndex={5}
+          onClick={() => dispatch(setHeroText(true))}
         >
           <Box
             bgcolor={boxOverlayColor}

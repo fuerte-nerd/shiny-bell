@@ -71,6 +71,7 @@ const HeroText = ({ dispatch, isOpen, current }) => {
           value={textFields.heading}
           onChange={handleChange}
           id="heading"
+          fullWidth
         />
         <TextField
           label="Body"
@@ -78,13 +79,22 @@ const HeroText = ({ dispatch, isOpen, current }) => {
           value={textFields.body}
           onChange={handleChange}
           id="body"
+          fullWidth
         />
       </DialogContent>
       <DialogActions>
-        <Button id="cancel" onClick={handleClick}>
+        <Button
+          style={{ fontFamily: "Roboto" }}
+          id="cancel"
+          onClick={handleClick}
+        >
           Cancel
         </Button>
-        <Button id="update" onClick={handleClick}>
+        <Button
+          style={{ fontFamily: "Roboto" }}
+          id="update"
+          onClick={handleClick}
+        >
           Update
         </Button>
       </DialogActions>
