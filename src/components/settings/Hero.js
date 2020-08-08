@@ -49,8 +49,21 @@ const Hero = ({
               options.buttonVariant.indexOf(buttonVariant) - 1
             ];
         }
+        new Theme(theme).commit();
         break;
       case "button-variant-next":
+        if (
+          options.buttonVariant.indexOf(buttonVariant) ===
+          options.buttonVariant.length - 1
+        ) {
+          theme.hero.buttonVariant = options.buttonVariant[0];
+        } else {
+          theme.hero.buttonVariant =
+            options.buttonVariant[
+              options.buttonVariant.indexOf(buttonVariant) + 1
+            ];
+        }
+        new Theme(theme).commit();
         break;
       case "box-alignment-previous":
         if (options.alignment.indexOf(alignment) === 0) {
