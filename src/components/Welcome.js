@@ -16,9 +16,10 @@ import {
 
 import { PlayArrow, GitHub } from "@material-ui/icons";
 
-const Welcome = () => {
+const Welcome = ({ dispatch, isOpen }) => {
+  const handleChange = (e) => {};
   return (
-    <Dialog open={true}>
+    <Dialog open={isOpen}>
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
           Welcome to MUITA

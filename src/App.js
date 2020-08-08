@@ -20,7 +20,7 @@ import Preview from "./components/Preview";
 import Dialogs from "./components/Dialogs";
 
 import { setFonts, setLibraryLoaded } from "./state/library/actions";
-import { setLoadingScreen } from "./state/display/actions";
+import { setWelcome, setLoadingScreen } from "./state/display/actions";
 import { setDefFontLoaded } from "./state/components/actions";
 
 function App({ dispatch, current }) {
@@ -44,7 +44,12 @@ function App({ dispatch, current }) {
           .getImage()
           .then(() => {
             theme.validateFonts().then(() => {
-              theme.commit().then(() => dispatch(setLoadingScreen(false)));
+              theme.commit().then(() => {
+                if (!localStorage.getItem("dismissWelcome")) {
+                  dispatch(setWelcome(true));
+                }
+                dispatch(setLoadingScreen(false));
+              });
             });
           })
           .catch((err) => console.log(err));
