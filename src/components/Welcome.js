@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Box,
+  Link,
   Dialog,
   DialogTitle,
   Typography,
@@ -22,7 +23,7 @@ const Welcome = () => {
       </DialogTitle>
       <DialogContent>
         <Typography variant="h4" style={{ fontFamily: "Roboto" }}>
-          What is MUITA?
+          "What is MUITA?.."
         </Typography>
         <Typography style={{ fontFamily: "Roboto" }} paragraph>
           MUITA (Material UI Theme Assistant) is a tool to help you quickly and
@@ -30,7 +31,7 @@ const Welcome = () => {
         </Typography>
         <Divide />
         <Typography variant="h4" style={{ fontFamily: "Roboto" }}>
-          How does it work?
+          "How does it work?.."
         </Typography>
         <Typography style={{ fontFamily: "Roboto" }} paragraph>
           It's very simple! You just hit the refresh button and MUITA will
@@ -43,7 +44,7 @@ const Welcome = () => {
         </Typography>
         <Divide />
         <Typography variant="h4" style={{ fontFamily: "Roboto" }}>
-          Can I save my theme?
+          "Can I save my theme?.."
         </Typography>
         <Typography style={{ fontFamily: "Roboto" }} paragraph>
           Absolutely! For now, you can save (and of course load!) them to the
@@ -58,6 +59,16 @@ const Welcome = () => {
           Great! Please feel free to fork the repo on GitHub and play with it!
           There is a lot more functionality that could be built into the app,
           but time is my enemy! ;)
+        </Typography>
+        <Divide />
+        <Typography variant="h4" style={{ fontFamily: "Roboto" }}>
+          "I would like to make an inquiry ..."
+        </Typography>
+        <Typography style={{ fontFamily: "Roboto" }} paragraph>
+          If you would like to report a bug, donate to the project, help develop
+          MUITA, hire me, or get in touch with me for any other reason, my email
+          address is{" "}
+          <Link href="mailto:fuertenerd@gmail.com.">fuertenerd@gmail.com</Link>
         </Typography>
       </DialogContent>
       <DialogActions>
