@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@material-ui/core";
 
-const HeroText = () => {
+const HeroText = ({ dispatch, isOpen, current }) => {
   const [textFields, setTextFields] = useState({
     heading: "",
     body: "",
@@ -24,24 +24,74 @@ const HeroText = () => {
       });
     }
   }, [isOpen]);
+
+  const handleChange = (e) => {
+    const { id, value } = e.currentTarget;
+    setTextFields({ ...textFields, [id]: value });
+  };
+
+  const handleClick = (e) => {
+    const { id } = e.currentTarget;
+    switch (id) {
+      case "cancel":
+        handleClose();
+        break;
+      case "update":
+        new Theme(
+          ...current,
+          (hero: {
+            ...current.hero,
+            heading: textFields.heading,
+            body: textFields.body,
+          })
+        ).commit();
+        handleClose;
+      default:
+        break;
+    }
+  };
+
+  const handleClose = () => {
+    dispatch(setHeroText(false));
+  };
+
   return (
-    <Dialog>
+    <Dialog open={isOpen} onClose={handleClose} fullWidth maxWidth="sm">
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
           Edit hero text
         </Typography>
       </DialogTitle>
       <DialogContent>
-        <TextField label="Heading" />
+        <TextField
+          label="Heading"
+          value={textFields.heading}
+          onChange={handleChange}
+          id="heading"
+        />
+        <TextField
+          label="Body"
+          multiline
+          value={textFields.body}
+          onChange={handleChange}
+          id="body"
+        />
       </DialogContent>
       <DialogActions>
-        <Button></Button>
-        <Button></Button>
+        <Button id="cancel" onClick={handleClick}>
+          Cancel
+        </Button>
+        <Button id="update" onClick={handleClick}>
+          Update
+        </Button>
       </DialogActions>
     </Dialog>
   );
 };
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  isOpen: state.display.heroText,
+  current: state.appState.current,
+});
 
 export default connect(mapStateToProps)(HeroText);

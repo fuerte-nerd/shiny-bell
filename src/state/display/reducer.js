@@ -16,11 +16,13 @@ import {
   SET_THEME_CODE,
   SET_RENAME,
   SET_IMAGE_SEARCH,
+  SET_HERO_TEXT,
 } from "./types";
 
 const initialState = {
   loadingScreen: true,
   sidebar: false,
+  heroText: false,
   save: {
     isOpen: false,
     error: false,
@@ -108,6 +110,9 @@ export default (state = initialState, action) => {
       break;
     case SET_IMAGE_SEARCH:
       newState.imageSearch = payload;
+      break;
+    case SET_HERO_TEXT:
+      newState.heroText = payload;
       break;
     default:
       break;

@@ -99,3 +99,8 @@ export const setImageSearch = (payload) => ({
   type: SET_IMAGE_SEARCH,
   payload,
 });
+
+export const setHeroText = (payload) => ({
+  type: SET_HERO_TEXT,
+  payload,
+});
