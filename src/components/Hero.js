@@ -75,6 +75,7 @@ const Hero = ({
           align={alignment}
           position="relative"
           borderRadius="borderRadius"
+          width="50%"
           zIndex={5}
         >
           <Box
