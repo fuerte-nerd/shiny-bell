@@ -25,6 +25,19 @@ const Welcome = ({ dispatch, isOpen }) => {
   const handleClose = (e) => {
     dispatch(setWelcome(false));
   };
+  const handleClick = (e) => {
+    const { id } = e.currentTarget;
+    switch (id) {
+      case "play":
+        if (dismiss) {
+          localStorage.setItem("dismissWelcome", "true");
+        }
+        handleClose();
+        break;
+      default:
+        break;
+    }
+  };
   return (
     <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle disableTypography>
@@ -88,6 +101,7 @@ const Welcome = ({ dispatch, isOpen }) => {
         <FormControlLabel
           control={<Checkbox checked={dismiss} onChange={handleChange} />}
           label="Don't show this again"
+          labelPlacement="start"
         />
         <Button
           id="github"
@@ -98,6 +112,7 @@ const Welcome = ({ dispatch, isOpen }) => {
         </Button>
         <Button
           id="play"
+          onClick={handleClick}
           style={{ fontFamily: "roboto" }}
           endIcon={<PlayArrow />}
         >
