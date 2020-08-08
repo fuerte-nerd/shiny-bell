@@ -37,7 +37,8 @@ const Welcome = () => {
           provide you with a new theme, including fonts (provided by Google
           Fonts), colors and an image. If you like certain elements of it, you
           can lock them in the settings menu and they will remain upon
-          subsequent refreshes. The images are provided by the Unsplash API and
+          subsequent refreshes. You can narrow the random search parameters via
+          the settings menu. The images are provided by the Unsplash API and
           even though they are royalty-free, they are meant as more of a guide.
         </Typography>
         <Divide />
@@ -49,8 +50,20 @@ const Welcome = () => {
           storage built into your browser. In the future, there are plans to
           offer online storage/sharing of themes.
         </Typography>
+        <Divide />
+        <Typography variant="h4" style={{ fontFamily: "Roboto" }}>
+          "I would like to help improve MUITA..."
+        </Typography>
+        <Typography style={{ fontFamily: "Roboto" }} paragraph>
+          Great! Please feel free to fork the repo on GitHub and play with it!
+          There is a lot more functionality that could be built into the app,
+          but it would be a lot for just one developer!
+        </Typography>
       </DialogContent>
       <DialogActions>
+        <Button style={{ fontFamily: "roboto" }} endIcon={<GitHub />}>
+          View on GitHub
+        </Button>
         <Button style={{ fontFamily: "roboto" }} endIcon={<GitHub />}>
           View on GitHub
         </Button>
