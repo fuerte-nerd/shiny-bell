@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setHeroText } from "../state/display/actions";
-import Theme from "./Theme";
 import { scroller } from "react-scroll";
 import {
   Toolbar,
@@ -15,11 +14,7 @@ import {
 const Hero = ({
   dispatch,
   current,
-  past,
   heroImg,
-  primary,
-  secondary,
-  twoFonts,
   textPosition,
   overlayColor,
   overlayOpacity,
