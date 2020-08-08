@@ -29,6 +29,7 @@ const Hero = ({
   searchKeywords,
   boxOverlayColor,
   boxOverlayOpacity,
+  buttonVariant,
 }) => {
   const handleClick = (e) => {
     const theme = Object.assign({}, current);
@@ -37,6 +38,19 @@ const Hero = ({
       case "image-search":
       case "image-search-btn":
         dispatch(setImageSearch(true));
+        break;
+      case "button-variant-previous":
+        if (options.buttonVariant.indexOf(buttonVariant) === 0) {
+          theme.hero.buttonVariant =
+            options.buttonVariant[options.buttonVariant.length - 1];
+        } else {
+          theme.hero.buttonVariant =
+            options.buttonVariant[
+              options.buttonVariant.indexOf(buttonVariant) - 1
+            ];
+        }
+        break;
+      case "button-variant-next":
         break;
       case "box-alignment-previous":
         if (options.alignment.indexOf(alignment) === 0) {
@@ -186,6 +200,7 @@ const Hero = ({
       "secondary.dark",
     ],
     boxPosition: ["flex-end", "center", "flex-start"],
+    buttonVariant: ["text", "contained", "outlined"],
   };
 
   return (
@@ -198,6 +213,26 @@ const Hero = ({
         <ListItemSecondaryAction>
           <IconButton edge="end" onClick={handleClick} id="image-search-btn">
             <Search />
+          </IconButton>
+        </ListItemSecondaryAction>
+      </ListItem>
+      <ListItem>
+        <ListItemText primary="Button variant" secondary={buttonVariant} />
+        <ListItemSecondaryAction>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="button-variant-previous"
+          >
+            <ChevronLeft />
+          </IconButton>
+          <IconButton
+            size="small"
+            onClick={handleClick}
+            id="button-variant-next"
+            edge="end"
+          >
+            <ChevronRight />
           </IconButton>
         </ListItemSecondaryAction>
       </ListItem>
@@ -337,6 +372,7 @@ const mapStateToProps = (state) => ({
   searchKeywords: state.appState.current.hero.searchKeywords,
   boxOverlayColor: state.appState.current.hero.boxOverlayColor,
   boxOverlayOpacity: state.appState.current.hero.boxOverlayOpacity,
+  buttonVariant: state.appState.current.hero.buttonVariant,
 });
 
 export default connect(mapStateToProps)(Hero);
