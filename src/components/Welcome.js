@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
+import { setWelcome } from "../state/display/actions";
 import {
   Box,
   Link,
@@ -17,9 +18,15 @@ import {
 import { PlayArrow, GitHub } from "@material-ui/icons";
 
 const Welcome = ({ dispatch, isOpen }) => {
-  const handleChange = (e) => {};
+  const [dismiss, setDismiss] = useState(false);
+  const handleChange = (e) => {
+    setDismiss(!dismiss);
+  };
+  const handleClose = (e) => {
+    dispatch(setWelcome(false));
+  };
   return (
-    <Dialog open={isOpen}>
+    <Dialog open={isOpen} onClose={handleClose}>
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
           Welcome to MUITA
@@ -79,7 +86,7 @@ const Welcome = ({ dispatch, isOpen }) => {
       </DialogContent>
       <DialogActions>
         <FormControlLabel
-          control={<Checkbox checked={true} />}
+          control={<Checkbox checked={dismiss} onChange={handleChange} />}
           label="Don't show this again"
         />
         <Button
