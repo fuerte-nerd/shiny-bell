@@ -43,11 +43,12 @@ const HeroText = ({ dispatch, isOpen, current }) => {
           ...current,
           hero: {
             ...current.hero,
-            heading: textFields.heading,
-            body: textFields.body,
+            text: {
+              heading: textFields.heading,
+              body: textFields.body,
+            },
           },
-        });
-        theme.commit();
+        }).commit();
         handleClose();
         break;
       default:
