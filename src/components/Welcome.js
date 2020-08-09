@@ -32,7 +32,7 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
 
   return (
     <Dialog open={isOpen} onClose={handleClose}>
-      <IconButton style={{ top: 10, right: 10, position: "absolute" }}>
+      <IconButton style={{ top: 5, right: 5, position: "absolute" }}>
         <Close />
       </IconButton>
       <DialogTitle disableTypography>
