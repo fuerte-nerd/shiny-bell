@@ -9,7 +9,12 @@ const Preview = ({ current }) => {
   return current ? (
     <>
       <Anchor id="preview" />
-      <Box py={2} minHeight="100vh" display="flex" justifyContent="center">
+      <Box
+        minHeight="100vh - 48px"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Container>
           <Text />
           <Buttons />
