@@ -21,6 +21,8 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import AppTypography from "../AppTypography";
 
+import CodeSection from "../CodeSection";
+
 import CodeGenerator from "../CodeGenerator";
 
 const ThemeCode = ({ dispatch, themeCode, current }) => {
@@ -57,6 +59,8 @@ const ThemeCode = ({ dispatch, themeCode, current }) => {
         <DialogContentText>
           Here is the code you'll need to use the current theme in your project!
         </DialogContentText>
+        <CodeSection title="The theme" code={codeSnippets.theme} />
+
         <Box position="relative">
           <CopyToClipboard
             text={codeSnippets.theme}
