@@ -9,13 +9,13 @@ import {
   Typography,
   DialogContent,
   DialogActions,
-  Button,
   Divider,
   Checkbox,
   FormControlLabel,
+  IconButton,
 } from "@material-ui/core";
 
-import { PlayArrow, GitHub } from "@material-ui/icons";
+import { Close } from "@material-ui/icons";
 
 const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
   const [dismiss, setDismiss] = useState(false);
@@ -23,23 +23,18 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
     setDismiss(!dismiss);
   };
   const handleClose = (e) => {
+    if (dismiss) {
+      localStorage.setItem("dismissWelcome", "true");
+    }
+
     dispatch(setWelcome({ ...welcome, isOpen: false }));
   };
-  const handleClick = (e) => {
-    const { id } = e.currentTarget;
-    switch (id) {
-      case "play":
-        if (dismiss) {
-          localStorage.setItem("dismissWelcome", "true");
-        }
-        handleClose();
-        break;
-      default:
-        break;
-    }
-  };
+
   return (
     <Dialog open={isOpen} onClose={handleClose}>
+      <IconButton style={{ top: 10, right: 10, position: "absolute" }}>
+        <Close />
+      </IconButton>
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
           Welcome to MUITA
@@ -104,30 +99,15 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
           .
         </Typography>
       </DialogContent>
-      <DialogActions>
-        {onStart && (
+      {onStart && (
+        <DialogActions>
           <FormControlLabel
             control={<Checkbox checked={dismiss} onChange={handleChange} />}
             label="Don't show this again"
             labelPlacement="start"
           />
-        )}
-        <Button
-          id="github"
-          style={{ fontFamily: "Roboto" }}
-          endIcon={<GitHub />}
-        >
-          GitHub
-        </Button>
-        <Button
-          id="play"
-          onClick={handleClick}
-          style={{ fontFamily: "Roboto" }}
-          endIcon={<PlayArrow />}
-        >
-          Start
-        </Button>
-      </DialogActions>
+        </DialogActions>
+      )}
     </Dialog>
   );
 };
