@@ -38,9 +38,13 @@ const Hero = ({
     }
   };
 
-  const handleOnMouseOver = (e) => {
+  const handleOnMouseEnter = (e) => {
     const { id } = e.currentTarget;
     dispatch(setFontInfo({ isOpen: true, section: id }));
+  };
+
+  const handleOnMouseOut = (e) => {
+    dispatch(setFontInfo({ isOpen: false, section: "" }));
   };
 
   return (
@@ -89,13 +93,19 @@ const Hero = ({
               opacity: boxOverlayOpacity,
             }}
           />
-          <Typography variant="h2" onMouseOver={handleOnMouseOver} id="heading">
+          <Typography
+            variant="h2"
+            onMouseEnter={handleOnMouseEnter}
+            onMouseOut={handleOnMouseOut}
+            id="heading"
+          >
             {current.hero.text.heading}
           </Typography>
           <Typography
             variant="subtitle1"
             paragraph
-            onMouseOver={handleOnMouseOver}
+            onMouseEnter={handleOnMouseEnter}
+            onMouseOut={handleOnMouseOut}
             id="body"
           >
             {current.hero.text.body}
