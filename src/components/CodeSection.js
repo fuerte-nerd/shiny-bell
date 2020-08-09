@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { setCopied } from "../state/display/actions";
 import {
   Accordion,
   AccordionSummary,
@@ -12,11 +13,11 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-const CodeSection = ({ children, title, language = "javascript", code }) => {
+const CodeSection = ({ dispatch, title, language = "javascript", code }) => {
   return (
     <Accordion>
       <AccordionSummary>
-        <Typography>{title}</Typography>
+        <Typography style={{ fontFamily: "Roboto" }}>{title}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         <SyntaxHighlighter
@@ -30,8 +31,8 @@ const CodeSection = ({ children, title, language = "javascript", code }) => {
         </SyntaxHighlighter>
       </AccordionDetails>
       <AccordionActions>
-        <CopyToClipboard text={code} onCopy={() => setCopied(true)}>
-          <Button>Copy</Button>
+        <CopyToClipboard text={code} onCopy={() => dispatch(setCopied(true))}>
+          <Button style={{ fontFamily: "Roboto" }}>Copy code</Button>
         </CopyToClipboard>
       </AccordionActions>
     </Accordion>
