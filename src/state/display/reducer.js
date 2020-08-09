@@ -27,6 +27,7 @@ const initialState = {
   },
   loadingScreen: true,
   sidebar: false,
+  fontInfo: false,
   heroText: false,
   save: {
     isOpen: false,

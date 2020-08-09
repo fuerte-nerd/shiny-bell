@@ -18,6 +18,7 @@ import {
   SET_IMAGE_SEARCH,
   SET_HERO_TEXT,
   SET_WELCOME,
+  SET_FONT_INFO,
 } from "./types";
 
 export const setLoadingScreen = (payload) => ({
@@ -109,5 +110,10 @@ export const setHeroText = (payload) => ({
 
 export const setWelcome = (payload) => ({
   type: SET_WELCOME,
+  payload,
+});
+
+export const setFontInfo = (payload) => ({
+  type: SET_FONT_INFO,
   payload,
 });

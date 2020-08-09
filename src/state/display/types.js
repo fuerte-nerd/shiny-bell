@@ -19,3 +19,4 @@ export const SET_RENAME = "SET_RENAME";
 export const SET_IMAGE_SEARCH = "SET_IMAGE_SEARCH";
 export const SET_HERO_TEXT = "SET_HERO_TEXT";
 export const SET_WELCOME = "SET_WELCOME";
+export const SET_FONT_INFO = "SET_FONT_INFO";

@@ -13,6 +13,7 @@ import ThemeWrapper from "./components/ThemeWrapper";
 import LoadScreen from "./components/LoadScreen";
 import Sidebar from "./components/Sidebar";
 import Menu from "./components/Menu";
+import FontInfo from "./components/FontInfo";
 import RefreshButton from "./components/RefreshButton";
 import Hero from "./components/Hero";
 import Preview from "./components/Preview";
@@ -73,6 +74,7 @@ function App({ dispatch, current }) {
             <Dialogs />
             <Sidebar />
             <Menu />
+            <FontInfo />
             <Box bgcolor={current.pageBackground}>
               <Hero />
               <Preview />
