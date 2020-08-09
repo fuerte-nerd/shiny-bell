@@ -43,7 +43,7 @@ const Hero = ({
     dispatch(setFontInfo({ isOpen: true, section: id }));
   };
 
-  const handleOnMouseOut = (e) => {
+  const handleOnMouseLeave = (e) => {
     dispatch(setFontInfo({ isOpen: false, section: "" }));
   };
 
@@ -96,7 +96,7 @@ const Hero = ({
           <Typography
             variant="h2"
             onMouseEnter={handleOnMouseEnter}
-            onMouseOut={handleOnMouseOut}
+            onMouseLeave={handleOnMouseLeave}
             id="heading"
           >
             {current.hero.text.heading}
@@ -105,7 +105,7 @@ const Hero = ({
             variant="subtitle1"
             paragraph
             onMouseEnter={handleOnMouseEnter}
-            onMouseOut={handleOnMouseOut}
+            onMouseLeave={handleOnMouseLeave}
             id="body"
           >
             {current.hero.text.body}

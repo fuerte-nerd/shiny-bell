@@ -22,6 +22,7 @@ const FontInfo = ({ dispatch, isOpen, section, body, header }) => {
       open={isOpen}
       anchorReference="anchorPosition"
       anchorPosition={{ top: mouseLocation.y, left: mouseLocation.x }}
+      style={{ pointerEvents: "none" }}
     >
       Hello
     </Popover>
