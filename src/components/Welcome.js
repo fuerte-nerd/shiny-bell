@@ -17,6 +17,8 @@ import {
 
 import { Close } from "@material-ui/icons";
 
+import Logo from "../logo192.png";
+
 const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
   const [dismiss, setDismiss] = useState(false);
   const handleChange = (e) => {
@@ -39,16 +41,17 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
         <Close />
       </IconButton>
       <DialogTitle disableTypography>
+        <img src={Logo} alt="MuiTA Logo" />
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
-          Welcome to MUITA
+          Welcome to MuiTA
         </Typography>
       </DialogTitle>
       <DialogContent>
         <Typography variant="h4" style={{ fontFamily: "Roboto" }}>
-          "What is MUITA?.."
+          "What is MuiTA?.."
         </Typography>
         <Typography style={{ fontFamily: "Roboto" }} paragraph>
-          MUITA (Material UI Theme Assistant) is a tool to help you quickly and
+          MuiTA (Material UI Theme Assistant) is a tool to help you quickly and
           intuitively find a Material UI theme for your next React project!
         </Typography>
         <Divide />
@@ -57,7 +60,7 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
         </Typography>
         <Typography style={{ fontFamily: "Roboto" }} paragraph>
           It's very simple! You just hit the refresh button (bottom right of
-          your screen) and MUITA will provide you with a new theme at random,
+          your screen) and MuiTA will provide you with a new theme at random,
           including fonts (provided by Google Fonts), colors and an image. If
           you like certain elements of it, you can lock them in the settings
           menu and they will remain upon subsequent refreshes. You can narrow
@@ -81,7 +84,7 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
         </Typography>
         <Divide />
         <Typography variant="h4" style={{ fontFamily: "Roboto" }}>
-          "I would like to help improve MUITA..."
+          "I would like to help improve MuiTA..."
         </Typography>
         <Typography style={{ fontFamily: "Roboto" }} paragraph>
           Great! Please feel free to fork the repo on GitHub and play with it!
@@ -94,7 +97,7 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
         </Typography>
         <Typography style={{ fontFamily: "Roboto" }} paragraph>
           If you would like to report a bug, donate to the project, help develop
-          MUITA, hire me, or get in touch with me for any other reason, my email
+          MuiTA, hire me, or get in touch with me for any other reason, my email
           address is{" "}
           <Link href="mailto:fuertenerd@gmail.com" target="_blank">
             fuertenerd@gmail.com
