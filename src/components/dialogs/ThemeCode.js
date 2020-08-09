@@ -78,7 +78,9 @@ const ThemeCode = ({ dispatch, themeCode, current }) => {
           <SyntaxHighlighter
             language="javascript"
             style={tomorrow}
-            customStyle={{ maxHeight: "20rem" }}
+            lineProps={{ style: { whiteSpace: "pre-wrap" } }}
+            wrapLines={true}
+            customStyle={{ maxHeight: "12.5rem" }}
           >
             {current ? codeSnippets.theme : ``}
           </SyntaxHighlighter>
@@ -105,7 +107,8 @@ const ThemeCode = ({ dispatch, themeCode, current }) => {
             language="javascript"
             style={tomorrow}
             lineProps={{ style: { whiteSpace: "pre-wrap" } }}
-            customStyle={{ maxHeight: "20rem" }}
+            wrapLines={true}
+            customStyle={{ maxHeight: "12.5rem" }}
           >
             {current ? codeSnippets.helmet : ``}
           </SyntaxHighlighter>
@@ -131,7 +134,9 @@ const ThemeCode = ({ dispatch, themeCode, current }) => {
           <SyntaxHighlighter
             language="jsx"
             style={tomorrow}
-            customStyle={{ maxHeight: "20rem" }}
+            lineProps={{ style: { whiteSpace: "pre-wrap" } }}
+            wrapLines={true}
+            customStyle={{ maxHeight: "12.5rem" }}
           >
             {current ? codeSnippets.hero : ``}
           </SyntaxHighlighter>
