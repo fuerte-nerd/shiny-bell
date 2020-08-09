@@ -18,7 +18,7 @@ const About = ({ dispatch }) => {
     switch (id) {
       case "faqs":
       case "faqs-btn":
-        dispatch(setWelcome({isOpen: true, showOnStart: false));
+        dispatch(setWelcome({ isOpen: true, showOnStart: false }));
         break;
       case "email":
       case "email-btn":
