@@ -26,13 +26,16 @@ const CodeSection = ({ dispatch, title, language = "javascript", code }) => {
           style={tomorrow}
           lineProps={{ style: { whiteSpace: "pre-wrap" } }}
           wrapLines={true}
+          customStyle={{ overflowX: "hidden" }}
         >
           {code}
         </SyntaxHighlighter>
       </AccordionDetails>
       <AccordionActions>
         <CopyToClipboard text={code} onCopy={() => dispatch(setCopied(true))}>
-          <Button style={{ fontFamily: "Roboto" }}>Copy code</Button>
+          <Button variant="outlined" style={{ fontFamily: "Roboto" }}>
+            Copy code
+          </Button>
         </CopyToClipboard>
       </AccordionActions>
     </Accordion>
