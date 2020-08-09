@@ -46,7 +46,7 @@ function App({ dispatch, current }) {
             theme.validateFonts().then(() => {
               theme.commit().then(() => {
                 if (!localStorage.getItem("dismissWelcome")) {
-                  dispatch(setWelcome({ isOpen: true, onStart: true }));
+                  dispatch(setWelcome({ isOpen: true, showOnStart: true }));
                 }
                 dispatch(setLoadingScreen(false));
               });

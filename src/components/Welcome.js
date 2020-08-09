@@ -17,13 +17,13 @@ import {
 
 import { PlayArrow, GitHub } from "@material-ui/icons";
 
-const Welcome = ({ dispatch, isOpen, onStart }) => {
+const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
   const [dismiss, setDismiss] = useState(false);
   const handleChange = (e) => {
     setDismiss(!dismiss);
   };
   const handleClose = (e) => {
-    dispatch(setWelcome(false));
+    dispatch(setWelcome({ ...welcome, isOpen: false }));
   };
   const handleClick = (e) => {
     const { id } = e.currentTarget;
@@ -117,7 +117,7 @@ const Welcome = ({ dispatch, isOpen, onStart }) => {
           style={{ fontFamily: "Roboto" }}
           endIcon={<GitHub />}
         >
-          View on GitHub
+          GitHub
         </Button>
         <Button
           id="play"
@@ -125,7 +125,7 @@ const Welcome = ({ dispatch, isOpen, onStart }) => {
           style={{ fontFamily: "Roboto" }}
           endIcon={<PlayArrow />}
         >
-          Start playing
+          Start
         </Button>
       </DialogActions>
     </Dialog>
@@ -141,6 +141,7 @@ const Divide = () => {
 };
 
 const mapStateToProps = (state) => ({
+  welcome: state.display.welcome,
   isOpen: state.display.welcome.isOpen,
   onStart: state.display.welcome.showOnStart,
 });
