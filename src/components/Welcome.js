@@ -40,7 +40,10 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
       >
         <Close />
       </IconButton>
-      <DialogTitle disableTypography>
+      <DialogTitle
+        disableTypography
+        style={{ display: "flex", alignItems: "center" }}
+      >
         <img
           src={Logo}
           alt="MuiTA Logo"

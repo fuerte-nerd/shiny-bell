@@ -40,7 +40,7 @@ const HeroText = ({ dispatch, isOpen, current }) => {
         handleClose();
         break;
       case "update":
-        const theme = new Theme({
+        new Theme({
           ...current,
           hero: {
             ...current.hero,
