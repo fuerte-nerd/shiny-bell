@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setThemeCode, setCopied } from "../../state/display/actions";
 import {
-  Box,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogContentText,
   DialogActions,
   Button,
-  IconButton,
-  Tooltip,
   Snackbar,
 } from "@material-ui/core";
 import { Alert } from "@material-ui/lab";
