@@ -6,18 +6,13 @@ const FontInfo = ({ isOpen, body, header }) => {
   const [mouseLocation, setMouseLocation] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (isOpen) {
-      setMouseLocation;
-    }
-  }, [isOpen]);
-
-  useEffect(() => {
     document.addEventListener("mouseover", (e) => {
       setMouseLocation({ x: e.clientX, y: e.clientY });
     });
   }, []);
   return (
     <Popover
+      open={isOpen}
       anchorReference="anchorPosition"
       anchorPosition={{ top: mouseLocation.y, left: mouseLocation.x }}
     >

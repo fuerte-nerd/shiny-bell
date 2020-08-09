@@ -28,7 +28,10 @@ const initialState = {
   },
   loadingScreen: true,
   sidebar: false,
-  fontInfo: false,
+  fontInfo: {
+    isOpen: false,
+    section: "body",
+  },
   heroText: false,
   save: {
     isOpen: false,

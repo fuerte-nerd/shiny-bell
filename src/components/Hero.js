@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { setHeroText } from "../state/display/actions";
+import { setHeroText, setFontInfo } from "../state/display/actions";
 import { scroller } from "react-scroll";
 import {
   Toolbar,
@@ -36,6 +36,11 @@ const Hero = ({
       default:
         break;
     }
+  };
+
+  const handleOnMouseOver = (e) => {
+    const { id } = e.currentTarget;
+    dispatch(setFontInfo({ isOpen: true, section: id }));
   };
 
   return (
@@ -84,8 +89,15 @@ const Hero = ({
               opacity: boxOverlayOpacity,
             }}
           />
-          <Typography variant="h2">{current.hero.text.heading}</Typography>
-          <Typography variant="subtitle1" paragraph>
+          <Typography variant="h2" onMouseOver={handleOnMouseOver} id="heading">
+            {current.hero.text.heading}
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            paragraph
+            onMouseOver={handleOnMouseOver}
+            id="body"
+          >
             {current.hero.text.body}
           </Typography>
           <Box mt={2} align="inherit">
