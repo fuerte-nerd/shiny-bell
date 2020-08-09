@@ -17,7 +17,7 @@ import {
 
 import { PlayArrow, GitHub } from "@material-ui/icons";
 
-const Welcome = ({ dispatch, isOpen }) => {
+const Welcome = ({ dispatch, isOpen, onStart }) => {
   const [dismiss, setDismiss] = useState(false);
   const handleChange = (e) => {
     setDismiss(!dismiss);
@@ -105,11 +105,13 @@ const Welcome = ({ dispatch, isOpen }) => {
         </Typography>
       </DialogContent>
       <DialogActions>
-        <FormControlLabel
-          control={<Checkbox checked={dismiss} onChange={handleChange} />}
-          label="Don't show this again"
-          labelPlacement="start"
-        />
+        {onStart && (
+          <FormControlLabel
+            control={<Checkbox checked={dismiss} onChange={handleChange} />}
+            label="Don't show this again"
+            labelPlacement="start"
+          />
+        )}
         <Button
           id="github"
           style={{ fontFamily: "Roboto" }}
@@ -139,7 +141,8 @@ const Divide = () => {
 };
 
 const mapStateToProps = (state) => ({
-  isOpen: state.display.welcome,
+  isOpen: state.display.welcome.isOpen,
+  onStart: state.display.welcome.showOnStart,
 });
 
 export default connect(mapStateToProps)(Welcome);

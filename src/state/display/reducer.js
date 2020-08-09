@@ -21,7 +21,10 @@ import {
 } from "./types";
 
 const initialState = {
-  welcome: false,
+  welcome: {
+    isOpen: false,
+    showOnStart: false,
+  },
   loadingScreen: true,
   sidebar: false,
   heroText: false,
