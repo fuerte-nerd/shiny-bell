@@ -17,8 +17,9 @@ const FontInfo = ({ dispatch, isOpen, section, body, header }) => {
       anchorReference="anchorPosition"
       anchorPosition={{ top: mouseLocation.y, left: mouseLocation.x }}
       style={{ pointerEvents: "none" }}
+      disableScrollLock={true}
     >
-      <Box p={0}>
+      <Box p={1}>
         <Typography style={{ fontFamily: "Roboto" }}>
           {section === "body" ? body : header}
         </Typography>

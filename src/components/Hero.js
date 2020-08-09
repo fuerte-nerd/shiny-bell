@@ -72,7 +72,7 @@ const Hero = ({
       <Container>
         {current.hero.position === "flex-start" ? <Toolbar /> : null}
         <Box
-          p={boxOverlayColor !== "transparent" ? 2 : 0}
+          p={boxOverlayColor !== "transparent" ? 4 : 0}
           mt={current.hero.position === "flex-start" ? 2 : 0}
           mb={current.hero.position === "flex-end" ? 8 : 0}
           align={alignment}
