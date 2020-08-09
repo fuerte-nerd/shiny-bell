@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { setThemeCode } from "../../state/display/actions";
+import { setThemeCode, setCopied } from "../../state/display/actions";
 import {
   Box,
   Dialog,
@@ -25,14 +25,12 @@ import CodeSection from "../CodeSection";
 
 import CodeGenerator from "../CodeGenerator";
 
-const ThemeCode = ({ dispatch, themeCode, current }) => {
+const ThemeCode = ({ dispatch, themeCode, current, copied }) => {
   const [codeSnippets, setCodeSnippets] = useState({
     hero: ``,
     theme: ``,
     helmet: ``,
   });
-
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const hero = new CodeGenerator({ section: "hero" });
@@ -71,7 +69,7 @@ const ThemeCode = ({ dispatch, themeCode, current }) => {
       <Snackbar
         open={copied}
         autoHideDuration={5000}
-        onClose={() => setCopied(false)}
+        onClose={() => dispatch(setCopied(false))}
       >
         <Alert severity="success" style={{ fontFamily: "Roboto" }}>
           Copied to clipboard!
@@ -84,6 +82,7 @@ const ThemeCode = ({ dispatch, themeCode, current }) => {
 const mapStateToProps = (state) => ({
   themeCode: state.display.themeCode,
   current: state.appState.current,
+  copied: state.display.copied,
 });
 
 export default connect(mapStateToProps)(ThemeCode);
