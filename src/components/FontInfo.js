@@ -10,10 +10,6 @@ const FontInfo = ({ dispatch, isOpen, body, header }) => {
     document.addEventListener("mouseover", (e) => {
       setMouseLocation({ x: e.clientX, y: e.clientY });
     });
-
-    document.addEventListener("mouseout", (e) => {
-      dispatch(setFontInfo({ isOpen: false }));
-    });
   }, []);
 
   return (
