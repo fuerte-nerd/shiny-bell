@@ -41,9 +41,17 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
         <Close />
       </IconButton>
       <DialogTitle disableTypography>
-        <img src={Logo} alt="MuiTA Logo" />
-        <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
-          Welcome to MuiTA
+        <img
+          src={Logo}
+          alt="MuiTA Logo"
+          style={{ width: "2.5rem", marginRight: ".5rem" }}
+        />
+        <Typography
+          variant="h6"
+          display="inline"
+          style={{ fontFamily: "Roboto" }}
+        >
+          Material-UI Theme Assistant
         </Typography>
       </DialogTitle>
       <DialogContent>
