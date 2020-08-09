@@ -104,7 +104,7 @@ const ThemeCode = ({ dispatch, themeCode, current }) => {
           <SyntaxHighlighter
             language="javascript"
             style={tomorrow}
-            customStyle={{ maxHeight: "20rem" }}
+            customStyle={{ maxHeight: "20rem", overflowX: "hidden" }}
           >
             {current ? codeSnippets.helmet : ``}
           </SyntaxHighlighter>
