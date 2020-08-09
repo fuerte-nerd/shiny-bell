@@ -10,6 +10,7 @@ const Preview = ({ current }) => {
     <>
       <Anchor id="preview" />
       <Box
+        py={1}
         minHeight="calc(100vh - 48px)"
         display="flex"
         justifyContent="center"

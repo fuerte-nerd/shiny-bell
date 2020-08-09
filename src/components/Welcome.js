@@ -32,7 +32,10 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
 
   return (
     <Dialog open={isOpen} onClose={handleClose}>
-      <IconButton style={{ top: 5, right: 5, position: "absolute" }}>
+      <IconButton
+        onClick={handleClose}
+        style={{ top: 5, right: 5, position: "absolute" }}
+      >
         <Close />
       </IconButton>
       <DialogTitle disableTypography>
@@ -104,7 +107,6 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
           <FormControlLabel
             control={<Checkbox checked={dismiss} onChange={handleChange} />}
             label="Don't show this again"
-            labelPlacement="start"
           />
         </DialogActions>
       )}
