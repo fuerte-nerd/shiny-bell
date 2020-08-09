@@ -18,6 +18,7 @@ import {
   SET_IMAGE_SEARCH,
   SET_HERO_TEXT,
   SET_WELCOME,
+  SET_FONT_INFO,
 } from "./types";
 
 const initialState = {
@@ -122,6 +123,9 @@ export default (state = initialState, action) => {
       break;
     case SET_WELCOME:
       newState.welcome = payload;
+      break;
+    case SET_FONT_INFO:
+      newState.fontInfo = payload;
       break;
     default:
       break;

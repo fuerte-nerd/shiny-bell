@@ -6,6 +6,7 @@ const FontInfo = () => {
 };
 
 const mapStateToProps = (state) => ({
+  isOpen: state.display.fontInfo,
   body: state.appState.current.body.family,
   header: state.appState.current.header.family,
 });
