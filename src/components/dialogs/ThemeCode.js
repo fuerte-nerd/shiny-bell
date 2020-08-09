@@ -136,7 +136,7 @@ const ThemeCode = ({ dispatch, themeCode, current }) => {
             style={tomorrow}
             lineProps={{ style: { whiteSpace: "pre-wrap" } }}
             wrapLines={true}
-            customStyle={{ maxHeight: "12.5rem" }}
+            customStyle={{ maxHeight: "12.5rem", overflowX: "hidden" }}
           >
             {current ? codeSnippets.hero : ``}
           </SyntaxHighlighter>
