@@ -11,6 +11,7 @@ import Colors from "./settings/Colors";
 import Appearance from "./settings/Appearance";
 import Buttons from "./settings/Buttons";
 import Hero from "./settings/Hero";
+import About from "./settings/About";
 
 const Sidebar = ({ dispatch, isOpen }) => {
   const handleClose = () => {
@@ -32,6 +33,7 @@ const Sidebar = ({ dispatch, isOpen }) => {
         <Appearance />
         <Buttons />
         <Hero />
+        <About />
       </List>
     </Drawer>
   );
