@@ -19,6 +19,7 @@ import {
   SET_HERO_TEXT,
   SET_WELCOME,
   SET_FONT_INFO,
+  SET_COPIED,
 } from "./types";
 
 const initialState = {
@@ -62,6 +63,7 @@ const initialState = {
   },
   rename: false,
   imageSearch: false,
+  copied: false,
 };
 
 export default (state = initialState, action) => {
@@ -129,6 +131,9 @@ export default (state = initialState, action) => {
       break;
     case SET_FONT_INFO:
       newState.fontInfo = payload;
+      break;
+    case SET_COPIED:
+      newState.copied = payload;
       break;
     default:
       break;

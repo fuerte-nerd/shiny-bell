@@ -19,6 +19,7 @@ import {
   SET_HERO_TEXT,
   SET_WELCOME,
   SET_FONT_INFO,
+  SET_COPIED,
 } from "./types";
 
 export const setLoadingScreen = (payload) => ({
@@ -115,5 +116,10 @@ export const setWelcome = (payload) => ({
 
 export const setFontInfo = (payload) => ({
   type: SET_FONT_INFO,
+  payload,
+});
+
+export const setCopied = (payload) => ({
+  type: SET_COPIED,
   payload,
 });
