@@ -42,7 +42,13 @@ const ThemeCode = ({ dispatch, themeCode, current, copied }) => {
   };
 
   return (
-    <Dialog maxWidth="sm" fullWidth open={themeCode} onClose={handleClose}>
+    <Dialog
+      maxWidth="sm"
+      fullWidth
+      open={themeCode}
+      onClose={handleClose}
+      disableScrollLock={true}
+    >
       <DialogTitle disableTypography>
         <AppTypography variant="h5">Theme Code</AppTypography>
       </DialogTitle>

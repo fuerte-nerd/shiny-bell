@@ -33,7 +33,7 @@ const Welcome = ({ dispatch, isOpen, onStart, welcome }) => {
   };
 
   return (
-    <Dialog open={isOpen} onClose={handleClose}>
+    <Dialog open={isOpen} onClose={handleClose} disableScrollLock={true}>
       <IconButton
         onClick={handleClose}
         style={{ top: 5, right: 5, position: "absolute" }}

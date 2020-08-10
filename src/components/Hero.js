@@ -97,7 +97,9 @@ const Hero = ({
             variant="h2"
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
+            onClick={() => dispatch(setHeroText(true))}
             id="heading"
+            style={{ cursor: "pointer" }}
           >
             {current.hero.text.heading}
           </Typography>
@@ -106,7 +108,9 @@ const Hero = ({
             paragraph
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
+            onClick={() => dispatch(setHeroText(true))}
             id="body"
+            style={{ cursor: "pointer" }}
           >
             {current.hero.text.body}
           </Typography>

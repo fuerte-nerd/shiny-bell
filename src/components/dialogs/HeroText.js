@@ -62,7 +62,13 @@ const HeroText = ({ dispatch, isOpen, current }) => {
   };
 
   return (
-    <Dialog open={isOpen} onClose={handleClose} fullWidth maxWidth="sm">
+    <Dialog
+      open={isOpen}
+      onClose={handleClose}
+      fullWidth
+      maxWidth="sm"
+      disableScrollLock={true}
+    >
       <DialogTitle disableTypography>
         <Typography variant="h5" style={{ fontFamily: "Roboto" }}>
           Edit hero text

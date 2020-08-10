@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import {
   Dialog,
@@ -46,8 +46,21 @@ const Rename = ({ dispatch, isOpen, title, current }) => {
     dispatch(setRename(false));
   };
 
+  useEffect(() => {
+    if (isOpen) {
+      setSiteTitle(title);
+    }
+    //eslint-disable-next-line
+  }, [isOpen]);
+
   return (
-    <Dialog fullWidth maxWidth="xs" open={isOpen} onClose={handleClose}>
+    <Dialog
+      fullWidth
+      maxWidth="xs"
+      open={isOpen}
+      onClose={handleClose}
+      disableScrollLock={true}
+    >
       <DialogTitle disableTypography>
         <Typography variant="h6" style={{ fontFamily: "Roboto" }}>
           Edit site title
@@ -64,7 +77,13 @@ const Rename = ({ dispatch, isOpen, title, current }) => {
         />
       </DialogContent>
       <DialogActions>
-        <Button style={{ fontFamily: "Roboto" }}>Cancel</Button>{" "}
+        <Button
+          onClick={handleClick}
+          id="cancel"
+          style={{ fontFamily: "Roboto" }}
+        >
+          Cancel
+        </Button>{" "}
         <Button
           onClick={handleClick}
           id="update"

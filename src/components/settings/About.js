@@ -7,7 +7,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 
-import { Email, Help } from "@material-ui/icons";
+import { Email, Help, GitHub } from "@material-ui/icons";
 
 import Setting from "../Setting";
 import { setWelcome } from "../../state/display/actions";
@@ -20,9 +20,13 @@ const About = ({ dispatch }) => {
       case "faqs-btn":
         dispatch(setWelcome({ isOpen: true, showOnStart: false }));
         break;
+      case "github":
+      case "github-btn":
+        window.open("https://github.com", "_blank");
+        break;
       case "email":
       case "email-btn":
-        window.open("mailto:fuertenerd@gmail.com");
+        window.open("mailto:fuertenerd@gmail.com", "_blank");
         break;
       default:
         break;
@@ -38,6 +42,12 @@ const About = ({ dispatch }) => {
             <Help />
           </IconButton>
         </ListItemSecondaryAction>
+      </ListItem>
+      <ListItem id="github" onClick={handleClick} button>
+        <ListItemText primary="GitHub" />
+        <IconButton id="github-btn" onClick={handleClick} edge="end">
+          <GitHub />
+        </IconButton>
       </ListItem>
       <ListItem id="email" onClick={handleClick} button>
         <ListItemText primary="Email the developer" />
